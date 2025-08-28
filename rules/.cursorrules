@@ -1,0 +1,237 @@
+Welcome to the **AEM Component Development Workflow** tailored for **Cursor Composer**. This guide will help you **identify** and **develop** AEM components for your website, page, or specific UI elements. Below is a step-by-step workflow to guide you through the process.
+
+---
+
+## **Available Options**
+
+At any time, you can type **`options`** to view the available options. First check if architype or codebase is already setup. If already setup, automatically run the context setup first, then display the available Options.
+
+**Context Setup:** Scan the complete codebase and use the context/project-information-context.md file to setup the context for the project. You will be required these information to generate the code at the proper location. If you already have the context setup and the file is not updated, don't run the context setup and mention that you already have the context with the last updated file.
+
+### **Option 1: Identify Components**
+- **Description:**  
+  Analyze a provided image of a web page to identify and organize UI elements into structured AEM components.
+
+### **Option 2: Develop Components**
+- **Description:**  
+  Generate AEM component code based on previously identified components. This includes creating the necessary code files with Java business logic implementation.
+
+### **Option 3: Prepare StyleGuide**
+- **Description:**  
+  Analyze a provided image of a web page to extract design tokens (such as colors, typography, spacing, etc.) and generate a style guide. The style guide should be implemented using the project's mysamplesite/ui.frontend/src/main/webpack/site structure and placed in the appropriate folder.
+
+### **Option 4: Export Figma to PNG**
+- **Description:**  
+  Export Figma designs to PNG format for use in design analysis or component development.
+
+---
+
+## **Step-by-Step Workflow**
+
+### **Step 1: Choose Your Task**
+
+1. **Start the Workflow:**
+   - To begin, type **`options`** to view the available options.
+
+2. **Select an Option:**
+   - **Type `1`** to choose **Identify Components**.
+   - **Type `2`** to choose **Develop Components**.
+   - **Type `3`** to choose **Prepare StyleGuide**.
+   - **Type `4`** to choose **Process Figma Designs**.
+
+---
+
+### **Option 1: Identify Components**
+
+#### **Step 1.1: Provide the Image**
+
+- **Instruction:**  
+  Share the image of the web page where specific sections are highlighted. Each highlighted section should be clearly marked with a unique identifier (e.g., Section 1, Section 2, etc.).
+
+- **Example:**  
+  Please upload or provide a link to the image.
+
+#### **Step 1.2: Analyze the Image**
+
+- **Process:**
+  1. **Identify Highlighted Sections:**  
+     Locate all highlighted sections in the image.
+  2. **Map to Components:**  
+     Each highlighted section will be mapped to a distinct AEM component.
+
+#### **Step 1.3: Define Components**
+
+- **Output:**  
+  For each highlighted section, provide the following details:
+
+  - **Component Name:**  
+    A descriptive name for the component (e.g., Hero Banner, Navigation Menu, Product Teaser).
+
+  - **Authorable Fields:**  
+    List of fields that content authors can edit, along with their data types (e.g., Title (Text), Image (Image)).
+
+  - **UI Description:**  
+    A brief description of how the component appears on the page.
+
+  - **Business Requirements:**  
+    Key functional or non-functional requirements for the component.
+
+  - **Component Type:**  
+    Whether the component can be fulfilled using AEM core components or requires custom development.
+
+- **Example Output:**
+
+  | Section ID | Component Name | Authorable Fields | UI Description | Business Requirements | Component Type |
+  |------------|----------------|-------------------|----------------|------------------------|----------------|
+  | Section 1  | Hero Banner    | Title (Text), Subtitle (Text), Image (Image), Call-to-Action Button (Link) | A large banner at the top of the page featuring a background image, promotional text, and a call-to-action button. | High visual impact, responsive design, easy to update promotional content. | Core Component (Banner) with custom styling |
+
+#### **Step 1.4: Save the output in JSON format to a file**
+- **Instruction:**  
+  Save the output in json format to a file named `components.json`.
+---
+
+### **Option 2: Develop Components**
+
+#### **Step 2.1: Select Component to Develop**
+
+- **Instruction:**  
+  Choose one component from the json file components.json created in Option 1 to generate the AEM component code.
+
+- **Example:**  
+  Please select the component you want to develop (e.g., Hero Banner).
+
+#### **Step 2.2: Business Logic Language**
+
+- **Instruction:**  
+  The business logic language for the component will be **Java**.
+
+- **Note:**  
+  All component business logic will be implemented using Java for consistency with the AEM backend architecture.
+
+#### **Step 2.3: Generate Component Code**
+
+- **Process:**
+  - Based on your selections, the system will generate the necessary AEM component code, including:
+    - **Folder Structure:**  
+      Defines the folder structure for the component within the AEM project.
+    - **HTML Template (`.html`):**  
+      Provides the HTML structure of the component.
+    - **Business Logic:**  
+      Includes the necessary Java code for the component.
+        [project]/core/src/main/java/com/[project]/core/models/
+        └── [ComponentName]Model.java
+    - **Component Definition (`.xml`):**  
+      Defines the component's properties and metadata.
+    - **Dialog Configuration (`_cq_dialog/<component-name>.xml`):**  
+      Creates the authoring dialog for the component.
+    - **Edit Configuration (`_cq_editConfig.xml`):**  
+      Defines the edit configuration for the component.
+    - **ClientLibs (Optional):**  
+      If the component requires specific styles or scripts, sets up a ClientLib with CSS and JS files. Please create the css files in scss format. Read the sample scss file to understand the format.
+
+---
+
+### **Option 3: Prepare StyleGuide**
+
+#### **Step 3.1: Provide the Image**
+
+- **Instruction:**  
+  Share the image of the web page or component from which the style guide should be prepared.
+
+- **Example:**  
+  Please upload or provide a link to the image.
+
+#### **Step 3.2: Analyze the Figma/Image**
+
+- **Process:**
+  1. **Analyze Available Design Tokens:**  
+     First, analyze the image to identify what design tokens are available for extraction:
+     - **Colors:** Check if color information is visible and extractable from the image
+     - **Typography:** Check if text/font information is visible and extractable from the image
+     - **Spacing:** Check if spacing, margins, or padding information is visible and extractable from the image
+     - **Other Elements:** Check for any other reusable style elements (borders, shadows, etc.)
+  
+  2. **Prompt Available Tokens:**  
+     Before extraction, clearly state what design tokens are available in the image and can be extracted.
+  
+  3. **Extract Available Tokens:**  
+     Only extract the design tokens that are actually present and identifiable in the image:
+     - If colors exist → extract color palette
+     - If typography exists → extract font styles, sizes, weights
+     - If spacing exists → extract spacing scale, margins, paddings
+     - If other elements exist → extract those specific elements
+  
+  4. **Document Tokens:**  
+     Organize the extracted tokens into categories (e.g., color palette, font styles, spacing scale) based on what was actually found in the image.
+
+#### **Step 3.3: Generate Style Guide Files**
+
+- **Instruction:**  
+  Create SCSS (or CSS) files for the style guide, following the project's folder structure. Place these files in the appropriate style guide or design system folder (e.g., `ui/styles/styleguide/` or similar as per project conventions).
+
+- **Example Output:**
+  - `_colors.scss` for color variables
+  - `_typography.scss` for font styles
+  - `_spacing.scss` for spacing scale
+  - `README.md` or documentation file describing the usage of the style guide
+
+#### **Step 3.4: Save and Reference**
+
+- **Instruction:**  
+  Ensure the style guide files are saved in the correct folder and referenced in the main SCSS/CSS entry point if required.
+
+---
+
+### **Option 4: Export Figma to PNG**
+
+#### **Step 4.1: Provide Figma Design**
+
+- **Instruction:**  
+  Share the Figma design URL that needs to be downloaded/screenshot to PNG format.
+
+- **Example:**  
+  Please provide the Figma URL.
+
+#### **Step 4.2: Convert Figma to PNG**
+
+- **Process:**
+  1. **Access Figma Design:**  
+     Navigate to the provided Figma design using browser automation.
+  2. **Download to PNG:**  
+     Convert the Figma design to PNG format using browser automation tools.
+  3. **Save PNG:**  
+     Download file with descriptive filename.
+
+#### **Step 4.3: Save and Organize**
+
+- **Instruction:**  
+  - Save the PNG in Download location with a descriptive filename using browser default behaviour
+  - Ensure the file is properly organized and accessible for future reference
+  - Once file downloaded, copy file from Download folder and paste it in `mysamplesite/context/styleguide`
+  - Once Successful follow Option 3 to create a styleguide with provided files
+
+---
+
+### **Next Steps**
+
+1. **Identify Components:**
+   - If you choose to identify components, follow the steps under **Option 1**.
+   - Once components are identified, you can proceed to develop them.
+
+2. **Develop Components:**
+   - If you choose to develop components, follow the steps under **Option 2**.
+   - Ensure you have the necessary component details from the identification step.
+
+3. **Prepare Style Guide:**
+   - If you choose to prepare a style guide, follow the steps under **Option 3**.
+   - This will help establish design consistency across your components.
+
+4. **Process Figma Designs:**
+   - If you choose to process Figma designs, follow the steps under **Option 4**.
+   - This will convert Figma designs to PNG and extract design tokens for your style guide.
+
+5. **Review and Test:**
+   - After generating the component code or style guide, review it for accuracy and completeness.
+   - Test the component in your AEM environment to ensure it functions as expected.
+
+---
