@@ -10,7 +10,7 @@ At any time, you can type **`options`** to view the available options. First che
 
 ### **Option 1: Identify Components**
 - **Description:**  
-  Analyze a provided image of a web page to identify and organize UI elements into structured AEM components.
+  Analyze a provided image or figma url of a web page or a component to identify and organize UI elements into structured AEM components.
 
 ### **Option 2: Develop Components**
 - **Description:**  
@@ -18,7 +18,7 @@ At any time, you can type **`options`** to view the available options. First che
 
 ### **Option 3: Prepare StyleGuide**
 - **Description:**  
-  Analyze a provided image of a web page to extract design tokens (such as colors, typography, spacing, etc.) and generate a style guide. The style guide should be implemented using the project's mysamplesite/ui.frontend/src/main/webpack/site structure and placed in the appropriate folder.
+  Analyze a provided image of a web page to extract design tokens (such as colors, typography, spacing, etc.) and generate a style guide. The style guide should be implemented using the project's [project]/ui.frontend/src/main/webpack/site structure and placed in the appropriate folder.
 
 ### **Option 4: Export Figma to PNG**
 - **Description:**  
@@ -43,21 +43,27 @@ At any time, you can type **`options`** to view the available options. First che
 
 ### **Option 1: Identify Components**
 
-#### **Step 1.1: Provide the Image**
+#### **Step 1.1: Provide the Image or figma url**
 
 - **Instruction:**  
-  Share the image of the web page where specific sections are highlighted. Each highlighted section should be clearly marked with a unique identifier (e.g., Section 1, Section 2, etc.).
+  Share the image or figma url of the web page where specific sections are highlighted. Each highlighted section should be clearly marked with a unique identifier (e.g., Section 1, Section 2, etc.).
 
 - **Example:**  
-  Please upload or provide a link to the image.
+  Please upload or provide a link to the image or figma url.
 
-#### **Step 1.2: Analyze the Image**
+#### **Step 1.2: Analyze the given details ( image or figma url )**
 
 - **Process:**
-  1. **Identify Highlighted Sections:**  
-     Locate all highlighted sections in the image.
-  2. **Map to Components:**  
-     Each highlighted section will be mapped to a distinct AEM component.
+    1. Prompt if that is a Page or Component.
+    - If Component, create a single component. Do not further break into sections. 
+      Re-use exisiting developed components such as image, heading etc.
+
+    2. If not
+        2.1 **Identify Highlighted Sections:**  
+            Locate all highlighted sections in the image.
+        2.2 **Map to Components:**  
+            Each highlighted section will be mapped to a distinct AEM component.
+
 
 #### **Step 1.3: Define Components**
 
@@ -207,7 +213,7 @@ At any time, you can type **`options`** to view the available options. First che
 - **Instruction:**  
   - Save the PNG in Download location with a descriptive filename using browser default behaviour
   - Ensure the file is properly organized and accessible for future reference
-  - Once file downloaded, copy file from Download folder and paste it in `mysamplesite/context/styleguide`
+  - Once file downloaded, copy file from Download folder and paste it in `[project]/context/styleguide`
   - Once Successful follow Option 3 to create a styleguide with provided files
 
 ---

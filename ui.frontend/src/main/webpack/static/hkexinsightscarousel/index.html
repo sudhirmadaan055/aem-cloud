@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKEX Insights Carousel - Component Test</title>
+    
+    <!-- Required ClientLibs as per project specification -->
+    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
+    
+    <!-- Component-specific styles -->
+    <link rel="stylesheet" href="../../components/_hkexinsightscarousel.scss">
+    
+    <style>
+        /* Additional test styles for local development */
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .test-header {
+            background: #14436B;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .test-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        .test-content {
+            padding: 20px;
+        }
+        
+        .test-info {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .test-info h3 {
+            margin-top: 0;
+            color: #14436B;
+        }
+        
+        .test-info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .test-info li {
+            margin: 5px 0;
+        }
+
+        /* HKEX Insights Carousel Component Styles */
+        .hkex-insights-carousel {
+          position: relative;
+          width: 100%;
+          min-height: 670px;
+          background: linear-gradient(135deg, #D1DDE6 0%, #FFFFFF 100%);
+          overflow: hidden;
+          font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Background Section */
+        .hkex-carousel-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .background-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.7);
+          z-index: 2;
+        }
+
+        .geometric-shapes {
+          position: absolute;
+          top: 46px;
+          right: 43px;
+          width: 738px;
+          height: 656px;
+          z-index: 1;
+        }
+
+        .shape {
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0.5;
+        }
+
+        .shape-1 {
+          left: 0;
+          top: 0;
+          width: 328px;
+          height: 656px;
+          border: 160px solid rgba(20, 67, 107, 0.5);
+        }
+
+        .shape-2 {
+          left: 371px;
+          top: 0;
+          width: 328px;
+          height: 656px;
+          border: 160px solid #D1DDE6;
+        }
+
+        .shape-3 {
+          left: 410px;
+          top: 0;
+          width: 328px;
+          height: 656px;
+          border: 160px solid rgba(20, 67, 107, 0.5);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Header Section */
+        .hkex-carousel-header {
+          position: relative;
+          z-index: 3;
+          padding: 40px 98px 0;
+          text-align: left;
+        }
+
+        .carousel-title {
+          font-size: 64px;
+          font-weight: 700;
+          line-height: 1.22;
+          color: #14436B;
+          margin: 0 0 20px 0;
+          max-width: 1259px;
+        }
+
+        .carousel-subtitle {
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 1.21;
+          color: #14436B;
+          margin: 0;
+          max-width: 1259px;
+        }
+
+        /* Articles Grid */
+        .hkex-articles-grid {
+          position: relative;
+          z-index: 3;
+          padding: 0 98px;
+          margin-top: 40px;
+        }
+
+        .articles-container {
+          display: flex;
+          gap: 25px;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+          padding-bottom: 20px;
+        }
+
+        .articles-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .article-card {
+          flex: 0 0 330px;
+          background: #FFFFFF;
+          border-radius: 30px;
+          box-shadow: 2px 2px 20px 0px rgba(20, 67, 107, 1);
+          overflow: hidden;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 4px 4px 30px 0px rgba(20, 67, 107, 1.2);
+        }
+
+        .article-image-container {
+          position: relative;
+          width: 100%;
+          height: 237px;
+          overflow: hidden;
+        }
+
+        .article-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+          opacity: 0;
+          animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .article-card:hover .article-image {
+          transform: scale(1.05);
+        }
+
+        .article-image-placeholder {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #D1DDE6 0%, #E8F0F5 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px dashed #14436B;
+          border-radius: 8px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+
+        .placeholder-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: #14436B;
+        }
+
+        .placeholder-content svg {
+          margin-bottom: 10px;
+          opacity: 0.6;
+        }
+
+        .placeholder-content span {
+          font-size: 14px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        /* Loading state */
+        .article-image.loading {
+          opacity: 0.7;
+        }
+
+        .article-image.loaded {
+          opacity: 1;
+        }
+
+        /* Fallback image styles */
+        .article-image[src*="placeholder"] {
+          background: #14436B;
+          color: #FFFFFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 600;
+          text-align: center;
+          line-height: 1.3;
+          padding: 20px;
+        }
+
+        .article-content {
+          padding: 28px;
+          position: relative;
+        }
+
+        .category-tag {
+          display: inline-block;
+          background: #FFFFFF;
+          color: #14436B;
+          font-size: 12px;
+          font-weight: 700;
+          line-height: 1.83;
+          padding: 8px 23px 9px;
+          border-radius: 22px;
+          margin-bottom: 20px;
+          border: 1px solid transparent;
+        }
+
+        .article-title {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.19;
+          color: #14436B;
+          margin: 0 0 20px 0;
+          min-height: 42px;
+        }
+
+        .article-date {
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.22;
+          color: #14436B;
+          margin: 0 0 20px 0;
+        }
+
+        .article-actions {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 23px 9px;
+          border-radius: 22px;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.57;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          min-width: 100px;
+          height: 30px;
+        }
+
+        .btn-outline {
+          color: #14436B;
+          background: transparent;
+          border: 1px solid #14436B;
+        }
+
+        .btn-outline:hover {
+          background: #14436B;
+          color: #FFFFFF;
+        }
+
+        /* Navigation Controls */
+        .hkex-carousel-navigation {
+          position: relative;
+          z-index: 3;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 98px;
+          margin-top: 20px;
+        }
+
+        .nav-btn {
+          width: 44px;
+          height: 44px;
+          border-radius: 22px;
+          border: 1.5px solid #4F4F4F;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          color: #4F4F4F;
+        }
+
+        .nav-btn:hover {
+          background: #14436B;
+          border-color: #14436B;
+          color: #FFFFFF;
+        }
+
+        .nav-btn-right {
+          background: #FFFFFF;
+          border-color: #FFFFFF;
+          color: #14436B;
+        }
+
+        .nav-btn svg {
+          width: 10px;
+          height: 18px;
+        }
+
+        /* View All Button */
+        .hkex-view-all {
+          position: relative;
+          z-index: 3;
+          padding: 0 98px;
+          margin-top: 20px;
+        }
+
+        .btn-primary {
+          background: #FFFFFF;
+          color: #14436B;
+          border: 1px solid #14436B;
+        }
+
+        .btn-primary:hover {
+          background: #14436B;
+          color: #FFFFFF;
+        }
+
+        .btn-large {
+          font-size: 18px;
+          padding: 12px 32px 13px;
+          min-width: 140px;
+          height: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+          .hkex-carousel-header {
+            padding: 30px 50px 0;
+          }
+
+          .carousel-title {
+            font-size: 48px;
+          }
+
+          .carousel-subtitle {
+            font-size: 18px;
+          }
+
+          .hkex-articles-grid {
+            padding: 0 50px;
+          }
+
+          .hkex-carousel-navigation,
+          .hkex-view-all {
+            padding: 0 50px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hkex-insights-carousel {
+            min-height: 500px;
+          }
+
+          .hkex-carousel-header {
+            padding: 20px 20px 0;
+          }
+
+          .carousel-title {
+            font-size: 36px;
+          }
+
+          .carousel-subtitle {
+            font-size: 16px;
+          }
+
+          .hkex-articles-grid {
+            padding: 0 20px;
+          }
+
+          .article-card {
+            flex: 0 0 280px;
+          }
+
+          .hkex-carousel-navigation,
+          .hkex-view-all {
+            padding: 0 20px;
+          }
+
+          .geometric-shapes {
+            display: none;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .carousel-title {
+            font-size: 28px;
+          }
+
+          .carousel-subtitle {
+            font-size: 14px;
+          }
+
+          .article-card {
+            flex: 0 0 260px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>HKEX Insights Carousel Component Test</h1>
+        </div>
+        
+        <div class="test-content">
+            <div class="test-info">
+                <h3>Component Information</h3>
+                <ul>
+                    <li><strong>Component Name:</strong> HKEX Insights Carousel</li>
+                    <li><strong>Type:</strong> Custom Component</li>
+                    <li><strong>Complexity:</strong> High</li>
+                    <li><strong>Features:</strong> Article cards, navigation controls, responsive design</li>
+                </ul>
+                
+                <h3>Test Instructions</h3>
+                <ul>
+                    <li>Use the left/right navigation arrows to navigate through articles</li>
+                    <li>Test responsive behavior by resizing the browser window</li>
+                    <li>Verify hover effects on article cards</li>
+                    <li>Check touch/swipe support on mobile devices</li>
+                    <li><strong>New:</strong> Images now have multiple fallback sources and loading states</li>
+                    <li><strong>New:</strong> Hover over images to see zoom effects</li>
+                    <li><strong>New:</strong> Placeholder images with themed icons and text</li>
+                </ul>
+            </div>
+            
+            <!-- HKEX Insights Carousel Component -->
+            <div class="hkex-insights-carousel">
+                
+                <!-- Background Section -->
+                <div class="hkex-carousel-background">
+                    <div class="background-overlay"></div>
+                    <div class="geometric-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+                
+                <!-- Header Section -->
+                <div class="hkex-carousel-header">
+                    <h1 class="carousel-title">Latest HKEX Insight, Research & Views.</h1>
+                    <p class="carousel-subtitle">Explore unique analysis, considered opinions and thought provoking insight from across the HKEX business.</p>
+                </div>
+                
+                <!-- Articles Grid -->
+                <div class="hkex-articles-grid">
+                    <div class="articles-container">
+                        <!-- Article Card 1 -->
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=1" alt="Tech Breakthrough" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=Tech+Breakthrough';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Tech Breakthrough</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Insights</div>
+                                <h3 class="article-title">Funding China's Next Tech Breakthrough</h3>
+                                <p class="article-date">Jun 27, 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Article Card 2 -->
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=2" alt="Net-Zero Transition" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=Net-Zero+Transition';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Sustainability</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Insights</div>
+                                <h3 class="article-title">Eight Ways Exchanges are Supporting Asia's Transition to Net-Zero</h3>
+                                <p class="article-date">Apr 14, 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Article Card 3 -->
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=3" alt="AI to Biotech" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=AI+to+Biotech';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M9 11H7a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2v-6a2 2 0 00-2-2zm8 0h-2a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2v-6a2 2 0 00-2-2z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Innovation</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Insights</div>
+                                <h3 class="article-title">From AI to Biotech: 10 New Tech Advances</h3>
+                                <p class="article-date">24 Jun 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Article Card 4 -->
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=4" alt="Energy Ecosystem" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=Energy+Ecosystem';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Energy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Insights</div>
+                                <h3 class="article-title">Five Reasons Why HKEX's New Energy Ecosystem is Thriving</h3>
+                                <p class="article-date">14th May 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Additional Article Cards for Testing -->
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=5" alt="Digital Transformation" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=Digital+Transformation';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Digital</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Research</div>
+                                <h3 class="article-title">Digital Transformation in Asian Markets</h3>
+                                <p class="article-date">May 10, 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="article-card">
+                            <div class="article-image-container">
+                                <img src="https://picsum.photos/330/237?random=6" alt="Sustainable Finance" class="article-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/330x237/14436B/FFFFFF?text=Sustainable+Finance';">
+                                <div class="article-image-placeholder" style="display: none;">
+                                    <div class="placeholder-content">
+                                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="#14436B"/>
+                                        </svg>
+                                        <span>Finance</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="article-content">
+                                <div class="category-tag">Views</div>
+                                <h3 class="article-title">The Future of Sustainable Finance</h3>
+                                <p class="article-date">May 5, 2025</p>
+                                <div class="article-actions">
+                                    <a href="#" class="btn btn-outline">Learn more</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                <!-- Navigation Controls -->
+                <div class="hkex-carousel-navigation">
+                    <button class="nav-btn nav-btn-left" aria-label="Previous articles">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                            <path d="M9 1L1 9L9 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    
+                    <button class="nav-btn nav-btn-right" aria-label="Next articles">
+                        <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                            <path d="M1 1L9 9L1 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- View All Button -->
+                <div class="hkex-view-all">
+                    <a href="#" class="btn btn-primary btn-large">View all</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Required ClientLibs as per project specification -->
+    <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/base.js"></script>
+    
+    <!-- Component-specific JavaScript -->
+    <script>
+        /**
+         * HKEX Insights Carousel Component JavaScript
+         * Provides carousel navigation and interactive functionality
+         */
+
+        (function() {
+            'use strict';
+
+            class HkexInsightsCarousel {
+                constructor(element) {
+                    this.element = element;
+                    this.articlesContainer = element.querySelector('.articles-container');
+                    this.navLeft = element.querySelector('.nav-btn-left');
+                    this.navRight = element.querySelector('.nav-btn-right');
+                    this.articleCards = element.querySelectorAll('.article-card');
+                    
+                    this.currentIndex = 0;
+                    this.visibleCards = this.calculateVisibleCards();
+                    this.maxIndex = Math.max(0, this.articleCards.length - this.visibleCards);
+                    
+                    this.init();
+                }
+
+                init() {
+                    this.bindEvents();
+                    this.updateNavigationState();
+                    this.setupTouchSupport();
+                }
+
+                bindEvents() {
+                    if (this.navLeft) {
+                        this.navLeft.addEventListener('click', () => this.navigateLeft());
+                    }
+                    
+                    if (this.navRight) {
+                        this.navRight.addEventListener('click', () => this.navigateRight());
+                    }
+
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        if (this.element.contains(document.activeElement)) {
+                            if (e.key === 'ArrowLeft') {
+                                e.preventDefault();
+                                this.navigateLeft();
+                            } else if (e.key === 'ArrowRight') {
+                                e.preventDefault();
+                                this.navigateRight();
+                            }
+                        }
+                    });
+
+                    // Window resize handling
+                    window.addEventListener('resize', () => {
+                        this.visibleCards = this.calculateVisibleCards();
+                        this.maxIndex = Math.max(0, this.articleCards.length - this.visibleCards);
+                        this.updateNavigationState();
+                    });
+                }
+
+                calculateVisibleCards() {
+                    const containerWidth = this.articlesContainer.offsetWidth;
+                    const cardWidth = 330; // Base card width
+                    const gap = 25; // Gap between cards
+                    
+                    // Calculate how many cards can fit in the visible area
+                    const visibleCards = Math.floor((containerWidth + gap) / (cardWidth + gap));
+                    return Math.max(1, visibleCards);
+                }
+
+                navigateLeft() {
+                    if (this.currentIndex > 0) {
+                        this.currentIndex--;
+                        this.scrollToIndex();
+                    }
+                }
+
+                navigateRight() {
+                    if (this.currentIndex < this.maxIndex) {
+                        this.currentIndex++;
+                        this.scrollToIndex();
+                    }
+                }
+
+                scrollToIndex() {
+                    const cardWidth = 330; // Base card width
+                    const gap = 25; // Gap between cards
+                    const scrollPosition = this.currentIndex * (cardWidth + gap);
+                    
+                    this.articlesContainer.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    this.updateNavigationState();
+                }
+
+                updateNavigationState() {
+                    // Update left navigation button state
+                    if (this.navLeft) {
+                        this.navLeft.disabled = this.currentIndex <= 0;
+                        this.navLeft.classList.toggle('disabled', this.currentIndex <= 0);
+                    }
+                    
+                    // Update right navigation button state
+                    if (this.navRight) {
+                        this.navRight.disabled = this.currentIndex >= this.maxIndex;
+                        this.navRight.classList.toggle('disabled', this.currentIndex >= this.maxIndex);
+                    }
+                }
+
+                setupTouchSupport() {
+                    let startX = 0;
+                    let startY = 0;
+                    let isScrolling = false;
+
+                    this.articlesContainer.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                        startY = e.touches[0].clientY;
+                        isScrolling = false;
+                    }, { passive: true });
+
+                    this.articlesContainer.addEventListener('touchmove', (e) => {
+                        if (!isScrolling) {
+                            const deltaX = Math.abs(e.touches[0].clientX - startX);
+                            const deltaY = Math.abs(e.touches[0].clientY - startY);
+                            
+                            if (deltaX > deltaY) {
+                                isScrolling = true;
+                            }
+                        }
+                    }, { passive: true });
+
+                    this.articlesContainer.addEventListener('touchend', (e) => {
+                        if (!isScrolling) {
+                            const endX = e.changedTouches[0].clientX;
+                            const deltaX = startX - endX;
+                            const threshold = 50; // Minimum swipe distance
+
+                            if (Math.abs(deltaX) > threshold) {
+                                if (deltaX > 0) {
+                                    this.navigateRight();
+                                } else {
+                                    this.navigateLeft();
+                                }
+                            }
+                        }
+                    }, { passive: true });
+                }
+
+                // Public method to go to specific index
+                goToIndex(index) {
+                    if (index >= 0 && index <= this.maxIndex) {
+                        this.currentIndex = index;
+                        this.scrollToIndex();
+                    }
+                }
+
+                // Public method to refresh carousel
+                refresh() {
+                    this.visibleCards = this.calculateVisibleCards();
+                    this.maxIndex = Math.max(0, this.articleCards.length - this.visibleCards);
+                    this.updateNavigationState();
+                }
+            }
+
+            // Initialize carousels when DOM is ready
+            function initCarousels() {
+                const carousels = document.querySelectorAll('.hkex-insights-carousel');
+                carousels.forEach(carousel => {
+                    new HkexInsightsCarousel(carousel);
+                });
+            }
+
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCarousels);
+            } else {
+                initCarousels();
+            }
+
+            // Image loading and fallback handling
+            function initImageFallbacks() {
+                const images = document.querySelectorAll('.article-image');
+                
+                images.forEach(img => {
+                    // Add loading class
+                    img.classList.add('loading');
+                    
+                    // Handle successful load
+                    img.addEventListener('load', function() {
+                        this.classList.remove('loading');
+                        this.classList.add('loaded');
+                        // Hide placeholder if it exists
+                        const placeholder = this.nextElementSibling;
+                        if (placeholder && placeholder.classList.contains('article-image-placeholder')) {
+                            placeholder.style.display = 'none';
+                        }
+                    });
+                    
+                    // Handle load error with multiple fallbacks
+                    img.addEventListener('error', function() {
+                        const currentSrc = this.src;
+                        
+                        // Try different fallback services
+                        if (currentSrc.includes('picsum.photos')) {
+                            this.src = `https://via.placeholder.com/330x237/14436B/FFFFFF?text=${encodeURIComponent(this.alt || 'Article Image')}`;
+                        } else if (currentSrc.includes('via.placeholder.com')) {
+                            this.src = `https://dummyimage.com/330x237/14436B/FFFFFF&text=${encodeURIComponent(this.alt || 'Article Image')}`;
+                        } else if (currentSrc.includes('dummyimage.com')) {
+                            // Final fallback - show placeholder
+                            this.style.display = 'none';
+                            const placeholder = this.nextElementSibling;
+                            if (placeholder && placeholder.classList.contains('article-image-placeholder')) {
+                                placeholder.style.display = 'flex';
+                            }
+                        }
+                    });
+                });
+            }
+
+            // Initialize image fallbacks
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initImageFallbacks);
+            } else {
+                initImageFallbacks();
+            }
+
+            // Export for global access if needed
+            if (typeof window !== 'undefined') {
+                window.HkexInsightsCarousel = HkexInsightsCarousel;
+            }
+
+        })();
+    </script>
+</body>
+</html>
