@@ -135,6 +135,44 @@ At any time, you can type **`options`** to view the available options. First che
     - **ClientLibs (Optional):**  
       If the component requires specific styles or scripts, sets up a ClientLib with CSS and JS files. Please create the css files in scss format. Read the sample scss file to understand the format.
 
+#### **Step 2.4: HTL Template Best Practices**
+
+**CRITICAL: HTL Context Requirements for Style Attributes**
+
+When developing AEM components with HTL templates, **ALWAYS** follow these rules to prevent build failures:
+
+1. **Style Attribute Expressions:**
+   - **❌ WRONG:** `style="background-image: url('${image}')"`
+   - **✅ CORRECT:** `style="background-image: url('${image @ context='unsafe'}')"`
+
+2. **Why Context is Required:**
+   - AEM's HTL compiler requires explicit context for security reasons
+   - Prevents potential XSS attacks from user-provided content
+   - Build will fail with error: "Expressions within the value of attribute style need to have an explicit context option"
+
+3. **Available Context Options:**
+   - `@ context='unsafe'` - For trusted content (images, URLs)
+   - `@ context='html'` - For HTML content
+   - `@ context='text'` - For plain text (default)
+   - `@ context='script'` - For JavaScript content
+
+4. **Common Use Cases:**
+   ```html
+   <!-- Background images -->
+   <div style="background-image: url('${model.image @ context='unsafe'}')"></div>
+   
+   <!-- Inline styles -->
+   <div style="color: ${model.textColor @ context='unsafe'}"></div>
+   
+   <!-- Dynamic CSS properties -->
+   <div style="width: ${model.width @ context='unsafe'}px"></div>
+   ```
+
+5. **Alternative Approaches:**
+   - Use CSS classes instead of inline styles when possible
+   - Validate URLs in Java models before outputting
+   - Consider using data attributes + CSS for dynamic styling
+
 ---
 
 ### **Option 3: Prepare StyleGuide**
