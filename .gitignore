@@ -14,8 +14,6 @@ local.properties
 .settings/
 .loadpath
 
-.env
-
 # Eclipse Core
 .project
 
