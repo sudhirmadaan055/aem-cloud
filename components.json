@@ -77,9 +77,88 @@
         "Navigation controls",
         "Responsive grid layout"
       ]
+    },
+    {
+      "componentName": "CarouselDemo1",
+      "authorableFields": [
+        {
+          "name": "Title",
+          "type": "Text",
+          "description": "Main heading text (e.g., 'Latest HKEX Insight, Research & Views')"
+        },
+        {
+          "name": "Subtitle",
+          "type": "Text",
+          "description": "Descriptive text below title (e.g., 'Explore unique analysis, considered opinions and thought provoking insight from across the HKEX business.')"
+        },
+        {
+          "name": "Article Cards",
+          "type": "Multi-Value",
+          "description": "Array of article objects containing article title, publication date, article image, category tags, and CTA buttons"
+        },
+        {
+          "name": "Background Elements",
+          "type": "Boolean",
+          "description": "Show/hide geometric background shapes"
+        },
+        {
+          "name": "Navigation Controls",
+          "type": "Boolean",
+          "description": "Show/hide left/right arrow navigation"
+        },
+        {
+          "name": "View All Button",
+          "type": "Boolean",
+          "description": "Show/hide 'View all' button at the bottom"
+        }
+      ],
+      "uiDescription": "A full-width carousel component featuring a large title, subtitle, and multiple article cards arranged horizontally. Each card contains an image, title, date, category tags, and call-to-action buttons. Includes navigation arrows and a 'View all' button at the bottom. The design uses a clean white background with blue accents (#14436B) and geometric decorative elements.",
+      "businessRequirements": [
+        "Display latest HKEX insights and research articles in an engaging carousel format",
+        "Support multiple article types with consistent styling",
+        "Provide easy navigation between articles",
+        "Maintain responsive design across devices",
+        "Support content authoring for articles and metadata",
+        "Include category-based filtering through tags"
+      ],
+      "componentType": "Custom Component",
+      "reasoning": "Requires custom development for carousel functionality, article card structure, and complex layout that cannot be fulfilled with standard AEM core components alone.",
+      "designTokens": {
+        "colors": {
+          "primary": "#14436B",
+          "white": "#FFFFFF",
+          "accent": "#D1DDE6"
+        },
+        "typography": {
+          "fontFamily": "Helvetica Neue",
+          "weights": [300, 400, 700],
+          "sizes": {
+            "title": "64px",
+            "subtitle": "20px",
+            "articleTitle": "18px",
+            "date": "14px",
+            "button": "14px"
+          }
+        },
+        "spacing": {
+          "cardMargin": "28px",
+          "borderRadius": "22px",
+          "cardBorderRadius": "30px"
+        },
+        "effects": {
+          "boxShadow": "2px 2px 20px 0px rgba(20, 67, 107, 1)"
+        }
+      },
+      "estimatedComplexity": "High",
+      "dependencies": [
+        "Custom carousel functionality",
+        "Article card component",
+        "Navigation controls",
+        "Responsive grid layout"
+      ]
     }
   ],
   "analysisDate": "2025-01-28",
   "designSource": "Figma Design: HKEX Insights Component",
-  "totalComponents": 1
+  "totalComponents": 2
 }

@@ -22,6 +22,7 @@ mysite
 # Additional Development Steps:
 - **Always generate an `index.html` file** for each new component in the frontend components directory. This file should allow local testing of the component without requiring an AEM environment.
 - **localHTMLFolder** Generated `index.html` location will be `ui.frontend/src/main/webpack/static/<folder name>/<component-name>/index.html`
+- **localHTMLFolder Use Fallback images when no image is provided in local html file
 - **Every `index.html` in the localHTMLFolder must include the following scripts and styles:**
   - `/clientlib-base/css/base.css`
   - `/clientlib-dependencies/css/dependencies.css`

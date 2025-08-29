@@ -1,0 +1,80 @@
+<!--/*-->
+<div class="carousel-demo-1" data-sly-use.model="com.mysite.core.models.CarouselDemo1Model">
+    
+    <!-- Background Section -->
+    <div class="carousel-background" data-sly-test="${model.showBackgroundElements}">
+        <div class="background-overlay"></div>
+        <div class="geometric-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+    
+    <!-- Header Section -->
+    <div class="carousel-header">
+        <h1 class="carousel-title" data-sly-test="${model.title}">${model.title}</h1>
+        <p class="carousel-subtitle" data-sly-test="${model.subtitle}">${model.subtitle}</p>
+    </div>
+    
+    <!-- Articles Grid -->
+    <div class="carousel-articles-grid" data-sly-test="${model.hasArticleCards}">
+        <div class="articles-container" data-sly-list.article="${model.articleCards}">
+            <article class="article-card">
+                <!-- Article Image -->
+                <div class="article-image-container">
+                    <div class="article-image" data-sly-test="${article.image}" style="background-image: url('${article.image @ context='unsafe'}')"></div>
+                    <div class="article-image-placeholder" data-sly-test="${!article.image}">
+                        ${article.title @ context='text'}
+                    </div>
+                </div>
+                
+                <!-- Article Content -->
+                <div class="article-content">
+                    <!-- Category Tags -->
+                    <div class="category-tags" data-sly-test="${article.categoryTags && article.categoryTags.size > 0}">
+                        <span class="category-tag" data-sly-list.tag="${article.categoryTags}">${tag}</span>
+                    </div>
+                    
+                    <!-- Article Title -->
+                    <h3 class="article-title" data-sly-test="${article.title}">${article.title}</h3>
+                    
+                    <!-- Article Date -->
+                    <p class="article-date" data-sly-test="${article.date}">${article.date}</p>
+                    
+                    <!-- Action Buttons -->
+                    <div class="article-actions">
+                        <a href="${article.learnMoreLink}" class="btn btn-outline" data-sly-test="${article.learnMoreLink}">
+                            ${article.learnMoreText}
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    
+    <!-- Navigation Controls -->
+    <div class="carousel-navigation" data-sly-test="${model.showNavigation}">
+        <!-- Left Arrow -->
+        <button class="nav-btn nav-btn-left" aria-label="Previous articles">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                <path d="M9 1L1 9L9 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        
+        <!-- Right Arrow -->
+        <button class="nav-btn nav-btn-right" aria-label="Next articles">
+            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                <path d="M1 1L9 9L1 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- View All Button -->
+    <div class="carousel-view-all" data-sly-test="${model.showViewAllButton}">
+        <a href="${model.viewAllButtonLink}" class="btn btn-primary btn-large" data-sly-test="${model.viewAllButtonLink}">
+            ${model.viewAllButtonText}
+        </a>
+    </div>
+    
+</div>

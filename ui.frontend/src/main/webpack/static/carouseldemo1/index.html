@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarouselDemo1 Component - Local Test</title>
+    
+    <!-- ClientLibs -->
+    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
+    
+    <!-- Component Styles -->
+    <style>
+        /* CarouselDemo1 Component Styles */
+        .carousel-demo-1 {
+          width: 100%;
+          max-width: 1440px;
+          margin: 0 auto;
+          padding: 40px 0;
+          position: relative;
+          overflow: hidden;
+          background: #FFFFFF;
+          min-height: 670px;
+        }
+
+        .carousel-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          opacity: 0.7;
+        }
+
+        .background-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: #D1DDE6;
+          z-index: 1;
+        }
+
+        .geometric-shapes {
+          position: absolute;
+          top: 46px;
+          right: 43px;
+          width: 738px;
+          height: 656px;
+          z-index: 2;
+        }
+
+        .shape {
+          position: absolute;
+          width: 328px;
+          height: 656px;
+          border-radius: 50%;
+        }
+
+        .shape-1 {
+          left: 0;
+          top: 0;
+          border: 160px solid rgba(20, 67, 107, 0.5);
+        }
+
+        .shape-2 {
+          left: 371px;
+          top: 0;
+          border: 160px solid #D1DDE6;
+        }
+
+        .shape-3 {
+          left: 410px;
+          top: 0;
+          border: 160px solid rgba(20, 67, 107, 0.5);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .carousel-header {
+          position: relative;
+          z-index: 3;
+          margin-bottom: 40px;
+          padding: 0 98px;
+        }
+
+        .carousel-title {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 64px;
+          line-height: 1.22;
+          color: #14436B;
+          margin: 0 0 20px 0;
+          max-width: 1259px;
+        }
+
+        .carousel-subtitle {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 300;
+          font-size: 20px;
+          line-height: 1.21;
+          color: #14436B;
+          margin: 0;
+          max-width: 1259px;
+        }
+
+        .carousel-articles-grid {
+          position: relative;
+          z-index: 3;
+          padding: 0 98px;
+          margin-bottom: 40px;
+        }
+
+        .articles-container {
+          display: flex;
+          gap: 28px;
+          overflow-x: auto;
+          padding: 20px 0;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .articles-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .article-card {
+          flex: 0 0 330px;
+          height: 366px;
+          background: #FFFFFF;
+          border-radius: 30px;
+          box-shadow: 2px 2px 20px 0px rgba(20, 67, 107, 1);
+          overflow: hidden;
+          position: relative;
+        }
+
+        .article-image-container {
+          width: 100%;
+          height: 200px;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .article-image {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .article-image-placeholder {
+          width: 100%;
+          height: 100%;
+          background: #D1DDE6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #14436B;
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 16px;
+          text-align: center;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+
+        .article-content {
+          padding: 28px;
+          height: 166px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .category-tags {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+        }
+
+        .category-tag {
+          background: #FFFFFF;
+          color: #14436B;
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 1.83;
+          padding: 8px 23px 9px;
+          border-radius: 22px;
+          border: 1px solid #14436B;
+          white-space: nowrap;
+        }
+
+        .article-title {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 1.19;
+          color: #14436B;
+          margin: 0 0 10px 0;
+          opacity: 0.85;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .article-date {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 1.22;
+          color: #14436B;
+          margin: 0 0 15px 0;
+        }
+
+        .article-actions .btn {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 1.57;
+          color: #14436B;
+          text-decoration: none;
+          padding: 8px 23px 9px;
+          border: 1px solid #14436B;
+          border-radius: 22px;
+          background: transparent;
+          display: inline-block;
+          transition: all 0.3s ease;
+        }
+
+        .article-actions .btn:hover {
+          background: #14436B;
+          color: #FFFFFF;
+        }
+
+        .carousel-navigation {
+          position: relative;
+          z-index: 3;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 98px;
+          margin-bottom: 40px;
+        }
+
+        .nav-btn {
+          width: 44px;
+          height: 44px;
+          border-radius: 22px;
+          border: 1.5px solid #4F4F4F;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+          background: #14436B;
+          border-color: #14436B;
+        }
+
+        .nav-btn:hover svg {
+          stroke: #FFFFFF;
+        }
+
+        .nav-btn-right {
+          background: #FFFFFF;
+          border-color: #FFFFFF;
+        }
+
+        .nav-btn-right svg {
+          stroke: #FFFFFF;
+        }
+
+        .nav-btn svg {
+          width: 9px;
+          height: 18px;
+          stroke: #4F4F4F;
+          transition: stroke 0.3s ease;
+        }
+
+        .carousel-view-all {
+          position: relative;
+          z-index: 3;
+          padding: 0 98px;
+        }
+
+        .carousel-view-all .btn {
+          font-family: 'Helvetica Neue', sans-serif;
+          font-weight: 700;
+          font-size: 18px;
+          line-height: 1.22;
+          color: #14436B;
+          text-decoration: none;
+          padding: 8px 23px 9px;
+          border: 1px solid #14436B;
+          border-radius: 22px;
+          background: #FFFFFF;
+          display: inline-block;
+          transition: all 0.3s ease;
+        }
+
+        .carousel-view-all .btn:hover {
+          background: #14436B;
+          color: #FFFFFF;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+          .carousel-demo-1 .carousel-header,
+          .carousel-demo-1 .carousel-articles-grid,
+          .carousel-demo-1 .carousel-navigation,
+          .carousel-demo-1 .carousel-view-all {
+            padding-left: 50px;
+            padding-right: 50px;
+          }
+
+          .carousel-header .carousel-title {
+            font-size: 48px;
+          }
+
+          .articles-container {
+            gap: 20px;
+          }
+
+          .article-card {
+            flex: 0 0 300px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .carousel-demo-1 {
+            padding: 20px 0;
+          }
+
+          .carousel-demo-1 .carousel-header,
+          .carousel-demo-1 .carousel-articles-grid,
+          .carousel-demo-1 .carousel-navigation,
+          .carousel-demo-1 .carousel-view-all {
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+
+          .carousel-header .carousel-title {
+            font-size: 36px;
+            line-height: 1.2;
+          }
+
+          .carousel-header .carousel-subtitle {
+            font-size: 18px;
+          }
+
+          .articles-container {
+            gap: 15px;
+          }
+
+          .article-card {
+            flex: 0 0 280px;
+            height: 320px;
+          }
+
+          .article-content {
+            padding: 20px;
+          }
+
+          .carousel-background .geometric-shapes {
+            display: none;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .carousel-header .carousel-title {
+            font-size: 28px;
+          }
+
+          .article-card {
+            flex: 0 0 260px;
+            height: 300px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-demo-1">
+        
+        <!-- Background Section -->
+        <div class="carousel-background">
+            <div class="background-overlay"></div>
+            <div class="geometric-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+        </div>
+        
+        <!-- Header Section -->
+        <div class="carousel-header">
+            <h1 class="carousel-title">Latest HKEX Insight, Research & Views.</h1>
+            <p class="carousel-subtitle">Explore unique analysis, considered opinions and thought provoking insight from across the HKEX business.</p>
+        </div>
+        
+        <!-- Articles Grid -->
+        <div class="carousel-articles-grid">
+            <div class="articles-container">
+                <article class="article-card">
+                    <!-- Article Image -->
+                    <div class="article-image-container">
+                        <div class="article-image-placeholder">
+                            Tech<br>Breakthrough
+                        </div>
+                    </div>
+                    
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Category Tags -->
+                        <div class="category-tags">
+                            <span class="category-tag">Insights</span>
+                        </div>
+                        
+                        <!-- Article Title -->
+                        <h3 class="article-title">Funding China's Next Tech Breakthrough</h3>
+                        
+                        <!-- Article Date -->
+                        <p class="article-date">Jun 27, 2025</p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="article-actions">
+                            <a href="#" class="btn">Learn more</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <!-- Article Image -->
+                    <div class="article-image-container">
+                        <div class="article-image-placeholder">
+                            Sustainability<br>Net-Zero
+                        </div>
+                    </div>
+                    
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Category Tags -->
+                        <div class="category-tags">
+                            <span class="category-tag">Insights</span>
+                            <span class="category-tag">Sustainability</span>
+                        </div>
+                        
+                        <!-- Article Title -->
+                        <h3 class="article-title">Eight Ways Exchanges are Supporting Asia's Transition to Net-Zero</h3>
+                        
+                        <!-- Article Date -->
+                        <p class="article-date">Apr 14, 2025</p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="article-actions">
+                            <a href="#" class="btn">Learn more</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <!-- Article Image -->
+                    <div class="article-image-container">
+                        <div class="article-image-placeholder">
+                            AI & Biotech<br>Advances
+                        </div>
+                    </div>
+                    
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Category Tags -->
+                        <div class="category-tags">
+                            <span class="category-tag">Insights</span>
+                        </div>
+                        
+                        <!-- Article Title -->
+                        <h3 class="article-title">From AI to Biotech: 10 New Tech Advances</h3>
+                        
+                        <!-- Article Date -->
+                        <p class="article-date">24 Jun 2025</p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="article-actions">
+                            <a href="#" class="btn">Learn more</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <!-- Article Image -->
+                    <div class="article-image-container">
+                        <div class="article-image-placeholder">
+                            Energy<br>Ecosystem
+                        </div>
+                    </div>
+                    
+                    <!-- Article Content -->
+                    <div class="article-content">
+                        <!-- Category Tags -->
+                        <div class="category-tags">
+                            <span class="category-tag">Insights</span>
+                        </div>
+                        
+                        <!-- Article Title -->
+                        <h3 class="article-title">Five Reasons Why HKEX's New Energy Ecosystem is Thriving</h3>
+                        
+                        <!-- Article Date -->
+                        <p class="article-date">14 May 2025</p>
+                        
+                        <!-- Action Buttons -->
+                        <div class="article-actions">
+                            <a href="#" class="btn">Learn more</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        
+        <!-- Navigation Controls -->
+        <div class="carousel-navigation">
+            <!-- Left Arrow -->
+            <button class="nav-btn nav-btn-left" aria-label="Previous articles">
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                    <path d="M9 1L1 9L9 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <!-- Right Arrow -->
+            <button class="nav-btn nav-btn-right" aria-label="Next articles">
+                <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
+                    <path d="M1 1L9 9L1 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- View All Button -->
+        <div class="carousel-view-all">
+            <a href="#" class="btn">View all</a>
+        </div>
+        
+    </div>
+
+    <!-- ClientLibs JavaScript -->
+    <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/base.js"></script>
+    
+    <!-- Component JavaScript -->
+    <script>
+        // CarouselDemo1 Component JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            const articlesContainer = document.querySelector('.articles-container');
+            const leftBtn = document.querySelector('.nav-btn-left');
+            const rightBtn = document.querySelector('.nav-btn-right');
+            
+            if (leftBtn && rightBtn && articlesContainer) {
+                // Left navigation
+                leftBtn.addEventListener('click', function() {
+                    articlesContainer.scrollBy({
+                        left: -358, // card width + gap
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Right navigation
+                rightBtn.addEventListener('click', function() {
+                    articlesContainer.scrollBy({
+                        left: 358, // card width + gap
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

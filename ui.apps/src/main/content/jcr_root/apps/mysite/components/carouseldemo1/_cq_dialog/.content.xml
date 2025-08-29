@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Carousel Demo 1"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"
+                                required="{Boolean}true"/>
+                            <subtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Subtitle"
+                                name="./subtitle"
+                                required="{Boolean}true"/>
+                            <showBackgroundElements
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldLabel="Show Background Elements"
+                                name="./showBackgroundElements"
+                                text="Enable geometric background shapes"
+                                value="true"/>
+                            <showNavigation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldLabel="Show Navigation Controls"
+                                name="./showNavigation"
+                                text="Enable left/right navigation arrows"
+                                value="true"/>
+                            <showViewAllButton
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldLabel="Show View All Button"
+                                name="./showViewAllButton"
+                                text="Enable View All button at the bottom"
+                                value="true"/>
+                            <viewAllButtonText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="View All Button Text"
+                                name="./viewAllButtonText"
+                                value="View all"/>
+                            <viewAllButtonLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="View All Button Link"
+                                name="./viewAllButtonLink"
+                                rootPath="/content"/>
+                        </items>
+                    </properties>
+                    <articles
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Articles"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <articles
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Article Cards">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <title
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Article Title"
+                                            name="./title"
+                                            required="{Boolean}true"/>
+                                        <date
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Publication Date"
+                                            name="./date"
+                                            required="{Boolean}true"/>
+                                        <categoryTags
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            fieldLabel="Category Tags"
+                                            name="./categoryTags">
+                                            <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                name="./tag"/>
+                                        </categoryTags>
+                                        <image
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            fieldLabel="Article Image"
+                                            fileNameParameter="./fileName"
+                                            fileReferenceParameter="./fileReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                            multiple="{Boolean}false"
+                                            name="./image"
+                                            required="{Boolean}false"
+                                            title="Upload Article Image"
+                                            uploadUrl="${cq.dam.upload.url}"/>
+                                        <learnMoreText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Learn More Button Text"
+                                            name="./learnMoreText"
+                                            value="Learn more"/>
+                                        <learnMoreLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Learn More Link"
+                                            name="./learnMoreLink"
+                                            rootPath="/content"/>
+                                    </items>
+                                </field>
+                            </articles>
+                        </items>
+                    </articles>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

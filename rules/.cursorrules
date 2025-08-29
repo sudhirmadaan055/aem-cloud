@@ -10,7 +10,7 @@ At any time, you can type **`options`** to view the available options. First che
 
 ### **Option 1: Identify Components**
 - **Description:**  
-  Analyze a provided image or figma url of a web page or a component to identify and organize UI elements into structured AEM components.
+  Analyze a provided figma url component to identify and organize UI elements into structured AEM components. Ask the component name. If same component name already exist, prompt the message to chose other name as component already exists.
 
 ### **Option 2: Develop Components**
 - **Description:**  
@@ -57,6 +57,7 @@ At any time, you can type **`options`** to view the available options. First che
     1. Prompt if that is a Page or Component.
     - If Component, create a single component. Do not further break into sections. 
       Re-use exisiting developed components such as image, heading etc.
+    - Ask component name
 
     2. If not
         2.1 **Identify Highlighted Sections:**  
@@ -71,7 +72,7 @@ At any time, you can type **`options`** to view the available options. First che
   For each highlighted section, provide the following details:
 
   - **Component Name:**  
-    A descriptive name for the component (e.g., Hero Banner, Navigation Menu, Product Teaser).
+    Ask the component name and use that for naming convetion.
 
   - **Authorable Fields:**  
     List of fields that content authors can edit, along with their data types (e.g., Title (Text), Image (Image)).
