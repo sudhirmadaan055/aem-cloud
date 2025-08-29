@@ -173,6 +173,65 @@ When developing AEM components with HTL templates, **ALWAYS** follow these rules
    - Validate URLs in Java models before outputting
    - Consider using data attributes + CSS for dynamic styling
 
+#### **Step 2.5: Sling Models Best Practices**
+
+**CRITICAL: Sling Models Injection Requirements**
+
+When developing AEM components with Sling Models, **ALWAYS** follow these rules to prevent injection failures:
+
+1. **Injection Strategy:**
+   - **❌ WRONG:** `@ValueMapValue private String title;`
+   - **✅ CORRECT:** `@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL) @Default(values = "") private String title;`
+
+2. **Why Injection Strategy is Required:**
+   - Sling Models require explicit injection strategy for all fields
+   - `InjectionStrategy.OPTIONAL` allows the model to be created even without content
+   - Prevents "Could not inject all required fields" errors
+   - Essential for components that haven't been configured yet
+
+3. **Default Values for Different Types:**
+   ```java
+   // String fields
+   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+   @Default(values = "")
+   private String title;
+   
+   // Boolean fields - NEVER use empty string defaults
+   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+   @Default(values = "true")  // ✅ Correct
+   private Boolean showNavigation;
+   
+   // ❌ WRONG for Boolean: @Default(values = "")
+   
+   // Integer fields
+   @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+   @Default(values = "0")
+   private Integer count;
+   ```
+
+4. **Property Name Mapping:**
+   - **❌ WRONG:** Field name doesn't match dialog property name
+   - **✅ CORRECT:** Use `@ValueMapValue(name = "dialogPropertyName")`
+   
+   ```java
+   // Dialog saves as "./file" but model needs "backgroundImage"
+   @ValueMapValue(name = "file", injectionStrategy = InjectionStrategy.OPTIONAL)
+   private String backgroundImage;
+   ```
+
+5. **Common Injection Errors & Solutions:**
+   - **MissingElementsException**: Add `injectionStrategy = InjectionStrategy.OPTIONAL`
+   - **ModelClassException**: Check property names match between dialog and model
+   - **Boolean conversion errors**: Use valid Boolean defaults (`"true"` or `"false"`)
+   - **File reference issues**: Resolve file paths using ResourceResolver
+
+6. **Best Practices:**
+   - Always use `InjectionStrategy.OPTIONAL` for new components
+   - Provide meaningful default values for all fields
+   - Match property names exactly between dialog and model
+   - Test models with empty content (no properties set)
+   - Use ResourceResolver to resolve file references properly
+
 ---
 
 ### **Option 3: Prepare StyleGuide**

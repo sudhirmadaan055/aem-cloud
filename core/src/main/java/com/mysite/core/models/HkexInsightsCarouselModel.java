@@ -44,25 +44,32 @@ public class HkexInsightsCarouselModel {
     @SlingObject
     private ResourceResolver resourceResolver;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "")
     private String title;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "")
     private String subtitle;
 
-    @ValueMapValue
+    @ValueMapValue(name = "file", injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "")
     private String backgroundImage;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "true")
     private Boolean showNavigation;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "true")
     private Boolean showViewAllButton;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "View all")
     private String viewAllButtonText;
 
-    @ValueMapValue
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    @Default(values = "")
     private String viewAllButtonLink;
 
     private List<ArticleCard> articleCards;
@@ -107,6 +114,12 @@ public class HkexInsightsCarouselModel {
     }
 
     public String getBackgroundImage() {
+        if (backgroundImage != null && resourceResolver != null) {
+            Resource imageResource = resourceResolver.getResource(backgroundImage);
+            if (imageResource != null) {
+                return imageResource.getPath();
+            }
+        }
         return backgroundImage;
     }
 
