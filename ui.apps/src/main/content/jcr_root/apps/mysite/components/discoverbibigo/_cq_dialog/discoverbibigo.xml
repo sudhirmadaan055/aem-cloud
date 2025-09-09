@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Discover Bibigo"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <header
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Header"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"
+                                value="Know More"/>
+                            <mainHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Main Heading"
+                                name="./mainHeading"
+                                value="Discover Bibigo"/>
+                            <description
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Description"
+                                name="./description"
+                                value="Bibigo has been featured in numerous media outlets, showcasing our commitment to quality and authenticity."/>
+                        </items>
+                    </header>
+                    <cards
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Cards"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <numberOfCards
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Number of Cards"
+                                name="./numberOfCards">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <option1
+                                        jcr:primaryType="nt:unstructured"
+                                        text="1"
+                                        value="1"/>
+                                    <option2
+                                        jcr:primaryType="nt:unstructured"
+                                        text="2"
+                                        value="2"/>
+                                    <option3
+                                        jcr:primaryType="nt:unstructured"
+                                        text="3"
+                                        value="3"/>
+                                    <option4
+                                        jcr:primaryType="nt:unstructured"
+                                        text="4"
+                                        value="4"/>
+                                    <option5
+                                        jcr:primaryType="nt:unstructured"
+                                        text="5"
+                                        value="5"/>
+                                    <option6
+                                        jcr:primaryType="nt:unstructured"
+                                        text="6"
+                                        value="6"/>
+                                </items>
+                            </numberOfCards>
+                            <cardItems
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Card Items">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <cardImage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            fieldLabel="Card Image"
+                                            fileNameParameter="./cardImageFileName"
+                                            fileReferenceParameter="./cardImageFileReference"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                                            multiple="{Boolean}false"
+                                            name="./cardImage"
+                                            title="Upload Card Image"/>
+                                        <cardTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Card Title"
+                                            name="./cardTitle"
+                                            value="Explore our Recipes"/>
+                                        <cardDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Card Description"
+                                            name="./cardDescription"
+                                            value="Learn how Bibigo became the world's leading Korean food brand with passion."/>
+                                        <buttonText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Button Text"
+                                            name="./buttonText"
+                                            value="explore more"/>
+                                        <buttonLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Button Link"
+                                            name="./buttonLink"
+                                            rootPath="/content"/>
+                                        <backgroundColor
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Background Style"
+                                            name="./backgroundColor">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <option1
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Yellow (#F2C34E)"
+                                                    value="#F2C34E"/>
+                                                <option2
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Yellow to Brown Gradient"
+                                                    value="linear-gradient(135deg, #F2C34E 0%, #734F2F 100%)"/>
+                                                <option3
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Yellow to Green Gradient"
+                                                    value="linear-gradient(135deg, #F2C34E 0%, #30B700 100%)"/>
+                                            </items>
+                                        </backgroundColor>
+                                    </items>
+                                </field>
+                            </cardItems>
+                        </items>
+                    </cards>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

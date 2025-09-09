@@ -15,34 +15,20 @@
  */
 package com.mysite.core.models;
 
-import static org.apache.sling.api.resource.ResourceResolver.PROPERTY_RESOURCE_TYPE;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+import org.apache.sling.models.annotations.Default;
 
 import javax.annotation.PostConstruct;
-
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.models.annotations.Default;
-import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
-import org.apache.sling.models.annotations.injectorspecific.SlingObject;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-@Model(adaptables = Resource.class)
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class HkexInsightsCarouselModel {
-
-    @ValueMapValue(name=PROPERTY_RESOURCE_TYPE, injectionStrategy=InjectionStrategy.OPTIONAL)
-    @Default(values="No resourceType")
-    protected String resourceType;
-
-    @SlingObject
-    private Resource currentResource;
-    
-    @SlingObject
-    private ResourceResolver resourceResolver;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "")
@@ -52,51 +38,50 @@ public class HkexInsightsCarouselModel {
     @Default(values = "")
     private String subtitle;
 
-    @ValueMapValue(name = "file", injectionStrategy = InjectionStrategy.OPTIONAL)
-    @Default(values = "")
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     private String backgroundImage;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    @Default(values = "true")
-    private Boolean showNavigation;
-
-    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    @Default(values = "true")
-    private Boolean showViewAllButton;
+    @Default(values = "false")
+    private Boolean showNavigationArrows;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "View all")
     private String viewAllButtonText;
 
     @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
-    @Default(values = "")
     private String viewAllButtonLink;
 
-    private List<ArticleCard> articleCards;
+    @ChildResource
+    private List<Resource> contentItems;
+
+    private List<ContentItem> contentItemsList;
 
     @PostConstruct
     protected void init() {
-        articleCards = new ArrayList<>();
-        loadArticleCards();
-    }
-
-    private void loadArticleCards() {
-        Resource articlesResource = currentResource.getChild("articles");
-        if (articlesResource != null) {
-            Iterator<Resource> articlesIterator = articlesResource.listChildren();
-            while (articlesIterator.hasNext()) {
-                Resource articleResource = articlesIterator.next();
-                ArticleCard article = new ArticleCard();
+        if (contentItems != null && !contentItems.isEmpty()) {
+            contentItemsList = new ArrayList<>();
+            for (Resource itemResource : contentItems) {
+                ContentItem item = new ContentItem();
+                item.setItemImage(getPropertyValue(itemResource, "itemImage"));
+                item.setItemTitle(getPropertyValue(itemResource, "itemTitle"));
+                item.setItemDate(getPropertyValue(itemResource, "itemDate"));
+                item.setLearnMoreLink(getPropertyValue(itemResource, "learnMoreLink"));
                 
-                article.setTitle(getPropertyValue(articleResource, "title"));
-                article.setDate(getPropertyValue(articleResource, "date"));
-                article.setCategory(getPropertyValue(articleResource, "category"));
-                article.setImage(getPropertyValue(articleResource, "image"));
-                article.setLearnMoreText(getPropertyValue(articleResource, "learnMoreText"));
-                article.setLearnMoreLink(getPropertyValue(articleResource, "learnMoreLink"));
-                article.setCategoryButtonText(getPropertyValue(articleResource, "categoryButtonText"));
+                // Handle category tags
+                Resource tagsResource = itemResource.getChild("categoryTags");
+                if (tagsResource != null) {
+                    List<String> tags = new ArrayList<>();
+                    for (Resource tagResource : tagsResource.getChildren()) {
+                        String tagText = getPropertyValue(tagResource, "tagText");
+                        if (tagText != null && !tagText.isEmpty()) {
+                            tags.add(tagText);
+                        }
+                    }
+                    item.setCategoryTags(tags);
+                }
                 
-                articleCards.add(article);
+                contentItemsList.add(item);
             }
         }
     }
@@ -105,6 +90,7 @@ public class HkexInsightsCarouselModel {
         return resource.getValueMap().get(propertyName, String.class);
     }
 
+    // Getters
     public String getTitle() {
         return title;
     }
@@ -114,102 +100,61 @@ public class HkexInsightsCarouselModel {
     }
 
     public String getBackgroundImage() {
-        if (backgroundImage != null && resourceResolver != null) {
-            Resource imageResource = resourceResolver.getResource(backgroundImage);
-            if (imageResource != null) {
-                return imageResource.getPath();
-            }
-        }
         return backgroundImage;
     }
 
-    public Boolean getShowNavigation() {
-        return showNavigation != null ? showNavigation : true;
-    }
-
-    public Boolean getShowViewAllButton() {
-        return showViewAllButton != null ? showViewAllButton : true;
+    public Boolean getShowNavigationArrows() {
+        return showNavigationArrows;
     }
 
     public String getViewAllButtonText() {
-        return viewAllButtonText != null ? viewAllButtonText : "View all";
+        return viewAllButtonText;
     }
 
     public String getViewAllButtonLink() {
         return viewAllButtonLink;
     }
 
-    public List<ArticleCard> getArticleCards() {
-        return articleCards;
+    public List<ContentItem> getContentItems() {
+        return contentItemsList;
     }
 
-    public boolean hasArticleCards() {
-        return articleCards != null && !articleCards.isEmpty();
+    // Helper methods for HTL template
+    public boolean hasHeroContent() {
+        return (title != null && !title.isEmpty()) || (subtitle != null && !subtitle.isEmpty());
     }
 
-    public static class ArticleCard {
-        private String title;
-        private String date;
-        private String category;
-        private String image;
-        private String learnMoreText;
+    public boolean hasContentItems() {
+        return contentItemsList != null && !contentItemsList.isEmpty();
+    }
+
+    public boolean hasNavigation() {
+        return (viewAllButtonLink != null && !viewAllButtonLink.isEmpty()) || 
+               (showNavigationArrows != null && showNavigationArrows);
+    }
+
+    // Inner class for content items
+    public static class ContentItem {
+        private String itemImage;
+        private String itemTitle;
+        private String itemDate;
+        private List<String> categoryTags;
         private String learnMoreLink;
-        private String categoryButtonText;
 
-        public String getTitle() {
-            return title;
-        }
+        // Getters and Setters
+        public String getItemImage() { return itemImage; }
+        public void setItemImage(String itemImage) { this.itemImage = itemImage; }
 
-        public void setTitle(String title) {
-            this.title = title;
-        }
+        public String getItemTitle() { return itemTitle; }
+        public void setItemTitle(String itemTitle) { this.itemTitle = itemTitle; }
 
-        public String getDate() {
-            return date;
-        }
+        public String getItemDate() { return itemDate; }
+        public void setItemDate(String itemDate) { this.itemDate = itemDate; }
 
-        public void setDate(String date) {
-            this.date = date;
-        }
+        public List<String> getCategoryTags() { return categoryTags; }
+        public void setCategoryTags(List<String> categoryTags) { this.categoryTags = categoryTags; }
 
-        public String getCategory() {
-            return category;
-        }
-
-        public void setCategory(String category) {
-            this.category = category;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
-        }
-
-        public String getLearnMoreText() {
-            return learnMoreText != null ? learnMoreText : "Learn more";
-        }
-
-        public void setLearnMoreText(String learnMoreText) {
-            this.learnMoreText = learnMoreText;
-        }
-
-        public String getLearnMoreLink() {
-            return learnMoreLink;
-        }
-
-        public void setLearnMoreLink(String learnMoreLink) {
-            this.learnMoreLink = learnMoreLink;
-        }
-
-        public String getCategoryButtonText() {
-            return categoryButtonText;
-        }
-
-        public void setCategoryButtonText(String categoryButtonText) {
-            this.categoryButtonText = categoryButtonText;
-        }
+        public String getLearnMoreLink() { return learnMoreLink; }
+        public void setLearnMoreLink(String learnMoreLink) { this.learnMoreLink = learnMoreLink; }
     }
 }

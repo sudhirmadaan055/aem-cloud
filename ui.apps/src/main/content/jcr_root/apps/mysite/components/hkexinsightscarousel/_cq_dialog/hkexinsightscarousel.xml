@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="HKEX Insights Carousel"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <general
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="General"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"
+                                required="{Boolean}true"/>
+                            <subtitle
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Subtitle"
+                                name="./subtitle"
+                                required="{Boolean}true"/>
+                            <backgroundImage
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                fieldLabel="Background Image"
+                                fileNameParameter="./backgroundImageFileName"
+                                fileReferenceParameter="./backgroundImage"
+                                mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                multiple="{Boolean}false"
+                                required="{Boolean}false"
+                                title="Upload Background Image"/>
+                            <showNavigationArrows
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                fieldLabel="Show Navigation Arrows"
+                                name="./showNavigationArrows"
+                                text="Enable left/right navigation arrows"/>
+                            <viewAllButtonText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="View All Button Text"
+                                name="./viewAllButtonText"
+                                value="View all"/>
+                            <viewAllButtonLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="View All Button Link"
+                                name="./viewAllButtonLink"
+                                rootPath="/content"/>
+                        </items>
+                    </general>
+                    <contentItems
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Content Items"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <contentItems
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                composite="{Boolean}true"
+                                fieldLabel="Content Items">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <itemImage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                            fieldLabel="Item Image"
+                                            fileNameParameter="./itemImageFileName"
+                                            fileReferenceParameter="./itemImage"
+                                            mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff]"
+                                            multiple="{Boolean}false"
+                                            required="{Boolean}true"
+                                            title="Upload Item Image"/>
+                                        <itemTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Item Title"
+                                            name="./itemTitle"
+                                            required="{Boolean}true"/>
+                                        <itemDate
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Item Date"
+                                            name="./itemDate"
+                                            required="{Boolean}true"/>
+                                        <categoryTags
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            composite="{Boolean}true"
+                                            fieldLabel="Category Tags">
+                                            <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                name="./tagText"/>
+                                        </categoryTags>
+                                        <learnMoreLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Learn More Link"
+                                            name="./learnMoreLink"
+                                            rootPath="/content"/>
+                                    </items>
+                                </field>
+                            </contentItems>
+                        </items>
+                    </contentItems>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

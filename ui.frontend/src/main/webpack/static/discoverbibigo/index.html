@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Bibigo Component - Local Test</title>
+    
+    <!-- Required ClientLibs for local testing -->
+    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
+    <link rel="stylesheet" href="/clientlib-base/css/discoverbibigo.css">
+    
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Fallback styles for local testing */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Font fallbacks for design accuracy */
+        .discoverbibigo__title,
+        .discoverbibigo__description,
+        .discoverbibigo__card-description,
+        .discoverbibigo__button {
+            font-family: 'Inter', 'Averta Std PE', sans-serif;
+        }
+        
+        .discoverbibigo__main-heading,
+        .discoverbibigo__card-title {
+            font-family: 'Inter', 'Malik Trial', sans-serif;
+        }
+        
+        /* Fallback image styles */
+        .discoverbibigo__card-image {
+            background: linear-gradient(135deg, #F2C34E 0%, #734F2F 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .discoverbibigo__card-image::before {
+            content: "Sample Image";
+        }
+        
+        /* Tilt effect preview for local testing */
+        .discoverbibigo__card:nth-child(1) .discoverbibigo__card-content {
+            transform: rotate(4deg);
+        }
+        
+        .discoverbibigo__card:nth-child(2) .discoverbibigo__card-content {
+            transform: rotate(0deg);
+        }
+        
+        .discoverbibigo__card:nth-child(3) .discoverbibigo__card-content {
+            transform: rotate(-4deg);
+        }
+        
+        .discoverbibigo__card-image-container {
+            transform: rotate(2deg);
+            clip-path: url(#blob);
+        }
+        
+        .discoverbibigo__card-image {
+            transform: rotate(-2deg);
+        }
+        
+        .discoverbibigo__fallback-image {
+            transform: rotate(-2deg);
+        }
+        
+        .discoverbibigo__button {
+            transform: rotate(1deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Discover Bibigo Component -->
+    <div class="discoverbibigo">
+        <!-- SVG Clip-path Definition -->
+        <svg height="0" width="0" style="position: absolute;">
+            <defs>
+                <clipPath id="blob">
+                    <path d="M24.6,-43.8C29.8,-39.6,30.7,-28.9,42.4,-20.5C54,-12.1,76.5,-6.1,83.8,4.2C91.1,14.5,83.1,28.9,73.3,40.5C63.5,52.1,59.8,60.7,39.2,59.2C26.7,57.7,13.4,46.1,-0.4,46.8C-14.2,47.5,-28.3,60.5,-41.2,62.2C-54,63.9,-65.6,54.2,-66.1,41.9C-66.5,29.7,-55.9,14.8,-56.4,-0.3C-57,-15.4,-68.6,-30.9,-65.8,-39C-62.9,-47.2,-45.6,-48.1,-32.2,-47.7C-18.9,-47.2,-9.4,-45.4,0.1,-45.6C9.7,-45.8,19.3,-48,24.6,-43.8Z" transform="translate(200 150)" />
+                </clipPath>
+            </defs>
+        </svg>
+
+        <div class="discoverbibigo__container">
+            <!-- Header Section -->
+            <div class="discoverbibigo__header">
+                <div class="discoverbibigo__title-container">
+                    <h3 class="discoverbibigo__title">Know More</h3>
+                    <div class="discoverbibigo__subtitle-container">
+                        <h2 class="discoverbibigo__main-heading">Discover Bibigo</h2>
+                        <p class="discoverbibigo__description">Bibigo has been featured in numerous media outlets, showcasing our commitment to quality and authenticity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards Section -->
+            <div class="discoverbibigo__cards">
+                <div class="discoverbibigo__cards-grid">
+                    <!-- Card 1 -->
+                    <div class="discoverbibigo__card">
+                        <div class="discoverbibigo__card-content" style="background: #F2C34E;">
+                            <div class="discoverbibigo__card-image-container">
+                                <img class="discoverbibigo__card-image" 
+                                     src="https://via.placeholder.com/528x264/F2C34E/FFFFFF?text=Recipe+Image+1" 
+                                     alt="Explore our Recipes"
+                                     loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="discoverbibigo__fallback-image" style="display: none;">
+                                    <span>Recipe Image 1</span>
+                                </div>
+                            </div>
+                            <div class="discoverbibigo__card-text">
+                                <h3 class="discoverbibigo__card-title">Explore our Recipes</h3>
+                                <p class="discoverbibigo__card-description">Learn how Bibigo became the world's leading Korean food brand with passion.</p>
+                            </div>
+                            <div class="discoverbibigo__card-button">
+                                <a href="#" class="discoverbibigo__button">explore more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="discoverbibigo__card">
+                        <div class="discoverbibigo__card-content" style="background: linear-gradient(135deg, #F2C34E 0%, #734F2F 100%);">
+                            <div class="discoverbibigo__card-image-container">
+                                <img class="discoverbibigo__card-image" 
+                                     src="https://via.placeholder.com/528x264/734F2F/FFFFFF?text=Recipe+Image+2" 
+                                     alt="Explore our Recipes"
+                                     loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="discoverbibigo__fallback-image" style="display: none;">
+                                    <span>Recipe Image 2</span>
+                                </div>
+                            </div>
+                            <div class="discoverbibigo__card-text">
+                                <h3 class="discoverbibigo__card-title">Explore our Recipes</h3>
+                                <p class="discoverbibigo__card-description">Learn how Bibigo became the world's leading Korean food brand with passion.</p>
+                            </div>
+                            <div class="discoverbibigo__card-button">
+                                <a href="#" class="discoverbibigo__button">explore more</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="discoverbibigo__card">
+                        <div class="discoverbibigo__card-content" style="background: linear-gradient(135deg, #F2C34E 0%, #30B700 100%);">
+                            <div class="discoverbibigo__card-image-container">
+                                <img class="discoverbibigo__card-image" 
+                                     src="https://via.placeholder.com/528x264/30B700/FFFFFF?text=Recipe+Image+3" 
+                                     alt="Explore our Recipes"
+                                     loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="discoverbibigo__fallback-image" style="display: none;">
+                                    <span>Recipe Image 3</span>
+                                </div>
+                            </div>
+                            <div class="discoverbibigo__card-text">
+                                <h3 class="discoverbibigo__card-title">Explore our Recipes</h3>
+                                <p class="discoverbibigo__card-description">Learn how Bibigo became the world's leading Korean food brand with passion.</p>
+                            </div>
+                            <div class="discoverbibigo__card-button">
+                                <a href="#" class="discoverbibigo__button">explore more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Required JavaScript for local testing -->
+    <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/base.js"></script>
+    
+    <script>
+        // Component initialization script
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Discover Bibigo component loaded successfully');
+            
+            // Add any component-specific JavaScript here
+            const cards = document.querySelectorAll('.discoverbibigo__card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    console.log('Card clicked:', this.querySelector('.discoverbibigo__card-title').textContent);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

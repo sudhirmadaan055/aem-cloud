@@ -1,78 +1,80 @@
 <!--/*-->
+    Copyright 2024 Adobe. All rights reserved.
+    This file is licensed to you under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License. You may obtain a copy
+    of the License at http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software distributed under
+    the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+    OF ANY KIND, either express or implied. See the License for the specific language
+    governing permissions and limitations under the License.
+<!--/*-->
 <div class="hkex-insights-carousel" data-sly-use.model="com.mysite.core.models.HkexInsightsCarouselModel">
     
-    <!-- Background Section -->
-    <div class="hkex-carousel-background" data-sly-test="${model.backgroundImage}">
-        <div class="background-overlay"></div>
-        <div class="geometric-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+    <!-- Hero Section -->
+    <div class="hkex-carousel-hero" data-sly-test="${model.hasHeroContent}">
+        <div class="hero-background" data-sly-test="${model.backgroundImage}">
+            <img src="${model.backgroundImage @ context='unsafe'}" alt="Background" class="hero-bg-image"/>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title" data-sly-test="${model.title}">${model.title}</h1>
+            <p class="hero-subtitle" data-sly-test="${model.subtitle}">${model.subtitle}</p>
         </div>
     </div>
-    
-    <!-- Header Section -->
-    <div class="hkex-carousel-header">
-        <h1 class="carousel-title" data-sly-test="${model.title}">${model.title}</h1>
-        <p class="carousel-subtitle" data-sly-test="${model.subtitle}">${model.subtitle}</p>
-    </div>
-    
-    <!-- Articles Grid -->
-    <div class="hkex-articles-grid" data-sly-test="${model.hasArticleCards}">
-        <div class="articles-container" data-sly-list.article="${model.articleCards}">
-            <article class="article-card">
-                <!-- Article Image -->
-                <div class="article-image-container">
-                    <div class="article-image" data-sly-test="${article.image}" style="background-image: url('${article.image @ context='unsafe'}')"></div>
-                    <div class="article-image-placeholder" data-sly-test="${!article.image}"></div>
-                </div>
-                
-                <!-- Article Content -->
-                <div class="article-content">
-                    <!-- Category Tag -->
-                    <div class="category-tag" data-sly-test="${article.categoryButtonText}">
-                        ${article.categoryButtonText}
+
+    <!-- Content Grid Section -->
+    <div class="hkex-content-grid" data-sly-test="${model.hasContentItems}">
+        <div class="content-tiles-container">
+            <div class="content-tiles-wrapper" data-sly-list.item="${model.contentItems}">
+                <div class="content-tile" data-sly-test="${item}">
+                    <!-- Item Image -->
+                    <div class="tile-image-container" data-sly-test="${item.itemImage}">
+                        <img src="${item.itemImage @ context='unsafe'}" alt="${item.itemTitle}" class="tile-image"/>
                     </div>
                     
-                    <!-- Article Title -->
-                    <h3 class="article-title" data-sly-test="${article.title}">${article.title}</h3>
-                    
-                    <!-- Article Date -->
-                    <p class="article-date" data-sly-test="${article.date}">${article.date}</p>
-                    
-                    <!-- Action Buttons -->
-                    <div class="article-actions">
-                        <a href="${article.learnMoreLink}" class="btn btn-outline" data-sly-test="${article.learnMoreLink}">
-                            ${article.learnMoreText}
-                        </a>
+                    <!-- Item Content -->
+                    <div class="tile-content">
+                        <h3 class="tile-title" data-sly-test="${item.itemTitle}">${item.itemTitle}</h3>
+                        <p class="tile-date" data-sly-test="${item.itemDate}">${item.itemDate}</p>
+                        
+                        <!-- Category Tags -->
+                        <div class="tile-tags" data-sly-test="${item.categoryTags && item.categoryTags.length > 0}">
+                            <span class="tag" data-sly-list.tag="${item.categoryTags}">${tag.tagText}</span>
+                        </div>
+                        
+                        <!-- CTA Buttons -->
+                        <div class="tile-actions">
+                            <a href="${item.learnMoreLink @ context='unsafe'}" class="btn btn-learn-more" data-sly-test="${item.learnMoreLink}">
+                                Learn more
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
     </div>
-    
+
     <!-- Navigation Controls -->
-    <div class="hkex-carousel-navigation" data-sly-test="${model.showNavigation}">
-        <!-- Left Arrow -->
-        <button class="nav-btn nav-btn-left" aria-label="Previous articles">
-            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
-                <path d="M9 1L1 9L9 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        
-        <!-- Right Arrow -->
-        <button class="nav-btn nav-btn-right" aria-label="Next articles">
-            <svg width="10" height="18" viewBox="0 0 10 18" fill="none">
-                <path d="M1 1L9 9L1 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
+    <div class="hkex-navigation" data-sly-test="${model.hasNavigation}">
+        <div class="nav-controls">
+            <!-- View All Button -->
+            <a href="${model.viewAllButtonLink @ context='unsafe'}" class="btn btn-view-all" data-sly-test="${model.viewAllButtonLink}">
+                ${model.viewAllButtonText || 'View all'}
+            </a>
+            
+            <!-- Navigation Arrows -->
+            <div class="nav-arrows" data-sly-test="${model.showNavigationArrows}">
+                <button class="nav-arrow nav-prev" aria-label="Previous">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M11.25 13.5L6.75 9L11.25 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <button class="nav-arrow nav-next" aria-label="Next">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M6.75 4.5L11.25 9L6.75 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
     </div>
-    
-    <!-- View All Button -->
-    <div class="hkex-view-all" data-sly-test="${model.showViewAllButton}">
-        <a href="${model.viewAllButtonLink}" class="btn btn-primary btn-large" data-sly-test="${model.viewAllButtonLink}">
-            ${model.viewAllButtonText}
-        </a>
-    </div>
-    
+
 </div>
