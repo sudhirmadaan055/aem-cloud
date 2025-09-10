@@ -1,0 +1,17 @@
+@import "./variables";
+@import "./_mixins";
+@import "./_functions";
+
+// Font face parameter mapping
+// ($font-name, $path, $weight: normal, $style: normal, $display: auto, $has-IE-support: "true" )
+
+// TODO Move this $font-path in mixin itself
+
+@include font-face(
+  "Poppins-Regular",
+  $font-path + "Poppins-Regular",
+  normal,
+  normal,
+  auto,
+  "otf"
+);

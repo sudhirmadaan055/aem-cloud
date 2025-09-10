@@ -1,0 +1,7 @@
+@use "sass:math";
+@import "./_variables";
+
+@function convertToRem($font-size) {
+    $conversionFactor: calc(1 / $base-font-size);
+    @return $font-size * $conversionFactor +rem;
+}
