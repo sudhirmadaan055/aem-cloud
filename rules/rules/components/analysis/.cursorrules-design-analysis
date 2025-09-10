@@ -3,20 +3,20 @@
 ## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
 
 **⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
-1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
-6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
 
 ## 🚨 MANDATORY: MODULAR ANALYSIS FILES - READ IN ORDER
 
 **⚠️ CRITICAL: ALWAYS read these focused analysis files in EXACT order:**
-1. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-structure` FIRST** - **NO EXCEPTIONS** (Component detection, counting, classification)
-2. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-interactive` SECOND** - **NO EXCEPTIONS** (Interactive patterns, UI elements, user interactions)
-3. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-visual` THIRD** - **NO EXCEPTIONS** (Visual style analysis, colors, typography, CSS generation)
-4. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-content` FOURTH** - **NO EXCEPTIONS** (Content structure, data mapping, dialog planning)
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis-structure` FIRST** - **NO EXCEPTIONS** (Component detection, counting, classification)
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis-interactive` SECOND** - **NO EXCEPTIONS** (Interactive patterns, UI elements, user interactions)
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis-visual` THIRD** - **NO EXCEPTIONS** (Visual style analysis, colors, typography, CSS generation)
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis-content` FOURTH** - **NO EXCEPTIONS** (Content structure, data mapping, dialog planning)
 
 **🚨 CRITICAL: VIOLATION PREVENTION - BEFORE EVERY STEP:**
 - **🚨 DO NOT VIOLATE: Show only clean summary to user** - **NO STEP-BY-STEP DETAILS**
@@ -65,10 +65,10 @@
 ### **🚨 MANDATORY: ANALYSIS WORKFLOW ORCHESTRATION - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: Follow the 13-step analysis process by reading modular files in order:**
-1. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-structure`** - Steps 0-5 (Component detection, counting, classification, layout)
-2. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-interactive`** - Steps 2A, 2B, 7 (Interactive patterns, UI elements, user interactions)
-3. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-visual`** - Steps 6, 11 (Visual style analysis, CSS generation)
-4. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-content`** - Steps 8-10, 12-13 (Content structure, data mapping, dialog planning)
+1. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-structure`** - Steps 0-5 (Component detection, counting, classification, layout)
+2. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-interactive`** - Steps 2A, 2B, 7 (Interactive patterns, UI elements, user interactions)
+3. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-visual`** - Steps 6, 11 (Visual style analysis, CSS generation)
+4. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-content`** - Steps 8-10, 12-13 (Content structure, data mapping, dialog planning)
 
 **🚨 CRITICAL: ALL MODULAR FILES MUST BE READ IN EXACT ORDER - NO EXCEPTIONS**
 
@@ -82,7 +82,7 @@
 3. **🚨 MANDATORY: Identify framework requirements** - Standard Component, Listing Framework, Form Framework, E-commerce Framework
 4. **🚨 MANDATORY: Map interactive features** - Navigation elements, content switching, state management, user interactions
 5. **🚨 MANDATORY: Plan component architecture** - Files to be created, Sling Model requirements, clientlibs needs
-6. **🚨 MANDATORY: If Listing Framework identified** - **IMMEDIATELY read `../workflows/.cursorrules-aem-listing` for framework approach**
+6. **🚨 MANDATORY: If Listing Framework identified** - **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-aem-listing` for framework approach**
 7. **🚨 MANDATORY: STOP IMMEDIATELY if Listing Component detected** - **DO NOT PROCEED WITHOUT READING LISTING RULES FIRST**
 8. **🚨 MANDATORY: VERIFY listing framework rules read** - **CONFIRM BEFORE ANY LISTING COMPONENT CREATION**
 9. **🚨 CRITICAL: LISTING COMPONENT DETECTION TRIGGERS MANDATORY FRAMEWORK CHECK** - **ZERO TOLERANCE FOR VIOLATIONS**

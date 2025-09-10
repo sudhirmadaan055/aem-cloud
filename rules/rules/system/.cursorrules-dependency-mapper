@@ -9,115 +9,115 @@
 **⚠️ CRITICAL: ALWAYS follow this exact dependency chain:**
 
 #### **Level 1: Core Entry Points**
-1. **`../core/.cursorrules`** → Main options (1, 2, or 3)
+1. **`rules/rules/core/.cursorrules`** → Main options (1, 2, or 3)
    - **Dependencies**: None (entry point)
-   - **References**: `../core/.cursorrules-project-creation`, `../core/.cursorrules-component-workflow`, `../core/.cursorrules-template-workflow`
+   - **References**: `rules/rules/core/.cursorrules-project-creation`, `rules/rules/core/.cursorrules-component-workflow`, `rules/rules/core/.cursorrules-template-workflow`
 
 #### **Level 2: Main Workflows**
-2. **`../core/.cursorrules-project-creation`** → Project creation process
-   - **Dependencies**: `../core/.cursorrules` (must be read first)
+2. **`rules/rules/core/.cursorrules-project-creation`** → Project creation process
+   - **Dependencies**: `rules/rules/core/.cursorrules` (must be read first)
    - **References**: None (self-contained)
 
-3. **`../core/.cursorrules-component-workflow`** → Component development process
-   - **Dependencies**: `../core/.cursorrules` (must be read first)
+3. **`rules/rules/core/.cursorrules-component-workflow`** → Component development process
+   - **Dependencies**: `rules/rules/core/.cursorrules` (must be read first)
    - **References**: Multiple component and technical rule files
 
-4. **`../core/.cursorrules-template-workflow`** → Template creation process
-   - **Dependencies**: `../core/.cursorrules` (must be read first)
+4. **`rules/rules/core/.cursorrules-template-workflow`** → Template creation process
+   - **Dependencies**: `rules/rules/core/.cursorrules` (must be read first)
    - **References**: Component workflows, Figma workflow, technical rule files
 
 #### **Level 3: Template Analysis (Referenced by template-workflow)**
-4. **`../components/.cursorrules-figma-workflow`** → Figma component creation
-   - **Dependencies**: `../core/.cursorrules-template-workflow` (when Figma source selected)
+5. **`rules/rules/components/workflows/.cursorrules-figma-page-workflow`** → Figma component creation
+   - **Dependencies**: `rules/rules/core/.cursorrules-template-workflow` (when Figma source selected)
    - **References**: Component workflow files
 
-5. **`../core/.cursorrules-component-workflow`** → Image-based component creation
-   - **Dependencies**: `../core/.cursorrules-template-workflow` (when website source selected)
+6. **`rules/rules/core/.cursorrules-component-workflow`** → Image-based component creation
+   - **Dependencies**: `rules/rules/core/.cursorrules-template-workflow` (when website source selected)
    - **References**: Component analysis files
 
 #### **Level 4: Component Analysis (Referenced by component-workflow)**
-6. **`../components/.cursorrules-design-analysis`** → 9-step analysis process
-   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+7. **`rules/rules/components/analysis/.cursorrules-design-analysis`** → 9-step analysis process
+   - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
    - **References**: None (self-contained)
 
-7. **`../components/.cursorrules-aem-component-structure`** → File structure rules
-   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+8. **`rules/rules/components/generation/.cursorrules-aem-component-structure`** → File structure rules
+   - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
    - **References**: None (self-contained)
 
-8. **`../components/.cursorrules-htl-best-practices`** → HTL implementation
-   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+9. **`rules/rules/components/generation/.cursorrules-htl-best-practices`** → HTL implementation
+   - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
    - **References**: None (self-contained)
 
-9. **`../components/.cursorrules-aem-dialogs`** → Dialog configuration
-   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
-   - **References**: None (self-contained)
-
-10. **`../components/.cursorrules-aem-complexity`** → Complexity levels
-    - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+10. **`rules/rules/components/generation/.cursorrules-aem-dialogs`** → Dialog configuration
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-11. **`../components/.cursorrules-aem-listing`** → Listing framework
-    - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+11. **`rules/rules/components/frameworks/.cursorrules-aem-complexity`** → Complexity levels
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-12. **`../components/.cursorrules-aem-components`** → General best practices
-    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+12. **`rules/rules/components/workflows/.cursorrules-aem-listing`** → Listing framework
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+13. **`rules/rules/components/frameworks/.cursorrules-aem-components`** → General best practices
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
 #### **Level 4: Technical Implementation (Referenced by component-workflow)**
-11. **`.cursorrules-aem-cloud`** → Cloud Service compliance
-    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+14. **`rules/rules/technical/.cursorrules-aem-cloud`** → Cloud Service compliance
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-12. **`.cursorrules-aem-sling`** → Sling framework
-    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+15. **`rules/rules/technical/.cursorrules-aem-sling`** → Sling framework
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-13. **`.cursorrules-aem-i18n`** → Internationalization
-    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+16. **`rules/rules/technical/.cursorrules-aem-i18n`** → Internationalization
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-14. **`.cursorrules-maven`** → Maven build
-    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+17. **`rules/rules/technical/.cursorrules-maven`** → Maven build
+    - **Dependencies**: `rules/rules/core/.cursorrules-component-workflow` (must be read first)
     - **References**: None (self-contained)
 
-15. **`.cursorrules-content-filtering`** → Content violation prevention
-    - **Dependencies**: `.cursorrules` (must be read first)
+18. **`rules/rules/compliance/.cursorrules-content-filtering`** → Content violation prevention
+    - **Dependencies**: `rules/rules/core/.cursorrules` (must be read first)
     - **References**: None (self-contained)
 
-16. **`.cursorrules-listing-enforcement`** → Listing component violation prevention
-    - **Dependencies**: `.cursorrules` (must be read first)
-    - **References**: `../components/.cursorrules-aem-listing` (framework approach)
+19. **`rules/rules/compliance/.cursorrules-listing-enforcement`** → Listing component violation prevention
+    - **Dependencies**: `rules/rules/core/.cursorrules` (must be read first)
+    - **References**: `rules/rules/components/workflows/.cursorrules-aem-listing` (framework approach)
 
 ### **🚨 MANDATORY: DEPENDENCY READING ORDER - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: ALWAYS read rule files in this exact order:**
 
 #### **For Project Creation (Option 1):**
-1. **`.cursorrules`** → Main options
-2. **`.cursorrules-project-creation`** → Project creation process
-3. **`.cursorrules-mandatory-compliance`** → Compliance system
-4. **`.cursorrules-compliance-checklist`** → Compliance checklist
-5. **`.cursorrules-content-filtering`** → Content violation prevention
+1. **`rules/rules/core/.cursorrules`** → Main options
+2. **`rules/rules/core/.cursorrules-project-creation`** → Project creation process
+3. **`rules/rules/compliance/.cursorrules-mandatory-compliance`** → Compliance system
+4. **`rules/rules/compliance/.cursorrules-compliance-checklist`** → Compliance checklist
+5. **`rules/rules/compliance/.cursorrules-content-filtering`** → Content violation prevention
 
 #### **For Component Development (Option 2):**
-1. **`.cursorrules`** → Main options
-2. **`.cursorrules-component-workflow`** → Component development process
-3. **`.cursorrules-design-analysis`** → 9-step analysis process
-4. **`.cursorrules-aem-component-structure`** → File structure rules
-5. **`.cursorrules-htl-best-practices`** → HTL implementation
-6. **`.cursorrules-aem-dialogs`** → Dialog configuration
-7. **`.cursorrules-aem-complexity`** → Complexity levels
-8. **`.cursorrules-aem-listing`** → Listing framework
-9. **`.cursorrules-aem-components`** → General best practices
-10. **`.cursorrules-aem-cloud`** → Cloud Service compliance
-11. **`.cursorrules-aem-sling`** → Sling framework
-12. **`.cursorrules-aem-i18n`** → Internationalization
-13. **`.cursorrules-maven`** → Maven build
-14. **`.cursorrules-mandatory-compliance`** → Compliance system
-15. **`.cursorrules-compliance-checklist`** → Compliance checklist
-16. **`.cursorrules-content-filtering`** → Content violation prevention
-17. **`.cursorrules-listing-enforcement`** → Listing component violation prevention
+1. **`rules/rules/core/.cursorrules`** → Main options
+2. **`rules/rules/core/.cursorrules-component-workflow`** → Component development process
+3. **`rules/rules/components/analysis/.cursorrules-design-analysis`** → 9-step analysis process
+4. **`rules/rules/components/generation/.cursorrules-aem-component-structure`** → File structure rules
+5. **`rules/rules/components/generation/.cursorrules-htl-best-practices`** → HTL implementation
+6. **`rules/rules/components/generation/.cursorrules-aem-dialogs`** → Dialog configuration
+7. **`rules/rules/components/frameworks/.cursorrules-aem-complexity`** → Complexity levels
+8. **`rules/rules/components/workflows/.cursorrules-aem-listing`** → Listing framework
+9. **`rules/rules/components/frameworks/.cursorrules-aem-components`** → General best practices
+10. **`rules/rules/technical/.cursorrules-aem-cloud`** → Cloud Service compliance
+11. **`rules/rules/technical/.cursorrules-aem-sling`** → Sling framework
+12. **`rules/rules/technical/.cursorrules-aem-i18n`** → Internationalization
+13. **`rules/rules/technical/.cursorrules-maven`** → Maven build
+14. **`rules/rules/compliance/.cursorrules-mandatory-compliance`** → Compliance system
+15. **`rules/rules/compliance/.cursorrules-compliance-checklist`** → Compliance checklist
+16. **`rules/rules/compliance/.cursorrules-content-filtering`** → Content violation prevention
+17. **`rules/rules/compliance/.cursorrules-listing-enforcement`** → Listing component violation prevention
 
 ### **🚨 MANDATORY: DEPENDENCY VALIDATION - NO EXCEPTIONS**
 

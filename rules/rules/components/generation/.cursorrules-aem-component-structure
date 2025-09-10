@@ -370,7 +370,7 @@ protected void init() {
 ### **🚨 MANDATORY: CSS Generation Requirements - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: CSS generation MUST follow design accuracy requirements:**
-1. **🚨 MANDATORY: Read CSS generation rules** - **ALWAYS read `./generation/.cursorrules-css-generation` FIRST**
+1. **🚨 MANDATORY: Read CSS generation rules** - **ALWAYS read `rules/rules/components/generation/.cursorrules-css-generation` FIRST**
 2. **🚨 MANDATORY: Extract exact design values** - Colors, fonts, spacing, dimensions from design analysis
 3. **🚨 MANDATORY: Generate component-specific CSS** - No generic templates, design-specific styling only
 4. **🚨 MANDATORY: Implement responsive design** - Mobile-first approach with tablet/desktop adaptations

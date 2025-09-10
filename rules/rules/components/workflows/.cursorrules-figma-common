@@ -140,10 +140,10 @@ New Components (X):
 ## 🚨 CRITICAL: INTEGRATION WITH EXISTING WORKFLOWS (AI Reference Only)
 
 **⚠️ CRITICAL: SEAMLESS INTEGRATION:**
-1. **🚨 MANDATORY: Use existing component rules** - Follow `../components/.cursorrules-aem-components`
-2. **🚨 MANDATORY: Use existing dialog rules** - Follow `../components/.cursorrules-aem-dialogs`
-3. **🚨 MANDATORY: Use existing Sling rules** - Follow `../technical/.cursorrules-aem-sling`
-4. **🚨 MANDATORY: Use existing Cloud rules** - Follow `../technical/.cursorrules-aem-cloud`
+1. **🚨 MANDATORY: Use existing component rules** - Follow `rules/rules/components/frameworks/.cursorrules-aem-components`
+2. **🚨 MANDATORY: Use existing dialog rules** - Follow `rules/rules/components/generation/.cursorrules-aem-dialogs`
+3. **🚨 MANDATORY: Use existing Sling rules** - Follow `rules/rules/technical/.cursorrules-aem-sling`
+4. **🚨 MANDATORY: Use existing Cloud rules** - Follow `rules/rules/technical/.cursorrules-aem-cloud`
 5. **🚨 MANDATORY: Use existing quality rules** - Follow Excel file for code quality
 6. **🚨 MANDATORY: Use existing testing rules** - Follow unit testing requirements
 7. **🚨 MANDATORY: Maintain consistency** - Ensure same quality as image-based workflow

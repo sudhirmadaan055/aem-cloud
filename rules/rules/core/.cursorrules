@@ -29,14 +29,14 @@
 ## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
 
 **⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
-1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
-6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
-7. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-content-filtering` FOR CONTENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
-8. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-listing-enforcement` FOR LISTING COMPONENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+7. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-content-filtering` FOR CONTENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
+8. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-listing-enforcement` FOR LISTING COMPONENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
 
 **🚨 CRITICAL: CONSISTENCY ENFORCEMENT ACROSS ALL ENVIRONMENTS:**
 - **🚨 MANDATORY: Same analysis process on all systems** - New folders, cursor instances, laptops
@@ -73,7 +73,7 @@
 
 ## 🚨 STATE MANAGEMENT
 **When user selects option 1:**
-- **IMMEDIATELY read `.cursorrules-project-creation`**
+- **IMMEDIATELY read `rules/rules/core/.cursorrules-project-creation`**
 - **FOLLOW its exact process starting from line 71**
 - **NEVER ask for project details directly**
 
@@ -94,19 +94,19 @@
   
   **Which option? (1, 2, or 3)**
   ```
-- **If user selects 1:** **IMMEDIATELY read `.cursorrules-component-workflow`**
-- **If user selects 2:** **IMMEDIATELY read `../components/workflows/.cursorrules-figma-page-workflow`**
-- **If user selects 2.1:** **IMMEDIATELY read `../components/workflows/.cursorrules-figma-component-workflow`**
-- **If user selects 3:** **IMMEDIATELY read `../components/workflows/.cursorrules-webpage-workflow`**
+- **If user selects 1:** **IMMEDIATELY read `rules/rules/core/.cursorrules-component-workflow`**
+- **If user selects 2:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-figma-page-workflow`**
+- **If user selects 2.1:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-figma-component-workflow`**
+- **If user selects 3:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-webpage-workflow`**
 - **FOLLOW the exact process of selected workflow**
 - **NEVER ask for component details directly**
 
 **When user selects option 3:**
-- **IMMEDIATELY read `.cursorrules-template-workflow`**
+- **IMMEDIATELY read `rules/rules/core/.cursorrules-template-workflow`**
 - **FOLLOW its exact process**
 - **NEVER ask for template details directly**
 
 **When user selects option 4:**
-- **IMMEDIATELY read `.cursorrules-page-creation-workflow`**
+- **IMMEDIATELY read `rules/rules/core/.cursorrules-page-creation-workflow`**
 - **FOLLOW its exact process**
 - **NEVER ask for page details directly**

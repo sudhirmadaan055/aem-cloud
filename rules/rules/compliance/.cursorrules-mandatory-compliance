@@ -43,30 +43,30 @@
 **⚠️ CRITICAL: Always map dependencies:**
 
 #### **Core Rule Files:**
-- `../core/.cursorrules` → Main options
-- `../core/.cursorrules-component-workflow` → References design-analysis
-- `../core/.cursorrules-template-workflow` → References component workflows
-- `../core/.cursorrules-project-creation` → Self-contained
+- `rules/rules/core/.cursorrules` → Main options
+- `rules/rules/core/.cursorrules-component-workflow` → References design-analysis
+- `rules/rules/core/.cursorrules-template-workflow` → References component workflows
+- `rules/rules/core/.cursorrules-project-creation` → Self-contained
 
 #### **Component Rule Files:**
-- `../components/.cursorrules-design-analysis` → 9-step analysis process
-- `../components/.cursorrules-aem-component-structure` → File structure rules
-- `../components/.cursorrules-htl-best-practices` → HTL implementation
-- `../components/.cursorrules-aem-dialogs` → Dialog configuration
-- `../components/.cursorrules-aem-complexity` → Complexity levels
-- `../components/.cursorrules-aem-listing` → Listing framework
-- `../components/.cursorrules-aem-components` → General best practices
+- `rules/rules/components/analysis/.cursorrules-design-analysis` → 9-step analysis process
+- `rules/rules/components/generation/.cursorrules-aem-component-structure` → File structure rules
+- `rules/rules/components/generation/.cursorrules-htl-best-practices` → HTL implementation
+- `rules/rules/components/generation/.cursorrules-aem-dialogs` → Dialog configuration
+- `rules/rules/components/frameworks/.cursorrules-aem-complexity` → Complexity levels
+- `rules/rules/components/workflows/.cursorrules-aem-listing` → Listing framework
+- `rules/rules/components/frameworks/.cursorrules-aem-components` → General best practices
 
 #### **Template Rule Files:**
-- `../core/.cursorrules-template-workflow` → Template creation process
-- `../components/.cursorrules-figma-workflow` → Figma component creation
-- `../core/.cursorrules-component-workflow` → Image-based component creation
+- `rules/rules/core/.cursorrules-template-workflow` → Template creation process
+- `rules/rules/components/workflows/.cursorrules-figma-page-workflow` → Figma component creation
+- `rules/rules/core/.cursorrules-component-workflow` → Image-based component creation
 
 #### **Technical Rule Files:**
-- `../technical/.cursorrules-aem-cloud` → Cloud Service compliance
-- `../technical/.cursorrules-aem-sling` → Sling framework
-- `../technical/.cursorrules-aem-i18n` → Internationalization
-- `.cursorrules-maven` → Maven build
+- `rules/rules/technical/.cursorrules-aem-cloud` → Cloud Service compliance
+- `rules/rules/technical/.cursorrules-aem-sling` → Sling framework
+- `rules/rules/technical/.cursorrules-aem-i18n` → Internationalization
+- `rules/rules/technical/.cursorrules-maven` → Maven build
 
 ### **🚨 MANDATORY: VIOLATION PREVENTION RULES - NO EXCEPTIONS**
 

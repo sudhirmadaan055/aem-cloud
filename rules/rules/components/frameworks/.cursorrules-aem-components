@@ -223,41 +223,41 @@
 **⚠️ CRITICAL: These rule files MUST be referenced and followed for complete component development:**
 
 #### **Design Analysis Rules**
-- **For design analysis**: Follow `.cursorrules-design-analysis` rules
+- **For design analysis**: Follow `rules/rules/components/analysis/.cursorrules-design-analysis` rules
 - **9-step analysis process**: Pattern → Complexity → Functional → Layout → Visual → Interactive → Content → Data → Architecture
 - **Component type detection**: Identify pattern and complexity before development
 - **Validation checklist**: Ensure all analysis steps are completed
 
 #### **Component Structure Rules**
-- **For component structure**: Follow `.cursorrules-aem-component-structure` rules
+- **For component structure**: Follow `rules/rules/components/generation/.cursorrules-aem-component-structure` rules
 - **File structure requirements**: .content.xml, HTL template, dialog, editConfig
 - **Dialog patterns**: Simple vs complex dialog structures
 - **Multifield implementation**: Proper multifield structure and Sling Model processing
 - **Build validation**: Test component build after creation
 
 #### **Dialog Configuration Rules**
-- **For dialog development**: Follow `.cursorrules-aem-dialogs` rules
+- **For dialog development**: Follow `rules/rules/components/generation/.cursorrules-aem-dialogs` rules
 - **Field types and validation**: Proper field configuration and validation rules
 - **RTE configuration**: Rich text editor setup and security
 - **Multifield best practices**: Structured JSON and proper field types
 - **Dialog UX**: Layout, spacing, and user experience guidelines
 
 #### **HTL Best Practices**
-- **For HTL templates**: Follow `.cursorrules-htl-best-practices` rules
+- **For HTL templates**: Follow `rules/rules/components/generation/.cursorrules-htl-best-practices` rules
 - **Index logic patterns**: Avoid comparison operators, use Sling Model methods
 - **Layout distribution**: Proper two-column and multi-column layouts
 - **ClientLibs inclusion**: Mandatory ClientLibs inclusion in templates
 - **Semantic HTML**: Use proper semantic HTML structure
 
 #### **Complexity Management**
-- **For complexity analysis**: Follow `.cursorrules-aem-complexity` rules
+- **For complexity analysis**: Follow `rules/rules/components/frameworks/.cursorrules-aem-complexity` rules
 - **Simple components**: Purely presentational, minimal fields
 - **Medium complexity**: Multiple configurable fields, Sling Model with light logic
 - **High complexity**: Dynamic data, search/filtering, OSGi services, architect review
 - **Architecture requirements**: Based on complexity level
 
 #### **Listing Components**
-- **For listing/search components**: Follow `.cursorrules-aem-listing` rules
+- **For listing/search components**: Follow `rules/rules/components/workflows/.cursorrules-aem-listing` rules
 - **Framework approach**: Use BaseListingModel and BaseListingServlet
 - **Configuration-driven**: ListingService for dynamic content
 - **AJAX functionality**: Proper search and filtering implementation

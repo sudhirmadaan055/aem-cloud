@@ -57,7 +57,7 @@
 7. **🚨 MANDATORY: Classify as Listing Component ONLY if requirements met** - Do NOT classify carousels, sliders, or simple content grids as listing components
 8. **🚨 MANDATORY: Set complexity to High** - Listing components require data management and filtering logic
 9. **🚨 MANDATORY: STOP IMMEDIATELY** - **DO NOT PROCEED WITHOUT READING LISTING FRAMEWORK RULES**
-10. **🚨 MANDATORY: Reference Listing Framework Rules** - **ALWAYS read `../workflows/.cursorrules-aem-listing` for framework approach**
+10. **🚨 MANDATORY: Reference Listing Framework Rules** - **ALWAYS read `rules/rules/components/workflows/.cursorrules-aem-listing` for framework approach**
 11. **🚨 MANDATORY: VERIFY FRAMEWORK RULES READ** - **CONFIRM BEFORE ANY LISTING COMPONENT CREATION**
 
 ### **🚨 MANDATORY: Anti-Violation Rules - Prevent Listing Component Misclassification**

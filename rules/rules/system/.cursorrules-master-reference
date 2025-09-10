@@ -9,19 +9,19 @@
 **⚠️ CRITICAL: When ANY .cursorrules file is read, automatically load these prevention measures:**
 
 #### **Level 1: Core Prevention System (MUST BE LOADED FIRST)**
-1. **`../compliance/.cursorrules-mandatory-compliance`** - Core compliance system
-2. **`../system/.cursorrules-system-override`** - System-level enforcement
-3. **`../compliance/.cursorrules-compliance-monitor`** - Real-time monitoring
+1. **`rules/rules/compliance/.cursorrules-mandatory-compliance`** - Core compliance system
+2. **`rules/rules/system/.cursorrules-system-override`** - System-level enforcement
+3. **`rules/rules/compliance/.cursorrules-compliance-monitor`** - Real-time monitoring
 
 #### **Level 2: Process Prevention System (MUST BE LOADED SECOND)**
-4. **`../compliance/.cursorrules-compliance-checklist`** - Pre-response validation
-5. **`../system/.cursorrules-dependency-mapper`** - Dependency chain management
-6. **`../system/.cursorrules-emergency-protocol`** - Violation handling
+4. **`rules/rules/compliance/.cursorrules-compliance-checklist`** - Pre-response validation
+5. **`rules/rules/system/.cursorrules-dependency-mapper`** - Dependency chain management
+6. **`rules/rules/system/.cursorrules-emergency-protocol`** - Violation handling
 
 #### **Level 3: Workflow-Specific Prevention (LOADED AS NEEDED)**
-7. **`../core/.cursorrules-template-workflow`** - Template creation process
-8. **`../core/.cursorrules-component-workflow`** - Component development process
-9. **`../components/.cursorrules-figma-workflow`** - Figma component creation
+7. **`rules/rules/core/.cursorrules-template-workflow`** - Template creation process
+8. **`rules/rules/core/.cursorrules-component-workflow`** - Component development process
+9. **`rules/rules/components/workflows/.cursorrules-figma-page-workflow`** - Figma component creation
 
 ### **🚨 MANDATORY: AUTOMATIC REFERENCE INJECTION - NO EXCEPTIONS**
 
@@ -30,12 +30,12 @@
 #### **Injection Pattern:**
 ```
 ## 🚨 MANDATORY: MANDATORY COMPLIANCE SYSTEM - READ FIRST:
-1. **🚨 MANDATORY: ALWAYS read `.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: ALWAYS read `.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: ALWAYS read `.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: ALWAYS read `.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: ALWAYS read `.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
-6. **🚨 MANDATORY: ALWAYS read `.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
 ```
 
 ### **🚨 MANDATORY: RUNTIME PREVENTION ACTIVATION - NO EXCEPTIONS**

@@ -3,12 +3,12 @@
 ## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
 
 **⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
-1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
-6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
 
 **⚠️ CRITICAL: ALWAYS read this rule file first before executing any AEM component development tasks:**
 1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
@@ -20,13 +20,13 @@
 
 
 ### **Component Development Rules**
-- **Design Analysis**: **🚨 MANDATORY: ALWAYS read `../components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS** (13-step analysis process with component existence checking)
-- **Component Structure**: Follow `../components/generation/.cursorrules-aem-component-structure` (file structure, dialogs, multifields)
-- **CSS Generation**: **🚨 MANDATORY: ALWAYS read `../components/generation/.cursorrules-css-generation` FIRST** - **NO EXCEPTIONS** (design-accurate CSS generation with 90%+ visual accuracy)
-- **HTL Best Practices**: Follow `../components/generation/.cursorrules-htl-best-practices` (index logic, layout distribution)
-- **Dialog Configuration**: Use `../components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs)
-- **Complexity Management**: Apply `../components/frameworks/.cursorrules-aem-complexity` (Simple, Medium, High levels)
-- **Listing Components**: Reference `../components/workflows/.cursorrules-aem-listing` (framework approach)
+- **Design Analysis**: **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS** (13-step analysis process with component existence checking)
+- **Component Structure**: Follow `rules/rules/components/generation/.cursorrules-aem-component-structure` (file structure, dialogs, multifields)
+- **CSS Generation**: **🚨 MANDATORY: ALWAYS read `rules/rules/components/generation/.cursorrules-css-generation` FIRST** - **NO EXCEPTIONS** (design-accurate CSS generation with 90%+ visual accuracy)
+- **HTL Best Practices**: Follow `rules/rules/components/generation/.cursorrules-htl-best-practices` (index logic, layout distribution)
+- **Dialog Configuration**: Use `rules/rules/components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs)
+- **Complexity Management**: Apply `rules/rules/components/frameworks/.cursorrules-aem-complexity` (Simple, Medium, High levels)
+- **Listing Components**: Reference `rules/rules/components/workflows/.cursorrules-aem-listing` (framework approach)
 
 ## 🚨 CRITICAL: LISTING COMPONENT ENFORCEMENT - ZERO TOLERANCE
 **⚠️ CRITICAL: This section prevents listing component violations across all environments:**
@@ -35,7 +35,7 @@
 **⚠️ CRITICAL: When ANY listing component is detected, IMMEDIATELY execute this protocol:**
 
 1. **🚨 MANDATORY: STOP ALL ACTIONS IMMEDIATELY** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: READ `../components/.cursorrules-aem-listing` COMPLETELY** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: READ `rules/rules/components/workflows/.cursorrules-aem-listing` COMPLETELY** - **NO EXCEPTIONS**
 3. **🚨 MANDATORY: EXECUTE STEP 1: FRAMEWORK DETECTION** - **NO EXCEPTIONS**
 4. **🚨 MANDATORY: EXECUTE STEP 2: FRAMEWORK IMPLEMENTATION DECISION** - **NO EXCEPTIONS**
 5. **🚨 MANDATORY: EXECUTE STEP 3: FRAMEWORK CREATION (if needed)** - **NO EXCEPTIONS**
@@ -58,25 +58,25 @@
 - **🚨 MANDATORY: Confirm framework implementation decision** - **ACCOUNTABILITY**
 - **🚨 MANDATORY: Validate framework creation completion** - **ACCOUNTABILITY**
 - **🚨 MANDATORY: Report any violations immediately** - **ACCOUNTABILITY**
-- **Component Rules**: Follow `../components/.cursorrules-aem-components` (general best practices)
+- **Component Rules**: Follow `rules/rules/components/frameworks/.cursorrules-aem-components` (general best practices)
 
 ### **🚨 MANDATORY: COMPLIANCE SYSTEM RULES - NO EXCEPTIONS**
-- **Mandatory Compliance**: Follow `.cursorrules-mandatory-compliance` (core compliance system)
-- **Compliance Checklist**: Use `.cursorrules-compliance-checklist` (pre-response validation)
-- **Dependency Mapping**: Follow `.cursorrules-dependency-mapper` (rule file dependencies)
-- **Compliance Monitoring**: Use `.cursorrules-compliance-monitor` (real-time monitoring)
-- **Emergency Protocol**: Follow `.cursorrules-emergency-protocol` (violation handling)
-- **System Override**: Use `.cursorrules-system-override` (system enforcement)
+- **Mandatory Compliance**: Follow `rules/rules/compliance/.cursorrules-mandatory-compliance` (core compliance system)
+- **Compliance Checklist**: Use `rules/rules/compliance/.cursorrules-compliance-checklist` (pre-response validation)
+- **Dependency Mapping**: Follow `rules/rules/system/.cursorrules-dependency-mapper` (rule file dependencies)
+- **Compliance Monitoring**: Use `rules/rules/compliance/.cursorrules-compliance-monitor` (real-time monitoring)
+- **Emergency Protocol**: Follow `rules/rules/system/.cursorrules-emergency-protocol` (violation handling)
+- **System Override**: Use `rules/rules/system/.cursorrules-system-override` (system enforcement)
 
 ### **Technical Implementation Rules**
-- **Cloud Service**: Comply with `../technical/.cursorrules-aem-cloud`
-- **Sling Framework**: Follow `../technical/.cursorrules-aem-sling`
-- **Internationalization**: Use `../technical/.cursorrules-aem-i18n`
-- **Maven Build**: Follow `../technical/.cursorrules-maven` (use `mvn` command directly)
+- **Cloud Service**: Comply with `rules/rules/technical/.cursorrules-aem-cloud`
+- **Sling Framework**: Follow `rules/rules/technical/.cursorrules-aem-sling`
+- **Internationalization**: Use `rules/rules/technical/.cursorrules-aem-i18n`
+- **Maven Build**: Follow `rules/rules/technical/.cursorrules-maven` (use `mvn` command directly)
 
 ### **Context Files**
-- **Medium Complexity**: Create context in `../../context/component-context/medium-complexity/`
-- **High Complexity**: Create context in `../../context/component-context/high-complexity/`
+- **Medium Complexity**: Create context in `context/component-context/medium-complexity/`
+- **High Complexity**: Create context in `context/component-context/high-complexity/`
 - **Templates**: Use provided templates for context files
 
 ---
@@ -89,12 +89,12 @@
 - Purely presentational with minimal fields
 
 ### **Medium Complexity Components**
-- **Create context file in `../../context/component-context/medium-complexity/`**
+- **Create context file in `context/component-context/medium-complexity/`**
 - Examples: Teaser, Carousel, Accordion, Card Grid
 - Multiple configurable fields with light business logic
 
 ### **High Complexity Components**
-- **Create context file in `../../context/component-context/high-complexity/`**
+- **Create context file in `context/component-context/high-complexity/`**
 - **MANDATORY: Flag for architect review**
 - Examples: Product Listing, Search Component, Location Finder, Multi-step Form
 - Dynamic data, APIs, search, filtering, pagination
@@ -106,7 +106,7 @@
 ### **🚨 MANDATORY: Step 0: Read Design Analysis Rules - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: BEFORE ANY ANALYSIS, ALWAYS READ DESIGN ANALYSIS RULES FIRST:**
-1. **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
 2. **🚨 MANDATORY: Follow the 10-step analysis process exactly as specified** - **NO DEVIATIONS**
 3. **🚨 MANDATORY: Apply component existence checking rules** - **REQUIRED**
 
@@ -142,7 +142,7 @@
 3. **🚨 MANDATORY: Ensure Consistency** - Always show same format for predictable results
 
 #### **🚨 MANDATORY: Step 2C: Read Design Analysis Rules - REQUIRED THIRD (BEFORE ANALYSIS)**
-1. **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
 2. **🚨 MANDATORY: Follow the 10-step analysis process exactly as specified** - **NO DEVIATIONS**
 3. **🚨 MANDATORY: Apply component existence checking rules** - **REQUIRED**
 
@@ -259,10 +259,10 @@ New Components (X):
    - **MANDATORY: Use extracted content as initial values in dialog fields**
 4. Read `components.json` and context files
 5. Generate complete AEM component code following:
-   - `../components/.cursorrules-aem-components` for structure
-   - `../components/.cursorrules-aem-dialogs` for authoring
-   - `../technical/.cursorrules-aem-sling` for backend logic
-   - `../technical/.cursorrules-aem-cloud` for Cloud Service compliance
+   - `rules/rules/components/frameworks/.cursorrules-aem-components` for structure
+   - `rules/rules/components/generation/.cursorrules-aem-dialogs` for authoring
+   - `rules/rules/technical/.cursorrules-aem-sling` for backend logic
+   - `rules/rules/technical/.cursorrules-aem-cloud` for Cloud Service compliance
 6. **Place files in proper AEM project structure:**
    - HTL templates: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
    - Sling Models: `{project}/core/src/main/java/com/{groupId}/aem/core/models/`

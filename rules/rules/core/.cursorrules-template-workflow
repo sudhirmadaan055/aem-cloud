@@ -3,12 +3,12 @@
 ## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
 
 **⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
-1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
-6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+1. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `rules/rules/compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
 
 **⚠️ CRITICAL: ALWAYS read this rule file first before executing any AEM template creation tasks:**
 1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
@@ -145,13 +145,13 @@ Missing Components:
 6. **🚨 MANDATORY: Create Template** - Generate template with all components
 
 ### **🚨 MANDATORY: Component Workflow Selection (AI Reference Only):**
-- **For Figma URLs** → **Use `../components/.cursorrules-figma-workflow`**
-- **For Website URLs** → **Use `.cursorrules-component-workflow` (Image-based analysis)**
-- **For Scratch Creation** → **Use `.cursorrules-component-workflow` (Basic components)**
-- **For Template Library** → **Use `.cursorrules-component-workflow` (Pattern-based components)**
+- **For Figma URLs** → **Use `rules/rules/components/workflows/.cursorrules-figma-page-workflow`**
+- **For Website URLs** → **Use `rules/rules/core/.cursorrules-component-workflow` (Image-based analysis)**
+- **For Scratch Creation** → **Use `rules/rules/core/.cursorrules-component-workflow` (Basic components)**
+- **For Template Library** → **Use `rules/rules/core/.cursorrules-component-workflow` (Pattern-based components)**
 
 ### **🚨 MANDATORY: Component Analysis Rules Reference (AI Reference Only):**
-- **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: ALWAYS read `rules/rules/components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
 - **🚨 MANDATORY: Follow systematic component detection protocol** - **NO EXCEPTIONS**
 - **🚨 MANDATORY: Identify interactive UI patterns** - **NO EXCEPTIONS**
 - **🚨 MANDATORY: Classify based on functionality, not appearance** - **NO EXCEPTIONS**
