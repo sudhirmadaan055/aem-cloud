@@ -1,0 +1,73 @@
+<!--/* Products Component */-->
+<div class="products" data-sly-use.model="com.mysite.core.models.ProductsModel">
+    <div class="products__container">
+        <!-- Title Section -->
+        <div class="products__title-section">
+            <div class="products__title-container">
+                <div class="products__subtitle-container">
+                    <span class="products__section-label" data-sly-test="${model.sectionLabel}">${model.sectionLabel}</span>
+                    <h2 class="products__title" data-sly-test="${model.title}">${model.title}</h2>
+                    <p class="products__description" data-sly-test="${model.description}">${model.description}</p>
+                </div>
+                <a href="${model.exploreButtonLink}" class="products__explore-button" data-sly-test="${model.exploreButtonText}">
+                    ${model.exploreButtonText}
+                </a>
+            </div>
+        </div>
+
+        <!-- Product Cards -->
+        <div class="products__cards-container" data-sly-test="${model.products}">
+            <div class="products__cards" data-sly-list.product="${model.products}">
+                <div class="products__card" style="background-color: ${product.backgroundColor}">
+                    <!-- Product Box Background -->
+                    <div class="products__card-box"></div>
+                    
+                    <!-- Product Attributes -->
+                    <div class="products__attributes" data-sly-test="${product.productAttributes}">
+                        <span class="products__attribute" data-sly-list.attr="${product.productAttributes}">${attr.attribute}</span>
+                    </div>
+                    
+                    <!-- Product Title -->
+                    <h3 class="products__card-title" data-sly-test="${product.productTitle}">${product.productTitle}</h3>
+                    
+                    <!-- Product Description -->
+                    <p class="products__card-description" data-sly-test="${product.productDescription}">${product.productDescription}</p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="products__ctas" data-sly-test="${product.whereToBuyText || product.shopNowText}">
+                        <a href="${product.whereToBuyLink}" class="products__cta products__cta--primary" data-sly-test="${product.whereToBuyText}">
+                            ${product.whereToBuyText}
+                        </a>
+                        <a href="${product.shopNowLink}" class="products__cta products__cta--secondary" data-sly-test="${product.shopNowText}">
+                            ${product.shopNowText}
+                        </a>
+                    </div>
+                    
+                    <!-- Product Image -->
+                    <div class="products__image" data-sly-test="${product.productImage}">
+                        <img src="${product.productImage}" alt="${product.productTitle}" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <div class="products__carousel" data-sly-test="${model.products && model.products.size > 1}">
+            <button class="products__carousel-button products__carousel-button--prev" aria-label="Previous product" disabled>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            
+            <div class="products__pagination">
+                <span class="products__pagination-dot products__pagination-dot--active" data-sly-list.product="${model.products}"></span>
+            </div>
+            
+            <button class="products__carousel-button products__carousel-button--next" aria-label="Next product">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

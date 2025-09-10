@@ -18,143 +18,6 @@
 5. **🚨 MANDATORY: Maintain consistency across all environments** - **SAME PROCESS ON ALL SYSTEMS**
 6. **🚨 MANDATORY: Use actual titles and headings from source content** - **NO GENERIC COMPONENT NAMES**
 
-## 🚨 CRITICAL: STEP 0 - DETERMINE INPUT TYPE AND COMPONENT STRUCTURE (AI Reference Only)
-
-**⚠️ CRITICAL: BEFORE ANY OTHER STEP, ALWAYS DETERMINE INPUT TYPE FIRST:**
-1. **🚨 MANDATORY: Check input type** - Determine if Figma URL, uploaded images, web page URL, or combinations
-2. **🚨 MANDATORY: For Figma URLs** - Use MCP server to extract design data
-3. **🚨 MANDATORY: For uploaded images** - Analyze each design image separately
-4. **🚨 MANDATORY: For web page URLs** - Use web search tool to analyze live website
-5. **🚨 MANDATORY: Count components** - Identify component count from Figma data, images, or web page analysis
-6. **🚨 MANDATORY: Use actual titles and headings** - Extract exact titles, headings, and section names from source content
-7. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from source material for component identification
-8. **🚨 MANDATORY: Determine processing scenario:**
-   - **Scenario 1**: Figma URL → Extract complete design system and components
-   - **Scenario 2**: Web page URL → Analyze live website and extract reusable components
-   - **Scenario 3**: Single image with single component → Process as one component
-   - **Scenario 4**: Single image with multiple components → Process each section as separate component
-   - **Scenario 5**: Multiple images with single component each → Process each image as one component
-   - **Scenario 6**: Multiple images with multiple components each → Process each section in each image as separate component
-9. **🚨 MANDATORY: Display structure summary** - Show "Processing Figma file with X components", "Processing web page with X components", or "Processing X images with Y total components"
-
-**🚨 CRITICAL: FOR FIGMA URLS - REDIRECT TO FIGMA WORKFLOW:**
-- **If Figma URL detected** → **IMMEDIATELY redirect to `../components/.cursorrules-figma-workflow`**
-- **Follow Figma workflow exactly** → **NO DEVIATIONS**
-- **Use MCP tools for data extraction** → **NO MANUAL ANALYSIS**
-- **Show clean component table format** → **Same format as image-based workflow**
-- **Minimal user interaction** → **Clean options, no technical details**
-
-**🚨 CRITICAL: FOR WEB PAGE URLS - USE WEB PAGE ANALYSIS WORKFLOW:**
-- **If web page URL detected** → **IMMEDIATELY use web search tool for analysis**
-- **Follow web page analysis workflow exactly** → **NO DEVIATIONS**
-- **Use web search tool for data extraction** → **NO MANUAL ANALYSIS**
-- **Show clean component table format** → **Same format as image-based workflow**
-- **Minimal user interaction** → **Clean options, no technical details**
-
-**🚨 CRITICAL: THIS STEP CANNOT BE SKIPPED, COMBINED, OR MODIFIED - NO EXCEPTIONS**
-
-## 🚨 CRITICAL: STEP 0.5 - FIGMA DATA EXTRACTION (AI Reference Only)
-
-**⚠️ CRITICAL: FOR FIGMA URLS ONLY - EXTRACT DESIGN DATA:**
-1. **🚨 MANDATORY: Connect to Figma MCP server** - Use `mcp_figma_get_figma_data` tool
-2. **🚨 MANDATORY: Extract file data** - Get complete Figma file structure
-3. **🚨 MANDATORY: Identify components** - Find all component instances and variants
-4. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from Figma
-5. **🚨 MANDATORY: Get component specifications** - Extract exact dimensions, properties
-6. **🚨 MANDATORY: Download assets** - Export images, icons, graphics using `mcp_figma_download_figma_images`
-7. **🚨 MANDATORY: Create component mapping** - Map Figma components to AEM components
-8. **🚨 MANDATORY: Extract content** - Get actual text content from Figma for default values
-
-**🚨 CRITICAL: THIS STEP IS MANDATORY FOR FIGMA URLS - NO EXCEPTIONS**
-
-## 🚨 CRITICAL: STEP 0.6 - WEB PAGE ANALYSIS (AI Reference Only)
-
-**⚠️ CRITICAL: FOR WEB PAGE URLS ONLY - ANALYZE LIVE WEBSITES:**
-1. **🚨 MANDATORY: Parse web page URL** - Extract domain and page path
-2. **🚨 MANDATORY: Use web search tool** - Use `web_search` tool with targeted search terms to analyze page content and structure
-3. **🚨 MANDATORY: Extract page structure** - Get HTML structure, CSS classes, and component patterns from search results
-4. **🚨 MANDATORY: Identify reusable components** - Find common UI patterns that can become AEM components
-5. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from live site analysis
-6. **🚨 MANDATORY: Map component hierarchy** - Understand parent-child relationships
-7. **🚨 MANDATORY: Identify interactive elements** - Buttons, forms, navigation, carousels
-8. **🚨 MANDATORY: Extract content patterns** - Text blocks, image galleries, card layouts
-9. **🚨 MANDATORY: Determine component count** - Count unique components to create
-10. **🚨 MANDATORY: Create component mapping** - Map web page elements to AEM components
-
-**🚨 CRITICAL: WEB PAGE ANALYSIS IS MANDATORY FOR WEB PAGE URLS - NO EXCEPTIONS**
-
-## 🚨 CRITICAL: STEP 1 - CHECK EXISTING COMPONENTS (AI Reference Only)
-
-**⚠️ CRITICAL: AFTER DETERMINING COMPONENT TYPE, CHECK EXISTING COMPONENTS:**
-1. **🚨 MANDATORY: ALWAYS check existing AEM project components** - **NO EXCEPTIONS**
-2. **🚨 MANDATORY: Scan component directory** - `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
-3. **🚨 MANDATORY: Compare visual similarity** - Match design elements to existing components
-4. **🚨 MANDATORY: Categorize by status** - Existing, Modified, or New
-5. **🚨 MANDATORY: Skip existing components** - Do NOT analyze components that already exist
-6. **🚨 MANDATORY: Process only New/Modified** - Apply analysis only to components that need creation/updates
-
-**🚨 CRITICAL: THIS STEP CANNOT BE SKIPPED, COMBINED, OR MODIFIED - NO EXCEPTIONS**
-
-## 🚨 ANTI-MISBEHAVIOR RULES
-**⚠️ CRITICAL: NEVER do these things:**
-1. **NEVER ask for information not specified in this rule file**
-2. **NEVER assume what the user wants**
-3. **NEVER skip reading rule files**
-4. **NEVER deviate from the exact process specified**
-5. **NEVER add your own interpretation of what should happen next**
-6. **NEVER ask for component details before following the exact process in this file**
-7. **NEVER bypass the user interface flow specified in this file**
-8. **NEVER try to "optimize" or create components "in parallel"** - Always follow sequential processing
-9. **NEVER stop before completing ALL components** - Complete every single component before any cleanup
-10. **NEVER assume what would be "efficient"** - Follow the exact mandatory workflow rules
-11. **NEVER lose track of batch processing requirements** - Maintain awareness of total component count
-12. **NEVER deviate from specified process** - No shortcuts, no modifications, no assumptions
-
-## 🚨 CRITICAL: DEVIATION PREVENTION - LEARNED FROM VIOLATIONS
-**⚠️ CRITICAL: Based on actual violations that occurred, NEVER do these things:**
-
-### **VIOLATION 1: Attempting "Parallel" Processing**
-- **What Happened**: Tried to create components "in parallel" instead of sequentially
-- **Why It's Wrong**: Violates mandatory sequential processing rules
-- **Prevention**: Always show "Creating Component X of Y" and process one at a time
-
-### **VIOLATION 2: Stopping Before Completion**
-- **What Happened**: Only created 3 out of 14 components before stopping
-- **Why It's Wrong**: Violates mandatory completion requirements
-- **Prevention**: Always complete ALL components before any cleanup or stopping
-
-### **VIOLATION 3: Assuming "Efficiency"**
-- **What Happened**: Tried to "optimize" instead of following exact rules
-- **Why It's Wrong**: Violates mandatory compliance with specified process
-- **Prevention**: Follow exact mandatory workflow rules, no modifications
-
-### **VIOLATION 4: Losing Track of Requirements**
-- **What Happened**: Lost awareness of total component count and batch processing
-- **Why It's Wrong**: Violates mandatory batch processing guidelines
-- **Prevention**: Always maintain awareness of total components and progress
-
-**🚨 CRITICAL: These violations will NOT happen again - MANDATORY COMPLIANCE REQUIRED**
-
-## Component Development Options
-
-**Type the number to proceed:**
-
-### 1. **Image Reference** - Create components from images
-*Single image or multiple images analysis*
-
-### 2. **Figma URL** - Create components from Figma URLs
-*Direct Figma file analysis and AEM component generation*
-
-### 3. **Web Page URL** - Create components from live websites
-*Analyze existing web pages and extract reusable AEM components*
-
----
-
-**Which option? (1, 2, or 3)**
-
----
-
-## 📚 **Rules & Guidelines Applied** (AI Reference Only)
 
 ### **Component Development Rules**
 - **Design Analysis**: **🚨 MANDATORY: ALWAYS read `../components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS** (13-step analysis process with component existence checking)
@@ -404,29 +267,41 @@ New Components (X):
    - HTL templates: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
    - Sling Models: `{project}/core/src/main/java/com/{groupId}/aem/core/models/`
    - Dialogs: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
-   - SCSS: `{project}/ui.frontend/src/main/webpack/components/`
-7. **MANDATORY: Follow Project Conventions**
+   - SCSS: `ui.frontend/src/main/webpack/components/_{project}.scss`
+   - JS: `ui.frontend/src/main/webpack/components/_{project}.js`
+7. **🚨 MANDATORY: Generate Local Development Files - NO EXCEPTIONS**
+   - **MANDATORY: Always generate an `index.html` file** for each new component in the frontend components directory
+   - **MANDATORY: Local HTML location** - `ui.frontend/src/main/webpack/static/<folder name>/<component-name>/index.html`
+   - **MANDATORY: Use fallback images from web** when no image is provided in local html file
+   - **MANDATORY: Include required scripts and styles in every `index.html`:**
+     - `/clientlib-base/css/base.css`
+     - `/clientlib-dependencies/css/dependencies.css`
+     - `/clientlib-dependencies/js/dependencies.js`
+     - `/clientlib-base/js/c`
+   - **MANDATORY: Ensure HTML structure is identical** between the Sightly (HTL) template and the generated `index.html` test file
+   - **MANDATORY: This guarantees consistency** in appearance and behavior between local development and AEM deployment
+8. **MANDATORY: Follow Project Conventions**
    - Use existing component patterns for dialogs (simple fixedcolumns vs complex tabs)
    - Use existing editConfig patterns (cq:inherit vs custom)
    - Match component group naming conventions
    - Always include `.content.xml` with proper `cq:Component` definition
-8. **MANDATORY: Design Accuracy Validation**
+9. **MANDATORY: Design Accuracy Validation**
    - Verify ALL visual elements from design are captured in dialog
    - Ensure multifield structures match repeatable content blocks
    - Confirm fieldset structure matches complex data requirements
    - Validate that component can recreate the exact design
    - **MANDATORY: Verify extracted content is set as default values in dialog fields**
    - **MANDATORY: Ensure all visible text from image appears as default values**
-9. Include HTL, Sling Model, dialog, editConfig
-10. Add ClientLibs if needed
-11. **MANDATORY: Code Quality Validation**
+10. Include HTL, Sling Model, dialog, editConfig
+11. Add ClientLibs if needed
+12. **MANDATORY: Code Quality Validation**
     - Read `CodeQuality-rules-latest-CS-2024-12-0.xlsx` for current rules
     - Validate against Excel file security rules (Critical)
     - Validate against Excel file reliability rules (Critical)
     - Validate against Excel file maintainability rules (Important)
     - Ensure AEM-specific annotations are correct
     - Verify code follows quality templates
-12. **MANDATORY: Generate Unit Tests**
+13. **MANDATORY: Generate Unit Tests**
     - Create test classes for Sling Models
     - Create test classes for Services (if applicable)
     - Create test classes for Servlets (if applicable)

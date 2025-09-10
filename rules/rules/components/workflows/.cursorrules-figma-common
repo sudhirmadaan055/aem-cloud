@@ -24,35 +24,20 @@
 
 **Please provide your Figma URL:**
 
-## 🚨 CRITICAL: STEP 1 - COMPREHENSIVE FIGMA DATA EXTRACTION (AI Reference Only)
-
-**⚠️ CRITICAL: EXTRACT ALL DESIGN DATA FROM FIGMA:**
-1. **🚨 MANDATORY: Get complete file data** - Use `mcp_figma_get_figma_data` with file key
-2. **🚨 MANDATORY: Extract component metadata** - Get all components and component sets
-3. **🚨 MANDATORY: Identify design system** - Extract colors, typography, spacing, effects
-4. **🚨 MANDATORY: Get node structure** - Analyze the specific node and its children
-5. **🚨 MANDATORY: Extract text content** - Get all text nodes with exact content
-6. **🚨 MANDATORY: Identify images and assets** - Find all image references and SVG elements
-7. **🚨 MANDATORY: Download required assets** - Use `mcp_figma_download_figma_images` for images
-8. **🚨 MANDATORY: Map component hierarchy** - Understand parent-child relationships
-
 **🚨 CRITICAL: THIS STEP IS MANDATORY FOR ALL FIGMA URLS - NO EXCEPTIONS**
 
-## 🚨 CRITICAL: STEP 2 - COMPONENT IDENTIFICATION AND ANALYSIS
-
-**⚠️ CRITICAL: ANALYZE FIGMA DATA TO IDENTIFY AEM COMPONENTS:**
-1. **🚨 MANDATORY: Determine input type first** - Check if URL points to single component or page design
-2. **🚨 MANDATORY: For page designs** - Identify all distinct components across breakpoints (Desktop, Mobile, Tablet)
-3. **🚨 MANDATORY: For single components** - Focus on the specific component instance only
-4. **🚨 MANDATORY: Analyze component variants** - Check for different states and sizes
-5. **🚨 MANDATORY: Map visual elements** - Identify text, images, buttons, containers
-6. **🚨 MANDATORY: Determine component complexity** - Simple, Medium, or Complex
-7. **🚨 MANDATORY: Identify reusable elements** - Find patterns that can be separate components
-8. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
-9. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
-10. **🚨 MANDATORY: Extract content for default values** - Get all text content for dialog fields
-11. **🚨 MANDATORY: Map design tokens** - Extract colors, fonts, spacing for styling
-12. **🚨 MANDATORY: Identify responsive requirements** - Check for different breakpoints
+## 🚨 CRITICAL: STEP 1 - MANDATORY : COMPONENT IDENTIFICATION AND ANALYSIS.
+	1. **🚨 MANDATORY: For page designs** - Identify all distinct components across breakpoints (Desktop, Mobile, Tablet)
+	2. **🚨 MANDATORY: For single components** - Focus on the specific component instance only
+	3. **🚨 MANDATORY: Analyze component variants** - Check for different states and sizes
+	4. **🚨 MANDATORY: Map visual elements** - Identify text, images, buttons, containers
+	5. **🚨 MANDATORY: Determine component complexity** - Simple, Medium, or Complex
+	6. **🚨 MANDATORY: Identify reusable elements** - Find patterns that can be separate components
+	7. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
+	8. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
+	9. **🚨 MANDATORY: Extract content for default values** - Get all text content for dialog fields
+	10. **🚨 MANDATORY: Map design tokens** - Extract colors, fonts, spacing for styling
+	11. **🚨 MANDATORY: Identify responsive requirements** - Check for different breakpoints
 
 **🚨 MANDATORY: DISPLAY COMPONENT STATUS SUMMARY - REQUIRED FORMAT:**
 
@@ -69,24 +54,6 @@ New Components (X):
 	X. [Actual Component Name X]
 ```
 
-**🚨 MANDATORY: PAGE vs COMPONENT DETECTION:**
-- **🚨 MANDATORY: For page designs** - Show "Page Design Analysis" and list all components found
-- **🚨 MANDATORY: For single components** - Show "Single Component Analysis" and focus on that component
-- **🚨 MANDATORY: Always mention breakpoints** - If page design, mention Desktop/Mobile/Tablet variants
-
-**🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
-
-```
-**Component Analysis:**
-
-| # | Component Name | Type | Complexity | Interactive Elements |
-|---|----------------|------|------------|---------------------|
-| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
-| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
-| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
-| ... | ... | ... | ... | ... |
-| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
-
 **Summary by Type:**
 - **[Type] Components (X):** [Component Names]
 - **[Type] Components (X):** [Component Names]
@@ -97,58 +64,11 @@ New Components (X):
 - **High (X):** [Component Names]
 ```
 
-**🚨 MANDATORY: PAGE DESIGN DETECTION RULES:**
-- **🚨 MANDATORY: Look for multiple breakpoints** - Desktop, Mobile, Tablet frames in same file
-- **🚨 MANDATORY: Identify page-level components** - Header, Footer, Hero, Content sections
-- **🚨 MANDATORY: Check for component instances** - Multiple instances of same component type
-- **🚨 MANDATORY: Analyze component hierarchy** - Parent-child relationships in page structure
-- **🚨 MANDATORY: Separate by functionality** - Navigation, Content, Interactive, Layout components
-
-**🚨 CRITICAL: This format MUST be used for ALL Figma analysis presentations - NO EXCEPTIONS**
-**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
-
-**🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
-**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
-
-```
-### 1. **Create Component Definition** - Generate components.json file
-### 2. **Create Components** - Generate AEM component files
-### 3. **Modify Analysis** - Adjust component details
-### 4. **Cancel** - Return to main menu
-```
-
-**🚨 CRITICAL: ALL TECHNICAL DETAILS MARKED AS (AI Reference Only) - NO EXCEPTIONS**
-
-**🚨 CRITICAL: THIS STEP DETERMINES COMPONENT STRUCTURE - NO EXCEPTIONS**
-
-## 🚨 CRITICAL: STEP 3 - AEM COMPONENT MAPPING (AI Reference Only)
-
-**⚠️ CRITICAL: MAP FIGMA COMPONENTS TO AEM COMPONENTS:**
-1. **🚨 MANDATORY: Check existing AEM project components** - Scan existing component directory
-2. **🚨 MANDATORY: Compare with existing components** - Match visual similarity to existing AEM components
-3. **🚨 MANDATORY: Determine component naming** - Create AEM-compliant component names
-4. **🚨 MANDATORY: Map component hierarchy** - Define parent-child component relationships
-5. **🚨 MANDATORY: Identify component dependencies** - Find components that depend on others
-6. **🚨 MANDATORY: Plan component structure** - Define HTL, Sling Model, dialog requirements
-7. **🚨 MANDATORY: Map design system integration** - Plan how to use extracted design tokens
-
-**🚨 CRITICAL: THIS STEP ENSURES AEM COMPLIANCE - NO EXCEPTIONS**
-
-## 🚨 CRITICAL: STEP 4 - COMPONENT DEVELOPMENT (AI Reference Only)
-
 **⚠️ CRITICAL: GENERATE AEM COMPONENTS FROM FIGMA DATA:**
-1. **🚨 MANDATORY: Create component structure** - Generate all required AEM files
-2. **🚨 MANDATORY: Generate HTL templates** - Create templates with extracted content as defaults
-3. **🚨 MANDATORY: Create Sling Models** - Generate models with proper annotations
-4. **🚨 MANDATORY: Build authoring dialogs** - Create dialogs with extracted content as default values
-5. **🚨 MANDATORY: Generate SCSS files** - Create styles using extracted design tokens
-6. **🚨 MANDATORY: Create edit configurations** - Generate proper edit configs
-7. **🚨 MANDATORY: Set up asset management** - Integrate downloaded Figma assets
-8. **🚨 MANDATORY: Apply design system** - Use extracted colors, fonts, spacing consistently
 
 **🚨 CRITICAL: THIS STEP CREATES PRODUCTION-READY COMPONENTS - NO EXCEPTIONS**
 
-## 🚨 CRITICAL: STEP 5 - QUALITY ASSURANCE AND TESTING (AI Reference Only)
+## 🚨 CRITICAL: STEP 4 - QUALITY ASSURANCE AND TESTING (AI Reference Only)
 
 **⚠️ CRITICAL: ENSURE COMPONENT QUALITY AND COMPLIANCE:**
 1. **🚨 MANDATORY: Generate unit tests** - Create comprehensive test classes

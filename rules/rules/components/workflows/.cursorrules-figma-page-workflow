@@ -1,0 +1,50 @@
+**🚨 MANDATORY: ALWAYS read `../workflows/.cursorrules-figma-common` FIRST** - **NO EXCEPTIONS**
+
+**🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
+
+```
+**Component Analysis:**
+
+| # | Component Name | Type | Complexity | Interactive Elements |
+|---|----------------|------|------------|---------------------|
+| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
+| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
+| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
+| ... | ... | ... | ... | ... |
+| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+
+
+**🚨 MANDATORY: PAGE DESIGN DETECTION RULES:**
+- **🚨 MANDATORY: Look for multiple breakpoints** - Desktop, Mobile, Tablet frames in same file
+- **🚨 MANDATORY: Identify page-level components** - Header, Footer, Hero, Content sections
+- **🚨 MANDATORY: Check for component instances** - Multiple instances of same component type
+- **🚨 MANDATORY: Analyze component hierarchy** - Parent-child relationships in page structure
+- **🚨 MANDATORY: Separate by functionality** - Navigation, Content, Interactive, Layout components
+
+**🚨 CRITICAL: This format MUST be used for ALL Figma analysis presentations - NO EXCEPTIONS**
+**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
+
+**🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
+**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
+
+```
+### 1. **Create Component Definition** - Generate components.json file
+### 2. **Create Components** - Generate AEM component files
+### 3. **Modify Analysis** - Adjust component details
+### 4. **Cancel** - Return to main menu
+```
+
+**🚨 CRITICAL: ALL TECHNICAL DETAILS MARKED AS (AI Reference Only) - NO EXCEPTIONS**
+
+**🚨 CRITICAL: THIS STEP DETERMINES COMPONENT STRUCTURE - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 2 - AEM COMPONENT MAPPING (AI Reference Only)
+
+**⚠️ CRITICAL: MAP FIGMA COMPONENTS TO AEM COMPONENTS:**
+1. **🚨 MANDATORY: Check existing AEM project components** - Scan existing component directory
+2. **🚨 MANDATORY: Compare with existing components** - Match visual similarity to existing AEM components
+3. **🚨 MANDATORY: Determine component naming** - Create AEM-compliant component names
+4. **🚨 MANDATORY: Map component hierarchy** - Define parent-child component relationships
+5. **🚨 MANDATORY: Identify component dependencies** - Find components that depend on others
+6. **🚨 MANDATORY: Plan component structure** - Define HTL, Sling Model, dialog requirements
+7. **🚨 MANDATORY: Map design system integration** - Plan how to use extracted design tokens

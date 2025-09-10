@@ -1,0 +1,14 @@
+**🚨 MANDATORY: ALWAYS read `../workflows/.cursorrules-figma-common` FIRST** - **NO EXCEPTIONS**
+
+**🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
+
+```
+**Component Analysis:**
+
+| # | Component Name | Type | Complexity | Interactive Elements |
+|---|----------------|------|------------|---------------------|
+| 1 | [Component Name] | [Type] | [Complexity] | [Interactive Elements] |
+
+
+## 🚨 COMPONENT DEVELOPMENT (AI Reference Only)
+1. **🚨 MANDATORY: Refer `../core/.cursorrules-component-workflow` file for component development** - **NO EXCEPTIONS**

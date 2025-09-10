@@ -4,11 +4,17 @@
 
 **Choose your development task:**
 
+## MANDATORY At any time, you can type **`option`** to view the available options. First check if architype or codebase is already setup. If already setup, automatically run the context setup first, then display the available Options.
+
+
 ### 1. **Archetype Project Creation** - Create new AEM project
 *Interactive AEM project setup using Maven archetype*
 
-### 2. **AEM Components Creation Workflow** - Develop AEM components
-*Component identification, development, and styling*
+### 2. **AEM Components Creation Workflow** - Develop A Page. 
+*Component identification through figma or an image, development, and styling*
+
+### 2.1 **AEM Components Creation Workflow** - Develop A Single Component. 
+*Component identification through figma or an image, development, and styling*
 
 ### 3. **AEM Templates Creation Workflow** - Create AEM templates
 *Template creation with policies and responsive design*
@@ -79,6 +85,9 @@
   
   ### 2. **Figma URL** - Create components from Figma URLs
   *Direct Figma file analysis and AEM component generation*
+
+  ### 2.1 **Figma URL** - Create components from Figma URLs
+  *Direct Figma file analysis and AEM component generation*
   
   ### 3. **Web Page URL** - Create components from live websites
   *Analyze existing web pages and extract reusable AEM components*
@@ -86,8 +95,9 @@
   **Which option? (1, 2, or 3)**
   ```
 - **If user selects 1:** **IMMEDIATELY read `.cursorrules-component-workflow`**
-- **If user selects 2:** **IMMEDIATELY read `../components/.cursorrules-figma-workflow`**
-- **If user selects 3:** **IMMEDIATELY read `../components/.cursorrules-webpage-workflow`**
+- **If user selects 2:** **IMMEDIATELY read `../components/workflows/.cursorrules-figma-page-workflow`**
+- **If user selects 2.1:** **IMMEDIATELY read `../components/workflows/.cursorrules-figma-component-workflow`**
+- **If user selects 3:** **IMMEDIATELY read `../components/workflows/.cursorrules-webpage-workflow`**
 - **FOLLOW the exact process of selected workflow**
 - **NEVER ask for component details directly**
 

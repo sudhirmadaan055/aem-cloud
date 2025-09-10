@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Products"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Content"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <sectionLabel
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Section Label"
+                                name="./sectionLabel"
+                                value="Catalogue"/>
+                            <title
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Title"
+                                name="./title"
+                                value="Our Products"/>
+                            <description
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                fieldLabel="Description"
+                                name="./description"
+                                value="From comforting dumplings to vibrant street food, Bibigo celebrates how consumers around the world make Korean food their own."/>
+                            <exploreButtonText
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldLabel="Explore Button Text"
+                                name="./exploreButtonText"
+                                value="Explore Products"/>
+                            <exploreButtonLink
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Explore Button Link"
+                                name="./exploreButtonLink"/>
+                        </items>
+                    </content>
+                    <products
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Products"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                            <products
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="Products"
+                                name="./products">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                    jcr:title="Product">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <productImage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Product Image"
+                                            name="./productImage"/>
+                                        <productTitle
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Product Title"
+                                            name="./productTitle"/>
+                                        <productAttributes
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                            fieldLabel="Product Attributes"
+                                            name="./productAttributes">
+                                            <field
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                jcr:title="Attribute">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <attribute
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Attribute"
+                                                        name="./attribute"/>
+                                                </items>
+                                            </field>
+                                        </productAttributes>
+                                        <productDescription
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Product Description"
+                                            name="./productDescription"/>
+                                        <whereToBuyText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Where to Buy Button Text"
+                                            name="./whereToBuyText"
+                                            value="WHERE TO BUY"/>
+                                        <whereToBuyLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Where to Buy Button Link"
+                                            name="./whereToBuyLink"/>
+                                        <shopNowText
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Shop Now Button Text"
+                                            name="./shopNowText"
+                                            value="shop now"/>
+                                        <shopNowLink
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldLabel="Shop Now Button Link"
+                                            name="./shopNowLink"/>
+                                        <backgroundColor
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                            fieldLabel="Background Color"
+                                            name="./backgroundColor"
+                                            value="#F85001">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <orange
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Orange"
+                                                    value="#F85001"/>
+                                                <blue
+                                                    jcr:primaryType="nt:unstructured"
+                                                    text="Blue"
+                                                    value="#CBEAF7"/>
+                                            </items>
+                                        </backgroundColor>
+                                    </items>
+                                </field>
+                            </products>
+                        </items>
+                    </products>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Related Articles Component - Local Development</title>
+    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
+    <link rel="stylesheet" href="/clientlib-base/css/c.css">
+    <style>
+        /* Component-specific styles */
+        .related-articles {
+            background-color: #FFFBE3;
+            padding: 32px 44px;
+            min-height: 892px;
+        }
+
+        .related-articles__container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .related-articles__header {
+            margin-bottom: 16px;
+        }
+
+        .related-articles__header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .related-articles__illustration {
+            width: 69px;
+            height: 121px;
+            margin-bottom: 16px;
+        }
+
+        .related-articles__illustration svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .related-articles__content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .related-articles__title {
+            font-family: 'Malik', serif;
+            font-weight: 800;
+            font-size: 24px;
+            line-height: 1.25em;
+            text-transform: capitalize;
+            color: #013B1C;
+            margin: 0;
+        }
+
+        .related-articles__description {
+            font-family: 'Averta Std PE', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5em;
+            color: #0F3700;
+            margin: 0;
+        }
+
+        .related-articles__cta {
+            margin-top: 16px;
+        }
+
+        .related-articles__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 8px 24px;
+            height: 40px;
+            background-color: #004122;
+            border: 1.5px solid;
+            border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%) 1;
+            border-radius: 16px;
+            font-family: 'Averta Std PE', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.25em;
+            letter-spacing: 4%;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .related-articles__button:hover {
+            background-color: #013B1C;
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .related-articles__carousel-container {
+            margin: 16px 0;
+        }
+
+        .related-articles__carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 16px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .related-articles__carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .related-articles__card {
+            flex: 0 0 328px;
+            background-color: #FFFEFC;
+            border: 2px solid #F5EAD5;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .related-articles__card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-articles__card-image {
+            width: 100%;
+            height: 250.92px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .related-articles__card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .related-articles__card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .related-articles__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .related-articles__tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px;
+            background-color: #D6F1CC;
+            border-radius: 8px;
+            font-family: 'Averta Std PE', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            line-height: 1.25em;
+            letter-spacing: 4%;
+            text-transform: uppercase;
+            color: #0F3700;
+        }
+
+        .related-articles__tag:nth-child(2) {
+            background-color: #CBEAF7;
+            color: #337CC4;
+        }
+
+        .related-articles__card-title {
+            font-family: 'Malik', serif;
+            font-weight: 800;
+            font-size: 16px;
+            line-height: 1.25em;
+            color: #013B1C;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .related-articles__card-cta {
+            margin-top: auto;
+        }
+
+        .related-articles__read-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            background-color: #30B700;
+            transition: all 0.3s ease;
+        }
+
+        .related-articles__read-more:hover {
+            background-color: #28A000;
+            transform: scale(1.1);
+        }
+
+        .related-articles__read-more svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .related-articles__navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .related-articles__nav-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid #D4D4D4;
+            border-radius: 50px;
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .related-articles__nav-button:hover:not(:disabled) {
+            border-color: #F85001;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-articles__nav-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .related-articles__nav-button--next {
+            border-color: #F85001;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .related-articles__nav-button svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .related-articles__pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            height: 40px;
+        }
+
+        .related-articles__pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #F85001;
+            background-color: transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .related-articles__pagination-dot--active {
+            background-color: #F85001;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .related-articles {
+                padding: 16px 20px;
+            }
+
+            .related-articles__container {
+                max-width: 100%;
+            }
+
+            .related-articles__carousel {
+                gap: 16px;
+            }
+
+            .related-articles__card {
+                flex: 0 0 280px;
+            }
+
+            .related-articles__title {
+                font-size: 20px;
+            }
+
+            .related-articles__description {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .related-articles {
+                padding: 12px 16px;
+            }
+
+            .related-articles__card {
+                flex: 0 0 240px;
+            }
+
+            .related-articles__card-image {
+                height: 200px;
+            }
+
+            .related-articles__title {
+                font-size: 18px;
+            }
+
+            .related-articles__button {
+                padding: 6px 20px;
+                height: 36px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Related Articles Component -->
+    <div class="related-articles">
+        <div class="related-articles__container">
+            <!-- Section Header -->
+            <div class="related-articles__header">
+                <div class="related-articles__header-content">
+                    <!-- Decorative Illustration -->
+                    <div class="related-articles__illustration">
+                        <svg width="69" height="121" viewBox="0 0 69 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19.09 19.31L43.2 63.52L19.09 107.73" stroke="#E84E0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M0.95 29.51L67.15 114.5" stroke="#FCC529" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M37.47 60.6L46.86 76.87" stroke="#E84E0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M49.97 70.07L57.12 82.91" stroke="#E84E0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21.97 54.15L33.53 69.17" stroke="#E84E0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M1.06 71.08L56.41 114.5" stroke="#E84E0F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <!-- Section Content -->
+                    <div class="related-articles__content">
+                        <h2 class="related-articles__title">Related Articles</h2>
+                        <p class="related-articles__description">Dive deeper into the stories, innovations, and how our products are shaping kitchens, markets, and food culture worldwide.</p>
+                    </div>
+                    
+                    <!-- Explore More Button -->
+                    <div class="related-articles__cta">
+                        <a href="#" class="related-articles__button">
+                            Explore more
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Articles Carousel -->
+            <div class="related-articles__carousel-container">
+                <div class="related-articles__carousel">
+                    <article class="related-articles__card">
+                        <!-- Article Image -->
+                        <div class="related-articles__card-image">
+                            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=250&fit=crop" alt="Expanding Flavors and Opportunities in Global Markets" loading="lazy" />
+                        </div>
+                        
+                        <!-- Article Content -->
+                        <div class="related-articles__card-content">
+                            <!-- Article Tags -->
+                            <div class="related-articles__tags">
+                                <span class="related-articles__tag">03 May 2025</span>
+                                <span class="related-articles__tag">products</span>
+                            </div>
+                            
+                            <!-- Article Title -->
+                            <h3 class="related-articles__card-title">Expanding Flavors and Opportunities in Global Markets</h3>
+                            
+                            <!-- Read More Button -->
+                            <div class="related-articles__card-cta">
+                                <a href="#" class="related-articles__read-more" aria-label="Read more about Expanding Flavors and Opportunities in Global Markets">
+                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="16" cy="16" r="16" fill="#30B700"/>
+                                        <path d="M11.2 6.4L22.4 16L11.2 25.6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="related-articles__card">
+                        <!-- Article Image -->
+                        <div class="related-articles__card-image">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop" alt="$571M Investment to Scale Production in U.S. & Europe" loading="lazy" />
+                        </div>
+                        
+                        <!-- Article Content -->
+                        <div class="related-articles__card-content">
+                            <!-- Article Tags -->
+                            <div class="related-articles__tags">
+                                <span class="related-articles__tag">12 jun 2025</span>
+                                <span class="related-articles__tag">news</span>
+                            </div>
+                            
+                            <!-- Article Title -->
+                            <h3 class="related-articles__card-title">$571M Investment to Scale Production in U.S. & Europe</h3>
+                            
+                            <!-- Read More Button -->
+                            <div class="related-articles__card-cta">
+                                <a href="#" class="related-articles__read-more" aria-label="Read more about $571M Investment to Scale Production in U.S. & Europe">
+                                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="16" cy="16" r="16" fill="#30B700"/>
+                                        <path d="M11.2 6.4L22.4 16L11.2 25.6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <div class="related-articles__navigation">
+                <button class="related-articles__nav-button related-articles__nav-button--prev" aria-label="Previous articles" disabled>
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="19.5" stroke="#D4D4D4" stroke-width="1"/>
+                        <path d="M17 10L27 20L17 30" stroke="#D4D4D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <!-- Pagination Dots -->
+                <div class="related-articles__pagination">
+                    <span class="related-articles__pagination-dot related-articles__pagination-dot--active"></span>
+                    <span class="related-articles__pagination-dot"></span>
+                </div>
+                
+                <button class="related-articles__nav-button related-articles__nav-button--next" aria-label="Next articles">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="20" r="19.5" stroke="#F85001" stroke-width="1"/>
+                        <path d="M23 10L13 20L23 30" stroke="#F85001" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/c"></script>
+    <script>
+        // Carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.related-articles__carousel');
+            const prevButton = document.querySelector('.related-articles__nav-button--prev');
+            const nextButton = document.querySelector('.related-articles__nav-button--next');
+            const paginationDots = document.querySelectorAll('.related-articles__pagination-dot');
+            
+            let currentIndex = 0;
+            const cards = carousel.querySelectorAll('.related-articles__card');
+            const totalCards = cards.length;
+            const cardsPerView = window.innerWidth <= 768 ? 1 : 2;
+            const maxIndex = Math.max(0, totalCards - cardsPerView);
+
+            function updateCarouselState() {
+                const cardWidth = cards[0] ? cards[0].offsetWidth + 24 : 352;
+                const translateX = -currentIndex * cardWidth;
+                carousel.style.transform = `translateX(${translateX}px)`;
+                
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex >= maxIndex;
+                
+                paginationDots.forEach((dot, index) => {
+                    dot.classList.toggle('related-articles__pagination-dot--active', index === currentIndex);
+                });
+            }
+
+            prevButton.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarouselState();
+                }
+            });
+
+            nextButton.addEventListener('click', function() {
+                if (currentIndex < maxIndex) {
+                    currentIndex++;
+                    updateCarouselState();
+                }
+            });
+
+            paginationDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    currentIndex = index;
+                    updateCarouselState();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

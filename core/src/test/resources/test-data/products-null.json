@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/products",
+    "title": "Test Title",
+    "products": null
+  }
+}
