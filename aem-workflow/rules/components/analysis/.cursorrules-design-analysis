@@ -1,0 +1,251 @@
+# AEM Component Design Analysis Rules - Main Orchestrator
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+
+## 🚨 MANDATORY: MODULAR ANALYSIS FILES - READ IN ORDER
+
+**⚠️ CRITICAL: ALWAYS read these focused analysis files in EXACT order:**
+1. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-structure` FIRST** - **NO EXCEPTIONS** (Component detection, counting, classification)
+2. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-interactive` SECOND** - **NO EXCEPTIONS** (Interactive patterns, UI elements, user interactions)
+3. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-visual` THIRD** - **NO EXCEPTIONS** (Visual style analysis, colors, typography, CSS generation)
+4. **🚨 MANDATORY: ALWAYS read `./analysis/.cursorrules-design-analysis-content` FOURTH** - **NO EXCEPTIONS** (Content structure, data mapping, dialog planning)
+
+**🚨 CRITICAL: VIOLATION PREVENTION - BEFORE EVERY STEP:**
+- **🚨 DO NOT VIOLATE: Show only clean summary to user** - **NO STEP-BY-STEP DETAILS**
+- **🚨 DO NOT VIOLATE: Hide internal processing** - **NO VERBOSE ANALYSIS**
+- **🚨 DO NOT VIOLATE: Follow exact user interface rules** - **NO DEVIATIONS**
+- **🚨 DO NOT VIOLATE: Use exact wording from rule files** - **NO PARAPHRASING**
+- **🚨 DO NOT VIOLATE: Read rule files before responding** - **NO ASSUMPTIONS**
+- **🚨 DO NOT VIOLATE: ALWAYS show options after analysis** - **NO EXCEPTIONS**
+- **🚨 DO NOT VIOLATE: Complete the analysis workflow** - **NO INCOMPLETE RESPONSES**
+- **🚨 DO NOT VIOLATE: Maintain consistency across environments** - **SAME PROCESS ON ALL SYSTEMS**
+- **🚨 DO NOT VIOLATE: Use actual titles and headings** - **NO GENERIC COMPONENT NAMES**
+
+## 🚨 FIGMA INTEGRATION RULES (AI Reference Only)
+
+**⚠️ CRITICAL: FOR FIGMA URLS - USE FIGMA DATA ANALYSIS:**
+1. **🚨 MANDATORY: Extract data from Figma MCP** - Use `mcp_figma_get_figma_data` tool
+2. **🚨 MANDATORY: Analyze component metadata** - Get components, component sets, and variants
+3. **🚨 MANDATORY: Extract design system** - Get colors, typography, spacing, effects
+4. **🚨 MANDATORY: Identify text content** - Extract all text nodes for default values
+5. **🚨 MANDATORY: Map visual elements** - Identify containers, images, buttons, text
+6. **🚨 MANDATORY: Determine component hierarchy** - Understand parent-child relationships
+7. **🚨 MANDATORY: Extract asset references** - Identify images and graphics
+8. **🚨 MANDATORY: Analyze responsive behavior** - Check for different breakpoints
+
+**🚨 CRITICAL: FIGMA ANALYSIS IS MANDATORY FOR FIGMA URLS - NO EXCEPTIONS**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for design analysis details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+8. **NEVER skip Figma data extraction when Figma URL is provided**
+9. **NEVER use generic component names** - Always use actual titles, headings, and section names from the source content when available
+10. **NEVER create component names** - Always extract and use the exact titles and headings from the source material when available
+11. **NEVER miss visual sections** - Must scan systematically for ALL visual sections, not just those with titles
+12. **NEVER skip functional components** - Must identify components based on function and visual appearance
+13. **NEVER over-decompose unified sections** - Sections with main title and multiple content blocks are single components
+14. **NEVER break down sections by sub-headings** - Count by visual boundaries, not internal content structure
+
+## **CRITICAL: Design Analysis Requirements**
+
+### **🚨 MANDATORY: ANALYSIS WORKFLOW ORCHESTRATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Follow the 13-step analysis process by reading modular files in order:**
+1. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-structure`** - Steps 0-5 (Component detection, counting, classification, layout)
+2. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-interactive`** - Steps 2A, 2B, 7 (Interactive patterns, UI elements, user interactions)
+3. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-visual`** - Steps 6, 11 (Visual style analysis, CSS generation)
+4. **🚨 MANDATORY: Read `./analysis/.cursorrules-design-analysis-content`** - Steps 8-10, 12-13 (Content structure, data mapping, dialog planning)
+
+**🚨 CRITICAL: ALL MODULAR FILES MUST BE READ IN EXACT ORDER - NO EXCEPTIONS**
+
+### **🚨 MANDATORY: Component Classification & User Instruction - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: BEFORE proceeding with component creation, ALWAYS classify and instruct user:**
+
+#### **🚨 MANDATORY: Step 1.5: Component Classification - REQUIRED BEFORE CREATION**
+1. **🚨 MANDATORY: Classify component type** - Static Content, Interactive Content, Layout Component, Form Component, E-commerce Component
+2. **🚨 MANDATORY: Determine complexity level** - Simple, Medium, High
+3. **🚨 MANDATORY: Identify framework requirements** - Standard Component, Listing Framework, Form Framework, E-commerce Framework
+4. **🚨 MANDATORY: Map interactive features** - Navigation elements, content switching, state management, user interactions
+5. **🚨 MANDATORY: Plan component architecture** - Files to be created, Sling Model requirements, clientlibs needs
+6. **🚨 MANDATORY: If Listing Framework identified** - **IMMEDIATELY read `../workflows/.cursorrules-aem-listing` for framework approach**
+7. **🚨 MANDATORY: STOP IMMEDIATELY if Listing Component detected** - **DO NOT PROCEED WITHOUT READING LISTING RULES FIRST**
+8. **🚨 MANDATORY: VERIFY listing framework rules read** - **CONFIRM BEFORE ANY LISTING COMPONENT CREATION**
+9. **🚨 CRITICAL: LISTING COMPONENT DETECTION TRIGGERS MANDATORY FRAMEWORK CHECK** - **ZERO TOLERANCE FOR VIOLATIONS**
+10. **🚨 CRITICAL: ANY LISTING COMPONENT CREATION WITHOUT FRAMEWORK DETECTION = IMMEDIATE FAILURE** - **NO EXCEPTIONS**
+
+#### **🚨 MANDATORY: Step 1.6: User Instruction & Confirmation - REQUIRED BEFORE CREATION**
+1. **🚨 MANDATORY: Display component classification** - Show type, complexity, framework, interactive features
+2. **🚨 MANDATORY: Explain what will be created** - List all files and their purposes
+3. **🚨 MANDATORY: Show interactive features** - Explain navigation patterns, state management, user interactions
+4. **🚨 MANDATORY: Request user confirmation** - Ask user to approve before proceeding
+5. **🚨 MANDATORY: Wait for user response** - Do NOT proceed without explicit user approval
+
+**🚨 CRITICAL: USER INSTRUCTION FORMAT - NO EXCEPTIONS**
+**⚠️ CRITICAL: When presenting component classification, ALWAYS use this exact format:**
+
+```
+🎯 **Component Classification:**
+
+**Component Name:** [Actual Component Name]
+**Type:** [Static Content/Interactive Content/Layout Component/Form Component/E-commerce Component]
+**Complexity:** [Simple/Medium/High]
+**Framework:** [Standard Component/Listing Framework/Form Framework/E-commerce Framework]
+
+**What will be created:**
+- .content.xml (Component definition)
+- _cq_dialog.xml (Authoring dialog)
+- _cq_editConfig.xml (Edit configuration)
+- .html (HTL template)
+- Sling Model (Java backend)
+- SCSS (Styling)
+
+**Interactive Features:**
+- [List any interactive elements]
+- [Navigation patterns]
+- [State management]
+- [User interactions]
+
+**Do you want to proceed with creating this component? (y/n)**
+```
+
+**🚨 CRITICAL: This format MUST be used for ALL component classifications - NO EXCEPTIONS**
+**🚨 CRITICAL: ALWAYS wait for user confirmation before proceeding - NO EXCEPTIONS**
+
+### **🚨 MANDATORY: Analysis Workflow - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: When performing component analysis, ALWAYS follow this workflow:**
+
+#### **Universal Workflow for All Scenarios:**
+1. **🚨 MANDATORY: Read modular analysis files** - Follow the 4 modular files in exact order
+2. **🚨 MANDATORY: Determine image and component structure** - Count images and components per image
+3. **🚨 MANDATORY: Identify all visual components** - Extract all distinct components from design
+4. **🚨 MANDATORY: Categorize all as New components** - All components treated as new for consistency
+5. **🚨 MANDATORY: Process all components** - Apply 13-step analysis to all identified components
+6. **🚨 MANDATORY: Show processing overview** - Display "Processing X images with Y total components"
+7. **🚨 MANDATORY: Process each component sequentially** - Apply 13-step analysis to each component
+8. **🚨 MANDATORY: Show clean step format** - Display "Step X: [Name]" and "Completed" only
+9. **🚨 MANDATORY: No verbose details during processing** - Keep analysis clean and concise
+10. **🚨 MANDATORY: Create comprehensive components.json** - Include ALL components with status indicators
+11. **🚨 MANDATORY: Show batch completion summary** - Display total components by status and next step options
+12. **🚨 MANDATORY: ALWAYS show options after analysis** - Display the 4 options immediately after analysis format
+13. **🚨 MANDATORY: Wait for user selection** - Do NOT assume next step, ask user to choose
+
+#### **Component Development Workflow:**
+1. **🚨 MANDATORY: Classify component** - Determine type, complexity, framework, interactive features
+2. **🚨 MANDATORY: Instruct user** - Display classification and what will be created
+3. **🚨 MANDATORY: Get user confirmation** - Wait for explicit user approval before proceeding
+4. **🚨 MANDATORY: Create component files** - Generate all necessary AEM component files
+5. **🚨 MANDATORY: Show completion summary** - Display created files and next step options
+
+#### **🚨 MANDATORY: User Interface Rules - NO EXCEPTIONS**
+1. **🚨 MANDATORY: Show only clean summary** - Display component count and status only
+2. **🚨 MANDATORY: Hide internal processing** - Do NOT show step-by-step analysis details
+3. **🚨 MANDATORY: Show final results only** - Display components.json creation and next options
+4. **🚨 MANDATORY: Keep user interface minimal** - Present only essential information
+5. **🚨 MANDATORY: Mark verbose content as (AI Reference Only)** - Internal processing details for AI only
+
+**🚨 MANDATORY: User Instruction Format - NO EXCEPTIONS**
+**⚠️ CRITICAL: When presenting analysis results, ALWAYS use this exact format:**
+
+```
+Image Count: X image(s) uploaded
+Image Analysis: [Single image containing multiple distinct visual sections] OR [Multiple images with single component each] OR [Multiple images with multiple components each]
+Component Count: X distinct components identified in the image(s)
+
+Existing Components (0)
+Modified Components (0)
+New Components (X):
+	1. [Actual Component Name 1]
+	2. [Actual Component Name 2]
+	3. [Actual Component Name 3]
+	... 
+	X. [Actual Component Name X]
+
+**Component Analysis:**
+
+| # | Component Name | Type | Complexity | Interactive Elements |
+|---|----------------|------|------------|---------------------|
+| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
+| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
+| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
+| ... | ... | ... | ... | ... |
+| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+
+**Summary by Type:**
+- **[Type] Components (X):** [Component Names]
+- **[Type] Components (X):** [Component Names]
+
+**Summary by Complexity:**
+- **Simple (X):** [Component Names]
+- **Medium (X):** [Component Names]
+- **High (X):** [Component Names]
+```
+
+**🚨 CRITICAL: This format MUST be used for ALL analysis presentations - NO EXCEPTIONS**
+**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
+
+**🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
+**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
+
+```
+### 1. **Create Component Definition** - Generate components.json file
+### 2. **Develop Component** - Generate AEM component code  
+### 3. **Modify Component** - Update the component definition
+### 4. **Start Over** - Analyze a different image
+
+**Which option? (1, 2, 3, or 4)**
+```
+
+**🚨 CRITICAL: This options display is MANDATORY and cannot be skipped - NO EXCEPTIONS**
+
+**✅ SHOW TO USER:**
+- Image count and analysis details
+- Component count and identification
+- Component status breakdown (Existing, Modified, New)
+- Component names and categories
+- Next step options (1, 2, 3, 4)
+- Clean, informative interface
+
+**❌ HIDE FROM USER (AI Reference Only):**
+- Step-by-step analysis details
+- Internal processing steps
+- Verbose component analysis
+- Technical implementation details
+- "Processing Component X of Y" messages
+- Individual step completions
+- Internal validation steps
+
+**🚨 CRITICAL: components.json File Creation Rules:**
+- **🚨 MANDATORY: ALWAYS use write tool to create components.json** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Delete existing components.json if it exists** - **REQUIRED**
+- **🚨 MANDATORY: Create fresh components.json with complete component definition** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Include ALL visual elements as fields** - **REQUIRED**
+- **🚨 MANDATORY: Include proper JSON structure with projectName, components, contextFiles, designNotes** - **REQUIRED**
+
+**Required Options to Show After Analysis:**
+- **Option 1: Create Component Definition** - Generate components.json file
+- **Option 2: Develop Component** - Generate AEM component code  
+- **Option 3: Modify Component** - Update the component definition
+- **Option 4: Start Over** - Analyze a different image
+
+**Required Options to Show After Component Development:**
+- **Option 1: Create Component Definition** - Generate components.json file
+- **Option 2: Test Component** - Build and deploy the component to AEM
+- **Option 3: Modify Component** - Update the component definition or code
+- **Option 4: Create Context File** - Generate detailed implementation guidance
+- **Option 5: Start Over** - Analyze a different image

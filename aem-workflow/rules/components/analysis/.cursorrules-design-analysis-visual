@@ -1,0 +1,45 @@
+# AEM Design Analysis - Visual Style & CSS Generation
+
+## 🚨 MANDATORY: Visual Style Analysis & CSS Generation
+
+### **🚨 MANDATORY: STEP 6: Visual Style Analysis - REQUIRED FIFTH**
+1. **🚨 MANDATORY: Extract exact color values** - Use color picker tools to get precise hex colors from design
+2. **🚨 MANDATORY: Map color usage systematically** - Background colors, text colors, accent colors, border colors
+3. **🚨 MANDATORY: Analyze typography comprehensively** - Font families, sizes, weights, line heights, letter spacing
+4. **🚨 MANDATORY: Measure exact spacing and dimensions** - Padding, margins, element widths, heights in pixels
+5. **🚨 MANDATORY: Identify all visual effects** - Shadows, borders, rounded corners, gradients, transitions
+6. **🚨 MANDATORY: Extract design tokens** - Create CSS variables for colors, fonts, spacing, breakpoints
+7. **🚨 MANDATORY: Analyze layout patterns** - Flexbox, grid, positioning, alignment, justify-content
+8. **🚨 MANDATORY: Identify responsive behavior** - Mobile, tablet, desktop variations and breakpoints
+9. **🚨 MANDATORY: Map interactive states** - Hover, active, focus, disabled states with exact styling
+10. **🚨 MANDATORY: Generate CSS variables** - :root variables for consistent theming across components
+
+### **🚨 MANDATORY: STEP 11: CSS Generation Planning - REQUIRED TENTH**
+1. **🚨 MANDATORY: Create design token mapping** - Map extracted colors, fonts, spacing to CSS variables
+2. **🚨 MANDATORY: Plan component-specific styles** - Generate CSS that matches exact design requirements
+3. **🚨 MANDATORY: Implement layout structure** - Use exact flexbox/grid properties from design analysis
+4. **🚨 MANDATORY: Add responsive breakpoints** - Mobile-first approach with tablet/desktop adaptations
+5. **🚨 MANDATORY: Generate interactive states** - Hover, active, focus states with exact styling
+6. **🚨 MANDATORY: Create BEM class structure** - Component-specific CSS classes following BEM methodology
+7. **🚨 MANDATORY: Validate design accuracy** - Ensure generated CSS matches input design 90%+ accuracy
+
+### **🚨 MANDATORY: CSS Generation Requirements - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: CSS generation MUST follow design accuracy requirements:**
+1. **🚨 MANDATORY: Read CSS generation rules** - **ALWAYS read `../generation/.cursorrules-css-generation` FIRST**
+2. **🚨 MANDATORY: Extract exact design values** - Colors, fonts, spacing, dimensions from design analysis
+3. **🚨 MANDATORY: Generate component-specific CSS** - No generic templates, design-specific styling only
+4. **🚨 MANDATORY: Implement responsive design** - Mobile-first approach with tablet/desktop adaptations
+5. **🚨 MANDATORY: Use BEM methodology** - Proper class naming structure for maintainability
+6. **🚨 MANDATORY: Create CSS variables** - Design tokens for consistent theming
+7. **🚨 MANDATORY: Validate design accuracy** - 90%+ visual accuracy required
+
+### **🚨 MANDATORY: Design Accuracy Checklist**
+- [ ] **Color accuracy** - All colors match design within 5% tolerance
+- [ ] **Typography accuracy** - Font families, sizes, weights match design
+- [ ] **Layout accuracy** - Positioning, spacing, dimensions match design
+- [ ] **Visual effects accuracy** - Shadows, borders, gradients match design
+- [ ] **Interactive states** - Hover, active, focus states implemented
+- [ ] **Responsive behavior** - Mobile, tablet, desktop adaptations work
+- [ ] **BEM methodology** - Proper class naming structure
+- [ ] **CSS variables** - Design tokens properly implemented

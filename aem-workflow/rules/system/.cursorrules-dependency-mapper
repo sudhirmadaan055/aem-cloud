@@ -1,0 +1,185 @@
+# MANDATORY RULE FILE DEPENDENCY MAPPER
+
+## 🚨 CRITICAL: DEPENDENCY MAPPING SYSTEM - NO EXCEPTIONS
+
+**⚠️ CRITICAL: This file maps ALL rule file dependencies and MUST be followed exactly**
+
+### **🚨 MANDATORY: CORE DEPENDENCY CHAIN - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ALWAYS follow this exact dependency chain:**
+
+#### **Level 1: Core Entry Points**
+1. **`../core/.cursorrules`** → Main options (1, 2, or 3)
+   - **Dependencies**: None (entry point)
+   - **References**: `../core/.cursorrules-project-creation`, `../core/.cursorrules-component-workflow`, `../core/.cursorrules-template-workflow`
+
+#### **Level 2: Main Workflows**
+2. **`../core/.cursorrules-project-creation`** → Project creation process
+   - **Dependencies**: `../core/.cursorrules` (must be read first)
+   - **References**: None (self-contained)
+
+3. **`../core/.cursorrules-component-workflow`** → Component development process
+   - **Dependencies**: `../core/.cursorrules` (must be read first)
+   - **References**: Multiple component and technical rule files
+
+4. **`../core/.cursorrules-template-workflow`** → Template creation process
+   - **Dependencies**: `../core/.cursorrules` (must be read first)
+   - **References**: Component workflows, Figma workflow, technical rule files
+
+#### **Level 3: Template Analysis (Referenced by template-workflow)**
+4. **`../components/.cursorrules-figma-workflow`** → Figma component creation
+   - **Dependencies**: `../core/.cursorrules-template-workflow` (when Figma source selected)
+   - **References**: Component workflow files
+
+5. **`../core/.cursorrules-component-workflow`** → Image-based component creation
+   - **Dependencies**: `../core/.cursorrules-template-workflow` (when website source selected)
+   - **References**: Component analysis files
+
+#### **Level 4: Component Analysis (Referenced by component-workflow)**
+6. **`../components/.cursorrules-design-analysis`** → 9-step analysis process
+   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+   - **References**: None (self-contained)
+
+7. **`../components/.cursorrules-aem-component-structure`** → File structure rules
+   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+   - **References**: None (self-contained)
+
+8. **`../components/.cursorrules-htl-best-practices`** → HTL implementation
+   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+   - **References**: None (self-contained)
+
+9. **`../components/.cursorrules-aem-dialogs`** → Dialog configuration
+   - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+   - **References**: None (self-contained)
+
+10. **`../components/.cursorrules-aem-complexity`** → Complexity levels
+    - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+11. **`../components/.cursorrules-aem-listing`** → Listing framework
+    - **Dependencies**: `../core/.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+12. **`../components/.cursorrules-aem-components`** → General best practices
+    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+#### **Level 4: Technical Implementation (Referenced by component-workflow)**
+11. **`.cursorrules-aem-cloud`** → Cloud Service compliance
+    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+12. **`.cursorrules-aem-sling`** → Sling framework
+    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+13. **`.cursorrules-aem-i18n`** → Internationalization
+    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+14. **`.cursorrules-maven`** → Maven build
+    - **Dependencies**: `.cursorrules-component-workflow` (must be read first)
+    - **References**: None (self-contained)
+
+15. **`.cursorrules-content-filtering`** → Content violation prevention
+    - **Dependencies**: `.cursorrules` (must be read first)
+    - **References**: None (self-contained)
+
+16. **`.cursorrules-listing-enforcement`** → Listing component violation prevention
+    - **Dependencies**: `.cursorrules` (must be read first)
+    - **References**: `../components/.cursorrules-aem-listing` (framework approach)
+
+### **🚨 MANDATORY: DEPENDENCY READING ORDER - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ALWAYS read rule files in this exact order:**
+
+#### **For Project Creation (Option 1):**
+1. **`.cursorrules`** → Main options
+2. **`.cursorrules-project-creation`** → Project creation process
+3. **`.cursorrules-mandatory-compliance`** → Compliance system
+4. **`.cursorrules-compliance-checklist`** → Compliance checklist
+5. **`.cursorrules-content-filtering`** → Content violation prevention
+
+#### **For Component Development (Option 2):**
+1. **`.cursorrules`** → Main options
+2. **`.cursorrules-component-workflow`** → Component development process
+3. **`.cursorrules-design-analysis`** → 9-step analysis process
+4. **`.cursorrules-aem-component-structure`** → File structure rules
+5. **`.cursorrules-htl-best-practices`** → HTL implementation
+6. **`.cursorrules-aem-dialogs`** → Dialog configuration
+7. **`.cursorrules-aem-complexity`** → Complexity levels
+8. **`.cursorrules-aem-listing`** → Listing framework
+9. **`.cursorrules-aem-components`** → General best practices
+10. **`.cursorrules-aem-cloud`** → Cloud Service compliance
+11. **`.cursorrules-aem-sling`** → Sling framework
+12. **`.cursorrules-aem-i18n`** → Internationalization
+13. **`.cursorrules-maven`** → Maven build
+14. **`.cursorrules-mandatory-compliance`** → Compliance system
+15. **`.cursorrules-compliance-checklist`** → Compliance checklist
+16. **`.cursorrules-content-filtering`** → Content violation prevention
+17. **`.cursorrules-listing-enforcement`** → Listing component violation prevention
+
+### **🚨 MANDATORY: DEPENDENCY VALIDATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Before proceeding, validate:**
+
+#### **Validation Checklist:**
+- [ ] **🚨 MANDATORY: All dependencies read** - Complete dependency chain
+- [ ] **🚨 MANDATORY: Reading order followed** - Exact order maintained
+- [ ] **🚨 MANDATORY: No skipped files** - All files in chain read
+- [ ] **🚨 MANDATORY: No missing references** - All references followed
+- [ ] **🚨 MANDATORY: Complete understanding** - All requirements known
+
+### **🚨 MANDATORY: DEPENDENCY ENFORCEMENT - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: This dependency map is MANDATORY:**
+
+1. **🚨 MANDATORY: No action without dependency reading** - Not allowed
+2. **🚨 MANDATORY: No skipping of dependencies** - Not allowed
+3. **🚨 MANDATORY: No wrong reading order** - Not allowed
+4. **🚨 MANDATORY: No missing references** - Not allowed
+
+### **🚨 MANDATORY: DEPENDENCY SUCCESS CRITERIA - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Success only achieved when:**
+
+1. **🚨 MANDATORY: 100% dependency reading** - All files read
+2. **🚨 MANDATORY: 100% correct order** - Exact order followed
+3. **🚨 MANDATORY: 100% complete chain** - No missing links
+4. **🚨 MANDATORY: 100% understanding** - All requirements known
+
+### **🚨 MANDATORY: DEPENDENCY FAILURE PREVENTION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Prevent failures by:**
+
+1. **🚨 MANDATORY: Always read dependencies first** - Never skip
+2. **🚨 MANDATORY: Always follow exact order** - Never deviate
+3. **🚨 MANDATORY: Always validate completeness** - Never assume
+4. **🚨 MANDATORY: Always check references** - Never miss
+
+### **🚨 MANDATORY: DEPENDENCY ACCOUNTABILITY - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Track dependency compliance:**
+
+#### **Dependency Metrics:**
+- [ ] **🚨 MANDATORY: Files read count** - Track completeness
+- [ ] **🚨 MANDATORY: Order compliance rate** - Track accuracy
+- [ ] **🚨 MANDATORY: Reference following rate** - Track precision
+- [ ] **🚨 MANDATORY: Understanding completeness** - Track knowledge
+
+#### **Dependency Violations:**
+- [ ] **🚨 MANDATORY: Skipped files** - Track missed dependencies
+- [ ] **🚨 MANDATORY: Wrong order** - Track sequence violations
+- [ ] **🚨 MANDATORY: Missing references** - Track reference violations
+- [ ] **🚨 MANDATORY: Incomplete understanding** - Track knowledge gaps
+
+### **🚨 MANDATORY: DEPENDENCY SUCCESS - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Success only when:**
+
+1. **🚨 MANDATORY: 100% dependency reading** - All files read
+2. **🚨 MANDATORY: 100% correct order** - Exact order followed
+3. **🚨 MANDATORY: 100% complete chain** - No missing links
+4. **🚨 MANDATORY: 100% understanding** - All requirements known
+
+**⚠️ CRITICAL: ANY violation results in immediate failure and restart requirement.**

@@ -1,0 +1,102 @@
+# AEM Development Assistant
+
+## Main Options
+
+**Choose your development task:**
+
+### 1. **Archetype Project Creation** - Create new AEM project
+*Interactive AEM project setup using Maven archetype*
+
+### 2. **AEM Components Creation Workflow** - Develop AEM components
+*Component identification, development, and styling*
+
+### 3. **AEM Templates Creation Workflow** - Create AEM templates
+*Template creation with policies and responsive design*
+
+### 4. **AEM Page Creation Workflow** - Create AEM pages
+*Complete page creation from Figma designs with components and content*
+
+---
+
+**Which option? (1, 2, 3, or 4)**
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+7. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-content-filtering` FOR CONTENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
+8. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-listing-enforcement` FOR LISTING COMPONENT VIOLATION PREVENTION** - **NO EXCEPTIONS**
+
+**🚨 CRITICAL: CONSISTENCY ENFORCEMENT ACROSS ALL ENVIRONMENTS:**
+- **🚨 MANDATORY: Same analysis process on all systems** - New folders, cursor instances, laptops
+- **🚨 MANDATORY: Same component identification logic** - Consistent detection across environments
+- **🚨 MANDATORY: Same naming conventions** - Actual titles and headings from source content
+- **🚨 MANDATORY: Same complexity assessment** - Standardized Simple/Medium/High classification
+- **🚨 MANDATORY: Same interactive element detection** - Consistent pattern recognition
+- **🚨 MANDATORY: Same design token extraction** - Standardized color, typography, spacing analysis
+- **🚨 MANDATORY: Same output format** - Identical presentation structure across all environments
+- **🚨 MANDATORY: No environment-specific variations** - Identical analysis on all systems
+
+**⚠️ CRITICAL: When user asks for "@.cursorrules options" or similar:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Provide EXACT options as specified in the file** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Follow the exact format and structure** - **NO ADDITIONS**
+4. **🚨 MANDATORY: Use the exact wording from the file** - **NO PARAPHRASING**
+5. **🚨 MANDATORY: NO PERSONAL COMMENTARY** - **NO "Next Steps:", "You can now proceed", or any additional text**
+6. **🚨 MANDATORY: NO MODIFICATIONS TO RULE CONTENT** - **Present options exactly as written in rule files**
+
+## 🚨 CRITICAL: RULE FILE ENFORCEMENT
+**⚠️ MANDATORY: When user selects an option (1, 2, or 3):**
+1. **🚨 IMMEDIATELY read the corresponding rule file** - **NO EXCEPTIONS**
+2. **🚨 FOLLOW the exact process in that rule file** - **NO DEVIATIONS**
+3. **🚨 NEVER ask for additional information not specified in rule file** - **NO ASSUMPTIONS**
+4. **🚨 NEVER skip reading rule files** - **NO SHORTCUTS**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+
+## 🚨 STATE MANAGEMENT
+**When user selects option 1:**
+- **IMMEDIATELY read `.cursorrules-project-creation`**
+- **FOLLOW its exact process starting from line 71**
+- **NEVER ask for project details directly**
+
+**When user selects option 2:**
+- **IMMEDIATELY show component creation sub-options:**
+  ```
+  ### 1. **Image Reference** - Create components from images
+  *Single image or multiple images analysis*
+  
+  ### 2. **Figma URL** - Create components from Figma URLs
+  *Direct Figma file analysis and AEM component generation*
+  
+  ### 3. **Web Page URL** - Create components from live websites
+  *Analyze existing web pages and extract reusable AEM components*
+  
+  **Which option? (1, 2, or 3)**
+  ```
+- **If user selects 1:** **IMMEDIATELY read `.cursorrules-component-workflow`**
+- **If user selects 2:** **IMMEDIATELY read `../components/.cursorrules-figma-workflow`**
+- **If user selects 3:** **IMMEDIATELY read `../components/.cursorrules-webpage-workflow`**
+- **FOLLOW the exact process of selected workflow**
+- **NEVER ask for component details directly**
+
+**When user selects option 3:**
+- **IMMEDIATELY read `.cursorrules-template-workflow`**
+- **FOLLOW its exact process**
+- **NEVER ask for template details directly**
+
+**When user selects option 4:**
+- **IMMEDIATELY read `.cursorrules-page-creation-workflow`**
+- **FOLLOW its exact process**
+- **NEVER ask for page details directly**

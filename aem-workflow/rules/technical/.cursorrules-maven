@@ -1,0 +1,128 @@
+# Maven Build and Dependency Management Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before executing any Maven operations:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all Maven rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use proper Maven commands as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Apply best practices for AEM projects** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for Maven configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **CRITICAL: Maven Build Best Practices for AEM Projects**
+
+**ALWAYS follow these rules when working with Maven in AEM projects.**
+
+### **Maven Command Usage**
+
+#### **Command Execution Rules**
+- **Use `mvn` command** - Use `mvn` directly (not `./mvn`) for proper execution
+- **Maven is whitelisted** - Maven commands are approved for execution in this environment
+- **Ask for custom options** - When running Maven commands, ask user for custom options rather than using defaults
+- **Use user-provided commands** - Prefer user's provided Maven commands over generating new ones
+
+#### **Common Maven Commands**
+- **Clean and compile**: `mvn clean compile -pl core -q`
+- **Package module**: `mvn clean package -pl core -q`
+- **Install with tests**: `mvn clean install -DskipTests -q`
+- **Deploy to AEM**: `mvn clean install -PautoInstallPackage`
+
+### **Dependency Management**
+
+#### **Dependency Best Practices**
+- **Minimize external dependencies** - Only add dependencies that are absolutely necessary
+- **Avoid Jackson dependencies** - Use simple getter methods for JSON export
+- **Use AEM SDK dependencies** - Leverage built-in AEM capabilities
+- **Test bundle activation** - Ensure all dependencies resolve properly in OSGi container
+- **Prefer ComponentExporter** - Use built-in JSON export without external libraries
+
+#### **Common Dependency Issues**
+- **Bundle activation failures** - Usually caused by unresolved dependencies
+- **HTL compilation errors** - Often due to missing Sling Model classes
+- **OSGi resolution errors** - Check dependency versions and scope
+- **Build failures** - Verify all imports are available in classpath
+
+### **Project Structure**
+
+#### **AEM Project Layout**
+- **Core module**: `{project}/core/` - Contains Sling Models, Services, Servlets
+- **UI Apps module**: `{project}/ui.apps/` - Contains HTL templates, dialogs, clientlibs
+- **UI Frontend module**: `{project}/ui.frontend/` - Contains SCSS, JavaScript, build tools
+- **UI Content module**: `{project}/ui.content/` - Contains content structure and configurations
+
+#### **Module Dependencies**
+- **Core module** - Contains Java classes and Sling Models
+- **UI Apps module** - Depends on Core module for Sling Models
+- **UI Frontend module** - Independent module for frontend assets
+- **UI Content module** - Depends on UI Apps module
+
+### **Build Process**
+
+#### **Build Steps**
+1. **Clean workspace** - Remove previous build artifacts
+2. **Compile modules** - Build Java classes and resources
+3. **Package modules** - Create JAR files for deployment
+4. **Deploy to AEM** - Install packages to AEM instance
+5. **Verify deployment** - Check bundle status and component functionality
+
+#### **Build Validation**
+- **Check compilation errors** - Ensure all Java classes compile successfully
+- **Verify bundle activation** - Check OSGi console for bundle status
+- **Test component rendering** - Verify HTL templates work correctly
+- **Validate dependencies** - Ensure all required dependencies are available
+
+### **Troubleshooting**
+
+#### **Common Build Issues**
+- **Compilation failures** - Check Java syntax and imports
+- **Dependency resolution** - Verify all dependencies are available
+- **Bundle activation** - Check OSGi console for unresolved dependencies
+- **HTL compilation** - Ensure Sling Models are properly deployed
+- **HTL style attribute warnings** - Use `@ context='styleString'` for HTL expressions in style attributes
+- **Build failure due to HTL warnings** - Fix HTL context issues before proceeding with deployment
+
+#### **Debugging Steps**
+1. **Check Maven logs** - Look for specific error messages
+2. **Verify dependencies** - Ensure all required libraries are available
+3. **Test individual modules** - Build modules separately to isolate issues
+4. **Check AEM logs** - Look for runtime errors in AEM logs
+
+### **Performance Optimization**
+
+#### **Build Performance**
+- **Use parallel builds** - Enable parallel Maven execution when possible
+- **Skip tests during development** - Use `-DskipTests` for faster builds
+- **Use quiet mode** - Use `-q` flag to reduce output verbosity
+- **Clean selectively** - Only clean modules that need rebuilding
+
+#### **Deployment Optimization**
+- **Incremental deployment** - Only deploy changed modules
+- **Use auto-install** - Enable automatic package installation
+- **Monitor bundle status** - Check OSGi console for bundle health
+
+### **Integration with AEM**
+
+#### **AEM Integration Points**
+- **Sling Models** - Java classes for component logic
+- **HTL Templates** - Server-side rendering templates
+- **OSGi Services** - Cross-component communication
+- **Client Libraries** - CSS and JavaScript management
+
+#### **AEM Best Practices**
+- **Follow AEM patterns** - Use established AEM development patterns
+- **Leverage Core Components** - Extend Core Components when possible
+- **Use proper annotations** - Follow AEM annotation conventions
+- **Implement proper error handling** - Handle edge cases gracefully
+
+---
+
+**These Maven rules ensure efficient, reliable, and maintainable AEM project builds.**

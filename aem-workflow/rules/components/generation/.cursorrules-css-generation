@@ -1,0 +1,359 @@
+# AEM CSS Generation Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before generating any AEM component CSS:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all CSS generation rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply design accuracy requirements** - **NO SKIPPING**
+4. **🚨 MANDATORY: Use exact visual analysis data** - **NO GENERIC STYLING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER generate generic CSS** - Always use design-specific styling
+2. **NEVER use placeholder colors** - Always extract exact colors from design
+3. **NEVER skip visual analysis** - Always analyze design comprehensively
+4. **NEVER use template CSS** - Always generate component-specific styles
+5. **NEVER ignore layout requirements** - Always implement exact layout structure
+6. **NEVER skip responsive design** - Always implement mobile-first approach
+
+## **🚨 MANDATORY: CSS Generation Requirements - NO EXCEPTIONS**
+
+### **Design Accuracy Requirements**
+- **90%+ visual accuracy** - Generated CSS must match input design closely
+- **Exact color matching** - Use precise hex colors from design analysis
+- **Accurate typography** - Match font families, sizes, weights, spacing
+- **Precise layout structure** - Implement exact positioning, spacing, dimensions
+- **Complete visual effects** - Include all shadows, borders, gradients, transitions
+
+### **🚨 MANDATORY: Visual Analysis Integration - NO EXCEPTIONS**
+
+#### **Color Extraction Process**
+1. **🚨 MANDATORY: Extract exact hex colors** - Use color picker tools for precision
+2. **🚨 MANDATORY: Map color usage** - Background, text, accent, border colors
+3. **🚨 MANDATORY: Create CSS variables** - :root variables for consistent theming
+4. **🚨 MANDATORY: Validate color accuracy** - Compare generated colors with design
+
+#### **Typography Analysis Process**
+1. **🚨 MANDATORY: Identify font families** - Primary, secondary, accent fonts
+2. **🚨 MANDATORY: Extract font sizes** - Exact pixel values for all text elements
+3. **🚨 MANDATORY: Map font weights** - Regular, medium, bold, light variations
+4. **🚨 MANDATORY: Calculate line heights** - Exact line-height values for readability
+5. **🚨 MANDATORY: Measure letter spacing** - Character spacing for text elements
+
+#### **Layout Structure Analysis**
+1. **🚨 MANDATORY: Measure exact dimensions** - Width, height, padding, margins in pixels
+2. **🚨 MANDATORY: Identify layout patterns** - Flexbox, grid, positioning methods
+3. **🚨 MANDATORY: Map spacing system** - Consistent spacing scale (4px, 8px, 16px, etc.)
+4. **🚨 MANDATORY: Analyze responsive behavior** - Mobile, tablet, desktop variations
+
+### **🚨 MANDATORY: SASS Compilation Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: SASS compilation errors will cause build failures:**
+
+1. **🚨 MANDATORY: Never use SASS functions with CSS custom properties** - **COMPILATION FAILS IF USED**
+   - **🚫 FORBIDDEN: `darken(var(--color-accent), 10%)`** - **SASS CANNOT PROCESS CSS VARIABLES**
+   - **🚫 FORBIDDEN: `lighten(var(--color), 20%)`** - **SASS CANNOT PROCESS CSS VARIABLES**
+   - **🚫 FORBIDDEN: `saturate(var(--color), 30%)`** - **SASS CANNOT PROCESS CSS VARIABLES**
+   - **✅ CORRECT: `var(--color-accent-hover, #e55a2b)`** - **USE CSS FALLBACK VALUES**
+
+2. **🚨 MANDATORY: Use CSS custom properties with fallback values** - **COMPILATION SUCCESS REQUIRED**
+   ```scss
+   // ✅ CORRECT - CSS custom property with fallback
+   background-color: var(--color-accent-hover, #e55a2b);
+   
+   // 🚫 FORBIDDEN - SASS function with CSS variable
+   background-color: darken(var(--color-accent), 10%);
+   ```
+
+3. **🚨 MANDATORY: Define hover states with separate CSS variables** - **DESIGN ACCURACY REQUIRED**
+   ```scss
+   :root {
+     --color-accent: #ff6b35;
+     --color-accent-hover: #e55a2b; // Pre-calculated darker value
+   }
+   ```
+
+### **🚨 MANDATORY: JavaScript Linting Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: JavaScript linting errors will cause build warnings:**
+
+1. **🚨 MANDATORY: Remove unused variables** - **LINTING FAILS IF PRESENT**
+   - **🚫 FORBIDDEN: `forEach((item, index) => { ... })`** - **IF INDEX IS UNUSED**
+   - **✅ CORRECT: `forEach((item) => { ... })`** - **REMOVE UNUSED PARAMETERS**
+
+2. **🚨 MANDATORY: Keep line length under 120 characters** - **LINTING FAILS IF EXCEEDED**
+   - **🚫 FORBIDDEN: Lines longer than 120 characters**
+   - **✅ CORRECT: Break long lines into multiple lines with proper indentation**
+
+3. **🚨 MANDATORY: Use descriptive variable names** - **MAINTAINABILITY REQUIRED**
+   ```javascript
+   // ✅ CORRECT - Descriptive variable names
+   const cardName = card.querySelector('.cmp-brand-ambassadors__card-name')?.textContent || 'ambassador';
+   card.setAttribute('aria-label', `View ${cardName} profile`);
+   
+   // 🚫 FORBIDDEN - Inline complex expressions
+   card.setAttribute('aria-label', `View ${card.querySelector('.cmp-brand-ambassadors__card-name')?.textContent || 'ambassador'} profile`);
+   ```
+
+### **🚨 MANDATORY: CSS Generation Process - NO EXCEPTIONS**
+
+#### **Step 1: Design Token Generation**
+```scss
+:root {
+  // Colors from design analysis
+  --color-primary: #[exact-hex-color];
+  --color-secondary: #[exact-hex-color];
+  --color-accent: #[exact-hex-color];
+  --color-text: #[exact-hex-color];
+  --color-background: #[exact-hex-color];
+  
+  // Typography from design analysis
+  --font-family-primary: '[exact-font-family]';
+  --font-family-secondary: '[exact-font-family]';
+  --font-size-xs: [exact-px]px;
+  --font-size-sm: [exact-px]px;
+  --font-size-base: [exact-px]px;
+  --font-size-lg: [exact-px]px;
+  --font-size-xl: [exact-px]px;
+  --font-size-2xl: [exact-px]px;
+  
+  // Spacing from design analysis
+  --spacing-xs: [exact-px]px;
+  --spacing-sm: [exact-px]px;
+  --spacing-md: [exact-px]px;
+  --spacing-lg: [exact-px]px;
+  --spacing-xl: [exact-px]px;
+  
+  // Breakpoints from design analysis
+  --breakpoint-sm: [exact-px]px;
+  --breakpoint-md: [exact-px]px;
+  --breakpoint-lg: [exact-px]px;
+  --breakpoint-xl: [exact-px]px;
+}
+```
+
+#### **Step 2: Component-Specific CSS Generation**
+```scss
+.cmp-[component-name] {
+  // Exact layout structure from design
+  display: [exact-display-value];
+  flex-direction: [exact-direction];
+  align-items: [exact-alignment];
+  justify-content: [exact-justification];
+  
+  // Exact dimensions from design
+  width: [exact-width]px;
+  height: [exact-height]px;
+  padding: [exact-padding]px;
+  margin: [exact-margin]px;
+  
+  // Exact colors from design
+  background-color: var(--color-background);
+  color: var(--color-text);
+  
+  // Exact typography from design
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  font-weight: [exact-weight];
+  line-height: [exact-line-height];
+  
+  // Exact visual effects from design
+  box-shadow: [exact-shadow-values];
+  border: [exact-border-values];
+  border-radius: [exact-radius]px;
+  
+  // Responsive behavior
+  @media (min-width: var(--breakpoint-sm)) {
+    // Tablet adaptations
+  }
+  
+  @media (min-width: var(--breakpoint-md)) {
+    // Desktop adaptations
+  }
+}
+```
+
+#### **Step 3: Interactive States Implementation**
+```scss
+.cmp-[component-name] {
+  // Hover states
+  &:hover {
+    background-color: [exact-hover-color];
+    transform: [exact-hover-transform];
+    transition: [exact-transition-values];
+  }
+  
+  // Active states
+  &:active {
+    background-color: [exact-active-color];
+    transform: [exact-active-transform];
+  }
+  
+  // Focus states
+  &:focus {
+    outline: [exact-focus-outline];
+    box-shadow: [exact-focus-shadow];
+  }
+  
+  // Disabled states
+  &:disabled {
+    opacity: [exact-disabled-opacity];
+    cursor: not-allowed;
+  }
+}
+```
+
+### **🚨 MANDATORY: BEM Methodology Implementation - NO EXCEPTIONS**
+
+#### **Class Naming Structure**
+```scss
+.cmp-[component-name] {
+  // Block styles
+  
+  &__[element] {
+    // Element styles
+  }
+  
+  &--[modifier] {
+    // Modifier styles
+  }
+  
+  &__[element]--[modifier] {
+    // Element with modifier styles
+  }
+}
+```
+
+#### **Example Implementation**
+```scss
+.cmp-hero-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  
+  &__title {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  &__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    opacity: 0.9;
+    text-align: center;
+    max-width: 600px;
+  }
+  
+  &__button {
+    background-color: var(--color-accent);
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: darken(var(--color-accent), 10%);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &--full-width {
+    width: 100%;
+  }
+}
+```
+
+### **🚨 MANDATORY: Responsive Design Implementation - NO EXCEPTIONS**
+
+#### **Mobile-First Approach**
+```scss
+.cmp-[component-name] {
+  // Mobile styles (default)
+  display: block;
+  padding: var(--spacing-sm);
+  
+  // Tablet styles
+  @media (min-width: var(--breakpoint-sm)) {
+    display: flex;
+    padding: var(--spacing-md);
+  }
+  
+  // Desktop styles
+  @media (min-width: var(--breakpoint-md)) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: var(--spacing-lg);
+  }
+  
+  // Large desktop styles
+  @media (min-width: var(--breakpoint-lg)) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+```
+
+### **🚨 MANDATORY: Quality Validation - NO EXCEPTIONS**
+
+#### **Design Accuracy Checklist**
+- [ ] **Color accuracy** - All colors match design within 5% tolerance
+- [ ] **Typography accuracy** - Font families, sizes, weights match design
+- [ ] **Layout accuracy** - Positioning, spacing, dimensions match design
+- [ ] **Visual effects accuracy** - Shadows, borders, gradients match design
+- [ ] **Interactive states** - Hover, active, focus states implemented
+- [ ] **Responsive behavior** - Mobile, tablet, desktop adaptations work
+- [ ] **BEM methodology** - Proper class naming structure
+- [ ] **CSS variables** - Design tokens properly implemented
+
+#### **Performance Optimization**
+- [ ] **Efficient selectors** - Avoid overly specific selectors
+- [ ] **Minimal CSS** - Only include necessary styles
+- [ ] **Optimized properties** - Use efficient CSS properties
+- [ ] **No unused styles** - Remove any unused CSS rules
+
+### **🚨 MANDATORY: CSS File Structure - NO EXCEPTIONS**
+
+#### **File Organization**
+```
+ui.frontend/src/main/webpack/components/
+├── _variables.scss          # Design tokens and CSS variables
+├── _mixins.scss            # Reusable mixins
+├── _[component-name].scss  # Component-specific styles
+└── main.scss              # Main stylesheet with imports
+```
+
+#### **Import Structure**
+```scss
+// _[component-name].scss
+@import 'variables';
+@import 'mixins';
+
+.cmp-[component-name] {
+  // Component styles
+}
+```
+
+### **🚨 MANDATORY: Error Prevention - NO EXCEPTIONS**
+
+#### **Common CSS Generation Errors**
+1. **🚫 FORBIDDEN: Generic color values** - Always use exact colors from design
+2. **🚫 FORBIDDEN: Placeholder dimensions** - Always use exact measurements
+3. **🚫 FORBIDDEN: Missing responsive design** - Always implement mobile-first
+4. **🚫 FORBIDDEN: Inconsistent spacing** - Always use design system spacing
+5. **🚫 FORBIDDEN: Missing interactive states** - Always implement hover/active/focus
+6. **🚫 FORBIDDEN: Poor BEM structure** - Always follow proper BEM methodology
+7. **🚫 FORBIDDEN: Missing CSS variables** - Always use design tokens
+8. **🚫 FORBIDDEN: Incomplete visual effects** - Always implement all design effects
+
+---
+
+**These CSS generation rules ensure accurate, maintainable, and design-faithful AEM component styling.**

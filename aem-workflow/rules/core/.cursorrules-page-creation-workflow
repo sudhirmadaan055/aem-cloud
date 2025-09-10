@@ -1,0 +1,257 @@
+# AEM Page Creation Workflow
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+
+## Page Creation Options
+
+**Type the number to proceed:**
+
+### 1. **From Figma Design** - Create page from Figma URL
+*Extract design data and create complete page structure*
+
+### 2. **From Existing Page** - Create page from website URL
+*Use existing webpage as page foundation*
+
+### 3. **From Template Library** - Use predefined page patterns
+*Select from pre-built page templates*
+
+---
+
+**How would you like to create the page? (1, 2, or 3)**
+
+---
+
+## 🚨 CRITICAL: STEP 1 - PAGE SOURCE SELECTION
+
+**⚠️ CRITICAL: AFTER PAGE SOURCE SELECTION, COLLECT REQUIRED INFORMATION:**
+
+### **Essential Page Information:**
+1. **Page Name** - Technical name (e.g., "homepage", "about-us")
+2. **Page Title** - Display title (e.g., "Homepage", "About Us")
+3. **Page Path** - AEM path (e.g., "/content/site/en/home")
+4. **Page Type** - Content Page, Landing Page, Article Page, etc.
+5. **Page Description** - Brief description (optional)
+
+---
+
+## 🚨 CRITICAL: STEP 1A - FIGMA URL INPUT (For Option 1)
+
+**⚠️ CRITICAL: WHEN USER SELECTS "FROM FIGMA DESIGN", COLLECT FIGMA URL:**
+
+```
+**Please provide the Figma URL:**
+*Example: https://www.figma.com/file/abc123/design-name*
+
+**Figma URL:** [User Input]
+
+**Analyzing Figma design...**
+```
+
+---
+
+## 🚨 CRITICAL: STEP 1B - WEBSITE URL INPUT (For Option 2)
+
+**⚠️ CRITICAL: WHEN USER SELECTS "FROM EXISTING PAGE", COLLECT WEBSITE URL:**
+
+```
+**Please provide the website URL:**
+*Example: https://www.example.com*
+
+**Website URL:** [User Input]
+
+**Analyzing webpage...**
+```
+
+---
+
+## 🚨 CRITICAL: STEP 2 - FIGMA ANALYSIS (AI Reference Only)
+
+**⚠️ CRITICAL: FOR FIGMA URLS - EXTRACT DESIGN DATA:**
+1. **🚨 MANDATORY: Connect to Figma MCP server** - Use `mcp_figma_get_figma_data` tool
+2. **🚨 MANDATORY: Extract file data** - Get complete Figma file structure
+3. **🚨 MANDATORY: Identify page structure** - Find main page frame and layout
+4. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from Figma
+5. **🚨 MANDATORY: Get component specifications** - Extract exact dimensions, properties
+6. **🚨 MANDATORY: Download assets** - Export images, icons, graphics using `mcp_figma_download_figma_images`
+7. **🚨 MANDATORY: Create page mapping** - Map Figma design to AEM page structure
+8. **🚨 MANDATORY: Extract content** - Get actual text content from Figma for default values
+
+---
+
+## 🚨 CRITICAL: STEP 3 - COMPONENT DEPENDENCY ANALYSIS (AI Reference Only)
+
+**⚠️ CRITICAL: AFTER COLLECTING SOURCE INFORMATION, ANALYZE COMPONENT DEPENDENCIES:**
+
+### **🚨 MANDATORY: Component Analysis Process:**
+1. **🚨 MANDATORY: Analyze Source Data** - Extract components from Figma/Website
+2. **🚨 MANDATORY: Scan AEM Project** - Check existing components in project
+3. **🚨 MANDATORY: Identify Missing Components** - List components that don't exist
+4. **🚨 MANDATORY: Calculate Component Count** - Count total components needed
+5. **🚨 MANDATORY: Present Resolution Options** - Offer strategies to handle missing components
+
+### **🚨 MANDATORY: Component Resolution Interface:**
+```
+Page Analysis Results:
+- Page Name: [Page Name]
+- Page Type: [Page Type]
+- Total Components Required: [Count]
+- Existing Components: [Count]
+- Missing Components: [Count]
+
+Missing Components:
+1. [Component Name 1]
+2. [Component Name 2]
+3. [Component Name 3]
+...
+
+### 1. **Create Missing Components First** - Generate all missing components
+### 2. **Create Page with Placeholders** - Use placeholder components
+### 3. **Cancel Page Creation** - Return to main menu
+
+**Which option? (1, 2, or 3)**
+```
+
+### **🚨 MANDATORY: Component Analysis Rules Reference (AI Reference Only):**
+- **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Follow systematic component detection protocol** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Identify interactive UI patterns** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Classify based on functionality, not appearance** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Detect listing component requirements** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: STOP IMMEDIATELY if Listing Component detected** - **READ LISTING FRAMEWORK RULES FIRST**
+
+---
+
+## 🚨 CRITICAL: STEP 4 - PAGE GENERATION (AI Reference Only)
+
+**⚠️ CRITICAL: GENERATE COMPLETE PAGE STRUCTURE:**
+
+### **🚨 MANDATORY: Page File Structure:**
+```
+{project}/ui.apps/src/main/content/jcr_root/conf/{project}/settings/wcm/templates/
+├── {page-template}/
+│   ├── .content.xml
+│   ├── initial/
+│   │   └── .content.xml
+│   ├── policies/
+│   │   └── .content.xml
+│   └── structure/
+│       └── .content.xml
+
+{project}/ui.apps/src/main/content/jcr_root/content/{project}/
+├── {page-name}/
+│   ├── .content.xml
+│   └── jcr:content/
+│       ├── .content.xml
+│       ├── header/
+│       ├── hero/
+│       ├── content/
+│       └── footer/
+```
+
+### **🚨 MANDATORY: Page Configuration Files:**
+1. **`.content.xml`** - Main page configuration
+2. **`initial/.content.xml`** - Initial content structure
+3. **`policies/.content.xml`** - Component and layout policies
+4. **`structure/.content.xml`** - Page structure definition
+
+---
+
+## 🚨 CRITICAL: STEP 5 - PAGE VALIDATION (AI Reference Only)
+
+**⚠️ CRITICAL: VALIDATE PAGE BEFORE COMPLETION:**
+
+### **🚨 MANDATORY: Structure Validation:**
+1. **🚨 MANDATORY: Validate page structure** - Ensure page follows AEM best practices
+2. **🚨 MANDATORY: Validate policy configuration** - Ensure policies are properly configured
+3. **🚨 MANDATORY: Validate responsive design** - Ensure responsive behavior works correctly
+4. **🚨 MANDATORY: Validate content structure** - Ensure content structure is valid
+5. **🚨 MANDATORY: Validate permissions** - Ensure permission configuration is correct
+
+---
+
+## 🚨 CRITICAL: STEP 6 - USER INTERFACE (Clean & Minimal)
+
+**⚠️ CRITICAL: SHOW ONLY ESSENTIAL INFORMATION TO USER:**
+
+### **Page Creation Summary:**
+```
+Page Configuration:
+- Page Name: [Name]
+- Page Type: [Type]
+- Page Path: [Path]
+- Components: [Count] components configured
+- Template: [Template name]
+- Content: [Content structure]
+
+### 1. **Create Page** - Generate AEM page files
+### 2. **Preview Page** - View page structure
+### 3. **Modify Configuration** - Update page settings
+### 4. **Cancel** - Return to main menu
+
+**Which option? (1, 2, 3, or 4)**
+```
+
+### **🚨 MANDATORY: What to Show vs Hide (AI Reference Only)**
+
+**✅ SHOW TO USER:**
+- Page configuration summary
+- Page type and source
+- Component and policy counts
+- Next step options
+- Clean, informative interface
+
+**❌ HIDE FROM USER (AI Reference Only):**
+- Technical implementation details
+- File structure creation process
+- Policy configuration complexity
+- Component mapping details
+- Responsive design setup
+- Permission configuration
+- Validation processes
+- Figma data extraction details
+- AEM API interaction details
+
+---
+
+## 🚨 CRITICAL: PAGE TYPES SUPPORTED
+
+### **1. Content Pages**
+- **Article Pages** - Blog posts and articles
+- **Landing Pages** - Marketing and campaign pages
+- **Product Pages** - Product information and details
+- **About Pages** - Company and team information
+
+### **2. Template Pages**
+- **Homepage Templates** - Main site entry points
+- **Section Templates** - Reusable page sections
+- **Layout Templates** - Structural page layouts
+
+---
+
+## 🚨 CRITICAL: PAGE CREATION SUCCESS
+
+### **🚨 MANDATORY: Success Criteria:**
+1. **🚨 MANDATORY: Page created successfully** - All files generated
+2. **🚨 MANDATORY: Policies configured correctly** - All policies applied
+3. **🚨 MANDATORY: Responsive design working** - All breakpoints functional
+4. **🚨 MANDATORY: Content structure valid** - All content structures valid
+5. **🚨 MANDATORY: Permissions working** - All access control functional
+
+### **🚨 MANDATORY: User Notification:**
+```
+✅ Page created successfully!
+- Page Name: [Name]
+- Page Type: [Type]
+- Files Created: [Count]
+- Components: [Count]
+- Template: [Template name]
+- Path: [AEM path]
+```

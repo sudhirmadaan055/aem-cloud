@@ -1,0 +1,78 @@
+# AEM Design Analysis - Content Structure & Data Mapping
+
+## 🚨 MANDATORY: Content Structure & Data Requirements Analysis
+
+### **🚨 MANDATORY: STEP 8: Content Structure Analysis - REQUIRED SEVENTH**
+1. **🚨 MANDATORY: Count ALL content blocks** - How many distinct content areas?
+2. **🚨 MANDATORY: Identify repeatable elements** - Which blocks can be duplicated?
+3. **🚨 MANDATORY: Map ALL text content** - Every heading, paragraph, button text
+4. **🚨 MANDATORY: Identify ALL images** - Icons, photos, placeholders, backgrounds
+5. **🚨 MANDATORY: Map content hierarchy** - Primary, secondary, tertiary content
+6. **🚨 MANDATORY: Identify dynamic content** - What can be added/removed?
+
+### **🚨 MANDATORY: STEP 9: Data Requirements Mapping - REQUIRED EIGHTH**
+1. **🚨 MANDATORY: Map each visual element to dialog field type:**
+   - Text content → textfield/textarea
+   - Images → pathfield
+   - Links → pathfield
+   - Repeatable blocks → multifield
+   - Complex data → fieldset
+2. **🚨 MANDATORY: Plan fieldset organization** - Group related fields logically
+3. **🚨 MANDATORY: Identify conditional fields** - Fields that show/hide based on other values
+4. **🚨 MANDATORY: Group fields functionally for tabbed dialogs:**
+   - **Content Fields** → "Content" tab (titles, descriptions, text)
+   - **Media Fields** → "Media" tab (images, videos, assets)
+   - **Navigation Fields** → "Navigation" tab (links, buttons, controls)
+   - **Configuration Fields** → "Configuration" tab (settings, options)
+   - **Data Fields** → "Data Sources" tab (APIs, content paths)
+   - **Search/Filter Fields** → "Search & Filters" tab (search, filters, sorting)
+   - **Display Fields** → "Display Options" tab (layout, pagination, view modes)
+5. **🚨 MANDATORY: Determine dialog type** - Single-column (<6 fields) or Tabbed (6+ fields)
+
+### **🚨 MANDATORY: STEP 10: Component Architecture Planning - REQUIRED NINTH**
+1. **🚨 MANDATORY: Plan HTML structure** - Match the layout structure from Step 5
+2. **🚨 MANDATORY: Plan CSS class naming** - BEM methodology, component-specific classes
+3. **🚨 MANDATORY: Plan responsive behavior** - Mobile, tablet, desktop adaptations
+4. **🚨 MANDATORY: Plan accessibility features** - ARIA labels, semantic HTML, keyboard navigation
+5. **🚨 MANDATORY: Plan performance considerations** - Image optimization, lazy loading, etc.
+
+### **🚨 MANDATORY: STEP 12: Tabbed Dialog Planning - REQUIRED ELEVENTH**
+1. **🚨 MANDATORY: Count total dialog fields** - Determine if component needs tabbed dialog
+2. **🚨 MANDATORY: Apply tabbed dialog rules** - 6+ fields = tabbed, <6 fields = single-column
+3. **🚨 MANDATORY: Group fields by function** - Use functional grouping criteria
+4. **🚨 MANDATORY: Plan tab structure** - 2-4 tabs maximum, 3-6 fields per tab
+5. **🚨 MANDATORY: Exclude styling fields** - No CSS, theme, or styling-related fields
+6. **🚨 MANDATORY: Set default tab** - First tab is default, configurable via activeTab
+
+### **🚨 MANDATORY: STEP 13: Component Definition Created - REQUIRED TWELFTH**
+1. **🚨 MANDATORY: Generate components.json** - Create complete component definition file
+2. **🚨 MANDATORY: Include all dialog fields** - Map all visual elements to dialog configuration
+3. **🚨 MANDATORY: Add JavaScript functionality** - Include client-side interaction requirements
+4. **🚨 MANDATORY: Specify CSS requirements** - Layout, styling, and interaction requirements
+5. **🚨 MANDATORY: Include design notes** - Component-specific implementation guidance
+
+### **🚨 MANDATORY: Multifield Detection Rules**
+**Create multifield when you see:**
+- Multiple similar content blocks
+- Grid layouts with repeated items
+- List items that can be added/removed
+- Card collections
+- Product/item listings
+- Team member grids
+- Feature lists
+
+**Each multifield item should have:**
+- Consistent internal structure
+- Same field types across items
+- Clear fieldset organization
+
+### **🚨 MANDATORY: Content Hierarchy Patterns**
+- **Hero + Content** → Main fields + multifield for content blocks
+- **Header + Grid** → Title/subtitle + multifield for grid items
+- **List + CTA** → Multifield for list items + CTA fields
+
+### **🚨 MANDATORY: Card/Block Patterns**
+- **Single Card** → Simple component with fixed fields
+- **Multiple Cards** → Multifield with fieldset for each card
+- **Grid of Cards** → Multifield with responsive grid layout
+- **Mixed Content** → Multiple multifields for different content types

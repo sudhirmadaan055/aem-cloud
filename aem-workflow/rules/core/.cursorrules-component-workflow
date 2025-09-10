@@ -1,0 +1,883 @@
+# AEM Component Development Workflow
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before executing any AEM component development tasks:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all component development rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Reference other rule files when mentioned** - **NO IGNORING**
+5. **🚨 MANDATORY: Maintain consistency across all environments** - **SAME PROCESS ON ALL SYSTEMS**
+6. **🚨 MANDATORY: Use actual titles and headings from source content** - **NO GENERIC COMPONENT NAMES**
+
+## 🚨 CRITICAL: STEP 0 - DETERMINE INPUT TYPE AND COMPONENT STRUCTURE (AI Reference Only)
+
+**⚠️ CRITICAL: BEFORE ANY OTHER STEP, ALWAYS DETERMINE INPUT TYPE FIRST:**
+1. **🚨 MANDATORY: Check input type** - Determine if Figma URL, uploaded images, web page URL, or combinations
+2. **🚨 MANDATORY: For Figma URLs** - Use MCP server to extract design data
+3. **🚨 MANDATORY: For uploaded images** - Analyze each design image separately
+4. **🚨 MANDATORY: For web page URLs** - Use web search tool to analyze live website
+5. **🚨 MANDATORY: Count components** - Identify component count from Figma data, images, or web page analysis
+6. **🚨 MANDATORY: Use actual titles and headings** - Extract exact titles, headings, and section names from source content
+7. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from source material for component identification
+8. **🚨 MANDATORY: Determine processing scenario:**
+   - **Scenario 1**: Figma URL → Extract complete design system and components
+   - **Scenario 2**: Web page URL → Analyze live website and extract reusable components
+   - **Scenario 3**: Single image with single component → Process as one component
+   - **Scenario 4**: Single image with multiple components → Process each section as separate component
+   - **Scenario 5**: Multiple images with single component each → Process each image as one component
+   - **Scenario 6**: Multiple images with multiple components each → Process each section in each image as separate component
+9. **🚨 MANDATORY: Display structure summary** - Show "Processing Figma file with X components", "Processing web page with X components", or "Processing X images with Y total components"
+
+**🚨 CRITICAL: FOR FIGMA URLS - REDIRECT TO FIGMA WORKFLOW:**
+- **If Figma URL detected** → **IMMEDIATELY redirect to `../components/.cursorrules-figma-workflow`**
+- **Follow Figma workflow exactly** → **NO DEVIATIONS**
+- **Use MCP tools for data extraction** → **NO MANUAL ANALYSIS**
+- **Show clean component table format** → **Same format as image-based workflow**
+- **Minimal user interaction** → **Clean options, no technical details**
+
+**🚨 CRITICAL: FOR WEB PAGE URLS - USE WEB PAGE ANALYSIS WORKFLOW:**
+- **If web page URL detected** → **IMMEDIATELY use web search tool for analysis**
+- **Follow web page analysis workflow exactly** → **NO DEVIATIONS**
+- **Use web search tool for data extraction** → **NO MANUAL ANALYSIS**
+- **Show clean component table format** → **Same format as image-based workflow**
+- **Minimal user interaction** → **Clean options, no technical details**
+
+**🚨 CRITICAL: THIS STEP CANNOT BE SKIPPED, COMBINED, OR MODIFIED - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 0.5 - FIGMA DATA EXTRACTION (AI Reference Only)
+
+**⚠️ CRITICAL: FOR FIGMA URLS ONLY - EXTRACT DESIGN DATA:**
+1. **🚨 MANDATORY: Connect to Figma MCP server** - Use `mcp_figma_get_figma_data` tool
+2. **🚨 MANDATORY: Extract file data** - Get complete Figma file structure
+3. **🚨 MANDATORY: Identify components** - Find all component instances and variants
+4. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from Figma
+5. **🚨 MANDATORY: Get component specifications** - Extract exact dimensions, properties
+6. **🚨 MANDATORY: Download assets** - Export images, icons, graphics using `mcp_figma_download_figma_images`
+7. **🚨 MANDATORY: Create component mapping** - Map Figma components to AEM components
+8. **🚨 MANDATORY: Extract content** - Get actual text content from Figma for default values
+
+**🚨 CRITICAL: THIS STEP IS MANDATORY FOR FIGMA URLS - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 0.6 - WEB PAGE ANALYSIS (AI Reference Only)
+
+**⚠️ CRITICAL: FOR WEB PAGE URLS ONLY - ANALYZE LIVE WEBSITES:**
+1. **🚨 MANDATORY: Parse web page URL** - Extract domain and page path
+2. **🚨 MANDATORY: Use web search tool** - Use `web_search` tool with targeted search terms to analyze page content and structure
+3. **🚨 MANDATORY: Extract page structure** - Get HTML structure, CSS classes, and component patterns from search results
+4. **🚨 MANDATORY: Identify reusable components** - Find common UI patterns that can become AEM components
+5. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from live site analysis
+6. **🚨 MANDATORY: Map component hierarchy** - Understand parent-child relationships
+7. **🚨 MANDATORY: Identify interactive elements** - Buttons, forms, navigation, carousels
+8. **🚨 MANDATORY: Extract content patterns** - Text blocks, image galleries, card layouts
+9. **🚨 MANDATORY: Determine component count** - Count unique components to create
+10. **🚨 MANDATORY: Create component mapping** - Map web page elements to AEM components
+
+**🚨 CRITICAL: WEB PAGE ANALYSIS IS MANDATORY FOR WEB PAGE URLS - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 1 - CHECK EXISTING COMPONENTS (AI Reference Only)
+
+**⚠️ CRITICAL: AFTER DETERMINING COMPONENT TYPE, CHECK EXISTING COMPONENTS:**
+1. **🚨 MANDATORY: ALWAYS check existing AEM project components** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Scan component directory** - `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
+3. **🚨 MANDATORY: Compare visual similarity** - Match design elements to existing components
+4. **🚨 MANDATORY: Categorize by status** - Existing, Modified, or New
+5. **🚨 MANDATORY: Skip existing components** - Do NOT analyze components that already exist
+6. **🚨 MANDATORY: Process only New/Modified** - Apply analysis only to components that need creation/updates
+
+**🚨 CRITICAL: THIS STEP CANNOT BE SKIPPED, COMBINED, OR MODIFIED - NO EXCEPTIONS**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for component details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+8. **NEVER try to "optimize" or create components "in parallel"** - Always follow sequential processing
+9. **NEVER stop before completing ALL components** - Complete every single component before any cleanup
+10. **NEVER assume what would be "efficient"** - Follow the exact mandatory workflow rules
+11. **NEVER lose track of batch processing requirements** - Maintain awareness of total component count
+12. **NEVER deviate from specified process** - No shortcuts, no modifications, no assumptions
+
+## 🚨 CRITICAL: DEVIATION PREVENTION - LEARNED FROM VIOLATIONS
+**⚠️ CRITICAL: Based on actual violations that occurred, NEVER do these things:**
+
+### **VIOLATION 1: Attempting "Parallel" Processing**
+- **What Happened**: Tried to create components "in parallel" instead of sequentially
+- **Why It's Wrong**: Violates mandatory sequential processing rules
+- **Prevention**: Always show "Creating Component X of Y" and process one at a time
+
+### **VIOLATION 2: Stopping Before Completion**
+- **What Happened**: Only created 3 out of 14 components before stopping
+- **Why It's Wrong**: Violates mandatory completion requirements
+- **Prevention**: Always complete ALL components before any cleanup or stopping
+
+### **VIOLATION 3: Assuming "Efficiency"**
+- **What Happened**: Tried to "optimize" instead of following exact rules
+- **Why It's Wrong**: Violates mandatory compliance with specified process
+- **Prevention**: Follow exact mandatory workflow rules, no modifications
+
+### **VIOLATION 4: Losing Track of Requirements**
+- **What Happened**: Lost awareness of total component count and batch processing
+- **Why It's Wrong**: Violates mandatory batch processing guidelines
+- **Prevention**: Always maintain awareness of total components and progress
+
+**🚨 CRITICAL: These violations will NOT happen again - MANDATORY COMPLIANCE REQUIRED**
+
+## Component Development Options
+
+**Type the number to proceed:**
+
+### 1. **Image Reference** - Create components from images
+*Single image or multiple images analysis*
+
+### 2. **Figma URL** - Create components from Figma URLs
+*Direct Figma file analysis and AEM component generation*
+
+### 3. **Web Page URL** - Create components from live websites
+*Analyze existing web pages and extract reusable AEM components*
+
+---
+
+**Which option? (1, 2, or 3)**
+
+---
+
+## 📚 **Rules & Guidelines Applied** (AI Reference Only)
+
+### **Component Development Rules**
+- **Design Analysis**: **🚨 MANDATORY: ALWAYS read `../components/analysis/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS** (13-step analysis process with component existence checking)
+- **Component Structure**: Follow `../components/generation/.cursorrules-aem-component-structure` (file structure, dialogs, multifields)
+- **CSS Generation**: **🚨 MANDATORY: ALWAYS read `../components/generation/.cursorrules-css-generation` FIRST** - **NO EXCEPTIONS** (design-accurate CSS generation with 90%+ visual accuracy)
+- **HTL Best Practices**: Follow `../components/generation/.cursorrules-htl-best-practices` (index logic, layout distribution)
+- **Dialog Configuration**: Use `../components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs)
+- **Complexity Management**: Apply `../components/frameworks/.cursorrules-aem-complexity` (Simple, Medium, High levels)
+- **Listing Components**: Reference `../components/workflows/.cursorrules-aem-listing` (framework approach)
+
+## 🚨 CRITICAL: LISTING COMPONENT ENFORCEMENT - ZERO TOLERANCE
+**⚠️ CRITICAL: This section prevents listing component violations across all environments:**
+
+### **🚨 MANDATORY: LISTING COMPONENT DETECTION PROTOCOL - NO EXCEPTIONS**
+**⚠️ CRITICAL: When ANY listing component is detected, IMMEDIATELY execute this protocol:**
+
+1. **🚨 MANDATORY: STOP ALL ACTIONS IMMEDIATELY** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: READ `../components/.cursorrules-aem-listing` COMPLETELY** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: EXECUTE STEP 1: FRAMEWORK DETECTION** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: EXECUTE STEP 2: FRAMEWORK IMPLEMENTATION DECISION** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: EXECUTE STEP 3: FRAMEWORK CREATION (if needed)** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: EXECUTE STEP 4: LISTING-SPECIFIC IMPLEMENTATION** - **NO EXCEPTIONS**
+
+### **🚨 CRITICAL: VIOLATION PREVENTION RULES - ZERO TOLERANCE**
+**⚠️ CRITICAL: These rules prevent the exact violation that occurred:**
+
+1. **🚨 MANDATORY: NEVER create components.json for listing components without framework detection** - **IMMEDIATE FAILURE**
+2. **🚨 MANDATORY: NEVER assume listing components can be created without framework** - **IMMEDIATE FAILURE**
+3. **🚨 MANDATORY: NEVER skip the 4-step framework process** - **IMMEDIATE FAILURE**
+4. **🚨 MANDATORY: NEVER proceed with listing component creation without AEM project structure** - **IMMEDIATE FAILURE**
+5. **🚨 MANDATORY: NEVER create listing components in isolation** - **IMMEDIATE FAILURE**
+
+### **🚨 CRITICAL: ENFORCEMENT ACCOUNTABILITY - NO EXCEPTIONS**
+**⚠️ CRITICAL: Track and prevent violations:**
+
+- **🚨 MANDATORY: Log every listing component detection** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Verify framework detection execution** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Confirm framework implementation decision** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Validate framework creation completion** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Report any violations immediately** - **ACCOUNTABILITY**
+- **Component Rules**: Follow `../components/.cursorrules-aem-components` (general best practices)
+
+### **🚨 MANDATORY: COMPLIANCE SYSTEM RULES - NO EXCEPTIONS**
+- **Mandatory Compliance**: Follow `.cursorrules-mandatory-compliance` (core compliance system)
+- **Compliance Checklist**: Use `.cursorrules-compliance-checklist` (pre-response validation)
+- **Dependency Mapping**: Follow `.cursorrules-dependency-mapper` (rule file dependencies)
+- **Compliance Monitoring**: Use `.cursorrules-compliance-monitor` (real-time monitoring)
+- **Emergency Protocol**: Follow `.cursorrules-emergency-protocol` (violation handling)
+- **System Override**: Use `.cursorrules-system-override` (system enforcement)
+
+### **Technical Implementation Rules**
+- **Cloud Service**: Comply with `../technical/.cursorrules-aem-cloud`
+- **Sling Framework**: Follow `../technical/.cursorrules-aem-sling`
+- **Internationalization**: Use `../technical/.cursorrules-aem-i18n`
+- **Maven Build**: Follow `../technical/.cursorrules-maven` (use `mvn` command directly)
+
+### **Context Files**
+- **Medium Complexity**: Create context in `../../context/component-context/medium-complexity/`
+- **High Complexity**: Create context in `../../context/component-context/high-complexity/`
+- **Templates**: Use provided templates for context files
+
+---
+
+## 🎯 **Component Complexity Levels** (AI Reference Only)
+
+### **Simple Components**
+- **No context file needed**
+- Examples: Text, Image, Button, Banner
+- Purely presentational with minimal fields
+
+### **Medium Complexity Components**
+- **Create context file in `../../context/component-context/medium-complexity/`**
+- Examples: Teaser, Carousel, Accordion, Card Grid
+- Multiple configurable fields with light business logic
+
+### **High Complexity Components**
+- **Create context file in `../../context/component-context/high-complexity/`**
+- **MANDATORY: Flag for architect review**
+- Examples: Product Listing, Search Component, Location Finder, Multi-step Form
+- Dynamic data, APIs, search, filtering, pagination
+
+---
+
+## 🔧 **Usage Workflow** (AI Reference Only)
+
+### **🚨 MANDATORY: Step 0: Read Design Analysis Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: BEFORE ANY ANALYSIS, ALWAYS READ DESIGN ANALYSIS RULES FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow the 10-step analysis process exactly as specified** - **NO DEVIATIONS**
+3. **🚨 MANDATORY: Apply component existence checking rules** - **REQUIRED**
+
+### **🚨 MANDATORY: Step 1: Determine Image and Component Structure - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: AFTER READING DESIGN ANALYSIS RULES, FOLLOW THIS EXACT SEQUENCE:**
+
+#### **🚨 MANDATORY: Step 1A: Analyze Images and Components - REQUIRED FIRST (BEFORE ALL OTHERS)**
+1. **🚨 MANDATORY: Count uploaded images** - Determine if single image or multiple images
+2. **🚨 MANDATORY: Analyze each image individually** - Examine each design image separately
+3. **🚨 MANDATORY: Count components per image** - Identify component count in each image
+4. **🚨 MANDATORY: Determine processing scenario:**
+   - **Scenario 1**: Single image with single component → Process as one component
+   - **Scenario 2**: Single image with multiple components → Process each section as separate component
+   - **Scenario 3**: Multiple images with single component each → Process each image as one component
+   - **Scenario 4**: Multiple images with multiple components each → Process each section in each image as separate component
+5. **🚨 MANDATORY: Display structure summary** - Show "Processing X images with Y total components"
+
+#### **🚨 MANDATORY: Step 2: Component Identification - REQUIRED SECOND**
+
+**⚠️ CRITICAL: AFTER DETERMINING COMPONENT TYPE, FOLLOW THIS EXACT SEQUENCE:**
+
+#### **🚨 MANDATORY: Step 2A: Identify All Components - REQUIRED SECOND (AFTER COMPONENT COUNT)**
+1. **🚨 MANDATORY: Extract all visual components** - Identify all distinct components from design
+2. **🚨 MANDATORY: Count total components** - Determine exact number of components identified
+3. **🚨 MANDATORY: Categorize all as New** - All components treated as new for consistency
+4. **🚨 MANDATORY: Display Status Summary** - Show Existing (0), Modified (0), New (X)
+5. **🚨 MANDATORY: Process All Components** - Apply 10-step analysis to all identified components
+
+#### **🚨 MANDATORY: Step 2B: Show Component Status Summary - REQUIRED SECOND**
+1. **🚨 MANDATORY: Display Status Summary** - Show count of Existing (0), Modified (0), and New (X) components
+2. **🚨 MANDATORY: Process All Components** - Apply 10-step analysis to all identified components
+3. **🚨 MANDATORY: Ensure Consistency** - Always show same format for predictable results
+
+#### **🚨 MANDATORY: Step 2C: Read Design Analysis Rules - REQUIRED THIRD (BEFORE ANALYSIS)**
+1. **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow the 10-step analysis process exactly as specified** - **NO DEVIATIONS**
+3. **🚨 MANDATORY: Apply component existence checking rules** - **REQUIRED**
+
+#### **🚨 MANDATORY: Step 2D: Follow 10-Step Analysis Process - REQUIRED FOURTH (for New/Modified only)** (AI Reference Only)
+   - **Step 1: Pattern Analysis** - Component type, primary interaction, content organization, framework (AI Reference Only)
+   - **Step 2: Complexity Analysis** - Complexity level, reasoning, architecture requirements, review needs (AI Reference Only)
+   - **Step 3: Functional Analysis** - Core functionality, user interactions, data flow, business logic (AI Reference Only)
+   - **Step 4: Layout Structure Analysis** - Layout pattern, section positioning, column ratios, HTML structure (AI Reference Only)
+   - **Step 5: Visual Style Analysis** - Color scheme, typography, spacing, visual effects, CSS variables (AI Reference Only)
+   - **Step 6: Interactive Element Analysis** - Clickable elements, positioning, styling, interaction behavior (AI Reference Only)
+   - **Step 7: Content Structure Analysis** - Content blocks, repeatable elements, text content, images (AI Reference Only)
+   - **Step 8: Data Requirements Mapping** - Text fields, image fields, link fields, multifields, conditional fields (AI Reference Only)
+   - **Step 9: Component Architecture Planning** - HTML structure, CSS naming, responsive behavior, accessibility (AI Reference Only)
+   - **Step 10: Component Definition Created** - Generate components.json with complete component definition (AI Reference Only)
+4. **MANDATORY: Validate Analysis** - Ensure all 10 steps are completed with meaningful explanations (AI Reference Only)
+5. **MANDATORY: Create Context File** - If medium/high complexity, create context file in appropriate directory (AI Reference Only)
+6. **MANDATORY: Present Next Options** - Show user options for next steps
+
+#### **🚨 MANDATORY: User Interface Rules - NO EXCEPTIONS** (AI Reference Only)
+1. **🚨 MANDATORY: Show only clean summary** - Display component count and status only
+2. **🚨 MANDATORY: Hide internal processing** - Do NOT show step-by-step analysis details
+3. **🚨 MANDATORY: Show final results only** - Display components.json creation and next options
+4. **🚨 MANDATORY: Keep user interface minimal** - Present only essential information
+5. **🚨 MANDATORY: Mark verbose content as (AI Reference Only)** - Internal processing details for AI only
+
+#### **🚨 MANDATORY: What to Show vs Hide - NO EXCEPTIONS** (AI Reference Only)
+
+**✅ SHOW TO USER:**
+- Image count and analysis details
+- Component count and identification
+- Component status breakdown (Existing, Modified, New)
+- Component names and categories
+- Next step options (1, 2, 3, 4, 5)
+- Clean, informative interface
+
+**🚨 MANDATORY: User Instruction Format - NO EXCEPTIONS**
+**⚠️ CRITICAL: When presenting analysis results, ALWAYS use this exact format:**
+
+```
+Image Count: X image(s) uploaded
+Image Analysis: [Single image containing multiple distinct visual sections] OR [Multiple images with single component each] OR [Multiple images with multiple components each]
+Component Count: X distinct components identified in the image(s)
+
+Existing Components (0)
+Modified Components (0)
+New Components (X):
+	1. [Actual Component Name 1]
+	2. [Actual Component Name 2]
+	3. [Actual Component Name 3]
+	...
+	X. [Actual Component Name X]
+```
+
+**🚨 CRITICAL: This format MUST be used for ALL analysis presentations - NO EXCEPTIONS**
+**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
+
+**🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
+**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
+
+```
+### 1. **Review Component Definition** - Check the components.json file
+### 2. **Develop Component** - Generate AEM component code  
+### 3. **Modify Component** - Update the component definition
+### 4. **Start Over** - Analyze a different image
+
+**Which option? (1, 2, 3, or 4)**
+```
+
+**🚨 CRITICAL: This options display is MANDATORY and cannot be skipped - NO EXCEPTIONS**
+
+**🚨 MANDATORY: Only show components.json creation confirmation AFTER actually creating the file**
+
+**❌ HIDE FROM USER (AI Reference Only):**
+- Step-by-step analysis details
+- Internal processing steps
+- Verbose component analysis
+- Technical implementation details
+- "Processing Component X of Y" messages
+- Individual step completions
+- Internal validation steps
+
+**🚨 CRITICAL: User sees only clean summary and next options - NO EXCEPTIONS**
+
+### **Step 2: Component Development**
+
+#### **Single Component Development:**
+1. **MANDATORY: Identify AEM Archetype Project**
+   - Look for archetype projects at the same level as `aem-workflow` folder
+   - If multiple projects found, ask user which project to use
+   - If only one project found, use it automatically
+   - If no project found, inform user to create AEM project first
+
+#### **Multiple Components Development:** (AI Reference Only)
+1. **MANDATORY: Identify AEM Archetype Project** (same as single)
+2. **MANDATORY: Show batch development overview** - Display total components to be created
+3. **MANDATORY: Process each component sequentially** - Create each component with full file structure
+4. **MANDATORY: Show progress for each component** - Display "Creating Component X of Y" for each component
+5. **MANDATORY: Generate all component files** - HTL, Sling Models, dialogs, SCSS for all components
+6. **MANDATORY: Show batch completion summary** - Display total components created and file structure
+
+2. **MANDATORY: Analyze Existing Component Patterns**
+   - Examine existing components in `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
+   - Identify the project's dialog structure patterns (simple vs complex)
+   - Check editConfig patterns (cq:inherit vs custom)
+   - Understand component group naming conventions
+3. **MANDATORY: Design-to-Dialog Mapping**
+   - Map EVERY visual element to dialog fields
+   - Identify multifield requirements for repeatable content
+   - Plan fieldset structure for complex data
+   - Ensure ALL design elements are captured in dialog
+   - **MANDATORY: Extract actual content from images as default values**
+   - **MANDATORY: Set default values for all text fields based on image content**
+   - **MANDATORY: Extract visible text, titles, descriptions, and labels from design**
+   - **MANDATORY: Use extracted content as initial values in dialog fields**
+4. Read `components.json` and context files
+5. Generate complete AEM component code following:
+   - `../components/.cursorrules-aem-components` for structure
+   - `../components/.cursorrules-aem-dialogs` for authoring
+   - `../technical/.cursorrules-aem-sling` for backend logic
+   - `../technical/.cursorrules-aem-cloud` for Cloud Service compliance
+6. **Place files in proper AEM project structure:**
+   - HTL templates: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
+   - Sling Models: `{project}/core/src/main/java/com/{groupId}/aem/core/models/`
+   - Dialogs: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/`
+   - SCSS: `{project}/ui.frontend/src/main/webpack/components/`
+7. **MANDATORY: Follow Project Conventions**
+   - Use existing component patterns for dialogs (simple fixedcolumns vs complex tabs)
+   - Use existing editConfig patterns (cq:inherit vs custom)
+   - Match component group naming conventions
+   - Always include `.content.xml` with proper `cq:Component` definition
+8. **MANDATORY: Design Accuracy Validation**
+   - Verify ALL visual elements from design are captured in dialog
+   - Ensure multifield structures match repeatable content blocks
+   - Confirm fieldset structure matches complex data requirements
+   - Validate that component can recreate the exact design
+   - **MANDATORY: Verify extracted content is set as default values in dialog fields**
+   - **MANDATORY: Ensure all visible text from image appears as default values**
+9. Include HTL, Sling Model, dialog, editConfig
+10. Add ClientLibs if needed
+11. **MANDATORY: Code Quality Validation**
+    - Read `CodeQuality-rules-latest-CS-2024-12-0.xlsx` for current rules
+    - Validate against Excel file security rules (Critical)
+    - Validate against Excel file reliability rules (Critical)
+    - Validate against Excel file maintainability rules (Important)
+    - Ensure AEM-specific annotations are correct
+    - Verify code follows quality templates
+12. **MANDATORY: Generate Unit Tests**
+    - Create test classes for Sling Models
+    - Create test classes for Services (if applicable)
+    - Create test classes for Servlets (if applicable)
+    - Generate test data JSON files
+    - Verify testing dependencies in pom.xml
+    - Ensure minimum 50% coverage
+
+### **Step 3: Quality Assurance**
+1. **MANDATORY: Validate Component Structure**
+   - Ensure `.content.xml` exists with `cq:Component` definition
+   - Verify dialog structure matches project patterns
+   - Confirm editConfig follows project conventions
+   - Check all required files are in correct locations
+2. Validate against complexity rules
+3. Ensure architect review for high complexity
+4. Test component functionality
+5. Verify responsive behavior
+6. Check accessibility compliance
+
+### **🚨 MANDATORY: Step 4: Code Quality & Unit Testing - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ALL components MUST follow SonarQube quality rules AND include comprehensive unit tests - NO EXCEPTIONS**
+
+#### **🚨 MANDATORY: Code Quality Rules - CLOUD MANAGER COMPLIANCE**
+
+**Before generating ANY component code, validate against SonarQube rules:**
+
+**Primary Source**: `CodeQuality-rules-latest-CS-2024-12-0.xlsx` (Official Adobe Excel file)
+**Reference**: Always use the latest Excel file for complete and up-to-date quality rules
+
+**Quality Rules Validation Process:**
+1. **Read Excel File**: Access `CodeQuality-rules-latest-CS-2024-12-0.xlsx` for current rules
+2. **Apply Critical Rules**: Security, Reliability, Blocker issues (Pipeline Failure)
+3. **Apply Important Rules**: Maintainability, Coverage, Code Smells (Pipeline Paused)
+4. **Apply Info Rules**: Duplicated Lines, Open Issues, Cloud Service Compatibility
+5. **Apply AEM-Specific Rules**: Framework patterns that remain consistent
+
+**User Notification**: "✅ Code quality rules from Excel file applied"
+
+**AEM-Specific Rules (Static - Won't Change):**
+- **@Model annotation**: Must be present and properly configured
+- **@Inject annotation**: Use instead of @Reference for OSGi services
+- **@Optional annotation**: Use for optional injections
+- **@ValueMapValue**: Use for resource properties
+- **@ChildResource**: Use for child resources
+
+#### **🚨 MANDATORY: Unit Testing Requirements - ALL COMPONENTS**
+
+**For EVERY component created, generate unit tests in:**
+```
+{project}/core/src/test/java/com/{groupId}/aem/core/
+├── models/
+│   └── {ComponentName}ModelTest.java
+├── services/
+│   └── {ServiceName}Test.java
+└── servlets/
+    └── {ServletName}Test.java
+```
+
+#### **🚨 MANDATORY: Test File Structure - NO EXCEPTIONS**
+
+**1. Sling Model Tests:**
+```java
+@ExtendWith({AemContextExtension.class})
+class {ComponentName}ModelTest {
+    
+    private final AemContext context = new AemContext();
+    private {ComponentName}Model model;
+    
+    @BeforeEach
+    void setUp() {
+        context.addModelsForClasses({ComponentName}Model.class);
+        context.load().json("/test-data/{component-name}.json", "/content/test");
+        model = context.request().adaptTo({ComponentName}Model.class);
+    }
+    
+    @Test
+    void testModelInitialization() {
+        assertThat(model).isNotNull();
+    }
+    
+    @Test
+    void testGetTitle() {
+        assertThat(model.getTitle()).isEqualTo("Expected Title");
+    }
+    
+    @Test
+    void testGetDescription() {
+        assertThat(model.getDescription()).isEqualTo("Expected Description");
+    }
+    
+    @Test
+    void testGetImage() {
+        assertThat(model.getImage()).isNotNull();
+    }
+    
+    @Test
+    void testGetLink() {
+        assertThat(model.getLink()).isNotNull();
+    }
+    
+    @Test
+    void testIsConfigured() {
+        assertThat(model.isConfigured()).isTrue();
+    }
+}
+```
+
+**2. Service Tests:**
+```java
+@ExtendWith({AemContextExtension.class})
+class {ServiceName}Test {
+    
+    private final AemContext context = new AemContext();
+    private {ServiceName} service;
+    
+    @BeforeEach
+    void setUp() {
+        context.addModelsForClasses({ServiceName}.class);
+        service = context.registerInjectActivateService(new {ServiceName}Impl());
+    }
+    
+    @Test
+    void testServiceActivation() {
+        assertThat(service).isNotNull();
+    }
+    
+    @Test
+    void testServiceMethod() {
+        String result = service.performAction("test");
+        assertThat(result).isEqualTo("expected result");
+    }
+}
+```
+
+**3. Servlet Tests:**
+```java
+@ExtendWith({AemContextExtension.class})
+class {ServletName}Test {
+    
+    private final AemContext context = new AemContext();
+    private {ServletName} servlet;
+    
+    @BeforeEach
+    void setUp() {
+        servlet = new {ServletName}();
+        context.registerService(servlet);
+    }
+    
+    @Test
+    void testDoGet() throws Exception {
+        context.request().setMethod("GET");
+        servlet.doGet(context.request(), context.response());
+        
+        assertThat(context.response().getStatus()).isEqualTo(200);
+        assertThat(context.response().getContentType()).isEqualTo("application/json");
+    }
+    
+    @Test
+    void testDoPost() throws Exception {
+        context.request().setMethod("POST");
+        servlet.doPost(context.request(), context.response());
+        
+        assertThat(context.response().getStatus()).isEqualTo(200);
+    }
+}
+```
+
+#### **🚨 MANDATORY: Test Data Files - NO EXCEPTIONS**
+
+**Create test data JSON files in:**
+```
+{project}/core/src/test/resources/test-data/
+└── {component-name}.json
+```
+
+**Test Data Structure:**
+```json
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "cjcjtest2/components/{component-name}",
+    "title": "Test Title",
+    "description": "Test Description",
+    "image": "/content/dam/test/image.jpg",
+    "link": "/content/test-page",
+    "text": "Test Text Content"
+  }
+}
+```
+
+#### **🚨 MANDATORY: Testing Dependencies - NO EXCEPTIONS**
+
+**Ensure these dependencies are in core/pom.xml:**
+```xml
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>io.wcm</groupId>
+    <artifactId>io.wcm.testing.aem-mock.junit5</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.assertj</groupId>
+    <artifactId>assertj-core</artifactId>
+    <scope>test</scope>
+</dependency>
+```
+
+#### **🚨 MANDATORY: Test Execution - NO EXCEPTIONS**
+
+**Run tests after component creation:**
+```bash
+mvn test -pl core
+```
+
+**Test Coverage Requirements:**
+- **Sling Models**: 100% method coverage
+- **Services**: 100% method coverage  
+- **Servlets**: 100% endpoint coverage
+- **Business Logic**: 100% branch coverage
+
+#### **🚨 MANDATORY: Test Validation Checklist - NO EXCEPTIONS**
+
+**Before considering component complete, verify:**
+- [ ] **Test files created** - All test classes generated
+- [ ] **Test data provided** - JSON test data files created
+- [ ] **Dependencies added** - Testing dependencies in pom.xml
+- [ ] **Tests pass** - All tests execute successfully
+- [ ] **Coverage adequate** - Required coverage levels met
+- [ ] **Edge cases tested** - Null values, empty strings, invalid data
+- [ ] **Error conditions tested** - Exception handling verified
+
+#### **🚨 MANDATORY: Complexity-Based Testing - NO EXCEPTIONS**
+
+**Simple Components:**
+- Basic getter/setter tests
+- Null value handling
+- Default value validation
+
+**Medium Complexity Components:**
+- Business logic testing
+- Data transformation testing
+- Service integration testing
+- Error handling testing
+
+**High Complexity Components:**
+- Full integration testing
+- Performance testing
+- Security testing
+- API endpoint testing
+- Database interaction testing
+
+#### **🚨 MANDATORY: Test Naming Conventions - NO EXCEPTIONS**
+
+**Test Class Names:**
+- `{ComponentName}ModelTest` for Sling Models
+- `{ServiceName}Test` for Services
+- `{ServletName}Test` for Servlets
+
+**Test Method Names:**
+- `test{MethodName}()` for getter methods
+- `test{MethodName}With{Condition}()` for conditional logic
+- `test{MethodName}Throws{Exception}()` for error conditions
+
+**Example:**
+```java
+@Test
+void testGetTitle() { }
+
+@Test
+void testGetTitleWithNullValue() { }
+
+@Test
+void testGetTitleThrowsException() { }
+```
+
+#### **🚨 MANDATORY: Test Documentation - NO EXCEPTIONS**
+
+**Each test class must include:**
+- Class-level JavaDoc explaining test purpose
+- Method-level JavaDoc for complex tests
+- Inline comments for non-obvious test logic
+- Test data explanation in JSON files
+
+**Example:**
+```java
+/**
+ * Unit tests for HeroBannerModel
+ * Tests component data binding, business logic, and error handling
+ */
+@ExtendWith({AemContextExtension.class})
+class HeroBannerModelTest {
+    
+    /**
+     * Tests that the model initializes correctly with valid data
+     */
+    @Test
+    void testModelInitialization() {
+        // Test implementation
+    }
+}
+```
+
+#### **🚨 MANDATORY: Test Failure Handling - NO EXCEPTIONS**
+
+**If tests fail:**
+1. **Fix failing tests** - Address test implementation issues
+2. **Fix component code** - Address component logic issues
+3. **Update test data** - Ensure test data matches component expectations
+4. **Re-run tests** - Verify all tests pass
+5. **Document fixes** - Update test documentation
+
+**Test failures indicate:**
+- Component logic errors
+- Missing null checks
+- Incorrect data binding
+- Service integration issues
+- Servlet endpoint problems
+
+#### **🚨 MANDATORY: Continuous Testing - NO EXCEPTIONS**
+
+**Run tests during development:**
+- After each component creation
+- Before component deployment
+- During batch processing
+- After any component modification
+
+**Test execution commands:**
+```bash
+# Run all tests
+mvn test
+
+# Run specific module tests
+mvn test -pl core
+
+# Run with coverage report
+mvn test jacoco:report
+
+# Run specific test class
+mvn test -Dtest={ComponentName}ModelTest
+```
+
+**🚨 CRITICAL: NO COMPONENT IS COMPLETE WITHOUT COMPREHENSIVE UNIT TESTS - NO EXCEPTIONS**
+
+### **🚨 MANDATORY: Batch Processing Guidelines - NO EXCEPTIONS** (AI Reference Only)
+
+**⚠️ CRITICAL: When processing multiple images/components, ALWAYS follow these guidelines:**
+
+#### **🚨 MANDATORY: Batch Analysis Rules:** (AI Reference Only)
+1. **🚨 MANDATORY: Process images sequentially** - Never skip or combine image analysis
+2. **🚨 MANDATORY: Show progress indicators** - Display "Processing Image X of Y" for each step
+3. **🚨 MANDATORY: Maintain individual quality** - Each component must meet all quality standards
+4. **🚨 MANDATORY: Create comprehensive components.json** - Single file with all components
+5. **🚨 MANDATORY: Include all context files** - Create context files for medium/high complexity components
+
+#### **🚨 MANDATORY: Batch Development Rules:** (AI Reference Only)
+1. **🚨 MANDATORY: Create all component directories** - Each component gets its own folder structure
+2. **🚨 MANDATORY: Generate all required files** - HTL, Sling Models, dialogs, SCSS, Unit Tests, Quality-compliant code for each component
+3. **🚨 MANDATORY: Follow project conventions** - Maintain consistency across all components
+4. **🚨 MANDATORY: Validate each component** - Ensure all components pass quality checks
+5. **🚨 MANDATORY: Show completion summary** - Display total components and files created
+6. **🚨 MANDATORY: Fix HTL compilation errors** - Use proper context for style attributes (`@ context='styleString'`)
+7. **🚨 MANDATORY: Test build after generation** - Run `mvn clean compile -pl ui.apps` to verify compilation
+
+#### **🚨 CRITICAL: ANTI-DEVIATION RULES - NO EXCEPTIONS** (AI Reference Only)
+**⚠️ CRITICAL: PREVENT RULE VIOLATIONS - MANDATORY COMPLIANCE:**
+
+1. **🚨 MANDATORY: NEVER try to "optimize" or create "in parallel"** - Always follow sequential processing exactly as specified
+2. **🚨 MANDATORY: NEVER stop before completing ALL components** - Complete every single component before any cleanup
+3. **🚨 MANDATORY: NEVER assume what would be "efficient"** - Follow the exact mandatory workflow rules
+4. **🚨 MANDATORY: NEVER lose track of batch processing requirements** - Maintain awareness of total component count
+5. **🚨 MANDATORY: NEVER deviate from specified process** - No shortcuts, no modifications, no assumptions
+6. **🚨 MANDATORY: ALWAYS show "Creating Component X of Y" for each component** - Display progress indicators throughout
+7. **🚨 MANDATORY: ALWAYS complete ALL components before stopping** - Never leave components incomplete
+8. **🚨 MANDATORY: ALWAYS verify completion before cleanup** - Use verification rules to ensure 100% completion
+9. **🚨 MANDATORY: ALWAYS follow the exact mandatory workflow rules** - No deviations, no shortcuts, no assumptions
+10. **🚨 MANDATORY: ALWAYS report violations immediately** - If any deviation occurs, report and correct immediately
+
+**🚨 CRITICAL: DEVIATION PREVENTION FORMAT - NO EXCEPTIONS:**
+```
+Component Development Progress:
+- Total Components Required: X
+- Components Completed: Y
+- Components Remaining: Z
+- Status: [IN PROGRESS/COMPLETE]
+
+Current Component: [Component Name] (X of Y)
+Next Component: [Next Component Name]
+```
+
+**🚨 CRITICAL: These anti-deviation rules are MANDATORY and cannot be bypassed - NO EXCEPTIONS**
+
+#### **🚨 CRITICAL: COMPONENT VERIFICATION RULES - NO EXCEPTIONS** (AI Reference Only)
+**⚠️ CRITICAL: MANDATORY VERIFICATION BEFORE ANY CLEANUP - NO EXCEPTIONS:**
+
+1. **🚨 MANDATORY: Count components in components.json** - Always count total components in JSON file first
+2. **🚨 MANDATORY: Count created components** - Count actual component directories created
+3. **🚨 MANDATORY: Verify 100% match** - JSON count MUST equal created count - NO EXCEPTIONS
+4. **🚨 MANDATORY: List missing components** - If counts don't match, list exactly which components are missing
+5. **🚨 MANDATORY: Create missing components** - Create ALL missing components before proceeding
+6. **🚨 MANDATORY: Re-verify after creation** - Count again after creating missing components
+7. **🚨 MANDATORY: Only delete components.json after 100% verification** - Never delete JSON file until ALL components verified created
+8. **🚨 MANDATORY: Show verification summary** - Display "X components in JSON, Y components created, Z missing" format
+9. **🚨 MANDATORY: Never skip verification** - This step cannot be bypassed, combined, or modified
+10. **🚨 MANDATORY: Report violations immediately** - If verification fails, report exact missing components
+
+**🚨 CRITICAL: VERIFICATION FORMAT - NO EXCEPTIONS:**
+```
+Component Verification Summary:
+- Components in JSON: X
+- Components Created: Y  
+- Missing Components: Z
+- Status: [COMPLETE/INCOMPLETE]
+
+Missing Components (if any):
+1. [Component Name 1]
+2. [Component Name 2]
+...
+```
+
+**🚨 CRITICAL: This verification is MANDATORY and cannot be skipped - NO EXCEPTIONS**
+
+#### **🚨 MANDATORY: Batch Quality Assurance:** (AI Reference Only)
+1. **🚨 MANDATORY: Test each component individually** - Verify functionality of each component
+2. **🚨 MANDATORY: Check for naming conflicts** - Ensure unique component names
+3. **🚨 MANDATORY: Validate file structure** - Confirm all files are in correct locations
+4. **🚨 MANDATORY: Verify responsive design** - Test all components on different screen sizes
+5. **🚨 MANDATORY: Check accessibility compliance** - Ensure all components meet WCAG standards
+6. **🚨 MANDATORY: Run unit tests** - Execute `mvn test -pl core` for all components
+7. **🚨 MANDATORY: Verify test coverage** - Ensure 100% method coverage for Sling Models
+8. **🚨 MANDATORY: Run Excel-based quality checks** - Validate against `CodeQuality-rules-latest-CS-2024-12-0.xlsx`
+9. **🚨 MANDATORY: Validate security compliance** - Check Excel file security rules (Critical)
+10. **🚨 MANDATORY: Validate reliability compliance** - Check Excel file reliability rules (Critical)
+11. **🚨 MANDATORY: Validate maintainability compliance** - Check Excel file maintainability rules (Important)
+12. **🚨 MANDATORY: Validate AEM-specific rules** - Check annotations, service patterns
+13. **🚨 MANDATORY: Fix failing tests** - Address any test failures before completion
+14. **🚨 MANDATORY: Fix quality violations** - Address any Excel file rule violations
+15. **🚨 MANDATORY: Notify user** - Display "✅ Code quality rules from Excel file applied"
+
+**Why Batch Processing Matters:** (AI Reference Only)
+- ✅ **Efficiency** - Process multiple components in one workflow
+- ✅ **Consistency** - Maintain uniform quality across all components
+- ✅ **Scalability** - Handle large design systems with multiple components
+- ✅ **Time Savings** - Reduce repetitive analysis and development tasks

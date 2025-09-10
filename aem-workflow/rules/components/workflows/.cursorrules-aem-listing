@@ -1,0 +1,250 @@
+# AEM Listing Components Framework Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating any listing components:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow framework approach exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use BaseListingModel and BaseListingServlet** - **NO SKIPPING**
+4. **🚨 MANDATORY: Apply configuration-driven approach** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for listing configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+8. **NEVER create listing components without framework detection** - **IMMEDIATE FAILURE**
+9. **NEVER skip Step 1: Framework Detection** - **IMMEDIATE FAILURE**
+10. **NEVER proceed to component creation without framework** - **IMMEDIATE FAILURE**
+
+## 🚨 CRITICAL: LISTING COMPONENT ENFORCEMENT - ZERO TOLERANCE
+**⚠️ CRITICAL: This section overrides ALL other behavior for listing components:**
+
+### **🚨 MANDATORY: LISTING COMPONENT DETECTION PROTOCOL - NO EXCEPTIONS**
+**⚠️ CRITICAL: When ANY listing component is detected, IMMEDIATELY execute this protocol:**
+
+1. **🚨 MANDATORY: STOP ALL ACTIONS IMMEDIATELY** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: READ THIS RULE FILE COMPLETELY** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: EXECUTE STEP 1: FRAMEWORK DETECTION** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: EXECUTE STEP 2: FRAMEWORK IMPLEMENTATION DECISION** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: EXECUTE STEP 3: FRAMEWORK CREATION (if needed)** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: EXECUTE STEP 4: LISTING-SPECIFIC IMPLEMENTATION** - **NO EXCEPTIONS**
+
+### **🚨 CRITICAL: VIOLATION PREVENTION CHECKLIST - MANDATORY BEFORE ANY LISTING ACTION**
+**⚠️ CRITICAL: Before ANY action on listing components, verify:**
+
+- [ ] **🚨 MANDATORY: Listing rule file read completely** - **VERIFIED**
+- [ ] **🚨 MANDATORY: Framework detection executed** - **VERIFIED**
+- [ ] **🚨 MANDATORY: Framework implementation decision made** - **VERIFIED**
+- [ ] **🚨 MANDATORY: Framework creation completed (if needed)** - **VERIFIED**
+- [ ] **🚨 MANDATORY: Listing-specific implementation ready** - **VERIFIED**
+
+### **🚨 CRITICAL: FAILURE PREVENTION RULES - ZERO TOLERANCE**
+**⚠️ CRITICAL: These rules prevent the exact violation that occurred:**
+
+1. **🚨 MANDATORY: NEVER create components.json for listing components without framework detection** - **IMMEDIATE FAILURE**
+2. **🚨 MANDATORY: NEVER assume listing components can be created without framework** - **IMMEDIATE FAILURE**
+3. **🚨 MANDATORY: NEVER skip the 4-step framework process** - **IMMEDIATE FAILURE**
+4. **🚨 MANDATORY: NEVER proceed with listing component creation without AEM project structure** - **IMMEDIATE FAILURE**
+5. **🚨 MANDATORY: NEVER create listing components in isolation** - **IMMEDIATE FAILURE**
+
+### **🚨 CRITICAL: ENFORCEMENT ACCOUNTABILITY - NO EXCEPTIONS**
+**⚠️ CRITICAL: Track and prevent violations:**
+
+- **🚨 MANDATORY: Log every listing component detection** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Verify framework detection execution** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Confirm framework implementation decision** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Validate framework creation completion** - **ACCOUNTABILITY**
+- **🚨 MANDATORY: Report any violations immediately** - **ACCOUNTABILITY**
+
+## **CRITICAL: Listing Component Framework Approach**
+
+**NEVER create individual listing components without the framework. ALWAYS use the framework approach for any listing component.**
+
+### **Framework Detection and Implementation Process**
+
+#### **Step 1: Framework Detection**
+When developing a listing component, **ALWAYS**:
+1. **Check if listing framework exists** in the codebase
+2. **Search for existing framework files**:
+   - `ListingService.java` (OSGi Service Interface)
+   - `ListingServiceImpl.java` (OSGi Service Implementation)
+   - `BaseListingServlet.java` (Abstract base servlet)
+   - `BaseListingModel.java` (Abstract base model)
+   - `ListingConfiguration.java` (Configuration model)
+
+#### **Step 2: Framework Implementation Decision**
+- **If framework DOES NOT exist**: Create the complete framework first
+- **If framework EXISTS**: Only create listing-specific components
+
+#### **Step 3: Framework Creation (If Not Exists)**
+**MANDATORY Core Framework Files** (Following AEM Archetype Structure):
+```
+core/src/main/java/com/[project]/aem/core/
+├── services/
+│   ├── ListingService.java              # OSGi Service Interface
+│   └── impl/
+│       └── ListingServiceImpl.java      # OSGi Service Implementation
+├── models/
+│   ├── listing/
+│   │   ├── ListingConfiguration.java    # Configuration Model
+│   │   ├── ListingResult.java           # Result Model
+│   │   ├── ListingRequest.java          # Request Model
+│   │   └── ListingType.java             # Enum for listing types
+│   └── BaseListingModel.java            # Abstract base model
+└── servlets/
+    └── BaseListingServlet.java          # Abstract base servlet
+```
+
+#### **Step 4: Listing-Specific Implementation**
+**For Each Listing Component** (Following AEM Archetype Structure):
+```
+core/src/main/java/com/[project]/aem/core/
+├── servlets/
+│   └── [ComponentName]ListingServlet.java # Extends BaseListingServlet
+└── models/
+    └── [ComponentName]ListingModel.java   # Extends BaseListingModel
+
+ui.apps/src/main/content/jcr_root/apps/[project]/components/
+└── [component-name]/
+    ├── _cq_dialog/
+    │   └── .content.xml
+    ├── _cq_editConfig/
+    │   └── .content.xml
+    ├── [component-name].html
+    └── [component-name].js
+```
+
+**IMPORTANT: Component Naming Rules**
+- **NEVER hardcode component names** like "news-listing", "research-listing", etc.
+- **Analyze the design properly** to determine the actual content type and purpose
+- **Use generic names** like "content-listing", "item-listing", "search-listing" when appropriate
+- **Component name should reflect the actual functionality**, not assume content type
+- **Configuration should determine content type**, not the component name
+
+### **Framework Architecture Rules**
+
+#### **OSGi Service Rules**
+- **ListingService**: Must be a single OSGi service managing all listing types
+- **Configuration-Driven**: Each listing type has its own configuration
+- **Query Builder**: Use AEM Query Builder for all searches
+- **Caching**: Implement result caching for performance
+
+#### **Servlet Rules**
+- **BaseListingServlet**: Abstract class with common functionality
+- **Specific Servlets**: Extend base class for each listing type
+- **Path Pattern**: `/bin/[project]/[listing-type]/search`
+- **Response Format**: Always return JSON
+
+#### **Model Rules**
+- **BaseListingModel**: Abstract class with common properties
+- **Specific Models**: Extend base class for each listing type
+- **Configuration**: Use @ValueMapValue for component properties
+- **Service Injection**: Inject ListingService for search functionality
+
+### **Configuration Rules**
+
+#### **ListingConfiguration Properties**
+```java
+- listingType: String (unique identifier)
+- rootPath: String (content root path)
+- tagPaths: List<String> (filter tag paths)
+- sortFields: List<String> (available sort fields)
+- defaultSortField: String
+- defaultSortOrder: String ("asc" or "desc")
+- resultsPerPageOptions: List<Integer>
+- defaultResultsPerPage: Integer
+- contentType: String ("page", "contentfragment")
+- searchFields: Map<String, String> (field mappings)
+```
+
+#### **Component Dialog Rules**
+**MANDATORY Dialog Fields**:
+- Root Path (path picker)
+- Tag Paths (multi-field)
+- Results Per Page Options (multi-field)
+- Default Sort Field (dropdown)
+- Default Sort Order (radio buttons)
+- Available Sort Fields (multi-field)
+
+### **Implementation Rules**
+
+#### **Search Logic Rules**
+1. **Root Path**: Always filter by configured root path
+2. **Tag Filtering**: Use tagid property for filtering
+3. **Free Text Search**: Use fulltext predicate
+4. **Sorting**: Dynamic sorting based on configuration
+5. **Pagination**: Calculate offset/limit properly
+6. **Error Handling**: Graceful degradation for failures
+
+#### **Frontend Rules**
+1. **AJAX Requests**: All interactions via AJAX
+2. **Debounced Search**: Delay search requests
+3. **Loading States**: Show loading indicators
+4. **Error Handling**: Display user-friendly errors
+5. **Accessibility**: ARIA labels and keyboard navigation
+
+### **File Naming Conventions**
+
+#### **Java Classes** (Following AEM Archetype Structure)
+- **Service Interface**: `services/ListingService.java`
+- **Service Implementation**: `services/impl/ListingServiceImpl.java`
+- **Base Classes**: `servlets/BaseListingServlet.java`, `models/BaseListingModel.java`
+- **Specific Classes**: `servlets/[ComponentName]ListingServlet.java`, `models/[ComponentName]ListingModel.java`
+- **Data Models**: `models/listing/ListingRequest.java`, `models/listing/ListingResult.java`, `models/listing/ListingConfiguration.java`
+
+**Naming Convention Rules**:
+- **ComponentName**: Use the actual component name from `components.json` (e.g., "ContentListing", "ItemListing")
+- **component-name**: Use kebab-case version (e.g., "content-listing", "item-listing")
+- **NEVER assume content type** - let configuration determine the content type
+
+#### **Component Files**
+- Component Folder: `[component-name]`
+- HTL Template: `[component-name].html`
+- JavaScript: `[component-name].js`
+- Dialog: `_cq_dialog/.content.xml`
+- Edit Config: `_cq_editConfig/.content.xml`
+
+**Component Naming Examples**:
+- Generic listing: `content-listing` → `ContentListingServlet.java`, `ContentListingModel.java`
+- Item listing: `item-listing` → `ItemListingServlet.java`, `ItemListingModel.java`
+- Search listing: `search-listing` → `SearchListingServlet.java`, `SearchListingModel.java`
+
+### **Testing Rules**
+- **Unit Tests**: Test all service methods
+- **Integration Tests**: Test servlet endpoints
+- **Component Tests**: Test HTL templates
+- **Performance Tests**: Test with large datasets
+
+### **Documentation Rules**
+- **API Documentation**: Document all service methods
+- **Configuration Guide**: Document how to add new listing types
+- **Usage Examples**: Provide code examples
+- **Troubleshooting**: Common issues and solutions
+
+### **Performance Rules**
+- **Result Caching**: Cache frequent queries
+- **Pagination**: Limit results per page
+- **Index Optimization**: Ensure proper JCR indexes
+- **Lazy Loading**: Load results via AJAX
+- **Debounced Search**: Delay search requests
+
+### **Security Rules**
+- **Path Validation**: Validate all input paths
+- **XSS Prevention**: Sanitize all user inputs
+- **CSRF Protection**: Use AEM CSRF tokens
+- **Access Control**: Respect AEM permissions
+
+### **Error Handling Rules**
+- **Graceful Degradation**: Handle search failures
+- **User Feedback**: Display meaningful error messages
+- **Logging**: Log all errors for debugging
+- **Fallback Content**: Show fallback when no results
+
+---
+
+**This framework ensures consistency, reusability, and maintainability across all listing components in the AEM project.**

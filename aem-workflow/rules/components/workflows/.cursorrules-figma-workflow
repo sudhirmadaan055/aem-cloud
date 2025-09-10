@@ -1,0 +1,264 @@
+# AEM Figma Integration Workflow
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before executing any Figma-to-AEM component development tasks:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all Figma integration rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Reference other rule files when mentioned** - **NO IGNORING**
+
+## 🚨 CRITICAL: STEP 0 - FIGMA URL VALIDATION AND EXTRACTION (AI Reference Only)
+
+**⚠️ CRITICAL: BEFORE ANY OTHER STEP, ALWAYS VALIDATE FIGMA URL FIRST:**
+1. **🚨 MANDATORY: Extract file key from Figma URL** - Parse URL to get file key
+2. **🚨 MANDATORY: Extract node ID if provided** - Get specific node ID from URL parameters
+3. **🚨 MANDATORY: Validate URL format** - Ensure it's a valid Figma design URL
+4. **🚨 MANDATORY: Connect to Figma MCP server** - Use `mcp_figma_get_figma_data` tool
+5. **🚨 MANDATORY: Verify file access** - Confirm file is accessible and readable
+6. **🚨 MANDATORY: Display file information** - Show file name, last modified, component count
+
+**🚨 CRITICAL: THIS STEP CANNOT BE SKIPPED, COMBINED, OR MODIFIED - NO EXCEPTIONS**
+
+## 🚨 USER INTERFACE - FIGMA URL INPUT
+
+**Please provide your Figma URL:**
+
+## 🚨 CRITICAL: STEP 1 - COMPREHENSIVE FIGMA DATA EXTRACTION (AI Reference Only)
+
+**⚠️ CRITICAL: EXTRACT ALL DESIGN DATA FROM FIGMA:**
+1. **🚨 MANDATORY: Get complete file data** - Use `mcp_figma_get_figma_data` with file key
+2. **🚨 MANDATORY: Extract component metadata** - Get all components and component sets
+3. **🚨 MANDATORY: Identify design system** - Extract colors, typography, spacing, effects
+4. **🚨 MANDATORY: Get node structure** - Analyze the specific node and its children
+5. **🚨 MANDATORY: Extract text content** - Get all text nodes with exact content
+6. **🚨 MANDATORY: Identify images and assets** - Find all image references and SVG elements
+7. **🚨 MANDATORY: Download required assets** - Use `mcp_figma_download_figma_images` for images
+8. **🚨 MANDATORY: Map component hierarchy** - Understand parent-child relationships
+
+**🚨 CRITICAL: THIS STEP IS MANDATORY FOR ALL FIGMA URLS - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 2 - COMPONENT IDENTIFICATION AND ANALYSIS
+
+**⚠️ CRITICAL: ANALYZE FIGMA DATA TO IDENTIFY AEM COMPONENTS:**
+1. **🚨 MANDATORY: Determine input type first** - Check if URL points to single component or page design
+2. **🚨 MANDATORY: For page designs** - Identify all distinct components across breakpoints (Desktop, Mobile, Tablet)
+3. **🚨 MANDATORY: For single components** - Focus on the specific component instance only
+4. **🚨 MANDATORY: Analyze component variants** - Check for different states and sizes
+5. **🚨 MANDATORY: Map visual elements** - Identify text, images, buttons, containers
+6. **🚨 MANDATORY: Determine component complexity** - Simple, Medium, or Complex
+7. **🚨 MANDATORY: Identify reusable elements** - Find patterns that can be separate components
+8. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
+9. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
+10. **🚨 MANDATORY: Extract content for default values** - Get all text content for dialog fields
+11. **🚨 MANDATORY: Map design tokens** - Extract colors, fonts, spacing for styling
+12. **🚨 MANDATORY: Identify responsive requirements** - Check for different breakpoints
+
+**🚨 MANDATORY: DISPLAY COMPONENT STATUS SUMMARY - REQUIRED FORMAT:**
+
+```
+Component Count: X distinct components identified in the Figma file
+
+Existing Components (0)
+Modified Components (0)
+New Components (X):
+	1. [Actual Component Name 1]
+	2. [Actual Component Name 2]
+	3. [Actual Component Name 3]
+	...
+	X. [Actual Component Name X]
+```
+
+**🚨 MANDATORY: PAGE vs COMPONENT DETECTION:**
+- **🚨 MANDATORY: For page designs** - Show "Page Design Analysis" and list all components found
+- **🚨 MANDATORY: For single components** - Show "Single Component Analysis" and focus on that component
+- **🚨 MANDATORY: Always mention breakpoints** - If page design, mention Desktop/Mobile/Tablet variants
+
+**🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
+
+```
+**Component Analysis:**
+
+| # | Component Name | Type | Complexity | Interactive Elements |
+|---|----------------|------|------------|---------------------|
+| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
+| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
+| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
+| ... | ... | ... | ... | ... |
+| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+
+**Summary by Type:**
+- **[Type] Components (X):** [Component Names]
+- **[Type] Components (X):** [Component Names]
+
+**Summary by Complexity:**
+- **Simple (X):** [Component Names]
+- **Medium (X):** [Component Names]
+- **High (X):** [Component Names]
+```
+
+**🚨 MANDATORY: PAGE DESIGN DETECTION RULES:**
+- **🚨 MANDATORY: Look for multiple breakpoints** - Desktop, Mobile, Tablet frames in same file
+- **🚨 MANDATORY: Identify page-level components** - Header, Footer, Hero, Content sections
+- **🚨 MANDATORY: Check for component instances** - Multiple instances of same component type
+- **🚨 MANDATORY: Analyze component hierarchy** - Parent-child relationships in page structure
+- **🚨 MANDATORY: Separate by functionality** - Navigation, Content, Interactive, Layout components
+
+**🚨 CRITICAL: This format MUST be used for ALL Figma analysis presentations - NO EXCEPTIONS**
+**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
+
+**🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
+**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
+
+```
+### 1. **Create Component Definition** - Generate components.json file
+### 2. **Create Components** - Generate AEM component files
+### 3. **Modify Analysis** - Adjust component details
+### 4. **Cancel** - Return to main menu
+```
+
+**🚨 CRITICAL: ALL TECHNICAL DETAILS MARKED AS (AI Reference Only) - NO EXCEPTIONS**
+
+**🚨 CRITICAL: THIS STEP DETERMINES COMPONENT STRUCTURE - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 3 - AEM COMPONENT MAPPING (AI Reference Only)
+
+**⚠️ CRITICAL: MAP FIGMA COMPONENTS TO AEM COMPONENTS:**
+1. **🚨 MANDATORY: Check existing AEM project components** - Scan existing component directory
+2. **🚨 MANDATORY: Compare with existing components** - Match visual similarity to existing AEM components
+3. **🚨 MANDATORY: Determine component naming** - Create AEM-compliant component names
+4. **🚨 MANDATORY: Map component hierarchy** - Define parent-child component relationships
+5. **🚨 MANDATORY: Identify component dependencies** - Find components that depend on others
+6. **🚨 MANDATORY: Plan component structure** - Define HTL, Sling Model, dialog requirements
+7. **🚨 MANDATORY: Map design system integration** - Plan how to use extracted design tokens
+
+**🚨 CRITICAL: THIS STEP ENSURES AEM COMPLIANCE - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 4 - COMPONENT DEVELOPMENT (AI Reference Only)
+
+**⚠️ CRITICAL: GENERATE AEM COMPONENTS FROM FIGMA DATA:**
+1. **🚨 MANDATORY: Create component structure** - Generate all required AEM files
+2. **🚨 MANDATORY: Generate HTL templates** - Create templates with extracted content as defaults
+3. **🚨 MANDATORY: Create Sling Models** - Generate models with proper annotations
+4. **🚨 MANDATORY: Build authoring dialogs** - Create dialogs with extracted content as default values
+5. **🚨 MANDATORY: Generate SCSS files** - Create styles using extracted design tokens
+6. **🚨 MANDATORY: Create edit configurations** - Generate proper edit configs
+7. **🚨 MANDATORY: Set up asset management** - Integrate downloaded Figma assets
+8. **🚨 MANDATORY: Apply design system** - Use extracted colors, fonts, spacing consistently
+
+**🚨 CRITICAL: THIS STEP CREATES PRODUCTION-READY COMPONENTS - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: STEP 5 - QUALITY ASSURANCE AND TESTING (AI Reference Only)
+
+**⚠️ CRITICAL: ENSURE COMPONENT QUALITY AND COMPLIANCE:**
+1. **🚨 MANDATORY: Generate unit tests** - Create comprehensive test classes
+2. **🚨 MANDATORY: Validate against code quality rules** - Check against Excel file rules
+3. **🚨 MANDATORY: Verify design accuracy** - Ensure components match Figma design exactly
+4. **🚨 MANDATORY: Test content extraction** - Verify default values match Figma content
+5. **🚨 MANDATORY: Validate AEM compliance** - Ensure Cloud Service compatibility
+6. **🚨 MANDATORY: Check responsive behavior** - Verify mobile/tablet/desktop layouts
+7. **🚨 MANDATORY: Validate accessibility** - Ensure proper ARIA labels and semantic HTML
+8. **🚨 MANDATORY: Test component integration** - Verify components work together
+
+**🚨 CRITICAL: THIS STEP ENSURES PRODUCTION QUALITY - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: FIGMA-SPECIFIC RULES (AI Reference Only)
+
+**⚠️ CRITICAL: FIGMA INTEGRATION REQUIREMENTS:**
+1. **🚨 MANDATORY: Always use MCP tools** - Use `mcp_figma_get_figma_data` and `mcp_figma_download_figma_images`
+2. **🚨 MANDATORY: Extract exact content** - Get actual text content from Figma for default values
+3. **🚨 MANDATORY: Preserve design accuracy** - Maintain pixel-perfect accuracy from Figma
+4. **🚨 MANDATORY: Use design tokens** - Apply extracted colors, fonts, spacing consistently
+5. **🚨 MANDATORY: Handle component variants** - Support different states and sizes
+6. **🚨 MANDATORY: Manage assets properly** - Download and optimize images from Figma
+7. **🚨 MANDATORY: Maintain component hierarchy** - Preserve parent-child relationships
+8. **🚨 MANDATORY: Support responsive design** - Handle different breakpoints from Figma
+
+**🚨 CRITICAL: THESE RULES ARE MANDATORY FOR FIGMA INTEGRATION - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: ERROR HANDLING (AI Reference Only)
+
+**⚠️ CRITICAL: HANDLE FIGMA INTEGRATION ERRORS:**
+1. **🚨 MANDATORY: Validate Figma URL format** - Check for proper Figma design URL
+2. **🚨 MANDATORY: Handle MCP connection errors** - Retry or provide clear error messages
+3. **🚨 MANDATORY: Validate file access** - Ensure user has access to the Figma file
+4. **🚨 MANDATORY: Handle missing assets** - Provide fallbacks for missing images
+5. **🚨 MANDATORY: Validate component data** - Ensure extracted data is complete
+6. **🚨 MANDATORY: Handle design system errors** - Provide defaults for missing tokens
+7. **🚨 MANDATORY: Validate AEM project structure** - Ensure proper project setup
+8. **🚨 MANDATORY: Provide clear error messages** - Help user understand and fix issues
+
+**🚨 CRITICAL: ERROR HANDLING IS MANDATORY - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: SUCCESS CRITERIA (AI Reference Only)
+
+**⚠️ CRITICAL: COMPONENT CREATION SUCCESS REQUIREMENTS:**
+1. **🚨 MANDATORY: Exact design match** - Components must match Figma design perfectly
+2. **🚨 MANDATORY: Content accuracy** - All text content must match Figma exactly
+3. **🚨 MANDATORY: Design system compliance** - Must use extracted design tokens
+4. **🚨 MANDATORY: AEM compliance** - Must follow AEM best practices and standards
+5. **🚨 MANDATORY: Code quality** - Must pass all quality checks and tests
+6. **🚨 MANDATORY: Responsive design** - Must work on all device sizes
+7. **🚨 MANDATORY: Accessibility** - Must meet accessibility standards
+8. **🚨 MANDATORY: Performance** - Must be optimized for production use
+
+**🚨 CRITICAL: ALL SUCCESS CRITERIA MUST BE MET - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: USER NOTIFICATION (AI Reference Only)
+
+**⚠️ CRITICAL: KEEP USER INFORMED:**
+1. **🚨 MANDATORY: Show Figma connection status** - Inform user about MCP connection
+2. **🚨 MANDATORY: Display extracted data summary** - Show components, content, assets found
+3. **🚨 MANDATORY: Show component mapping** - Display which AEM components will be created
+4. **🚨 MANDATORY: Display progress updates** - Keep user informed during generation
+5. **🚨 MANDATORY: Show quality check results** - Display test results and compliance status
+6. **🚨 MANDATORY: Provide final summary** - Show what was created and next steps
+7. **🚨 MANDATORY: Display "✅ Figma integration successful"** - Confirm successful completion
+
+**🚨 CRITICAL: USER NOTIFICATION IS MANDATORY - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: INTEGRATION WITH EXISTING WORKFLOWS (AI Reference Only)
+
+**⚠️ CRITICAL: SEAMLESS INTEGRATION:**
+1. **🚨 MANDATORY: Use existing component rules** - Follow `../components/.cursorrules-aem-components`
+2. **🚨 MANDATORY: Use existing dialog rules** - Follow `../components/.cursorrules-aem-dialogs`
+3. **🚨 MANDATORY: Use existing Sling rules** - Follow `../technical/.cursorrules-aem-sling`
+4. **🚨 MANDATORY: Use existing Cloud rules** - Follow `../technical/.cursorrules-aem-cloud`
+5. **🚨 MANDATORY: Use existing quality rules** - Follow Excel file for code quality
+6. **🚨 MANDATORY: Use existing testing rules** - Follow unit testing requirements
+7. **🚨 MANDATORY: Maintain consistency** - Ensure same quality as image-based workflow
+
+**🚨 CRITICAL: INTEGRATION IS MANDATORY - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: PERFORMANCE OPTIMIZATION (AI Reference Only)
+
+**⚠️ CRITICAL: OPTIMIZE FOR PERFORMANCE:**
+1. **🚨 MANDATORY: Efficient data extraction** - Minimize MCP calls and data transfer
+2. **🚨 MANDATORY: Optimize asset downloads** - Only download required images
+3. **🚨 MANDATORY: Streamline component generation** - Generate components efficiently
+4. **🚨 MANDATORY: Minimize file operations** - Reduce unnecessary file reads/writes
+5. **🚨 MANDATORY: Cache design tokens** - Reuse extracted design system data
+6. **🚨 MANDATORY: Optimize code generation** - Generate clean, efficient code
+7. **🚨 MANDATORY: Minimize user wait time** - Provide quick feedback and progress updates
+
+**🚨 CRITICAL: PERFORMANCE OPTIMIZATION IS MANDATORY - NO EXCEPTIONS**
+
+## 🚨 CRITICAL: FINAL VALIDATION (AI Reference Only)
+
+**⚠️ CRITICAL: COMPREHENSIVE VALIDATION:**
+1. **🚨 MANDATORY: Validate all generated files** - Check HTL, Sling Models, dialogs, SCSS
+2. **🚨 MANDATORY: Verify design accuracy** - Compare with original Figma design
+3. **🚨 MANDATORY: Test component functionality** - Ensure components work as expected
+4. **🚨 MANDATORY: Validate code quality** - Run all quality checks and tests
+5. **🚨 MANDATORY: Check AEM compliance** - Ensure Cloud Service compatibility
+6. **🚨 MANDATORY: Verify responsive design** - Test on different screen sizes
+7. **🚨 MANDATORY: Validate accessibility** - Check ARIA labels and semantic HTML
+8. **🚨 MANDATORY: Confirm user requirements** - Ensure all user needs are met
+
+**🚨 CRITICAL: FINAL VALIDATION IS MANDATORY - NO EXCEPTIONS**
+
+---
+
+**🚨 CRITICAL: THIS WORKFLOW IS MANDATORY FOR ALL FIGMA INTEGRATION TASKS - NO EXCEPTIONS**
+
+**⚠️ REMEMBER: This workflow ensures pixel-perfect, production-ready AEM components directly from Figma designs with zero manual intervention required.**

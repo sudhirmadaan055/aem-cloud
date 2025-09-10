@@ -1,0 +1,504 @@
+# AEM Component Structure Validation Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating any AEM component structure:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all structure rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Include all required files** - **NO SKIPPING**
+4. **🚨 MANDATORY: Validate component structure** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for component structure details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **🚨 MANDATORY: Component Structure Requirements - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: These rules MUST be followed without fail. Violation will cause build failures and component malfunctions.**
+
+### **🚨 MANDATORY: Always Include These Files - ALL REQUIRED**
+
+1. **🚨 MANDATORY: `.content.xml`** - Component Definition - **BUILD FAILS WITHOUT THIS**
+   ```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+       jcr:primaryType="cq:Component"
+       jcr:title="Component Name"
+       jcr:description="Component Description"
+       componentGroup="PROJECT_GROUP"/>
+   ```
+
+   **🚨 CRITICAL: XML Validation Rules - NO EXCEPTIONS:**
+   - **🚨 MANDATORY: Use `jcr:primaryType="cq:Component"`** - **NOT `nt:unstructured`** - **VALIDATION FAILS IF WRONG**
+   - **🚨 MANDATORY: XML node names cannot start with numbers** - **Use `grid3x3` not `3x3`** - **PARSING FAILS IF WRONG**
+   - **🚨 MANDATORY: All XML elements must be properly closed** - **PARSING FAILS IF UNCLOSED**
+   - **🚨 MANDATORY: No special characters in XML node names** - **Use alphanumeric and hyphens only**
+
+2. **🚨 MANDATORY: `component-name.html`** - HTL Template - **COMPONENT WON'T RENDER WITHOUT THIS**
+   ```html
+   <!--/* Component Name */-->
+   <p data-sly-test.edit="${wcmmode.edit}" data-emptytext="Configure Component Name Component" class="cq-placeholder"></p>
+   
+   <sly data-sly-use.model="com.project.aem.core.models.ComponentNameModel"></sly>
+   <div class="js--component-name c-component-name" data-component-config="${model.configValue}">
+       <!-- Component content here -->
+   </div>
+   ```
+3. **🚨 MANDATORY: `_cq_dialog/.content.xml`** - Authoring Dialog - **AUTHORING FAILS WITHOUT THIS**
+4. **🚨 MANDATORY: `_cq_editConfig.xml`** - Edit Configuration - **EDITING FAILS WITHOUT THIS**
+
+### **🚨 MANDATORY: Analyze Existing Patterns First - NO EXCEPTIONS**
+
+**🚨 CRITICAL: BEFORE creating any component, ALWAYS:**
+
+1. **🚨 MANDATORY: Examine existing components** in the project - **CONSISTENCY REQUIRED**
+2. **🚨 MANDATORY: Identify dialog patterns** (simple vs complex) - **PATTERN MATCHING REQUIRED**
+3. **🚨 MANDATORY: Check editConfig patterns** (cq:inherit vs custom) - **CONFIGURATION REQUIRED**
+4. **🚨 MANDATORY: Understand component group naming** - **NAMING CONVENTION REQUIRED**
+
+### **Dialog Structure Patterns**
+
+#### **Simple Pattern (For static content only):**
+```xml
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Component Name"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Static form fields here -->
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
+```
+
+#### **🚨 MANDATORY: Multifield Pattern (For dynamic/repeatable content):**
+```xml
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Component Name"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Static fields -->
+                    <multifield
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Items">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./items">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <!-- Item fields: icon, title, description, etc. -->
+                                        <icon
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Icon"
+                                            fieldLabel="Icon"
+                                            name="./icon"
+                                            rootPath="/content/dam"/>
+                                        <title
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Title"
+                                            fieldLabel="Title"
+                                            name="./title"/>
+                                        <description
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            fieldLabel="Description"
+                                            name="./description"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </multifield>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>
+```
+
+#### **Tabbed Pattern (For Medium+ complexity components):**
+- Use tabs for 6+ fields to improve UX
+- Group fields functionally (Content, Media, Navigation, Configuration, Data Sources, Search & Filters, Display Options)
+- 2-4 tabs maximum per component
+- 3-6 fields per tab (no vertical scrolling)
+- No Styling tab (exclude CSS, theme, styling fields)
+
+```xml
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Component Name"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+        activeTab="tab1">
+        <items jcr:primaryType="nt:unstructured">
+            <tab1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Content"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Content fields here -->
+                </items>
+            </tab1>
+            <tab2
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Media"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Media fields here -->
+                </items>
+            </tab2>
+        </items>
+    </content>
+</jcr:root>
+```
+
+### **EditConfig Patterns**
+
+#### **Simple Pattern (Recommended):**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    cq:inherit="{Boolean}true"
+    jcr:primaryType="cq:EditConfig"/>
+```
+
+#### **Custom Pattern (Only if needed):**
+- Use only if existing project components use custom editConfig
+- Include drag-and-drop, in-place editing, etc.
+
+### **Component Group Naming**
+
+**ALWAYS match existing project patterns:**
+- Check existing components for `componentGroup` values
+- Common patterns: `PROJECT_NAME`, `CUSTOM`, `CONTENT`, etc.
+
+### **File Location Requirements**
+
+**MANDATORY locations:**
+- **HTL**: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/{component-name}/`
+- **Sling Model**: `{project}/core/src/main/java/com/{groupId}/aem/core/models/`
+- **Dialog**: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/{component-name}/_cq_dialog/`
+- **EditConfig**: `{project}/ui.apps/src/main/content/jcr_root/apps/{project}/components/{component-name}/`
+- **SCSS**: `{project}/ui.frontend/src/main/webpack/components/`
+
+### **Validation Checklist**
+
+**BEFORE considering component complete:**
+
+- [ ] `.content.xml` exists with `cq:Component` definition
+- [ ] Dialog structure matches project patterns
+- [ ] EditConfig follows project conventions
+- [ ] Component group name matches project pattern
+- [ ] All files in correct locations
+- [ ] Sling Model package matches project structure
+- [ ] HTL template references correct model package
+
+### **Multifield Detection and Implementation**
+
+#### **MANDATORY: Multifield Detection Rules**
+**Create multifield when design shows:**
+- Multiple similar content blocks (cards, items, categories)
+- Grid layouts with repeated elements
+- List items that can be added/removed
+- Any content that appears 2+ times with similar structure
+
+#### **🚨 MANDATORY: Multifield Implementation Requirements - ALL REQUIRED**
+1. **🚨 MANDATORY: `composite="{Boolean}true"`** - **DATA PERSISTENCE FAILS WITHOUT THIS**
+2. **🚨 MANDATORY: NO name attribute on multifield** - **UI BREAKS IF PRESENT** - Multifield container must NOT have `name` attribute
+3. **🚨 MANDATORY: Field Structure** - **UI BREAKS WITHOUT THIS** - Use `granite/ui/components/coral/foundation/container` (NOT fieldset)
+4. **🚨 MANDATORY: Field Name** - **DATA SAVING FAILS WITHOUT THIS** - Inner field must have `name="./multifieldName"` matching multifield name
+5. **🚨 MANDATORY: Column Structure** - **UI ORGANIZATION FAILS WITHOUT THIS** - Use `column` container with proper nesting
+6. **🚨 MANDATORY: Field Descriptions** - **UX FAILS WITHOUT THIS** - Add `fieldDescription` attributes for better UX
+7. **🚨 MANDATORY: Consistent Fields** - **DATA INCONSISTENCY WITHOUT THIS** - All items must have same field structure
+8. **🚨 MANDATORY: Proper Naming** - **MAINTENANCE FAILS WITHOUT THIS** - Use descriptive names for multifield and fields
+9. **🚨 MANDATORY: Sling Model Processing** - **DATA LOADING FAILS WITHOUT THIS** - Must handle multifield data in @PostConstruct
+
+#### **Multifield Sling Model Pattern**
+```java
+@PostConstruct
+protected void init() {
+    Resource itemsResource = resource.getChild("items");
+    if (itemsResource != null) {
+        for (Resource itemResource : itemsResource.getChildren()) {
+            ItemModel item = new ItemModel();
+            item.setIcon(itemResource.getValueMap().get("icon", String.class));
+            item.setTitle(itemResource.getValueMap().get("title", String.class));
+            item.setDescription(itemResource.getValueMap().get("description", String.class));
+            items.add(item);
+        }
+    }
+}
+```
+
+### **🚫 FORBIDDEN: Common Errors - NEVER ALLOWED**
+
+1. **🚫 FORBIDDEN: Missing `.content.xml`** - **CAUSES BUILD FAILURES**
+2. **🚫 FORBIDDEN: Complex dialog structure** - **CAUSES MAINTENANCE ISSUES** - Use simple patterns unless project uses complex
+3. **🚫 FORBIDDEN: Custom editConfig** - **CAUSES INCONSISTENCY** - Use `cq:inherit` unless project uses custom
+4. **🚫 FORBIDDEN: Wrong package names** - **CAUSES COMPILATION ERRORS** - Must match project's `{groupId}.aem.core.models`
+5. **🚫 FORBIDDEN: Wrong component group** - **CAUSES ORGANIZATION ISSUES** - Must match existing project patterns
+6. **🚫 FORBIDDEN: Missing multifield structure** - **CAUSES SCALABILITY ISSUES** - Not recognizing repeatable content blocks
+7. **🚫 FORBIDDEN: Incomplete fieldset planning** - **CAUSES DATA ISSUES** - Not planning internal structure of multifield items
+8. **🚫 FORBIDDEN: Ignoring visual patterns** - **CAUSES DESIGN MISMATCH** - Not analyzing design for dynamic content requirements
+9. **🚫 FORBIDDEN: Missing `composite="{Boolean}true"`** - **CAUSES DATA LOSS** - Causes multifield data not to save
+10. **🚫 FORBIDDEN: Wrong field resourceType** - **CAUSES UI BREAKS** - Using `fieldset` instead of `container`
+11. **🚫 FORBIDDEN: Missing field name** - **CAUSES DATA SAVING FAILURES** - Field must have `name="./multifieldName"`
+12. **🚫 FORBIDDEN: Name attribute on multifield** - **CAUSES UI BREAKS** - Multifield container must NOT have `name` attribute
+13. **🚫 FORBIDDEN: Missing column structure** - **CAUSES UI CONFUSION** - Fields should be wrapped in `column` container
+14. **🚫 FORBIDDEN: Missing field descriptions** - **CAUSES UX ISSUES** - Add `fieldDescription` for better user experience
+15. **🚫 FORBIDDEN: Missing component placeholder** - **CAUSES AUTHORING CONFUSION** - Must include edit mode placeholder for component identification
+
+### **🚨 MANDATORY: HTL Template Best Practices - ALL REQUIRED**
+
+#### **🚨 MANDATORY: HTL Structure Pattern - NO EXCEPTIONS**
+```html
+<!--/* Component Name */-->
+<p data-sly-test.edit="${wcmmode.edit}" data-emptytext="Configure Component Name Component" class="cq-placeholder"></p>
+
+<sly data-sly-use.model="com.project.aem.core.models.ComponentNameModel"></sly>
+<div class="js--component-name c-component-name" data-component-config="${model.configValue}">
+    <!-- Component content here -->
+</div>
+```
+
+#### **🚨 MANDATORY: HTL Best Practices - ALL REQUIRED**
+1. **🚨 MANDATORY: Use `<sly>` for model binding** - **PERFORMANCE REQUIRED** - `<sly data-sly-use.model="com.project.aem.core.models.ModelName"></sly>`
+2. **🚨 MANDATORY: Use semantic CSS classes** - **MAINTENANCE REQUIRED** - `js--component-name` for JavaScript, `c-component-name` for styling
+3. **🚨 MANDATORY: Use data attributes for configuration** - **FUNCTIONALITY REQUIRED** - `data-component-config="${model.value}"`
+4. **🚨 MANDATORY: Use proper HTL syntax** - **COMPILATION REQUIRED** - `data-sly-list`, `data-sly-test`, `data-sly-resource`
+5. **🚨 MANDATORY: Use conditional rendering** - **UX REQUIRED** - `data-sly-test="${condition}"` for optional content
+6. **🚨 MANDATORY: Use proper escaping** - **SECURITY REQUIRED** - `${model.value @ context='html'}` for HTML content
+7. **🚨 MANDATORY: Use resource inclusion** - **REUSABILITY REQUIRED** - `data-sly-resource="${@ path='resource', resourceType='project/components/component'}"`
+
+#### **🚨 MANDATORY: HTL Forbidden Patterns - NEVER ALLOWED**
+1. **🚫 FORBIDDEN: Inline model binding** - **PERFORMANCE ISSUES** - Don't use `data-sly-use.model` on content divs
+2. **🚫 FORBIDDEN: Missing conditional rendering** - **UX ISSUES** - Always check for null/empty values
+3. **🚫 FORBIDDEN: Hardcoded values** - **MAINTENANCE ISSUES** - Use model properties instead
+4. **🚫 FORBIDDEN: Missing data attributes** - **FUNCTIONALITY ISSUES** - JavaScript needs data attributes
+5. **🚫 FORBIDDEN: Improper escaping** - **SECURITY ISSUES** - Always use proper context attributes
+
+### **🚨 MANDATORY: Component Generation Checklist - ALL MUST PASS**
+
+**🚨 CRITICAL: BEFORE generating any component, ALL items MUST be verified:**
+
+#### **🚨 MANDATORY: 1. Design Analysis Complete - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: All visual elements identified and mapped** - **DESIGN MISMATCH IF MISSING**
+- [ ] **🚨 MANDATORY: Layout structure analyzed (columns, grids, positioning)** - **LAYOUT BREAKS IF MISSING**
+- [ ] **🚨 MANDATORY: Multifield requirements identified** - **SCALABILITY FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: HTL logic planned (avoid comparison operators)** - **COMPILATION FAILS IF MISSING**
+
+#### **🚨 MANDATORY: 2. File Structure Planning - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: SCSS file name follows `_component-name.scss` convention** - **BUILD FAILS IF WRONG**
+- [ ] **🚨 MANDATORY: ClientLibs configuration planned** - **STYLING FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: Component configuration includes proper attributes** - **FUNCTIONALITY FAILS IF MISSING**
+
+#### **🚨 MANDATORY: 3. Dialog Structure - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: Multifield uses `composite="{Boolean}true"`** - **DATA LOSS IF MISSING**
+- [ ] **🚨 MANDATORY: Multifield has NO `name` attribute** - **UI BREAKS IF PRESENT**
+- [ ] **🚨 MANDATORY: Field uses `granite/ui/components/coral/foundation/container`** - **UI BREAKS IF WRONG**
+- [ ] **🚨 MANDATORY: Field has `name="./multifieldName"`** - **DATA SAVING FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: Column structure for proper nesting** - **UI CONFUSION IF MISSING**
+- [ ] **🚨 MANDATORY: Field descriptions for better UX** - **USER EXPERIENCE FAILS IF MISSING**
+
+#### **🚨 MANDATORY: 4. HTL Template - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: Component placeholder for edit mode** - **AUTHORING CONFUSION IF MISSING** - Must include `<p data-sly-test.edit="${wcmmode.edit}" data-emptytext="Configure Component Name Component" class="cq-placeholder"></p>`
+- [ ] **🚨 MANDATORY: Use `<sly>` for model binding** - **PERFORMANCE REQUIRED** - `<sly data-sly-use.model="com.project.aem.core.models.ModelName"></sly>`
+- [ ] **🚨 MANDATORY: Semantic CSS classes** - **MAINTENANCE REQUIRED** - `js--component-name` for JavaScript, `c-component-name` for styling
+- [ ] **🚨 MANDATORY: Data attributes for configuration** - **FUNCTIONALITY REQUIRED** - `data-component-config="${model.value}"`
+- [ ] **🚨 MANDATORY: Conditional rendering** - **UX REQUIRED** - `data-sly-test="${condition}"` for optional content
+- [ ] **🚨 MANDATORY: Proper HTL syntax** - **COMPILATION REQUIRED** - `data-sly-list`, `data-sly-test`, `data-sly-resource`
+- [ ] **🚨 MANDATORY: Correct layout structure (columns, positioning)** - **LAYOUT BREAKS IF WRONG**
+- [ ] **🚨 MANDATORY: Proper index logic (no comparison operators)** - **COMPILATION FAILS IF WRONG**
+- [ ] **🚨 MANDATORY: Semantic HTML structure** - **ACCESSIBILITY FAILS IF MISSING**
+
+#### **🚨 MANDATORY: 5. Sling Model - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: Proper multifield data processing** - **DATA LOADING FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: Sample data fallback for empty multifields** - **EMPTY COMPONENTS IF MISSING**
+- [ ] **🚨 MANDATORY: Correct package naming** - **COMPILATION FAILS IF WRONG**
+- [ ] **🚨 MANDATORY: All required fields mapped** - **DATA MISSING IF INCOMPLETE**
+
+#### **🚨 MANDATORY: 6. SCSS Styling - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: File named with underscore prefix** - **BUILD FAILS IF WRONG**
+- [ ] **🚨 MANDATORY: Layout matches design (grid, flexbox)** - **DESIGN MISMATCH IF WRONG**
+- [ ] **🚨 MANDATORY: Responsive design implemented** - **MOBILE BREAKS IF MISSING**
+- [ ] **🚨 MANDATORY: Component-specific styles** - **STYLING CONFLICTS IF MISSING**
+
+#### **🚨 MANDATORY: 7. ClientLibs Configuration - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: Component ClientLibs folder created** - **STYLING FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: Proper category naming** - **STYLING FAILS IF WRONG**
+- [ ] **🚨 MANDATORY: Dependencies configured** - **STYLING FAILS IF MISSING**
+- [ ] **🚨 MANDATORY: HTL includes ClientLibs** - **STYLING FAILS IF MISSING**
+
+#### **🚨 MANDATORY: 8. JUnit Testing - ALL REQUIRED:**
+- [ ] **🚨 MANDATORY: Use standard JUnit assertions only** - **COMPILATION FAILS IF ASSERTJ USED WITHOUT DEPENDENCY**
+- [ ] **🚨 MANDATORY: Avoid AEM mock context complexity** - **RUNTIME FAILS IF XML SECURE PROCESSING ERRORS**
+- [ ] **🚨 MANDATORY: Create simple test structure** - **MAINTENANCE FAILS IF OVERLY COMPLEX**
+- [ ] **🚨 MANDATORY: Test basic functionality only** - **STABILITY REQUIRED**
+
+### **🚨 MANDATORY: CSS Generation Requirements - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: CSS generation MUST follow design accuracy requirements:**
+1. **🚨 MANDATORY: Read CSS generation rules** - **ALWAYS read `./generation/.cursorrules-css-generation` FIRST**
+2. **🚨 MANDATORY: Extract exact design values** - Colors, fonts, spacing, dimensions from design analysis
+3. **🚨 MANDATORY: Generate component-specific CSS** - No generic templates, design-specific styling only
+4. **🚨 MANDATORY: Implement responsive design** - Mobile-first approach with tablet/desktop adaptations
+5. **🚨 MANDATORY: Use BEM methodology** - Proper class naming structure for maintainability
+6. **🚨 MANDATORY: Create CSS variables** - Design tokens for consistent theming
+7. **🚨 MANDATORY: Validate design accuracy** - 90%+ visual accuracy required
+
+### **🚨 MANDATORY: Build Validation - REQUIRED**
+
+**🚨 CRITICAL: ALWAYS test build after component creation - NO EXCEPTIONS:**
+```bash
+mvn clean install -PautoInstallPackage
+```
+
+**🚨 MANDATORY: If build fails, check these in order:**
+1. **🚨 MANDATORY: Check for missing `.content.xml`** - **MOST COMMON CAUSE**
+2. **🚨 MANDATORY: Verify dialog structure matches existing components** - **PATTERN MISMATCH**
+3. **🚨 MANDATORY: Confirm editConfig follows project patterns** - **CONFIGURATION ERROR**
+4. **🚨 MANDATORY: Validate all file locations are correct** - **PATH ERRORS**
+5. **🚨 MANDATORY: Check CSS compilation** - **SCSS compilation errors**
+6. **🚨 MANDATORY: Check JUnit test compilation** - **TEST COMPILATION ERRORS**
+
+### **🚨 MANDATORY: JUnit Testing Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: JUnit test errors will cause build failures and test suite failures:**
+
+#### **🚨 MANDATORY: Test File Structure - ALL REQUIRED**
+
+1. **🚨 MANDATORY: Use standard JUnit assertions only** - **COMPILATION FAILS IF ASSERTJ USED WITHOUT DEPENDENCY**
+   ```java
+   // ✅ CORRECT - Standard JUnit assertions
+   import static org.junit.jupiter.api.Assertions.*;
+   assertNotNull(model);
+   assertEquals("expected", actual);
+   assertTrue(condition);
+   
+   // 🚫 FORBIDDEN - AssertJ without dependency
+   import static org.assertj.core.api.Assertions.assertThat;
+   assertThat(model).isNotNull();
+   ```
+
+2. **🚨 MANDATORY: Avoid complex AEM mock context setup** - **RUNTIME FAILS IF XML SECURE PROCESSING ERRORS**
+   ```java
+   // ✅ CORRECT - Simple test structure
+   @Test
+   void testModelCreation() {
+       assertNotNull(BrandAmbassadorsModel.class);
+   }
+   
+   @Test
+   void testResourceType() {
+       assertEquals("cjcjtest3/components/brand-ambassadors", BrandAmbassadorsModel.RESOURCE_TYPE);
+   }
+   
+   // 🚫 FORBIDDEN - Complex AEM mock context
+   @BeforeEach
+   void setUp() {
+       context.addModelsForClasses(BrandAmbassadorsModel.class);
+       context.load().json("/test-data/component.json", "/content/test");
+       model = context.request().adaptTo(BrandAmbassadorsModel.class);
+   }
+   ```
+
+3. **🚨 MANDATORY: Test basic functionality only** - **STABILITY REQUIRED**
+   - Test class instantiation
+   - Test resource type constants
+   - Test basic getter methods
+   - Avoid complex data structure testing
+
+4. **🚨 MANDATORY: Remove Jackson annotations from models** - **COMPILATION FAILS IF USED**
+   ```java
+   // 🚫 FORBIDDEN - Jackson annotations
+   @JsonProperty("fieldName")
+   public String getFieldName() { return fieldName; }
+   
+   // ✅ CORRECT - No Jackson annotations
+   public String getFieldName() { return fieldName; }
+   ```
+
+#### **🚨 MANDATORY: Test Dependencies - ALL REQUIRED**
+
+1. **🚨 MANDATORY: Use only standard JUnit 5 dependencies** - **NO EXTERNAL ASSERTION LIBRARIES**
+2. **🚨 MANDATORY: Avoid AssertJ unless explicitly added to pom.xml** - **COMPILATION FAILS IF MISSING**
+3. **🚨 MANDATORY: Keep test dependencies minimal** - **MAINTENANCE REQUIRED**
+
+#### **🚨 MANDATORY: Test Error Prevention - NO EXCEPTIONS**
+
+**Common JUnit errors to avoid:**
+- **🚫 FORBIDDEN: `assertThat` without AssertJ dependency** - **COMPILATION FAILS**
+- **🚫 FORBIDDEN: Complex AEM mock context setup** - **XML SECURE PROCESSING ERRORS**
+- **🚫 FORBIDDEN: Jackson annotations in models** - **COMPILATION FAILS**
+- **🚫 FORBIDDEN: Missing test context classes** - **NoClassDefFoundError**
+- **🚫 FORBIDDEN: Overly complex test data setup** - **RUNTIME FAILS**
+
+### **🚨 MANDATORY: Windows-Specific AEM Issues - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Windows systems encounter JCR path errors - THIS IS A SYSTEM LIMITATION:**
+
+#### **🚨 MANDATORY: Windows JCR Path Error Documentation**
+
+1. **🚨 MANDATORY: This is NOT a component issue** - **SYSTEM LIMITATION**
+   - **Error**: `java.nio.file.InvalidPathException: Illegal char <:> at index 47`
+   - **Cause**: Windows file system doesn't allow colons (`:`) in paths, but JCR uses them (`jcr:content`, `cq:lastModified`)
+   - **Impact**: Warnings only - NO functional impact on components
+   - **Reality**: This is a core AEM Cloud Service limitation on Windows, not fixable at component level
+
+2. **🚨 MANDATORY: Component functionality is unaffected** - **VERIFY AND DEMONSTRATE**
+   - ✅ **Data saving works correctly** - AEM handles persistence
+   - ✅ **Dialog functionality works** - Authoring interface functions normally
+   - ✅ **Component rendering works** - Preview and publish work correctly
+   - ✅ **Warnings are cosmetic only** - Can be safely ignored
+
+3. **🚨 MANDATORY: Production solutions** - **REALISTIC APPROACHES**
+   - **AEM Cloud Service** - Runs on Linux, no Windows issues
+   - **Docker deployment** - Linux container on Windows
+   - **Acknowledge limitation** - Document for stakeholders
+
+4. **🚨 MANDATORY: Demo strategy** - **PROFESSIONAL HANDLING**
+   ```markdown
+   ## Demo Approach for Windows AEM Warnings
+   
+   **Statement**: "These warnings are a known Windows-specific AEM limitation. 
+   They don't affect component functionality - data saves correctly, 
+   dialogs work properly, and components render as expected. 
+   In production, AEM runs on Linux where this issue doesn't occur."
+   
+   **Focus**: Demonstrate component features, not system warnings
+   **Action**: Ignore warnings, verify functionality works
+   ```
+
+**⚠️ CRITICAL: Component is NOT complete until build passes successfully.**

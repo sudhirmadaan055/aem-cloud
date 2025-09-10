@@ -1,0 +1,404 @@
+# AEM HTL Best Practices
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating any HTL templates:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all HTL rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Avoid forbidden patterns** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for HTL configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **🚨 MANDATORY: HTL Logic Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: These rules MUST be followed without fail. Violation will cause compilation errors and component failures.**
+
+### **🚫 FORBIDDEN: Index Logic Patterns - NEVER USE:**
+```html
+<!-- ❌ FORBIDDEN - Causes compilation errors -->
+<div data-sly-test="${categoryList.index < 2}">
+<div data-sly-test="${categoryList.index >= 2}">
+
+<!-- ❌ FORBIDDEN - Comparison operators not supported -->
+<div data-sly-test="${categoryList.index > 1}">
+<div data-sly-test="${categoryList.index <= 3}">
+
+<!-- ❌ FORBIDDEN - Division operations not supported -->
+<div data-sly-test="${categoryList.index <= categoryList.count / 2}">
+<div data-sly-test="${categoryList.index > model.categories.size / 2}">
+```
+
+### **✅ MANDATORY: Index Logic Patterns - ALWAYS USE:**
+```html
+<!-- ✅ MANDATORY - Specific index checks -->
+<div data-sly-test="${categoryList.first}">           <!-- Index 0 -->
+<div data-sly-test="${categoryList.index == 1}">      <!-- Index 1 -->
+<div data-sly-test="${categoryList.index == 2}">      <!-- Index 2 -->
+<div data-sly-test="${categoryList.index == 3}">      <!-- Index 3 -->
+<div data-sly-test="${categoryList.last}">            <!-- Last index -->
+
+<!-- ✅ MANDATORY - Multiple index conditions -->
+<div data-sly-test="${categoryList.first || categoryList.index == 1}">
+<div data-sly-test="${categoryList.index == 2 || categoryList.index == 3}">
+```
+
+### **Layout Distribution Patterns:**
+
+#### **🚨 MANDATORY: 2-Column Layout (Left/Right) - REQUIRED APPROACH:**
+```html
+<!-- 🚨 MANDATORY: Use Sling Model methods for dynamic distribution -->
+<!-- Left Column -->
+<div class="left-column" data-sly-test="${model.leftItems}">
+    <div data-sly-repeat.item="${model.leftItems}">
+        <div class="item-content">
+            <!-- Item content -->
+        </div>
+    </div>
+</div>
+
+<!-- Right Column -->
+<div class="right-column" data-sly-test="${model.rightItems}">
+    <div data-sly-repeat.item="${model.rightItems}">
+        <div class="item-content">
+            <!-- Item content -->
+        </div>
+    </div>
+</div>
+```
+
+#### **🚫 FORBIDDEN: 2-Column Layout (Left/Right) - NEVER USE FOR DYNAMIC CONTENT:**
+```html
+<!-- 🚫 FORBIDDEN: Only use for fixed 4-item layouts - causes empty boxes -->
+<!-- Left Column -->
+<div class="left-column">
+    <div data-sly-repeat.item="${model.items}">
+        <div data-sly-test="${itemList.first || itemList.index == 1}">
+            <!-- First 2 items -->
+        </div>
+    </div>
+</div>
+
+<!-- Right Column -->
+<div class="right-column">
+    <div data-sly-repeat.item="${model.items}">
+        <div data-sly-test="${itemList.index == 2 || itemList.index == 3}">
+            <!-- Last 2 items -->
+        </div>
+    </div>
+</div>
+```
+
+#### **3-Column Layout (Left/Center/Right):**
+```html
+<!-- Left Column -->
+<div class="left-column">
+    <div data-sly-repeat.item="${model.items}">
+        <div data-sly-test="${itemList.first || itemList.index == 1}">
+            <!-- First 2 items -->
+        </div>
+    </div>
+</div>
+
+<!-- Center Column -->
+<div class="center-column">
+    <!-- Central content -->
+</div>
+
+<!-- Right Column -->
+<div class="right-column">
+    <div data-sly-repeat.item="${model.items}">
+        <div data-sly-test="${itemList.index == 2 || itemList.index == 3}">
+            <!-- Last 2 items -->
+        </div>
+    </div>
+</div>
+```
+
+### **🚨 MANDATORY: ClientLibs Inclusion - REQUIRED:**
+```html
+<!-- 🚨 MANDATORY: ALWAYS include ClientLibs at the top -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" 
+     data-sly-call="${clientlib.css @ categories='project.components.component-name'}"></sly>
+
+<div class="component-name" data-sly-use.model="com.project.aem.core.models.ComponentModel">
+    <!-- Component content -->
+</div>
+```
+
+### **🚨 MANDATORY: Layout Structure Planning - REQUIRED:**
+
+#### **🚨 MANDATORY: Layout Analysis Before HTL Creation:**
+1. **🚨 MANDATORY: Identify layout pattern** - Single column, two column, grid, etc.
+2. **🚨 MANDATORY: Plan container structure** - Main container, sections, subsections
+3. **🚨 MANDATORY: Map section positioning** - Left, right, top, bottom sections
+4. **🚨 MANDATORY: Plan CSS layout strategy** - Grid, flexbox, positioning method
+
+#### **🚨 MANDATORY: Two-Column Layout Pattern:**
+```html
+<!-- 🚨 MANDATORY: Two-column layout structure -->
+<div class="component-name" data-sly-use.model="com.project.aem.core.models.ComponentModel">
+    <div class="component-name__container">
+        <!-- Left Section -->
+        <div class="component-name__left-section">
+            <!-- Left column content -->
+        </div>
+        
+        <!-- Right Section -->
+        <div class="component-name__right-section">
+            <!-- Right column content -->
+        </div>
+    </div>
+</div>
+```
+
+#### **🚨 MANDATORY: Single Column Layout Pattern:**
+```html
+<!-- 🚨 MANDATORY: Single column layout structure -->
+<div class="component-name" data-sly-use.model="com.project.aem.core.models.ComponentModel">
+    <div class="component-name__container">
+        <!-- Header Section -->
+        <div class="component-name__header">
+            <!-- Header content -->
+        </div>
+        
+        <!-- Main Section -->
+        <div class="component-name__main">
+            <!-- Main content -->
+        </div>
+        
+        <!-- Footer Section -->
+        <div class="component-name__footer">
+            <!-- Footer content -->
+        </div>
+    </div>
+</div>
+```
+
+### **🚨 MANDATORY: Semantic HTML Structure - REQUIRED:**
+```html
+<!-- 🚨 MANDATORY: Use semantic HTML elements -->
+<section class="component-name" data-sly-use.model="com.project.aem.core.models.ComponentModel">
+    <header class="component-name__header">
+        <!-- Header content -->
+    </header>
+    
+    <main class="component-name__main">
+        <!-- Main content -->
+    </main>
+    
+    <footer class="component-name__footer">
+        <!-- Footer content -->
+    </footer>
+</section>
+```
+
+### **🚨 MANDATORY: Data Validation - REQUIRED:**
+```html
+<!-- 🚨 MANDATORY: Always validate data before display -->
+<div data-sly-test="${model.title}">
+    <h2>${model.title}</h2>
+</div>
+
+<div data-sly-test="${model.items && model.items.size > 0}">
+    <div data-sly-repeat.item="${model.items}">
+        <!-- Item content -->
+    </div>
+</div>
+```
+
+### **🚨 MANDATORY: HTL Context Rules - REQUIRED:**
+
+#### **🚫 FORBIDDEN: Missing Context in Style Attributes:**
+```html
+<!-- ❌ FORBIDDEN - Causes compilation errors -->
+<div style="background-image: url('${model.image}');">
+<div style="opacity: ${model.opacity};">
+```
+
+#### **✅ MANDATORY: Proper Context for Style Attributes:**
+```html
+<!-- ✅ MANDATORY - Use @ context='styleString' for CSS values -->
+<div style="background-image: url('${model.image @ context='styleString'}');">
+<div style="opacity: ${model.opacity @ context='styleString'};">
+```
+
+#### **🚫 FORBIDDEN: Invalid HTL Attributes:**
+```html
+<!-- ❌ FORBIDDEN - data-sly-unescaped is not a valid HTL attribute -->
+<div data-sly-unescaped="${content @ context='html'}">
+```
+
+#### **✅ MANDATORY: Proper HTML Content Rendering:**
+```html
+<!-- ✅ MANDATORY - Use direct expression with @ context='html' -->
+<div>${content @ context='html'}</div>
+```
+
+#### **🚫 FORBIDDEN: Arithmetic Operations in HTL:**
+```html
+<!-- ❌ FORBIDDEN - Arithmetic operations cause compilation errors -->
+<div data-sly-test="${itemList.index + 1}">
+<div style="opacity: ${model.opacity / 100};">
+```
+
+#### **✅ MANDATORY: Move Arithmetic to Sling Models:**
+```java
+// ✅ MANDATORY - Handle arithmetic in Sling Model
+public String getDisplayIndex() {
+    return String.valueOf(index + 1);
+}
+
+public String getOpacityValue() {
+    return String.valueOf(opacity / 100.0);
+}
+```
+
+```html
+<!-- ✅ MANDATORY - Use pre-calculated values in HTL -->
+<div data-sly-test="${itemList.displayIndex}">
+<div style="opacity: ${model.opacityValue @ context='styleString'};">
+```
+
+### **🚨 MANDATORY: Dynamic Content Distribution - Sling Model Pattern:**
+
+#### **🚨 REQUIRED: For Dynamic Item Distribution (6, 7, 8+ items):**
+```java
+// 🚨 MANDATORY: Handle distribution logic in Sling Model
+public List<ItemModel> getLeftItems() {
+    int halfSize = items.size() / 2;
+    return items.subList(0, halfSize);
+}
+
+public List<ItemModel> getRightItems() {
+    int halfSize = items.size() / 2;
+    return items.subList(halfSize, items.size());
+}
+```
+
+#### **Distribution Examples:**
+- **6 items**: Left 3, Right 3
+- **7 items**: Left 3, Right 4 (right gets extra)
+- **8 items**: Left 4, Right 4
+- **9 items**: Left 4, Right 5 (right gets extra)
+
+#### **Benefits of Sling Model Approach:**
+1. **No HTL compilation errors** - Avoids division/comparison operators
+2. **Dynamic distribution** - Works with any number of items
+3. **Cleaner templates** - No complex index logic in HTL
+4. **Better maintainability** - Logic centralized in Java
+5. **No empty boxes** - Only renders items that exist
+
+### **🚫 FORBIDDEN: HTL Mistakes - NEVER ALLOWED:**
+
+1. **🚫 FORBIDDEN: Using comparison operators** (`<`, `>`, `<=`, `>=`) - **CAUSES COMPILATION ERRORS**
+2. **🚫 FORBIDDEN: Missing ClientLibs inclusion** - **CAUSES STYLING FAILURES**
+3. **🚫 FORBIDDEN: Not validating data before display** - **CAUSES RUNTIME ERRORS**
+4. **🚫 FORBIDDEN: Using non-semantic HTML elements** - **CAUSES ACCESSIBILITY ISSUES**
+5. **🚫 FORBIDDEN: Complex nested conditions** - **CAUSES MAINTENANCE ISSUES**
+6. **🚫 FORBIDDEN: Missing data-sly-test conditions** - **CAUSES EMPTY BOXES**
+7. **🚫 FORBIDDEN: Creating empty divs with borders** - **CAUSES VISUAL BUGS**
+8. **🚫 FORBIDDEN: Hard-coding item counts** - **CAUSES SCALABILITY ISSUES**
+9. **🚫 FORBIDDEN: Using division operations in HTL** - **CAUSES COMPILATION ERRORS**
+10. **🚫 FORBIDDEN: Not using Sling Model for complex logic** - **CAUSES TEMPLATE COMPLEXITY**
+11. **🚫 FORBIDDEN: Using `data-sly-unescaped` attribute** - **NOT A VALID HTL ATTRIBUTE**
+12. **🚫 FORBIDDEN: Missing `@ context` for expressions in style attributes** - **CAUSES COMPILATION ERRORS**
+13. **🚫 FORBIDDEN: Arithmetic operations in HTL expressions** - **CAUSES COMPILATION ERRORS**
+
+### **🚨 MANDATORY: HTL Testing Checklist - ALL MUST PASS:**
+
+#### **🚨 MANDATORY: Layout Structure Validation:**
+- [ ] **🚨 MANDATORY: Layout pattern correctly implemented** - **DESIGN MISMATCH IF NOT MET**
+- [ ] **🚨 MANDATORY: Section positioning matches design** - **VISUAL BUGS IF NOT MET**
+- [ ] **🚨 MANDATORY: Container structure properly planned** - **LAYOUT FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: CSS layout strategy correctly applied** - **STYLING FAILS IF NOT MET**
+
+#### **🚨 MANDATORY: Visual Style Validation:**
+- [ ] **🚨 MANDATORY: Color scheme correctly implemented** - **DESIGN MISMATCH IF NOT MET**
+- [ ] **🚨 MANDATORY: Typography matches design specifications** - **VISUAL BUGS IF NOT MET**
+- [ ] **🚨 MANDATORY: Spacing and sizing correct** - **LAYOUT ISSUES IF NOT MET**
+- [ ] **🚨 MANDATORY: Visual effects properly applied** - **STYLING FAILS IF NOT MET**
+
+#### **🚨 MANDATORY: Interactive Element Validation:**
+- [ ] **🚨 MANDATORY: All clickable elements properly positioned** - **FUNCTIONALITY FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Interactive element styling correct** - **VISUAL BUGS IF NOT MET**
+- [ ] **🚨 MANDATORY: Hover effects and transitions work** - **USER EXPERIENCE FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Navigation controls properly implemented** - **FUNCTIONALITY FAILS IF NOT MET**
+
+#### **🚨 MANDATORY: Technical Implementation Validation:**
+- [ ] **🚨 MANDATORY: No compilation errors** - **BUILD WILL FAIL IF NOT MET**
+- [ ] **🚨 MANDATORY: All data properly validated** - **RUNTIME ERRORS IF NOT MET**
+- [ ] **🚨 MANDATORY: ClientLibs included** - **STYLING WILL FAIL IF NOT MET**
+- [ ] **🚨 MANDATORY: Semantic HTML structure** - **ACCESSIBILITY FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Proper index logic (no comparisons)** - **COMPILATION FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Responsive layout works** - **MOBILE BREAKS IF NOT MET**
+- [ ] **🚨 MANDATORY: All content displays correctly** - **VISUAL BUGS IF NOT MET**
+- [ ] **🚨 MANDATORY: No empty boxes/divs rendered** - **VISUAL BUGS IF NOT MET**
+- [ ] **🚨 MANDATORY: Dynamic distribution works (test with 6, 7, 8+ items)** - **SCALABILITY FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Sling Model methods used for complex logic** - **MAINTENANCE FAILS IF NOT MET**
+- [ ] **🚨 MANDATORY: Template logic is clean and maintainable** - **DEVELOPMENT FAILS IF NOT MET**
+
+**⚠️ CRITICAL: ALL checklist items MUST pass before component is considered complete.**
+
+### **🚨 MANDATORY: CSS Sizing Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: These CSS rules MUST be followed to prevent component sizing issues in AEM authoring mode:**
+
+#### **🚫 FORBIDDEN: Viewport-Based Sizing - NEVER USE:**
+```scss
+/* ❌ FORBIDDEN - Causes component size increase in authoring mode */
+.component {
+  min-height: 100vh;    // NEVER use viewport height
+  height: 100vh;        // NEVER use viewport height
+  min-height: 100%;     // NEVER use percentage height
+  height: 100%;         // NEVER use percentage height
+}
+```
+
+#### **✅ MANDATORY: Safe Sizing Patterns - ALWAYS USE:**
+```scss
+/* ✅ MANDATORY - Use content-based sizing */
+.component {
+  min-height: auto;     // Let content determine height
+  height: auto;         // Let content determine height
+  padding: 40px 20px;   // Use reasonable padding values
+  margin: 20px 0;       // Use reasonable margin values
+}
+
+/* ✅ MANDATORY - Use max-width for responsive design */
+.component {
+  max-width: 1200px;    // Constrain maximum width
+  margin: 0 auto;       // Center the component
+}
+```
+
+#### **🚨 MANDATORY: Padding and Margin Guidelines:**
+```scss
+/* ✅ MANDATORY - Reasonable padding values */
+.component__header {
+  padding: 40px 20px 30px;  // Top, Left/Right, Bottom
+}
+
+.component__content {
+  padding: 30px 20px;       // Vertical, Horizontal
+}
+
+/* ❌ FORBIDDEN - Excessive padding values */
+.component__header {
+  padding: 80px 40px 60px;  // Too large for authoring mode
+}
+```
+
+**Why These Rules Matter:**
+- ✅ **Prevents component size increase** in AEM authoring mode
+- ✅ **Makes editing manageable** with reasonable component dimensions
+- ✅ **Ensures responsive design** without viewport dependencies
+- ✅ **Improves authoring experience** with properly sized components

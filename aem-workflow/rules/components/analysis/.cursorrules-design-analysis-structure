@@ -1,0 +1,122 @@
+# AEM Design Analysis - Component Structure & Detection
+
+## 🚨 MANDATORY: Component Detection & Structure Analysis
+
+### **🚨 MANDATORY: STEP 0 - DETERMINE INPUT TYPE AND COMPONENT STRUCTURE - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: FOR FIGMA URLS - EXTRACT AND ANALYZE FIGMA DATA:**
+1. **🚨 MANDATORY: Parse Figma URL** - Extract file key and node ID
+2. **🚨 MANDATORY: Connect to Figma MCP** - Use `mcp_figma_get_figma_data` tool
+3. **🚨 MANDATORY: Extract complete file data** - Get all components, metadata, and structure
+4. **🚨 MANDATORY: Analyze component hierarchy** - Identify main components and variants
+5. **🚨 MANDATORY: Extract design system** - Get colors, typography, spacing, effects
+6. **🚨 MANDATORY: Identify text content** - Extract all text for default values
+7. **🚨 MANDATORY: Map visual elements** - Identify containers, images, buttons, text
+8. **🚨 MANDATORY: Determine component count** - Count unique components to create
+9. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
+10. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
+
+### **🚨 MANDATORY: STEP 0 - DETERMINE IMAGE AND COMPONENT STRUCTURE - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: BEFORE ANY OTHER STEP, ALWAYS DETERMINE STRUCTURE FIRST:**
+
+1. **🚨 MANDATORY: Count uploaded images** - Determine if single image or multiple images
+2. **🚨 MANDATORY: Analyze each image individually** - Examine each design image separately
+3. **🚨 MANDATORY: Count components per image** - Identify component count in each image
+4. **🚨 MANDATORY: TRIPLE-CHECK COMPONENT COUNT** - Count THREE times to ensure no components are missed
+5. **🚨 MANDATORY: Verify footer components** - Check for separate footer sections (main footer + copyright footer)
+6. **🚨 MANDATORY: Verify header components** - Check for separate header sections if applicable
+7. **🚨 MANDATORY: Count ALL visual sections** - Every distinct visual area must be counted as a component
+8. **🚨 MANDATORY: Identify component variations** - Look for multiple variations of the same component type
+9. **🚨 MANDATORY: Check for hidden components** - Look for components that might be partially visible or in different states
+10. **🚨 MANDATORY: Verify component separation** - Ensure each component is truly distinct and separate
+11. **🚨 MANDATORY: Extract actual titles and headings when available** - Use exact titles, headings, and section names from image content
+12. **🚨 MANDATORY: Create descriptive names for components without titles** - Based on function and visual appearance
+13. **🚨 MANDATORY: Never create generic names** - Always use meaningful, descriptive names
+14. **🚨 MANDATORY: Recognize unified sections with sub-content blocks** - Sections with main title and multiple content blocks are single components
+15. **🚨 MANDATORY: Count by visual boundaries, not sub-headings** - One background = one component, regardless of internal content blocks
+16. **🚨 MANDATORY: UNIFIED SECTION COMPONENT RULES - NO EXCEPTIONS**:
+    - **Single Background Color** = Single Component (regardless of internal content blocks)
+    - **Single Main Title** = Single Component (even with multiple sub-sections)
+    - **Connected Content Blocks** = Single Component (hero + cards, banner + grid, etc.)
+    - **Same Visual Container** = Single Component (all content within same visual boundary)
+    - **NEVER split unified sections** - Always treat as one component when content is visually connected
+16. **🚨 MANDATORY: Determine processing scenario:**
+    - **Scenario 1**: Single image with single component → Process as one component
+    - **Scenario 2**: Single image with multiple components → Process each section as separate component
+    - **Scenario 3**: Multiple images with single component each → Process each image as one component
+    - **Scenario 4**: Multiple images with multiple components each → Process each section in each image as separate component
+17. **🚨 MANDATORY: Display structure summary** - Show "Processing X images with Y total components"
+
+### **🚨 MANDATORY: SYSTEMATIC COMPONENT DETECTION PROTOCOL - ZERO TOLERANCE FOR MISSING COMPONENTS**
+
+**⚠️ CRITICAL: FOLLOW THIS EXACT SEQUENCE TO PREVENT MISSING COMPONENTS - NO EXCEPTIONS:**
+
+#### **🚨 MANDATORY: Phase 1 - Visual Section Identification**
+1. **🚨 MANDATORY: Scan image from top to bottom** - Examine every pixel of the image systematically
+2. **🚨 MANDATORY: Identify background color changes** - Every background change indicates a new component
+3. **🚨 MANDATORY: Identify layout boundaries** - Every clear horizontal/vertical division is a component
+4. **🚨 MANDATORY: Identify content type changes** - Different content patterns indicate separate components
+5. **🚨 MANDATORY: Identify spacing gaps** - Significant white space between sections indicates component separation
+
+#### **🚨 MANDATORY: Phase 2 - Component Type Detection**
+1. **🚨 MANDATORY: Look for Listing Components FIRST** - Search boxes, filters, pagination, sorting (PRIMARY DETECTION)
+2. **🚨 MANDATORY: Look for Carousel Components** - Multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Look for Header Components** - Navigation bars, logos, menu items
+4. **🚨 MANDATORY: Look for Hero Banners** - Large images with overlay text
+5. **🚨 MANDATORY: Look for Video Components** - Video players, play buttons, video thumbnails, "Watch Video" buttons
+6. **🚨 MANDATORY: Look for Content Grids** - Card layouts, product grids, image galleries
+7. **🚨 MANDATORY: Look for Text Sections** - Paragraph blocks, story sections
+8. **🚨 MANDATORY: Look for Call-to-Action** - Buttons, forms, subscription areas
+9. **🚨 MANDATORY: Look for Footer Components** - Links, social media, copyright (check for multiple footer sections)
+
+#### **🚨 MANDATORY: Phase 3 - Component Variation Detection**
+1. **🚨 MANDATORY: Identify Hero Banner Variations** - Different text, images, or layouts
+2. **🚨 MANDATORY: Identify Video Hero Sections** - Video players with play buttons
+3. **🚨 MANDATORY: Identify Carousel Components** - Multiple slides with navigation indicators
+4. **🚨 MANDATORY: Identify Footer Variations** - Top band (brand statement) + Bottom band (copyright/links)
+5. **🚨 MANDATORY: Identify Interactive Elements** - Buttons, controls, navigation elements
+
+#### **🚨 MANDATORY: Phase 4 - Triple Verification Process**
+1. **🚨 MANDATORY: First Count** - Count all components using Phase 1-3 results
+2. **🚨 MANDATORY: Second Count** - Re-count using different method (bottom to top)
+3. **🚨 MANDATORY: Third Count** - Re-count using component type checklist
+4. **🚨 MANDATORY: Verify counts match** - All three counts MUST be identical
+5. **🚨 MANDATORY: If counts don't match** - Repeat entire process until counts match
+
+### **🚨 MANDATORY: STEP 1 - COMPONENT IDENTIFICATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: FOR CONSISTENCY, ALWAYS TREAT ALL COMPONENTS AS NEW:**
+
+1. **🚨 MANDATORY: Identify all visual components** - Extract all distinct components from design
+2. **🚨 MANDATORY: Count total components** - Determine exact number of components identified
+3. **🚨 MANDATORY: Categorize as New Components** - All components are treated as new for consistency
+4. **🚨 MANDATORY: Display Status Summary** - Show Existing (0), Modified (0), New (X)
+5. **🚨 MANDATORY: Process All Components** - Apply 13-step analysis to all identified components
+
+### **🚨 MANDATORY: STEP 2: Pattern Analysis - REQUIRED FIRST (BEFORE ALL OTHERS)**
+1. **🚨 MANDATORY: LISTING COMPONENT DETECTION FIRST** - Check for search, filters, pagination, sorting (PRIMARY CLASSIFICATION)
+2. **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION** - Check for multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Identify component type** - Tab Navigation, Listing, Form, Content Display, etc.
+4. **🚨 MANDATORY: Determine primary interaction** - Click tabs, search/filter, form input, scroll, etc.
+5. **🚨 MANDATORY: Identify content organization** - Tabs, grid, list, single content, etc.
+6. **🚨 MANDATORY: Determine framework required** - Standard component, Listing framework, Form framework, etc.
+
+### **🚨 MANDATORY: STEP 3: Complexity Analysis - REQUIRED SECOND**
+1. **🚨 MANDATORY: Determine complexity level** - Simple, Medium, High
+2. **🚨 MANDATORY: Provide reasoning** - Why this complexity level (static content, filtering, API calls, etc.)
+3. **🚨 MANDATORY: Identify architecture requirements** - Sling Model only, OSGi services, clientlibs, etc.
+4. **🚨 MANDATORY: Determine review requirements** - None, Standard, Architect review needed
+
+### **🚨 MANDATORY: STEP 4: Functional Analysis - REQUIRED THIRD**
+1. **🚨 MANDATORY: Identify core functionality** - What does this component actually DO?
+2. **🚨 MANDATORY: Identify user interactions** - Click, filter, search, navigate, submit, etc.
+3. **🚨 MANDATORY: Determine data flow** - Static content, dynamic content, user input, API calls
+4. **🚨 MANDATORY: Identify business logic** - Simple display, filtering logic, validation, calculations
+
+### **🚨 MANDATORY: STEP 5: Layout Structure Analysis - REQUIRED FOURTH**
+1. **🚨 MANDATORY: Identify overall layout pattern** - Single column, two column, grid, etc.
+2. **🚨 MANDATORY: Map section positioning** - Which content goes where (left, right, top, bottom)
+3. **🚨 MANDATORY: Identify column ratios** - 1/3 + 2/3, 1/2 + 1/2, etc.
+4. **🚨 MANDATORY: Plan HTML container structure** - Main container, sections, subsections
+5. **🚨 MANDATORY: Plan CSS layout strategy** - Grid, flexbox, positioning method

@@ -1,0 +1,34 @@
+# AEM Internationalization Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before implementing any internationalization:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow i18n rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use AEM i18n dictionary framework** - **NO SKIPPING**
+4. **🚨 MANDATORY: Never hardcode UI strings** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for i18n configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+- Never hardcode UI strings in HTL, dialogs, or Sling Models.
+- All static UI strings must use the AEM i18n dictionary framework.
+- Create project dictionaries under `/apps/<project>/i18n/`.
+- Store English strings as keys. Example:
+  - Key: "Hello World"
+  - German: "Hallo Welt"
+- Export dictionaries to XLIFF for translation and re-import after localization.
+- Do not modify system dictionaries under `/libs/`.
+- At runtime, resolve the language based on:
+  - Page locale, or
+  - User preference
+- For author-editable strings (dialog text, component properties):
+  - Use AEM translation workflows
+  - Do not rely on i18n dictionary keys

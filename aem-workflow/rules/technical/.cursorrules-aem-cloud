@@ -1,0 +1,57 @@
+# AEM Cloud Service Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before developing any AEM Cloud Service components:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all Cloud Service rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply Cloud Manager compliance** - **NO SKIPPING**
+4. **🚨 MANDATORY: Use stateless architecture** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for cloud configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **Core Architecture**
+- Design all components and services as **stateless**. Do not rely on local file system or session storage.
+- Use Sling Jobs or Workflows for asynchronous processing. Do not use custom threads or schedulers that assume persistence.
+- Always validate for Cloud Manager pipeline compatibility:
+  - Code must pass quality gates
+  - No usage of deprecated Classic UI APIs
+  - No custom run modes not supported in Cloud
+- Avoid reverse replication, custom replication agents, or direct repository writes outside JCR APIs.
+- Follow Adobe's dispatcher/CDN caching guidelines. Do not introduce patterns that bypass cache unnecessarily.
+
+## **Content and Assets**
+- Use Content Fragments and Experience Fragments for structured and reusable content.
+- Store assets in `/content/dam` with proper folder structure and metadata.
+- Use Dynamic Media for image optimization and delivery.
+- Implement proper asset versioning and lifecycle management.
+
+## **Development Standards**
+- Clientlibs must be included in a way that works with AEM as a Cloud Service (categories, embed, dependencies).
+- Use Sling Models for component logic instead of JSP scriptlets.
+- Implement proper REST APIs using Sling Servlets and JAX-RS.
+- Use AEM's built-in HTTP client for external API calls.
+
+## **Security and Performance**
+- Implement proper authentication using AEM's built-in security features and IMS.
+- Use OSGi configuration for environment-specific settings.
+- Implement proper caching strategies using AEM's caching mechanisms.
+- Use Sling Resource Resolvers efficiently and close them properly.
+
+## **Testing and Quality**
+- Implement unit tests for all Sling Models and services.
+- Use AEM's built-in testing frameworks (JUnit, Mockito, AEM Mocks).
+- Follow AEM's coding standards and implement proper error handling.
+
+## **Path and Configuration**
+- Do not rely on `/etc` or other deprecated paths; use `/conf`, `/apps`, `/content`.
+- Use proper JavaDoc and inline comments for all custom code.
+- Follow AEM's deployment best practices and avoid custom deployment scripts.

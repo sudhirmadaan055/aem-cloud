@@ -1,0 +1,175 @@
+# MANDATORY CONTENT FILTERING AND VIOLATION PREVENTION SYSTEM
+
+## 🚨 CRITICAL: CONTENT FILTERING RULES - NO EXCEPTIONS
+
+**⚠️ CRITICAL: This file prevents content violations and ensures clean user interface**
+
+### **🚨 MANDATORY: PRE-RESPONSE CONTENT VALIDATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Before showing ANY content to user, ALWAYS perform these checks:**
+
+#### **Content Filtering Checklist:**
+- [ ] **🚨 MANDATORY: Scan for "(AI Reference Only)" markers** - Hide ALL content with this marker
+- [ ] **🚨 MANDATORY: Use exact user interface format** - Follow specified format exactly
+- [ ] **🚨 MANDATORY: Separate internal processing from user interface** - Never mix the two
+- [ ] **🚨 MANDATORY: Validate content before showing** - Check each piece of content for compliance
+- [ ] **🚨 MANDATORY: No verbose analysis details** - Keep interface minimal and clean
+
+#### **Content Validation Rules:**
+1. **🚨 MANDATORY: Filter "(AI Reference Only)" content** - Never show to user
+2. **🚨 MANDATORY: Filter internal processing steps** - Hide from user
+3. **🚨 MANDATORY: Filter verbose analysis details** - Keep interface clean
+4. **🚨 MANDATORY: Filter technical implementation details** - Hide from user
+5. **🚨 MANDATORY: Filter step-by-step processing** - Show only final results
+
+### **🚨 MANDATORY: USER INTERFACE COMPLIANCE - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: User interface MUST follow exact format specified in rule files:**
+
+#### **Mandatory User Interface Format:**
+```
+Image Count: X image(s) uploaded
+Image Analysis: [Single image containing multiple distinct visual sections] OR [Multiple images with single component each] OR [Multiple images with multiple components each]
+Component Count: X distinct components identified in the image(s)
+
+Existing Components (X)
+Modified Components (X)  
+New Components (X)
+```
+
+#### **Content That MUST Be Shown to User:**
+- Image count and analysis details
+- Component count and identification
+- Component status breakdown (Existing, Modified, New)
+- Component names and categories
+- Next step options (1, 2, 3, 4, 5)
+- Clean, informative interface
+
+#### **Content That MUST Be Hidden from User:**
+- Step-by-step analysis details
+- Internal processing steps
+- Verbose component analysis
+- Technical implementation details
+- "Processing Component X of Y" messages
+- Individual step completions
+- Internal validation steps
+- Any content marked "(AI Reference Only)"
+
+### **🚨 MANDATORY: VIOLATION PREVENTION SYSTEM - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Prevent violations before they occur:**
+
+#### **Pre-Response Prevention Checks:**
+1. **🚨 MANDATORY: Read all rule files first** - Complete compliance before any action
+2. **🚨 MANDATORY: Identify exact user interface format** - Know what format to use
+3. **🚨 MANDATORY: Filter all content before showing** - Remove "(AI Reference Only)" content
+4. **🚨 MANDATORY: Validate compliance before responding** - Check all requirements met
+5. **🚨 MANDATORY: Use exact wording from rule files** - No paraphrasing or additions
+
+#### **Real-Time Content Filtering:**
+- **🚨 MANDATORY: Automatic "(AI Reference Only)" detection** - Filter out immediately
+- **🚨 MANDATORY: Internal processing detection** - Hide from user
+- **🚨 MANDATORY: Verbose content detection** - Keep interface minimal
+- **🚨 MANDATORY: Technical detail detection** - Hide from user
+- **🚨 MANDATORY: Step-by-step detection** - Show only final results
+
+### **🚨 MANDATORY: WORKSPACE-SPECIFIC PREVENTION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: For new folders, workspaces, or laptops:**
+
+#### **Initial Setup Process:**
+1. **🚨 MANDATORY: Scan for all .cursorrules files** - Complete workspace scan
+2. **🚨 MANDATORY: Read all rule files** - Complete compliance
+3. **🚨 MANDATORY: Create compliance checklist** - Track requirements
+4. **🚨 MANDATORY: Implement content filtering** - Set up prevention system
+5. **🚨 MANDATORY: Validate before any action** - Confirm compliance
+
+#### **Ongoing Prevention Measures:**
+- **🚨 MANDATORY: Continuous content filtering** - Real-time prevention
+- **🚨 MANDATORY: Regular compliance checks** - Validate before responses
+- **🚨 MANDATORY: Violation detection** - Catch issues immediately
+- **🚨 MANDATORY: Automatic correction** - Fix violations before showing user
+
+### **🚨 MANDATORY: EMERGENCY VIOLATION PROTOCOL - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: When violations are detected:**
+
+#### **Immediate Actions:**
+1. **🚨 MANDATORY: STOP immediately** - Do not show violated content
+2. **🚨 MANDATORY: Filter content** - Remove all "(AI Reference Only)" content
+3. **🚨 MANDATORY: Use correct format** - Follow exact user interface format
+4. **🚨 MANDATORY: Validate before showing** - Confirm compliance
+5. **🚨 MANDATORY: Show only clean interface** - Minimal, essential information only
+
+#### **Violation Recovery:**
+- **🚨 MANDATORY: Identify violation type** - What went wrong
+- **🚨 MANDATORY: Apply correct filtering** - Remove inappropriate content
+- **🚨 MANDATORY: Use exact format** - Follow specified user interface
+- **🚨 MANDATORY: Validate compliance** - Confirm all requirements met
+- **🚨 MANDATORY: Show clean response** - Only appropriate content
+
+### **🚨 MANDATORY: CONTENT FILTERING SUCCESS CRITERIA - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Success only achieved when:**
+
+1. **🚨 MANDATORY: 100% content filtering** - No "(AI Reference Only)" content shown
+2. **🚨 MANDATORY: 100% format compliance** - Exact user interface format used
+3. **🚨 MANDATORY: 100% interface compliance** - Clean, minimal interface maintained
+4. **🚨 MANDATORY: 0% violations** - No content violations detected
+5. **🚨 MANDATORY: 100% user experience** - Only appropriate content shown
+
+### **🚨 MANDATORY: CONTENT FILTERING ENFORCEMENT - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: This content filtering system is MANDATORY:**
+
+1. **🚨 MANDATORY: No response without content filtering** - Not allowed
+2. **🚨 MANDATORY: No response with violations** - Not allowed
+3. **🚨 MANDATORY: No response without compliance** - Not allowed
+4. **🚨 MANDATORY: No response without validation** - Not allowed
+
+### **🚨 MANDATORY: CONTENT FILTERING ACCOUNTABILITY - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Track content filtering compliance:**
+
+#### **Filtering Metrics:**
+- [ ] **🚨 MANDATORY: Content filtering success rate** - Track filtering effectiveness
+- [ ] **🚨 MANDATORY: Format compliance rate** - Track format accuracy
+- [ ] **🚨 MANDATORY: Interface compliance rate** - Track user experience
+- [ ] **🚨 MANDATORY: Violation prevention rate** - Track prevention success
+- [ ] **🚨 MANDATORY: Overall compliance rate** - Track total success
+
+#### **Violation Tracking:**
+- [ ] **🚨 MANDATORY: Content filtering violations** - Track missed filtering
+- [ ] **🚨 MANDATORY: Format violations** - Track format deviations
+- [ ] **🚨 MANDATORY: Interface violations** - Track verbose content
+- [ ] **🚨 MANDATORY: Compliance violations** - Track overall failures
+
+### **🚨 MANDATORY: CONTENT FILTERING IMPROVEMENT - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Continuously improve content filtering:**
+
+#### **Improvement Process:**
+1. **🚨 MANDATORY: Analyze filtering failures** - Learn from violations
+2. **🚨 MANDATORY: Improve filtering methods** - Better content detection
+3. **🚨 MANDATORY: Enhance prevention measures** - Stronger violation prevention
+4. **🚨 MANDATORY: Refine compliance checks** - More accurate validation
+5. **🚨 MANDATORY: Track improvement success** - Measure progress
+
+#### **Improvement Validation:**
+- [ ] **🚨 MANDATORY: Filtering failures analyzed** - Improvement active
+- [ ] **🚨 MANDATORY: Filtering methods improved** - Improvement active
+- [ ] **🚨 MANDATORY: Prevention measures enhanced** - Improvement active
+- [ ] **🚨 MANDATORY: Compliance checks refined** - Improvement active
+- [ ] **🚨 MANDATORY: Improvement success tracked** - Improvement active
+
+### **🚨 MANDATORY: CONTENT FILTERING SUCCESS - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Final success only when:**
+
+1. **🚨 MANDATORY: 100% content filtering success** - All inappropriate content filtered
+2. **🚨 MANDATORY: 100% format compliance success** - Exact format used
+3. **🚨 MANDATORY: 100% interface compliance success** - Clean interface maintained
+4. **🚨 MANDATORY: 100% violation prevention success** - No violations occur
+5. **🚨 MANDATORY: 0% violations** - No content violations detected
+
+**⚠️ CRITICAL: ANY violation of content filtering results in immediate failure and restart requirement.**

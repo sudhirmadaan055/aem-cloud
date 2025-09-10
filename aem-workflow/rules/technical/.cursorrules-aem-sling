@@ -1,0 +1,308 @@
+# AEM Apache Sling Best Practices Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before developing any Sling Models or services:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all Sling rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Use proper annotations** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for Sling configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+8. **🚨 NEVER use Jackson annotations** - Do NOT use `@JsonProperty` or `com.fasterxml.jackson.annotation.*` imports in Sling Models
+
+## **CRITICAL: Apache Sling Framework Best Practices**
+
+**ALWAYS follow Apache Sling best practices when developing AEM components, services, and applications.**
+
+### **Sling Models Best Practices**
+
+#### **Model Annotations**
+- **@Model**: Always specify `adaptables = Resource.class` for component models
+- **@Inject**: Use with `injectionStrategy = InjectionStrategy.OPTIONAL` for optional dependencies
+- **@ValueMapValue**: Use for component properties instead of manual property access
+- **@OSGiService**: Use for service injection with proper null checks
+- **@SlingObject**: Use for Resource, ResourceResolver, Request, etc.
+- **🚨 NEVER use Jackson annotations**: Do NOT use `@JsonProperty` or any `com.fasterxml.jackson.annotation.*` imports
+- **🚨 Follow project patterns**: Use simple getter methods without Jackson decorators, following existing model patterns
+
+#### **Model Structure**
+```java
+@Model(adaptables = Resource.class)
+public class ComponentModel {
+    
+    @Inject
+    private Resource resource;
+    
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String title;
+    
+    @OSGiService
+    private SomeService someService;
+    
+    @PostConstruct
+    protected void init() {
+        // Initialization logic
+    }
+    
+    // Simple getter methods - NO @JsonProperty annotations
+    public String getTitle() {
+        return title;
+    }
+}
+```
+
+#### **Model Rules**
+- **Always use @PostConstruct** for initialization logic
+- **Validate inputs** in @PostConstruct method
+- **Handle null values** gracefully
+- **Use Optional** for nullable return values
+- **Implement proper error handling**
+
+### **Sling Servlets Best Practices**
+
+#### **Servlet Registration**
+- **Use @SlingServlet** with proper resource types
+- **Extend appropriate base class** (SlingAllMethodsServlet vs SlingSafeMethodsServlet)
+- **Specify methods** explicitly (GET, POST, etc.)
+- **Use proper path patterns** for servlet registration
+
+#### **Servlet Structure**
+```java
+@Component(service = Servlet.class)
+@SlingServlet(
+    resourceTypes = {"project/components/component"},
+    methods = {"GET", "POST"},
+    extensions = {"json"}
+)
+public class ComponentServlet extends SlingAllMethodsServlet {
+    
+    @Override
+    protected void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response) {
+        // Implementation
+    }
+}
+```
+
+#### **Servlet Rules**
+- **Always handle exceptions** properly
+- **Set appropriate content types** (application/json, text/html)
+- **Validate request parameters** before processing
+- **Use proper HTTP status codes**
+- **Implement proper logging**
+
+### **Resource Resolution Best Practices**
+
+#### **ResourceResolver Usage**
+- **Always close ResourceResolver** in try-with-resources or finally block
+- **Use service user mappings** for system operations
+- **Handle ResourceResolverFactory exceptions** properly
+- **Use appropriate user context** for operations
+
+#### **Resource Access Patterns**
+```java
+try (ResourceResolver resolver = resourceResolverFactory.getServiceResourceResolver(serviceUserMap)) {
+    Resource resource = resolver.getResource(path);
+    // Process resource
+} catch (LoginException e) {
+    log.error("Failed to get resource resolver", e);
+}
+```
+
+#### **Resource Rules**
+- **Never assume resource exists** - always check for null
+- **Use resource adapters** for type conversion
+- **Handle resource properties** safely
+- **Respect resource permissions**
+
+### **Query Builder Best Practices**
+
+#### **Query Construction**
+- **Use QueryBuilder service** for complex queries
+- **Build queries with proper predicates**
+- **Handle query results** efficiently
+- **Implement proper pagination**
+
+#### **Query Patterns**
+```java
+Map<String, String> queryParams = new HashMap<>();
+queryParams.put("path", rootPath);
+queryParams.put("type", "cq:Page");
+queryParams.put("p.limit", String.valueOf(limit));
+queryParams.put("p.offset", String.valueOf(offset));
+
+Query query = queryBuilder.createQuery(PredicateGroup.create(queryParams), session);
+SearchResult result = query.getResult();
+```
+
+#### **Query Rules**
+- **Always validate query parameters**
+- **Use proper JCR indexes** for performance
+- **Handle large result sets** with pagination
+- **Implement query result caching** when appropriate
+
+### **OSGi Service Best Practices**
+
+#### **Service Registration**
+- **Use @Component** with proper service interfaces
+- **Implement proper lifecycle methods** (@Activate, @Deactivate)
+- **Handle service dependencies** with @Reference
+- **Use configuration management** with @ObjectClassDefinition
+
+#### **Service Structure**
+```java
+@Component(service = MyService.class, immediate = true)
+public class MyServiceImpl implements MyService {
+    
+    @Reference
+    private SomeDependency dependency;
+    
+    @Activate
+    protected void activate(Config config) {
+        // Service activation
+    }
+    
+    @Deactivate
+    protected void deactivate() {
+        // Service deactivation
+    }
+}
+```
+
+#### **Service Rules**
+- **Always implement proper lifecycle** management
+- **Handle service dependencies** gracefully
+- **Use configuration validation**
+- **Implement proper error handling**
+
+### **HTL (Sightly) Best Practices**
+
+#### **Template Structure**
+- **Use proper data-sly attributes**
+- **Implement use API** for complex logic
+- **Use resource and property access** efficiently
+- **Handle null values** in templates
+
+#### **HTL Patterns**
+```html
+<div data-sly-use.model="com.project.models.ComponentModel">
+    <h2 data-sly-test="${model.title}">${model.title}</h2>
+    <div data-sly-list="${model.items}">
+        <p>${item.text}</p>
+    </div>
+</div>
+```
+
+#### **HTL Rules**
+- **Keep logic in Sling Models**, not in HTL
+- **Use data-sly-test** for conditional rendering
+- **Implement proper escaping** for user content
+- **Use semantic HTML** structure
+
+### **Event Handling Best Practices**
+
+#### **Event Listeners**
+- **Use proper event types** and topics
+- **Implement efficient event handling**
+- **Handle event processing** asynchronously when appropriate
+- **Use proper event filtering**
+
+#### **Event Patterns**
+```java
+@Component(service = EventHandler.class)
+@EventTopics({"org/apache/sling/api/resource/Resource/ADDED"})
+public class ResourceEventHandler implements EventHandler {
+    
+    @Override
+    public void handleEvent(Event event) {
+        // Event handling logic
+    }
+}
+```
+
+#### **Event Rules**
+- **Always handle events efficiently**
+- **Use proper event filtering**
+- **Implement error handling** for event processing
+- **Avoid blocking operations** in event handlers
+
+### **Security Best Practices**
+
+#### **Access Control**
+- **Respect resource permissions**
+- **Use service user mappings** for system operations
+- **Validate user inputs** properly
+- **Implement proper authentication** checks
+
+#### **Security Rules**
+- **Never bypass security** mechanisms
+- **Validate all user inputs**
+- **Use proper authorization** checks
+- **Implement secure coding** practices
+
+### **Performance Best Practices**
+
+#### **Resource Management**
+- **Close resources properly**
+- **Use connection pooling** when appropriate
+- **Implement proper caching** strategies
+- **Optimize database queries**
+
+#### **Performance Rules**
+- **Monitor resource usage**
+- **Implement proper caching**
+- **Use efficient algorithms**
+- **Profile and optimize** critical paths
+
+### **Error Handling Best Practices**
+
+#### **Exception Management**
+- **Use appropriate exception types**
+- **Implement proper logging**
+- **Handle exceptions gracefully**
+- **Provide meaningful error messages**
+
+#### **Error Handling Patterns**
+```java
+try {
+    // Operation
+} catch (SpecificException e) {
+    log.error("Specific error occurred", e);
+    // Handle specific case
+} catch (Exception e) {
+    log.error("Unexpected error occurred", e);
+    // Handle general case
+}
+```
+
+#### **Error Rules**
+- **Always log errors** with proper context
+- **Handle exceptions** at appropriate levels
+- **Provide user-friendly** error messages
+- **Implement proper error recovery**
+
+### **Testing Best Practices**
+
+#### **Unit Testing**
+- **Test Sling Models** with proper mocking
+- **Test servlets** with mock requests/responses
+- **Test services** with proper test contexts
+- **Use AEM Mocks** for testing
+
+#### **Testing Rules**
+- **Mock external dependencies**
+- **Test error conditions**
+- **Use proper test data**
+- **Implement integration tests**
+
+---
+
+**These Sling best practices ensure robust, maintainable, and performant AEM applications.**

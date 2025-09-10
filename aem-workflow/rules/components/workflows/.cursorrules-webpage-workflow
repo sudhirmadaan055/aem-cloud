@@ -1,0 +1,246 @@
+# AEM Web Page Analysis Workflow
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+7. **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FOR COMPONENT CLASSIFICATION** - **NO EXCEPTIONS**
+
+## 🚨 CRITICAL: WEB PAGE ANALYSIS WORKFLOW - NO EXCEPTIONS
+
+**⚠️ CRITICAL: This workflow analyzes live websites and extracts reusable AEM components**
+
+**🚨 CRITICAL: CONSISTENCY ENFORCEMENT ACROSS ALL ENVIRONMENTS:**
+- **🚨 MANDATORY: Same analysis process on all systems** - New folders, cursor instances, laptops
+- **🚨 MANDATORY: Same component identification logic** - Consistent detection across environments
+- **🚨 MANDATORY: Same naming conventions** - Actual titles and headings from webpage content
+- **🚨 MANDATORY: Same complexity assessment** - Standardized Simple/Medium/High classification
+- **🚨 MANDATORY: Same interactive element detection** - Consistent pattern recognition
+- **🚨 MANDATORY: Same design token extraction** - Standardized color, typography, spacing analysis
+- **🚨 MANDATORY: Same output format** - Identical presentation structure across all environments
+
+### **🚨 MANDATORY: STEP 1 - WEB PAGE URL VALIDATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: BEFORE ANY ANALYSIS, VALIDATE WEB PAGE URL:**
+1. **🚨 MANDATORY: Parse URL format** - Extract domain, path, and parameters
+2. **🚨 MANDATORY: Validate URL accessibility** - Ensure URL is publicly accessible
+3. **🚨 MANDATORY: Check URL format** - Must be valid HTTP/HTTPS URL
+4. **🚨 MANDATORY: Extract page context** - Identify if homepage, product page, article, etc.
+
+### **🚨 MANDATORY: STEP 2 - WEB PAGE CONTENT EXTRACTION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: WEB SEARCH-BASED ANALYSIS APPROACH - NO EXCEPTIONS:**
+1. **🚨 MANDATORY: Use web_search tool for page analysis** - Search for specific page content, structure, and design patterns
+2. **🚨 MANDATORY: Extract HTML structure from search results** - Get page layout and component patterns from search results
+3. **🚨 MANDATORY: Identify CSS classes and styling from search results** - Extract styling patterns and design tokens
+4. **🚨 MANDATORY: Analyze content blocks from search results** - Identify distinct content sections from search results
+5. **🚨 MANDATORY: Extract text content from search results** - Get headings, paragraphs, button text from search results
+6. **🚨 MANDATORY: Identify images and media from search results** - Extract image sources and media elements from search results
+7. **🚨 MANDATORY: Map interactive elements from search results** - Buttons, forms, navigation, carousels from search results
+8. **🚨 MANDATORY: Extract design tokens from search results** - Colors, typography, spacing patterns from search results
+
+### **🚨 MANDATORY: STEP 3 - COMPONENT IDENTIFICATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: COMPONENT IDENTIFICATION RULES - NO EXCEPTIONS:**
+1. **🚨 MANDATORY: Count only top-level visual sections** - Don't break down into sub-components
+2. **🚨 MANDATORY: Identify distinct visual boundaries** - Look for background changes, spacing, borders
+3. **🚨 MANDATORY: Recognize complex components** - Dashboards, carousels, grids as single components
+4. **🚨 MANDATORY: Follow visual hierarchy** - Header, Hero, Content areas, Footer as separate components
+5. **🚨 MANDATORY: Count interactive sections** - Carousels, navigation menus, forms as single components
+6. **🚨 MANDATORY: Identify layout patterns** - Grid systems, card layouts, dashboard widgets
+7. **🚨 MANDATORY: Avoid over-decomposition** - If visually one section, it's one component
+8. **🚨 MANDATORY: Count total distinct sections** - Determine exact number of top-level components
+9. **🚨 MANDATORY: Scan for ALL visual sections systematically** - Not just those with obvious titles
+10. **🚨 MANDATORY: Identify functional components** - Even without explicit titles
+11. **🚨 MANDATORY: Use actual webpage titles and headings as component names when available** - Extract exact titles, headings, and section names from webpage content
+12. **🚨 MANDATORY: Create descriptive names for components without titles** - Based on function and visual appearance
+13. **🚨 MANDATORY: Never create generic component names** - Always use meaningful, descriptive names
+14. **🚨 MANDATORY: Recognize unified sections with sub-content blocks** - Sections with main title and multiple content blocks are single components
+15. **🚨 MANDATORY: Identify main section titles** - Look for primary headings that encompass multiple sub-elements
+16. **🚨 MANDATORY: Count sections by visual boundaries, not sub-headings** - One background = one component, regardless of internal content blocks
+
+### **🚨 MANDATORY: STEP 4 - COMPONENT ANALYSIS - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ANALYZE EACH IDENTIFIED COMPONENT USING DESIGN ANALYSIS RULES:**
+1. **🚨 MANDATORY: LISTING COMPONENT DETECTION FIRST** - Check for search, filters, pagination, sorting (PRIMARY CLASSIFICATION)
+2. **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION** - Check for multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Follow Step 2A: Interactive UI Pattern Detection** - Scan for navigation elements, content switching mechanisms, interactive elements
+4. **🚨 MANDATORY: Follow Step 2B: Interactive Component Classification Rules** - Classify based on interaction patterns, not visual appearance
+5. **🚨 MANDATORY: Determine component type** - Static Content, Interactive Content, Layout Component, Form Component, Listing Component
+6. **🚨 MANDATORY: Assess complexity level** - Simple, Medium, High based on interaction requirements
+7. **🚨 MANDATORY: Identify interactive features** - Navigation, content switching, user interactions, state management
+8. **🚨 MANDATORY: Map content structure** - Text fields, image fields, link fields, multifields
+9. **🚨 MANDATORY: Extract design patterns** - Colors, typography, spacing, visual effects
+10. **🚨 MANDATORY: Plan AEM implementation** - HTL structure, Sling Model, dialog configuration
+
+### **🚨 MANDATORY: STEP 5 - DESIGN TOKEN EXTRACTION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: EXTRACT DESIGN SYSTEM FROM WEB PAGE:**
+1. **🚨 MANDATORY: Extract color palette** - Primary, secondary, accent colors
+2. **🚨 MANDATORY: Identify typography** - Font families, sizes, weights, line heights
+3. **🚨 MANDATORY: Map spacing system** - Margins, padding, grid spacing
+4. **🚨 MANDATORY: Extract visual effects** - Shadows, borders, rounded corners, gradients
+5. **🚨 MANDATORY: Identify responsive patterns** - Mobile, tablet, desktop adaptations
+6. **🚨 MANDATORY: Map component variations** - Different states, sizes, themes
+
+### **🚨 MANDATORY: STEP 6 - COMPONENT MAPPING - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: MAP WEB PAGE ELEMENTS TO AEM COMPONENTS:**
+1. **🚨 MANDATORY: Create component inventory** - List all identified components
+2. **🚨 MANDATORY: Map to AEM patterns** - Standard components, custom components
+3. **🚨 MANDATORY: Plan component hierarchy** - Parent-child relationships
+4. **🚨 MANDATORY: Identify reusable patterns** - Common UI elements across pages
+5. **🚨 MANDATORY: Plan component variations** - Different states and configurations
+6. **🚨 MANDATORY: Map content relationships** - How components work together
+
+### **🚨 MANDATORY: STEP 7 - USER INTERFACE PRESENTATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: PRESENT ANALYSIS RESULTS IN CLEAN FORMAT:**
+
+**🚨 MANDATORY: User Instruction Format - NO EXCEPTIONS**
+**⚠️ CRITICAL: When presenting web page analysis results, ALWAYS use this exact format:**
+
+```
+Web Page Analysis: [URL]
+Page Type: [Homepage/Product Page/Article/etc.]
+Component Count: X distinct components identified
+
+Existing Components (0)
+Modified Components (0)
+New Components (X):
+	1. [Actual Component Name 1]
+	2. [Actual Component Name 2]
+	3. [Actual Component Name 3]
+	...
+	X. [Actual Component Name X]
+
+**Component Analysis:**
+
+| # | Component Name | Type | Complexity | Interactive Elements |
+|---|----------------|------|------------|---------------------|
+| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
+| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
+| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
+| ... | ... | ... | ... | ... |
+| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+
+**Summary by Type:**
+- **[Type] Components (X):** [Component Names]
+- **[Type] Components (X):** [Component Names]
+
+**Summary by Complexity:**
+- **Simple (X):** [Component Names]
+- **Medium (X):** [Component Names]
+- **High (X):** [Component Names]
+
+**Design Tokens Extracted:**
+- **Colors:** [Primary, Secondary, Accent colors]
+- **Typography:** [Font families, sizes, weights]
+- **Spacing:** [Margin, padding patterns]
+- **Effects:** [Shadows, borders, rounded corners]
+```
+
+**🚨 CRITICAL: This format MUST be used for ALL web page analysis presentations - NO EXCEPTIONS**
+**🚨 CRITICAL: This exact format ensures consistency across all environments - New folders, cursor instances, laptops**
+
+### **🚨 MANDATORY: STEP 8 - OPTIONS PRESENTATION - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**
+
+```
+### 1. **Create Component Definition** - Generate components.json file
+### 2. **Develop Component** - Generate AEM component code  
+### 3. **Modify Component** - Update the component definition
+### 4. **Start Over** - Analyze a different web page
+
+**Which option? (1, 2, 3, or 4)**
+```
+
+**🚨 CRITICAL: This options display is MANDATORY and cannot be skipped - NO EXCEPTIONS**
+**🚨 CRITICAL: These exact options ensure consistency across all environments - New folders, cursor instances, laptops**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for web page details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+8. **NEVER skip web page analysis when web page URL is provided**
+9. **NEVER proceed without extracting design tokens**
+10. **NEVER skip component identification step**
+11. **NEVER skip web_search analysis** - Must use web_search for URL-based analysis and component identification
+12. **NEVER over-decompose components** - Count only top-level visual sections
+13. **NEVER break down complex components** - Dashboards, carousels, grids are single components
+14. **NEVER ignore visual boundaries** - Follow distinct visual sections as component boundaries
+15. **NEVER skip design analysis rules** - Must follow interactive pattern detection and component classification rules
+16. **NEVER use generic component names** - Must use actual webpage titles, headings, and section names as component names when available
+17. **NEVER skip interactive element detection** - Must scan for navigation, content switching, user interactions
+18. **NEVER classify without interaction analysis** - Must analyze what component DOES, not just how it looks
+19. **NEVER create component names** - Always extract and use the exact titles and headings from the webpage content when available
+20. **NEVER miss visual sections** - Must scan systematically for ALL visual sections, not just those with titles
+21. **NEVER skip functional components** - Must identify components based on function and visual appearance
+22. **NEVER over-decompose unified sections** - Sections with main title and multiple content blocks are single components
+23. **NEVER break down sections by sub-headings** - Count by visual boundaries, not internal content structure
+
+## 🚨 CRITICAL: WEB PAGE ANALYSIS BEST PRACTICES
+
+### **Common Web Page Components to Look For:**
+- **Listing Component** - Search boxes, filters, pagination, sorting (PRIMARY DETECTION)
+- **Carousel Component** - Multiple slides, navigation indicators, carousel controls (PRIMARY DETECTION)
+- **Header Component** - Complete header section with logo, navigation, utility links
+- **Hero Banner Component** - Large banners with carousel functionality, navigation controls
+- **Dashboard Component** - Financial widgets, data displays, multiple information panels
+- **Content Grid Component** - Article lists, feature grids, card layouts with complex patterns
+- **News/Updates Component** - News sections with carousels, date sorting, category filtering
+- **Footer Component** - Complete footer with links, social media, logos, copyright
+- **Interactive Elements** - Carousels, accordions, tabs, modals as part of larger components
+
+### **Design Token Extraction Guidelines:**
+- **Colors** - Extract from CSS, background colors, text colors, accent colors
+- **Typography** - Font families, sizes, weights from headings and body text
+- **Spacing** - Margins, padding, grid gaps from layout structure
+- **Effects** - Shadows, borders, rounded corners from visual styling
+
+### **Component Complexity Assessment:**
+- **Simple** - Static content, basic styling, no JavaScript required
+- **Medium** - Some interactivity, basic JavaScript, simple state management
+- **High** - Complex interactions, advanced JavaScript, state management, API calls, carousels, dashboards
+
+### **Web Search-Based Analysis Guidelines:**
+- **LISTING COMPONENT DETECTION FIRST** - Check for search, filters, pagination, sorting (PRIMARY DETECTION)
+- **CAROUSEL COMPONENT DETECTION** - Check for multiple slides, navigation indicators, carousel controls
+- **Use web_search for page structure** - Search for specific page content and layout information
+- **Extract component patterns from search results** - Identify distinct sections from search results
+- **Count top-level sections only** - Don't break down complex components into sub-components
+- **Recognize layout patterns from search results** - Grid systems, carousels, dashboards are single components
+- **Follow content hierarchy from search results** - Header, Hero, Content areas, Footer as separate components
+- **Identify interactive elements from search results** - Carousels, navigation, forms within components
+- **Scan for ALL visual sections systematically** - Not just those with obvious titles
+- **Identify functional components** - Even without explicit titles
+- **Extract actual titles and headings when available** - Use exact webpage titles, headings, and section names as component names
+- **Create descriptive names for components without titles** - Based on function and visual appearance
+- **Never create generic names** - Always use meaningful, descriptive names
+- **Recognize unified sections with sub-content blocks** - Sections with main title and multiple content blocks are single components
+- **Count by visual boundaries, not sub-headings** - One background = one component, regardless of internal content blocks
+
+## 🚨 CRITICAL: COMPLIANCE ENFORCEMENT
+
+**⚠️ CRITICAL: This web page analysis workflow is MANDATORY:**
+1. **🚨 MANDATORY: No web page analysis without following this workflow** - Not allowed
+2. **🚨 MANDATORY: No skipping of analysis steps** - Not allowed
+3. **🚨 MANDATORY: No deviation from user interface format** - Not allowed
+4. **🚨 MANDATORY: No proceeding without design token extraction** - Not allowed
+5. **🚨 MANDATORY: No deviation from consistency rules** - Same process across all environments
+6. **🚨 MANDATORY: No environment-specific variations** - Identical analysis on all systems
+
+**⚠️ CRITICAL: ANY violation of this workflow results in immediate failure and restart requirement.**
+**⚠️ CRITICAL: CONSISTENCY IS ENFORCED ACROSS ALL ENVIRONMENTS - New folders, cursor instances, laptops, systems**

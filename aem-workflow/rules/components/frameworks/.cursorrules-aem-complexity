@@ -1,0 +1,43 @@
+# AEM Component Complexity Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before analyzing component complexity:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow complexity rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply appropriate complexity level** - **NO SKIPPING**
+4. **🚨 MANDATORY: Create context files when needed** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for complexity details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+When analyzing Figma designs, HTML structures, or requirements:
+
+## Simple Components
+- Purely presentational, minimal fields (text, image, button).
+- No dynamic data, API calls, or complex authoring.
+- Examples: Text, Image, Button, Banner.
+
+## Medium Complexity Components
+- Multiple configurable fields, often with repeatable structures.
+- Requires Sling Model with light logic.
+- Dialogs may include tabs or multifields.
+- Examples: Teaser, Carousel, Accordion, Card Grid.
+
+## High Complexity Components
+- Aggregate or query dynamic data.
+- Include **search, filtering, ordering, pagination**, or **external API integrations**.
+- Require Sling Models + OSGi services + clientlibs.
+- Must always be flagged for **architect review**.
+- Must be reviewed for **performance, caching, and scalability** in AEMaaCS.
+- Author dialogs should support filter configuration, result size, and sort options when applicable.
+- Examples: Product Listing, Search Component, Location Finder, Multi-step Form.
+
+⚠️ Even if a component looks visually simple, if it involves search, filtering, ordering, or pagination, Cursor must treat it as High Complexity.

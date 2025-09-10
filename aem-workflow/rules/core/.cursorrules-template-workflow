@@ -1,0 +1,596 @@
+# AEM Template Creation Workflow
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: MANDATORY COMPLIANCE SYSTEM - READ FIRST:**
+1. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-mandatory-compliance` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-checklist` BEFORE ANY RESPONSE** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-dependency-mapper` FOR DEPENDENCY CHAIN** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: ALWAYS read `../compliance/.cursorrules-compliance-monitor` FOR REAL-TIME MONITORING** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-emergency-protocol` FOR VIOLATION HANDLING** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: ALWAYS read `../system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before executing any AEM template creation tasks:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all template creation rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Reference other rule files when mentioned** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for template details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## Template Creation Options
+
+**Type the number to proceed:**
+
+### 1. **Page Template** - Create editable page templates
+*Structure templates, content templates, landing page templates*
+
+### 2. **Experience Fragment Template** - Create XF templates
+*Header templates, footer templates, banner templates, content block templates*
+
+### 3. **Content Fragment Template** - Create CF templates
+*Article templates, product templates, event templates, profile templates*
+
+### 4. **Email Template** - Create email templates
+*Newsletter templates, notification templates, marketing templates, transactional templates*
+
+---
+
+**Which template type? (1, 2, 3, or 4)**
+
+---
+
+## 🚨 CRITICAL: STEP 1 - TEMPLATE SOURCE SELECTION
+
+**⚠️ CRITICAL: AFTER TEMPLATE TYPE SELECTION, ALWAYS ASK FOR SOURCE:**
+
+### 1. **From Figma Design** - Create template from Figma URL
+*Extract design data and create template structure*
+
+### 2. **From Existing Page** - Create template from any website URL
+*Use existing webpage as template foundation*
+
+### 3. **From Scratch** - Create template with basic structure
+*Create template with minimal configuration*
+
+### 4. **From Template Library** - Use predefined template patterns
+*Select from pre-built template patterns*
+
+---
+
+**How would you like to create the template? (1, 2, 3, or 4)**
+
+---
+
+## 🚨 CRITICAL: STEP 2 - TEMPLATE CONFIGURATION
+
+**⚠️ CRITICAL: COLLECT MINIMAL REQUIRED INFORMATION:**
+
+### **Essential Template Information:**
+1. **Template Name** - Technical name (e.g., "hero-banner-template")
+2. **Template Title** - Display name (e.g., "Hero Banner Template")
+3. **Template Description** - Brief description (optional)
+4. **Template Category** - Content, Marketing, E-commerce, etc.
+5. **Template Tags** - For organization and search (optional)
+
+### **Template Policy Configuration:**
+- **Component Policies** - Define which components can be used
+- **Layout Policies** - Define responsive behavior and grid systems
+- **Style Policies** - Define allowed styles and themes
+- **Content Policies** - Define content structure and validation
+- **Permission Policies** - Define who can edit/use the template
+
+---
+
+## 🚨 CRITICAL: STEP 2A - WEBSITE URL INPUT (For Option 2)
+
+**⚠️ CRITICAL: WHEN USER SELECTS "FROM EXISTING PAGE", COLLECT WEBSITE URL:**
+
+```
+**Please provide the website URL:**
+*Example: https://www.google.com, https://www.amazon.com, https://www.example.com*
+
+**Website URL:** [User Input]
+
+**Analyzing webpage...**
+```
+
+---
+
+## 🚨 CRITICAL: STEP 2B - COMPONENT DEPENDENCY ANALYSIS (AI Reference Only)
+
+**⚠️ CRITICAL: AFTER COLLECTING SOURCE INFORMATION, ANALYZE COMPONENT DEPENDENCIES:**
+
+### **🚨 MANDATORY: Component Analysis Process:**
+1. **🚨 MANDATORY: Analyze Source Data** - Extract components from Figma/Website
+2. **🚨 MANDATORY: Scan AEM Project** - Check existing components in project
+3. **🚨 MANDATORY: Identify Missing Components** - List components that don't exist
+4. **🚨 MANDATORY: Calculate Component Count** - Count total components needed
+5. **🚨 MANDATORY: Present Resolution Options** - Offer strategies to handle missing components
+
+### **🚨 MANDATORY: Component Resolution Interface:**
+```
+Component Analysis Results:
+- Total Components Required: [Count]
+- Existing Components: [Count]
+- Missing Components: [Count]
+
+Missing Components:
+1. [Component Name 1]
+2. [Component Name 2]
+3. [Component Name 3]
+...
+
+### 1. **Create Missing Components First** - Generate all missing components
+### 2. **Create Template with Placeholders** - Use placeholder components
+### 3. **Cancel Template Creation** - Return to main menu
+
+**Which option? (1, 2, or 3)**
+```
+
+### **🚨 MANDATORY: Component Creation Process (If Option 1 Selected):**
+1. **🚨 MANDATORY: Determine Component Workflow** - Select appropriate workflow based on source
+2. **🚨 MANDATORY: Switch to Component Workflow** - Redirect to selected component workflow
+3. **🚨 MANDATORY: Create All Missing Components** - Generate complete component set
+4. **🚨 MANDATORY: Validate Component Creation** - Ensure all components exist
+5. **🚨 MANDATORY: Return to Template Creation** - Continue with template creation
+6. **🚨 MANDATORY: Create Template** - Generate template with all components
+
+### **🚨 MANDATORY: Component Workflow Selection (AI Reference Only):**
+- **For Figma URLs** → **Use `../components/.cursorrules-figma-workflow`**
+- **For Website URLs** → **Use `.cursorrules-component-workflow` (Image-based analysis)**
+- **For Scratch Creation** → **Use `.cursorrules-component-workflow` (Basic components)**
+- **For Template Library** → **Use `.cursorrules-component-workflow` (Pattern-based components)**
+
+### **🚨 MANDATORY: Component Analysis Rules Reference (AI Reference Only):**
+- **🚨 MANDATORY: ALWAYS read `../components/.cursorrules-design-analysis` FIRST** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Follow systematic component detection protocol** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Identify interactive UI patterns** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Classify based on functionality, not appearance** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: Detect listing component requirements** - **NO EXCEPTIONS**
+- **🚨 MANDATORY: STOP IMMEDIATELY if Listing Component detected** - **READ LISTING FRAMEWORK RULES FIRST**
+
+---
+
+## 🚨 CRITICAL: STEP 3 - TEMPLATE ANALYSIS (AI Reference Only)
+
+**⚠️ CRITICAL: FOR FIGMA URLS - EXTRACT DESIGN DATA:**
+1. **🚨 MANDATORY: Connect to Figma MCP server** - Use `mcp_figma_get_figma_data` tool
+2. **🚨 MANDATORY: Extract file data** - Get complete Figma file structure
+3. **🚨 MANDATORY: Identify template structure** - Find page layout and components
+4. **🚨 MANDATORY: Extract design tokens** - Get colors, typography, spacing from Figma
+5. **🚨 MANDATORY: Get component specifications** - Extract exact dimensions, properties
+6. **🚨 MANDATORY: Download assets** - Export images, icons, graphics using `mcp_figma_download_figma_images`
+7. **🚨 MANDATORY: Create template mapping** - Map Figma design to AEM template structure
+8. **🚨 MANDATORY: Extract content** - Get actual text content from Figma for default values
+
+**⚠️ CRITICAL: FOR WEBSITE URLS - EXTRACT WEB PAGE DATA:**
+1. **🚨 MANDATORY: Connect to Website** - Use web scraping tools to access website
+2. **🚨 MANDATORY: Extract HTML Structure** - Get page HTML and DOM structure
+3. **🚨 MANDATORY: Extract CSS Styles** - Get page styles and layout information
+4. **🚨 MANDATORY: Extract Content Data** - Get text, images, and media content
+5. **🚨 MANDATORY: Analyze Visual Components** - Identify component patterns and elements
+6. **🚨 MANDATORY: Extract Design Tokens** - Get colors, fonts, spacing, breakpoints
+7. **🚨 MANDATORY: Create Component Mapping** - Map web elements to AEM components
+8. **🚨 MANDATORY: Generate Component Specifications** - Create component requirements
+
+**⚠️ CRITICAL: FOR SCRATCH CREATION - USE DEFAULTS:**
+1. **🚨 MANDATORY: Use basic template structure** - Apply standard AEM template patterns
+2. **🚨 MANDATORY: Configure default policies** - Apply standard policy configurations
+3. **🚨 MANDATORY: Set up responsive design** - Apply standard responsive breakpoints
+4. **🚨 MANDATORY: Configure permissions** - Apply standard permission settings
+
+**⚠️ CRITICAL: FOR TEMPLATE LIBRARY - USE PREDEFINED PATTERNS:**
+1. **🚨 MANDATORY: Select template pattern** - Choose from predefined patterns
+2. **🚨 MANDATORY: Customize pattern** - Modify pattern for specific needs
+3. **🚨 MANDATORY: Configure policies** - Apply pattern-specific policies
+4. **🚨 MANDATORY: Set up content structure** - Apply pattern-specific content structure
+
+### **🚨 MANDATORY: Web Page Analysis Results Display:**
+```
+Web Page Analysis Results:
+- Website: [Website URL]
+- Page Title: [Page Title]
+- Components Identified: [Count]
+- Design System: [Design System Description]
+
+Components Found:
+1. [Component Name 1] ✅ (Can be created)
+2. [Component Name 2] ✅ (Can be created)
+3. [Component Name 3] ✅ (Can be created)
+...
+
+Design Tokens Extracted:
+- Primary Colors: [Color List]
+- Typography: [Font List]
+- Spacing: [Spacing Values]
+- Breakpoints: [Breakpoint List]
+
+### 1. **Create All Components First** - Generate all identified components
+### 2. **Create Template with Placeholders** - Use placeholder components
+### 3. **Cancel Template Creation** - Return to main menu
+
+**Which option? (1, 2, or 3)**
+```
+
+## 🚨 CRITICAL: STEP 4 - TEMPLATE GENERATION (AI Reference Only)
+
+**⚠️ CRITICAL: GENERATE COMPLETE TEMPLATE STRUCTURE:**
+
+### **🚨 MANDATORY: Template File Structure:**
+```
+{project}/ui.apps/src/main/content/jcr_root/conf/{project}/settings/wcm/templates/
+├── {template-name}/
+│   ├── .content.xml
+│   ├── initial/
+│   │   └── .content.xml
+│   ├── policies/
+│   │   └── .content.xml
+│   └── structure/
+│       └── .content.xml
+```
+
+### **🚨 MANDATORY: Template Configuration Files:**
+1. **`.content.xml`** - Main template configuration
+2. **`initial/.content.xml`** - Initial content structure
+3. **`policies/.content.xml`** - Component and layout policies
+4. **`structure/.content.xml`** - Template structure definition
+
+### **🚨 MANDATORY: Policy Configuration:**
+1. **Component Policies** - Define allowed components and their configurations
+2. **Layout Policies** - Define responsive behavior and grid systems
+3. **Style Policies** - Define allowed styles and themes
+4. **Content Policies** - Define content structure and validation rules
+5. **Permission Policies** - Define user group access and editing permissions
+
+### **🚨 MANDATORY: Responsive Design Configuration:**
+1. **Breakpoint Configuration** - Define responsive breakpoints
+2. **Grid System Configuration** - Define grid layout systems
+3. **Component Responsive Behavior** - Define component responsive behavior
+4. **Layout Responsive Behavior** - Define layout responsive behavior
+
+## 🚨 CRITICAL: STEP 5 - TEMPLATE VALIDATION (AI Reference Only)
+
+**⚠️ CRITICAL: VALIDATE TEMPLATE BEFORE COMPLETION:**
+
+### **🚨 MANDATORY: Structure Validation:**
+1. **🚨 MANDATORY: Validate template structure** - Ensure template follows AEM best practices
+2. **🚨 MANDATORY: Validate policy configuration** - Ensure policies are properly configured
+3. **🚨 MANDATORY: Validate responsive design** - Ensure responsive behavior works correctly
+4. **🚨 MANDATORY: Validate content structure** - Ensure content structure is valid
+5. **🚨 MANDATORY: Validate permissions** - Ensure permission configuration is correct
+
+### **🚨 MANDATORY: Functionality Validation:**
+1. **🚨 MANDATORY: Test template creation** - Verify template can create pages
+2. **🚨 MANDATORY: Test component usage** - Verify components work correctly
+3. **🚨 MANDATORY: Test responsive behavior** - Verify responsive design works
+4. **🚨 MANDATORY: Test content editing** - Verify content can be edited
+5. **🚨 MANDATORY: Test permission enforcement** - Verify permissions work correctly
+
+## 🚨 CRITICAL: STEP 6 - USER INTERFACE (Clean & Minimal)
+
+**⚠️ CRITICAL: SHOW ONLY ESSENTIAL INFORMATION TO USER:**
+
+### **Template Creation Summary:**
+```
+Template Configuration:
+- Template Name: [Name]
+- Template Type: [Type]
+- Template Source: [Source]
+- Components: [Count] components configured
+- Policies: [Count] policies applied
+- Responsive: [Breakpoints] configured
+- Permissions: [Groups] configured
+
+### 1. **Create Template** - Generate AEM template files
+### 2. **Preview Template** - View template structure
+### 3. **Modify Configuration** - Update template settings
+### 4. **Cancel** - Return to main menu
+
+**Which option? (1, 2, 3, or 4)**
+```
+
+### **🚨 MANDATORY: What to Show vs Hide (AI Reference Only)**
+
+**✅ SHOW TO USER:**
+- Template configuration summary
+- Template type and source
+- Component and policy counts
+- Next step options
+- Clean, informative interface
+
+**❌ HIDE FROM USER (AI Reference Only):**
+- Technical implementation details
+- File structure creation process
+- Policy configuration complexity
+- Component mapping details
+- Responsive design setup
+- Permission configuration
+- Validation processes
+- Figma data extraction details
+- AEM API interaction details
+
+## 🚨 CRITICAL: TEMPLATE TYPES SUPPORTED
+
+### **1. Page Templates**
+- **Structure Templates** - Define page layout and components
+- **Content Templates** - Define content structure and policies
+- **Landing Page Templates** - Complete page templates with content
+- **Section Templates** - Reusable page sections
+
+### **2. Experience Fragment Templates**
+- **Header Templates** - Navigation and branding
+- **Footer Templates** - Footer content and links
+- **Banner Templates** - Promotional content
+- **Content Block Templates** - Reusable content sections
+
+### **3. Content Fragment Templates**
+- **Article Templates** - Blog posts and articles
+- **Product Templates** - Product information
+- **Event Templates** - Event details and information
+- **Profile Templates** - User and team profiles
+
+### **4. Email Templates**
+- **Newsletter Templates** - Email newsletters
+- **Notification Templates** - System notifications
+- **Marketing Templates** - Promotional emails
+- **Transactional Templates** - Order confirmations, etc.
+
+## 🚨 CRITICAL: TEMPLATE POLICIES (AI Reference Only)
+
+### **🚨 MANDATORY: Policy Types:**
+1. **Component Policies** - Define which components can be used
+2. **Layout Policies** - Define responsive behavior and grid systems
+3. **Style Policies** - Define allowed styles and themes
+4. **Content Policies** - Define content structure and validation
+5. **Permission Policies** - Define who can edit/use the template
+6. **Versioning Policies** - Define template versioning strategy
+
+### **🚨 MANDATORY: Policy Configuration:**
+1. **Component Allowlist** - Only allow specific components
+2. **Component Denylist** - Block specific components
+3. **Layout Constraints** - Define responsive breakpoints
+4. **Style Constraints** - Define allowed CSS classes
+5. **Content Validation** - Define required/optional content
+6. **Permission Levels** - Define user group access
+
+## 🚨 CRITICAL: INTEGRATION WITH EXISTING WORKFLOW
+
+### **Seamless Integration:**
+- **Component Workflow** - Use existing component development
+- **Figma Integration** - Leverage existing Figma analysis
+- **Quality Assurance** - Apply existing quality standards
+- **Testing Framework** - Use existing testing approach
+
+### **Template-Specific Enhancements:**
+- **Policy Management** - Advanced policy configuration
+- **Responsive Design** - Enhanced responsive capabilities
+- **Content Structure** - Sophisticated content modeling
+- **User Experience** - Optimized template creation flow
+
+## 🚨 CRITICAL: TEMPLATE CREATION PROCESS
+
+### **Phase 1: Template Analysis** (AI Reference Only)
+1. **Extract Design Data** - From Figma or existing page
+2. **Identify Components** - Map design elements to AEM components
+3. **Analyze Structure** - Determine template hierarchy
+4. **Extract Content** - Get default content and structure
+5. **Map Responsive Behavior** - Identify breakpoints and layouts
+
+### **Phase 2: Template Generation** (AI Reference Only)
+1. **Create Template Structure** - Generate template files
+2. **Configure Policies** - Set up component and layout policies
+3. **Generate Initial Content** - Create sample content structure
+4. **Set Up Responsive Design** - Configure breakpoints and layouts
+5. **Configure Permissions** - Set up user group access
+
+### **Phase 3: Template Validation** (AI Reference Only)
+1. **Validate Structure** - Ensure template follows AEM best practices
+2. **Test Responsive Design** - Verify breakpoints work correctly
+3. **Validate Policies** - Ensure policies are properly configured
+4. **Test Content Creation** - Verify template can create pages
+5. **Validate Permissions** - Ensure access control works
+
+## 🚨 CRITICAL: USER EXPERIENCE RULES
+
+### **🚨 MANDATORY: Clean Interface Rules:**
+1. **🚨 MANDATORY: Show only essential information** - Display only what user needs
+2. **🚨 MANDATORY: Hide technical details** - Keep implementation details hidden
+3. **🚨 MANDATORY: Use clear options** - Present clear, actionable options
+4. **🚨 MANDATORY: Minimize user input** - Ask only for essential information
+5. **🚨 MANDATORY: Provide clear feedback** - Show progress and results clearly
+
+### **🚨 MANDATORY: Error Handling:**
+1. **🚨 MANDATORY: Handle errors gracefully** - Provide clear error messages
+2. **🚨 MANDATORY: Offer recovery options** - Provide ways to fix errors
+3. **🚨 MANDATORY: Validate input** - Check user input before processing
+4. **🚨 MANDATORY: Provide help** - Offer guidance when needed
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW
+
+### **🚨 MANDATORY: Step-by-Step Process:**
+1. **🚨 MANDATORY: Read template type** - Determine template type
+2. **🚨 MANDATORY: Read template source** - Determine template source
+3. **🚨 MANDATORY: Collect configuration** - Get essential template information
+4. **🚨 MANDATORY: Analyze source data** - Extract design or page data
+5. **🚨 MANDATORY: Generate template** - Create template files and policies
+6. **🚨 MANDATORY: Validate template** - Ensure template works correctly
+7. **🚨 MANDATORY: Present results** - Show template creation summary
+
+### **🚨 MANDATORY: Quality Assurance:**
+1. **🚨 MANDATORY: Follow AEM best practices** - Ensure template follows standards
+2. **🚨 MANDATORY: Validate policies** - Ensure policies are correct
+3. **🚨 MANDATORY: Test functionality** - Ensure template works correctly
+4. **🚨 MANDATORY: Validate responsive design** - Ensure responsive behavior works
+5. **🚨 MANDATORY: Test permissions** - Ensure access control works
+
+## 🚨 CRITICAL: TEMPLATE CREATION SUCCESS
+
+### **🚨 MANDATORY: Success Criteria:**
+1. **🚨 MANDATORY: Template created successfully** - All files generated
+2. **🚨 MANDATORY: Policies configured correctly** - All policies applied
+3. **🚨 MANDATORY: Responsive design working** - All breakpoints functional
+4. **🚨 MANDATORY: Content structure valid** - All content structures valid
+5. **🚨 MANDATORY: Permissions working** - All access control functional
+
+### **🚨 MANDATORY: User Notification:**
+```
+✅ Template created successfully!
+- Template Name: [Name]
+- Template Type: [Type]
+- Files Created: [Count]
+- Policies Applied: [Count]
+- Responsive Breakpoints: [Count]
+- Permission Groups: [Count]
+```
+
+## 🚨 CRITICAL: TEMPLATE CREATION FAILURE
+
+### **🚨 MANDATORY: Failure Handling:**
+1. **🚨 MANDATORY: Identify failure cause** - Determine what went wrong
+2. **🚨 MANDATORY: Provide error message** - Show clear error information
+3. **🚨 MANDATORY: Offer recovery options** - Provide ways to fix the issue
+4. **🚨 MANDATORY: Log failure details** - Record failure for debugging
+5. **🚨 MANDATORY: Allow retry** - Provide option to try again
+
+### **🚨 MANDATORY: Common Failure Scenarios:**
+1. **Invalid Figma URL** - Figma file not accessible
+2. **Invalid AEM Page** - AEM page not found or accessible
+3. **Invalid Template Configuration** - Template settings invalid
+4. **Policy Configuration Error** - Policy settings invalid
+5. **Permission Error** - Insufficient permissions to create template
+
+## 🚨 CRITICAL: TEMPLATE CREATION COMPLETION
+
+### **🚨 MANDATORY: Completion Checklist:**
+- [ ] **Template files created** - All required files generated
+- [ ] **Policies configured** - All policies applied correctly
+- [ ] **Responsive design working** - All breakpoints functional
+- [ ] **Content structure valid** - All content structures valid
+- [ ] **Permissions working** - All access control functional
+- [ ] **Template tested** - Template creation and usage tested
+- [ ] **User notified** - Success message displayed to user
+
+### **🚨 MANDATORY: Post-Creation Options:**
+1. **🚨 MANDATORY: Create another template** - Allow creating additional templates
+2. **🚨 MANDATORY: Modify existing template** - Allow editing created template
+3. **🚨 MANDATORY: Return to main menu** - Go back to main options
+4. **🚨 MANDATORY: Exit workflow** - End template creation process
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW RULES
+
+### **🚨 MANDATORY: Process Rules:**
+1. **🚨 MANDATORY: Follow exact sequence** - Never skip or reorder steps
+2. **🚨 MANDATORY: Validate each step** - Ensure each step completes successfully
+3. **🚨 MANDATORY: Handle errors gracefully** - Provide clear error messages
+4. **🚨 MANDATORY: Maintain user experience** - Keep interface clean and minimal
+5. **🚨 MANDATORY: Ensure quality** - Follow AEM best practices and standards
+
+### **🚨 MANDATORY: Quality Rules:**
+1. **🚨 MANDATORY: Follow AEM best practices** - Ensure template follows standards
+2. **🚨 MANDATORY: Validate all configurations** - Ensure all settings are correct
+3. **🚨 MANDATORY: Test all functionality** - Ensure template works correctly
+4. **🚨 MANDATORY: Ensure responsive design** - Ensure responsive behavior works
+5. **🚨 MANDATORY: Validate permissions** - Ensure access control works
+
+### **🚨 MANDATORY: User Experience Rules:**
+1. **🚨 MANDATORY: Keep interface clean** - Show only essential information
+2. **🚨 MANDATORY: Minimize user input** - Ask only for necessary information
+3. **🚨 MANDATORY: Provide clear feedback** - Show progress and results clearly
+4. **🚨 MANDATORY: Handle errors gracefully** - Provide clear error messages
+5. **🚨 MANDATORY: Offer help when needed** - Provide guidance and assistance
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW SUCCESS
+
+### **🚨 MANDATORY: Success Indicators:**
+1. **🚨 MANDATORY: Template created successfully** - All files generated
+2. **🚨 MANDATORY: Policies configured correctly** - All policies applied
+3. **🚨 MANDATORY: Responsive design working** - All breakpoints functional
+4. **🚨 MANDATORY: Content structure valid** - All content structures valid
+5. **🚨 MANDATORY: Permissions working** - All access control functional
+6. **🚨 MANDATORY: User satisfied** - User can use template successfully
+
+### **🚨 MANDATORY: Success Metrics:**
+- **Template Creation Time** - Time taken to create template
+- **Template Quality Score** - Quality of created template
+- **User Satisfaction** - User feedback on template creation
+- **Template Usage** - How often template is used
+- **Template Performance** - Performance of created template
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW COMPLETION
+
+### **🚨 MANDATORY: Final Steps:**
+1. **🚨 MANDATORY: Validate template creation** - Ensure template was created successfully
+2. **🚨 MANDATORY: Test template functionality** - Ensure template works correctly
+3. **🚨 MANDATORY: Present success message** - Show template creation success
+4. **🚨 MANDATORY: Offer next options** - Provide options for next steps
+5. **🚨 MANDATORY: Log completion** - Record template creation completion
+
+### **🚨 MANDATORY: Next Steps Options:**
+1. **🚨 MANDATORY: Create another template** - Allow creating additional templates
+2. **🚨 MANDATORY: Modify existing template** - Allow editing created template
+3. **🚨 MANDATORY: Return to main menu** - Go back to main options
+4. **🚨 MANDATORY: Exit workflow** - End template creation process
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW RULES
+
+### **🚨 MANDATORY: Process Rules:**
+1. **🚨 MANDATORY: Follow exact sequence** - Never skip or reorder steps
+2. **🚨 MANDATORY: Validate each step** - Ensure each step completes successfully
+3. **🚨 MANDATORY: Handle errors gracefully** - Provide clear error messages
+4. **🚨 MANDATORY: Maintain user experience** - Keep interface clean and minimal
+5. **🚨 MANDATORY: Ensure quality** - Follow AEM best practices and standards
+
+### **🚨 MANDATORY: Quality Rules:**
+1. **🚨 MANDATORY: Follow AEM best practices** - Ensure template follows standards
+2. **🚨 MANDATORY: Validate all configurations** - Ensure all settings are correct
+3. **🚨 MANDATORY: Test all functionality** - Ensure template works correctly
+4. **🚨 MANDATORY: Ensure responsive design** - Ensure responsive behavior works
+5. **🚨 MANDATORY: Validate permissions** - Ensure access control works
+
+### **🚨 MANDATORY: User Experience Rules:**
+1. **🚨 MANDATORY: Keep interface clean** - Show only essential information
+2. **🚨 MANDATORY: Minimize user input** - Ask only for necessary information
+3. **🚨 MANDATORY: Provide clear feedback** - Show progress and results clearly
+4. **🚨 MANDATORY: Handle errors gracefully** - Provide clear error messages
+5. **🚨 MANDATORY: Offer help when needed** - Provide guidance and assistance
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW SUCCESS
+
+### **🚨 MANDATORY: Success Indicators:**
+1. **🚨 MANDATORY: Template created successfully** - All files generated
+2. **🚨 MANDATORY: Policies configured correctly** - All policies applied
+3. **🚨 MANDATORY: Responsive design working** - All breakpoints functional
+4. **🚨 MANDATORY: Content structure valid** - All content structures valid
+5. **🚨 MANDATORY: Permissions working** - All access control functional
+6. **🚨 MANDATORY: User satisfied** - User can use template successfully
+
+### **🚨 MANDATORY: Success Metrics:**
+- **Template Creation Time** - Time taken to create template
+- **Template Quality Score** - Quality of created template
+- **User Satisfaction** - User feedback on template creation
+- **Template Usage** - How often template is used
+- **Template Performance** - Performance of created template
+
+## 🚨 CRITICAL: TEMPLATE CREATION WORKFLOW COMPLETION
+
+### **🚨 MANDATORY: Final Steps:**
+1. **🚨 MANDATORY: Validate template creation** - Ensure template was created successfully
+2. **🚨 MANDATORY: Test template functionality** - Ensure template works correctly
+3. **🚨 MANDATORY: Present success message** - Show template creation success
+4. **🚨 MANDATORY: Offer next options** - Provide options for next steps
+5. **🚨 MANDATORY: Log completion** - Record template creation completion
+
+### **🚨 MANDATORY: Next Steps Options:**
+1. **🚨 MANDATORY: Create another template** - Allow creating additional templates
+2. **🚨 MANDATORY: Modify existing template** - Allow editing created template
+3. **🚨 MANDATORY: Return to main menu** - Go back to main options
+4. **🚨 MANDATORY: Exit workflow** - End template creation process

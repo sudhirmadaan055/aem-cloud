@@ -1,0 +1,81 @@
+# AEM Design Analysis - Interactive Patterns & User Interactions
+
+## 🚨 MANDATORY: Interactive Pattern Analysis
+
+### **🚨 MANDATORY: STEP 2A: Interactive UI Pattern Detection - CRITICAL FOR ACCURACY**
+1. **🚨 MANDATORY: LISTING DETECTION FIRST** - Scan for search boxes, filters, pagination, sorting (PRIMARY SCAN)
+2. **🚨 MANDATORY: CAROUSEL DETECTION** - Scan for multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Scan for navigation elements** - Look for labels, buttons, links, arrows, controls
+4. **🚨 MANDATORY: Identify content switching mechanisms** - How content changes based on user interaction
+5. **🚨 MANDATORY: Detect interactive elements** - Buttons, links, form controls, navigation elements
+6. **🚨 MANDATORY: Map user interaction flow** - How users navigate between different content states
+7. **🚨 MANDATORY: Identify state management** - Active/inactive states, content switching, dynamic behavior
+8. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
+9. **🚨 MANDATORY: Document interaction behavior** - How the component responds to user actions
+
+### **🚨 MANDATORY: STEP 2B: INTERACTIVE COMPONENT CLASSIFICATION RULES - CRITICAL FOR ACCURACY**
+**⚠️ CRITICAL: ALWAYS classify components based on INTERACTION PATTERNS, not just visual appearance:**
+
+**🚨 MANDATORY: INTERACTIVE COMPONENT DETECTION RULES:**
+1. **🚨 MANDATORY: LISTING COMPONENT DETECTION FIRST** - Scan for search boxes, filters, pagination, sorting (PRIMARY DETECTION)
+2. **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION** - Scan for multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Scan for navigation controls** - Any UI element that triggers content changes when clicked/interacted
+4. **🚨 MANDATORY: Identify content switching mechanisms** - How content changes based on user interaction
+5. **🚨 MANDATORY: Detect state indicators** - Visual cues showing active/inactive states, selected/unselected
+6. **🚨 MANDATORY: Map user interaction flow** - How users navigate between different content states
+7. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
+8. **🚨 MANDATORY: Determine complexity based on interaction** - Interactive components require JavaScript and state management
+
+### **🚨 MANDATORY: STEP 7: Interactive Element Analysis - REQUIRED SIXTH**
+1. **🚨 MANDATORY: Identify all clickable elements** - Buttons, links, navigation controls
+2. **🚨 MANDATORY: Map interactive element positioning** - Where are they located in the layout
+3. **🚨 MANDATORY: Identify interactive element styling** - Colors, sizes, hover states
+4. **🚨 MANDATORY: Plan interaction behavior** - Hover effects, active states, transitions
+5. **🚨 MANDATORY: Map navigation controls** - Pagination, arrows, carousel controls
+
+### **🚨 MANDATORY: Component Type Classification Rules**
+- **Listing Component** - Dynamic content display with filtering, sorting, pagination (product grids, article lists, search results) - **PRIMARY CLASSIFICATION**
+- **Carousel Component** - Multiple slides with navigation indicators, carousel controls - **PRIMARY CLASSIFICATION**
+- **Static Content Component** - No user interaction, purely presentational
+- **Interactive Content Component** - User interaction changes content (tabs, accordions, carousels, filters)
+- **Layout Component** - Structural elements (headers, footers, navigation bars)
+- **Form Component** - User input and data submission
+- **E-commerce Component** - Product display, shopping cart, checkout functionality
+
+### **🚨 MANDATORY: Complexity Classification Rules**
+- **Simple** - Static content, basic styling, no JavaScript required
+- **Medium** - Some interactivity, basic JavaScript, simple state management
+- **High** - Complex interactions, advanced JavaScript, state management, API calls
+
+### **🚨 MANDATORY: Listing Component Detection Rules - ZERO TOLERANCE FOR VIOLATIONS**
+1. **🚨 MANDATORY: LISTING DETECTION IS PRIMARY CLASSIFICATION** - Check for listing requirements FIRST, before any other classification
+2. **🚨 MANDATORY: Look for dynamic content grids** - Multiple similar items in grid/list format
+3. **🚨 MANDATORY: Identify filtering controls** - Search bars, category filters, sort options
+4. **🚨 MANDATORY: Detect pagination elements** - Page numbers, "Load More" buttons, infinite scroll
+5. **🚨 MANDATORY: Check for data-driven content** - Product catalogs, article lists, search results
+6. **🚨 MANDATORY: VERIFY LISTING REQUIREMENTS** - Component MUST have at least ONE of: search box, filters, pagination, or sorting
+7. **🚨 MANDATORY: Classify as Listing Component ONLY if requirements met** - Do NOT classify carousels, sliders, or simple content grids as listing components
+8. **🚨 MANDATORY: Set complexity to High** - Listing components require data management and filtering logic
+9. **🚨 MANDATORY: STOP IMMEDIATELY** - **DO NOT PROCEED WITHOUT READING LISTING FRAMEWORK RULES**
+10. **🚨 MANDATORY: Reference Listing Framework Rules** - **ALWAYS read `../workflows/.cursorrules-aem-listing` for framework approach**
+11. **🚨 MANDATORY: VERIFY FRAMEWORK RULES READ** - **CONFIRM BEFORE ANY LISTING COMPONENT CREATION**
+
+### **🚨 MANDATORY: Anti-Violation Rules - Prevent Listing Component Misclassification**
+1. **🚨 MANDATORY: NEVER classify "Related Articles" as Listing Component** - **ZERO TOLERANCE**
+2. **🚨 MANDATORY: NEVER classify "Product Grid" as Listing Component** - **ZERO TOLERANCE**
+3. **🚨 MANDATORY: NEVER classify "Article List" as Listing Component** - **ZERO TOLERANCE**
+4. **🚨 MANDATORY: NEVER classify "Content Grid" as Listing Component** - **ZERO TOLERANCE**
+5. **🚨 MANDATORY: NEVER classify "Card Collection" as Listing Component** - **ZERO TOLERANCE**
+6. **🚨 MANDATORY: NEVER classify "Image Gallery" as Listing Component** - **ZERO TOLERANCE**
+7. **🚨 MANDATORY: NEVER classify "Team Grid" as Listing Component** - **ZERO TOLERANCE**
+8. **🚨 MANDATORY: NEVER classify "Feature List" as Listing Component** - **ZERO TOLERANCE**
+
+### **🚨 MANDATORY: Interactive Element Detection Checklist - MANDATORY VERIFICATION**
+1. **🚨 MANDATORY: LISTING COMPONENT DETECTION FIRST** - Scan for search boxes, filters, pagination, sorting (PRIMARY SCAN)
+2. **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION** - Scan for multiple slides, navigation indicators, carousel controls
+3. **🚨 MANDATORY: Scan EVERY component for clickable elements** - Buttons, links, cards, blocks, tabs, navigation
+4. **🚨 MANDATORY: Identify content blocks that appear clickable** - Rectangular blocks, cards, sections with hover states
+5. **🚨 MANDATORY: Look for text that suggests interaction** - "Learn More", "Read More", "View Details", "History", "Milestones", "Vision", "Future"
+6. **🚨 MANDATORY: Check for visual cues of interactivity** - Hover effects, active states, navigation indicators
+7. **🚨 MANDATORY: Verify each component's interaction level** - Static, Interactive, or Form-based
+8. **🚨 MANDATORY: Double-check classification before finalizing** - Re-examine each component for missed interactive elements

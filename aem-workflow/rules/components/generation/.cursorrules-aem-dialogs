@@ -1,0 +1,429 @@
+# AEM Dialog Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating any AEM component dialogs:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all dialog rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Use proper field types** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for dialog configuration details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **CRITICAL: AEM Dialog Development Best Practices**
+
+**ALWAYS follow these rules when developing AEM component dialogs.**
+
+### **Dialog Structure and Organization**
+
+#### **Dialog Types and Usage**
+- **Use Coral/Granite UI widgets** in `cq:dialog`. Do not use Classic UI dialogs.
+- **Author dialogs in XML** (`cq:dialog`) under the component folder.
+- **Use `cq:dialog`** for Touch UI (modern) dialogs
+- **Use `dialog`** for Classic UI dialogs (legacy, avoid for new components)
+- **Use `cq:inplaceEditing`** only when inline editing is needed (e.g., text, image fields)
+
+#### **Dialog Organization**
+- **For Medium+ complexity components**, use tabs to organize fields logically
+- **Group related fields** functionally into appropriate tabs
+- **Use proper field ordering** (most important fields first)
+- **Implement responsive dialog** design for different screen sizes
+- **Tab Structure Rules**:
+  - **6+ fields** → Create tabbed dialog
+  - **<6 fields** → Single-column dialog
+  - **2-4 tabs maximum** per component
+  - **3-6 fields per tab** (no vertical scrolling)
+  - **No Styling tab** (exclude CSS, theme, styling fields)
+
+### **Field Configuration and Validation**
+
+#### **Required Field Properties**
+- **Always provide**:
+  - Proper field labels (clear and descriptive)
+  - Helpful descriptions for complex fields
+  - Default values where applicable
+  - Proper field names (camelCase)
+  - Validation rules for required fields
+
+#### **Field Types and Usage**
+- **Use appropriate field types** for data:
+  - `textfield` for single-line text
+  - `textarea` for multi-line text
+  - `select` for predefined options
+  - `checkbox` for boolean values
+  - `pathfield` for asset/page references
+  - `numberfield` for numeric values
+  - `datefield` for date/time values
+
+#### **Validation Rules**
+- **Add validation rules** for required fields at the dialog level
+- **Use proper validation types**:
+  - `required` for mandatory fields
+  - `min/max` for numeric constraints
+  - `pattern` for format validation
+  - `custom` for complex validation logic
+- **Provide clear error messages** for validation failures
+
+### **Rich Text Editor (RTE) Configuration**
+
+#### **RTE Best Practices**
+- **Configure RTE plugins** based on content requirements
+- **Use policies** for global RTE configuration when possible
+- **Avoid hardcoding configs**; use context-aware configurations
+- **Configure allowed HTML tags** and attributes for security
+- **Set proper toolbar** configurations for different use cases
+
+#### **RTE Security**
+- **Sanitize HTML content** to prevent XSS attacks
+- **Configure allowed tags** and attributes
+- **Use proper content policies** for RTE configuration
+- **Validate RTE content** on the server side
+
+### **Multifield and Complex Fields**
+
+#### **Multifield Best Practices**
+- **Store values in structured JSON** format
+- **Validate for required inputs** in multifield items
+- **Use proper field types** within multifield items
+- **Implement proper add/remove** functionality
+- **Provide clear instructions** for multifield usage
+
+#### **Pathfield Configuration**
+- **Use appropriate root paths** for asset/page selection
+- **Configure allowed file types** for asset selection
+- **Set proper validation** for path existence
+- **Use service user mappings** for system path access
+
+### **Dialog Layout and UX**
+
+#### **Layout Best Practices**
+- **Use proper spacing** and alignment
+- **Implement responsive design** for different screen sizes
+- **Use consistent field sizing** and grouping
+- **Provide clear visual hierarchy** with proper headings
+
+#### **User Experience**
+- **Group related fields** functionally into tabs
+- **Use progressive disclosure** for complex configurations
+- **Provide helpful tooltips** and descriptions
+- **Implement proper tab order** for keyboard navigation
+- **Use consistent terminology** across all dialogs
+
+### **🚨 MANDATORY: Tabbed Dialog Generation Rules - NO EXCEPTIONS**
+
+#### **Field Grouping Criteria (Generic)**
+- **Content Fields** → "Content" tab (titles, descriptions, text)
+- **Media Fields** → "Media" tab (images, videos, assets)
+- **Navigation Fields** → "Navigation" tab (links, buttons, controls)
+- **Configuration Fields** → "Configuration" tab (settings, options)
+- **Data Fields** → "Data Sources" tab (APIs, content paths)
+- **Search/Filter Fields** → "Search & Filters" tab (search, filters, sorting)
+- **Display Fields** → "Display Options" tab (layout, pagination, view modes)
+
+#### **🚨 MANDATORY: Interactive Component Dialog Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: For components with connected navigation and content (tabs, accordions, carousels, timelines):**
+
+##### **Connected Navigation & Content Pattern**
+- **General Tab** → Basic component info (title, subtitle, description)
+- **Content Tab** → Main content with connected navigation (multifield with nested structure)
+- **Configuration Tab** → Styling, colors, behavior settings
+
+##### **Nested Multifield Structure for Connected Components**
+```xml
+<!-- [Component] Sections Multifield -->
+<[component]Sections
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+    jcr:title="[Component] Sections">
+    <items jcr:primaryType="nt:unstructured">
+        <[component]Sections
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+            fieldLabel="[Component] Sections"
+            name="./[component]Sections">
+            <field
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                jcr:title="[Component] Section">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Section ID -->
+                    <sectionId
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Section ID"
+                        name="./sectionId"/>
+                    <!-- Navigation Label -->
+                    <navLabel
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Navigation Label"
+                        name="./navLabel"/>
+                    <!-- Default Active -->
+                    <defaultActive
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                        fieldLabel="Default Active"
+                        name="./defaultActive"/>
+                    <!-- Nested Content Items Multifield -->
+                    <contentItems
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Content Items"
+                        name="./contentItems">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                            jcr:title="Content Item">
+                            <items jcr:primaryType="nt:unstructured">
+                                <!-- Generic content fields based on component needs -->
+                                <title
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Title"
+                                    name="./title"/>
+                                <description
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                    fieldLabel="Description"
+                                    name="./description"/>
+                                <image
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                    fieldLabel="Image"
+                                    name="./image"
+                                    rootPath="/content/dam"/>
+                            </items>
+                        </field>
+                    </contentItems>
+                </items>
+            </field>
+        </[component]Sections>
+    </items>
+</[component]Sections>
+```
+
+##### **Interactive Component Tab Structure Rules**
+1. **General Tab** - Basic component information (title, subtitle, description)
+2. **Content Tab** - Connected navigation and content (multifield with nested structure)
+3. **Configuration Tab** - Colors, styling, behavior settings
+
+##### **Generic Multifield Naming Convention**
+- **Component Sections** → `[componentName]Sections` (e.g., `timelineSections`, `tabSections`, `accordionSections`)
+- **Content Items** → `contentItems` (generic for all content within sections)
+- **Section ID** → `sectionId` (unique identifier for each section)
+- **Navigation Label** → `navLabel` (display text for navigation)
+- **Default Active** → `defaultActive` (which section is active by default)
+
+#### **🚨 MANDATORY: Unified Section Component Dialog Rules - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: For unified section components (single background, main title, multiple content blocks):**
+
+##### **Unified Section Dialog Pattern**
+- **General Tab** → Basic section info (title, subtitle, description)
+- **Content Tab** → Main content blocks (multifield for repeatable content)
+- **Media Tab** → Images, videos, assets
+- **Configuration Tab** → Styling, colors, layout settings
+
+##### **Unified Section Multifield Structure**
+```xml
+<!-- Content Blocks Multifield -->
+<contentBlocks
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+    jcr:title="Content Blocks">
+    <items jcr:primaryType="nt:unstructured">
+        <contentBlocks
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+            fieldLabel="Content Blocks"
+            name="./contentBlocks">
+            <field
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                jcr:title="Content Block">
+                <items jcr:primaryType="nt:unstructured">
+                    <blockType
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                        fieldLabel="Block Type"
+                        name="./blockType">
+                        <items jcr:primaryType="nt:unstructured">
+                            <hero jcr:primaryType="nt:unstructured" value="hero" text="Hero Banner"/>
+                            <card jcr:primaryType="nt:unstructured" value="card" text="Content Card"/>
+                            <button jcr:primaryType="nt:unstructured" value="button" text="Call-to-Action Button"/>
+                            <image jcr:primaryType="nt:unstructured" value="image" text="Image Block"/>
+                        </items>
+                    </blockType>
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Title"
+                        name="./title"/>
+                    <description
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldLabel="Description"
+                        name="./description"/>
+                    <link
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Link"
+                        name="./link"/>
+                    <image
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                        fieldLabel="Image"
+                        name="./image"
+                        rootPath="/content/dam"/>
+                    <backgroundColor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                        fieldLabel="Background Color"
+                        name="./backgroundColor"/>
+                    <textColor
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
+                        fieldLabel="Text Color"
+                        name="./textColor"/>
+                </items>
+            </field>
+        </contentBlocks>
+    </items>
+</contentBlocks>
+```
+
+##### **Unified Section Tab Structure Rules**
+1. **General Tab** - Basic section information (title, subtitle, description)
+2. **Content Tab** - Main content blocks (multifield with block type selection)
+3. **Media Tab** - Images, videos, assets
+4. **Configuration Tab** - Colors, styling, layout settings
+
+##### **Unified Section Component Examples**
+- **Brand Story Section** → Hero + Cards + Buttons (single component)
+- **Product Showcase** → Banner + Grid + CTA (single component)
+- **Feature Section** → Title + Description + Feature Cards (single component)
+- **About Us Section** → Hero + Team + Values (single component)
+
+#### **Tab Generation Logic**
+1. **Analyze Component Fields** - Identify all dialog fields from design analysis
+2. **Group Fields Functionally** - Group related fields by purpose/function
+3. **Determine Tab Structure** - Create tabs based on field groupings
+4. **Generate Tabbed Dialog** - Create XML with appropriate tab structure
+
+#### **Tabbed Dialog XML Template**
+```xml
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Component Name"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/tabs"
+        activeTab="tab1">
+        <items jcr:primaryType="nt:unstructured">
+            <tab1
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Content"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Content fields here -->
+                </items>
+            </tab1>
+            <tab2
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Media"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Media fields here -->
+                </items>
+            </tab2>
+        </items>
+    </content>
+</jcr:root>
+```
+
+#### **Default Tab Configuration**
+- **First tab is default** by default
+- **To set specific tab as default**: Add `activeTab="tabName"` to tabs container
+- **Tab names must match** the `jcr:title` or node name
+
+### **Dialog Customization**
+
+#### **Custom Styling and Behavior**
+- **Use `extraClientlibs`** for dialog-specific JS/CSS when needed
+- **Implement custom validation** logic when required
+- **Use custom widgets** for specialized input types
+- **Implement proper error handling** for custom functionality
+
+#### **Dialog JavaScript**
+- **Use proper event handling** for dynamic field behavior
+- **Implement field dependencies** and conditional logic
+- **Use Granite UI APIs** for dialog interactions
+- **Handle dialog lifecycle** events properly
+
+### **Dialog Security**
+
+#### **Security Best Practices**
+- **Validate all user inputs** on the server side
+- **Sanitize HTML content** in RTE fields
+- **Use proper authorization** checks for sensitive fields
+- **Implement CSRF protection** for form submissions
+- **Validate file uploads** for type and size restrictions
+
+### **Dialog Performance**
+
+#### **Performance Optimization**
+- **Lazy load** heavy dialog components
+- **Minimize dialog complexity** for better performance
+- **Use efficient field types** for large datasets
+- **Implement proper caching** for dialog configurations
+- **Optimize asset loading** in pathfield components
+
+### **Dialog Testing**
+
+#### **Testing Requirements**
+- **Test dialog rendering** with different configurations
+- **Test field validation** and error handling
+- **Test multifield** add/remove functionality
+- **Test responsive behavior** on different screen sizes
+- **Test accessibility** compliance (keyboard navigation, screen readers)
+
+### **Dialog Documentation**
+
+#### **Documentation Requirements**
+- **Document all dialog fields** and their purposes
+- **Provide usage examples** for complex dialogs
+- **Document validation rules** and constraints
+- **Include accessibility notes** for custom widgets
+- **Document any custom JavaScript** functionality
+
+### **Dialog Integration**
+
+#### **Integration Best Practices**
+- **Use proper resource types** for dialog resolution
+- **Implement proper event handling** for dialog interactions
+- **Use OSGi services** for complex dialog logic
+- **Follow AEM best practices** for dialog composition
+- **Implement proper error handling** for dialog failures
+
+### **Dialog Migration and Versioning**
+
+#### **Versioning Best Practices**
+- **Maintain backward compatibility** when possible
+- **Document breaking changes** in dialog structure
+- **Provide migration guides** for dialog updates
+- **Use semantic versioning** for dialog changes
+- **Test dialog compatibility** across AEM versions
+
+---
+
+**These dialog rules ensure consistent, user-friendly, and maintainable AEM component dialogs.**

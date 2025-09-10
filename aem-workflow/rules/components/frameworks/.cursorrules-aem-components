@@ -1,0 +1,267 @@
+# AEM Components Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before executing any AEM component development tasks:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all rules and guidelines exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Apply best practices as specified** - **NO SKIPPING**
+4. **🚨 MANDATORY: Reference other rule files when mentioned** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER ask for information not specified in this rule file**
+2. **NEVER assume what the user wants**
+3. **NEVER skip reading rule files**
+4. **NEVER deviate from the exact process specified**
+5. **NEVER add your own interpretation of what should happen next**
+6. **NEVER ask for component development details before following the exact process in this file**
+7. **NEVER bypass the user interface flow specified in this file**
+
+## **CRITICAL: AEM Component Development Best Practices**
+
+**ALWAYS follow these rules when developing AEM components.**
+
+### **Component Structure and Organization**
+
+#### **File Structure Requirements**
+- **Use HTL (Sightly)** for rendering. Do not use JSP for new components.
+- **Extend Core Components** with `sling:resourceSuperType` whenever possible.
+- **Place all custom components** under `/apps/<project>/components/`.
+- **Each component must include**:
+  - `component.html` (HTL rendering script)
+  - `cq:dialog` (if authoring is needed)
+  - Optional `cq:editConfig` (for custom authoring behavior)
+  - Sling Model (Java) if backend logic is required
+  - `_cq_htmlTag` (for custom HTML tag attributes)
+
+#### **Component Naming Conventions**
+- **Use kebab-case** for component folder names (e.g., `content-listing`, `hero-banner`)
+- **Use PascalCase** for Java class names (e.g., `ContentListingModel`, `HeroBannerModel`)
+- **Use descriptive names** that reflect functionality, not content type
+- **Avoid hardcoded content type names** in component names
+
+### **Component Development Rules**
+
+#### **HTL Template Rules**
+- **Business logic must always live in Sling Models**, not HTL.
+- **Use proper data-sly attributes** for all dynamic content
+- **Implement proper escaping** for user-generated content
+- **Use semantic HTML** structure with proper accessibility attributes
+- **Handle null values** gracefully with `data-sly-test`
+- **Use BEM methodology** for CSS class naming in component markup
+
+#### **Sling Model Integration**
+- **Always create Sling Models** for components with backend logic
+- **Use proper annotations** (@Model, @Inject, @ValueMapValue, etc.)
+- **Implement @PostConstruct** for initialization logic
+- **Handle validation** and error cases properly
+- **Use Optional** for nullable return values
+- **Avoid Jackson dependencies** - Use simple getter methods without @JsonProperty annotations
+- **Implement ComponentExporter** for basic JSON export without external dependencies
+
+#### **Component Configuration**
+- **Components must be reusable**, configurable, and decoupled from specific pages.
+- **Use dialog configuration** for all authoring needs
+- **Provide sensible defaults** for all configurable properties
+- **Implement proper validation** for required fields
+- **Use policies** for global component configuration when appropriate
+
+### **Client Libraries and Assets**
+
+#### **Client Library Organization**
+- **Store under** `/apps/<project>/clientlibs/`
+- **Reference using** `categories` in component HTL
+- **Keep JS and CSS modular** and reusable
+- **Use proper dependencies** between client libraries
+- **Minimize and concatenate** files for production
+
+#### **Asset Management**
+- **Do not store static assets** (images, JS, CSS) directly inside component folders
+- **Use clientlibs** for component-specific assets
+- **Use DAM** for content assets (images, documents)
+- **Optimize images** for web delivery
+- **Use responsive images** with proper srcset attributes
+
+### **Component Performance**
+
+#### **Performance Best Practices**
+- **Lazy load** heavy components when possible
+- **Implement proper caching** strategies
+- **Minimize DOM manipulation** in JavaScript
+- **Use efficient CSS selectors**
+- **Optimize images** and media assets
+- **Implement proper error boundaries**
+
+#### **Resource Optimization**
+- **Use async/defer** for non-critical JavaScript
+- **Implement critical CSS** inlining for above-the-fold content
+- **Use proper image formats** (WebP, AVIF when supported)
+- **Implement responsive images** with proper sizing
+
+### **Component Accessibility**
+
+#### **Accessibility Requirements**
+- **Use semantic HTML** elements (header, nav, main, section, article, aside, footer)
+- **Implement proper ARIA labels** and roles
+- **Ensure keyboard navigation** support
+- **Provide alt text** for all images
+- **Use proper heading hierarchy** (h1, h2, h3, etc.)
+- **Ensure color contrast** meets WCAG guidelines
+
+#### **Accessibility Testing**
+- **Test with screen readers**
+- **Verify keyboard navigation**
+- **Check color contrast ratios**
+- **Validate ARIA implementation**
+
+### **Component Security**
+
+#### **Security Best Practices**
+- **Sanitize all user inputs** before rendering
+- **Use proper escaping** for dynamic content
+- **Validate all configuration** values
+- **Implement proper authorization** checks
+- **Use HTTPS** for all external resources
+
+### **Component Testing**
+
+#### **Testing Requirements**
+- **Write unit tests** for Sling Models
+- **Test component rendering** with different configurations
+- **Test error conditions** and edge cases
+- **Implement integration tests** for complex components
+- **Test accessibility** compliance
+
+### **Component Documentation**
+
+#### **Documentation Requirements**
+- **Document all configurable properties**
+- **Provide usage examples**
+- **Document dependencies** and requirements
+- **Include accessibility notes**
+- **Document performance considerations**
+
+### **Component Versioning and Migration**
+
+#### **Versioning Best Practices**
+- **Use semantic versioning** for component updates
+- **Implement backward compatibility** when possible
+- **Provide migration guides** for breaking changes
+- **Document deprecation** notices clearly
+
+### **Component Integration**
+
+#### **Integration Rules**
+- **Use proper resource types** for component resolution
+- **Implement proper event handling** when needed
+- **Use OSGi services** for cross-component communication
+- **Follow AEM best practices** for component composition
+
+### **Dependency Management**
+
+#### **Dependency Best Practices**
+- **Minimize external dependencies** - Only add dependencies that are absolutely necessary
+- **Avoid Jackson annotations** - Use simple getter methods for JSON export
+- **Use AEM SDK dependencies** - Leverage built-in AEM capabilities
+- **Test bundle activation** - Ensure all dependencies resolve properly in OSGi container
+- **Prefer ComponentExporter** - Use built-in JSON export without external libraries
+
+#### **Common Dependency Issues**
+- **Bundle activation failures** - Usually caused by unresolved dependencies
+- **HTL compilation errors** - Often due to missing Sling Model classes
+- **OSGi resolution errors** - Check dependency versions and scope
+- **Build failures** - Verify all imports are available in classpath
+
+### **Specialized Component Types**
+
+#### **Component Type Detection**
+- **Identify component type** during analysis phase
+- **Apply appropriate rules** based on component functionality
+- **Reference specialized rules** when needed
+
+### **🚨 MANDATORY: Component Definition Requirements - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Component .content.xml files MUST follow these exact requirements:**
+
+#### **Component Definition Structure**
+- **jcr:primaryType MUST be "cq:Component"** - Never use "nt:unstructured"
+- **componentGroup MUST follow project naming** - Use "CJCJ - Content" or "CJCJ - Navigation"
+- **sling:resourceSuperType MUST be specified** - Use "foundation/components/container" as base
+- **sling:resourceType MUST match component path** - Use "cjcj/components/component-name"
+
+#### **Common Build Errors Prevention**
+- **JCR Validation Errors**: Caused by incorrect jcr:primaryType in .content.xml
+- **Compilation Errors**: Missing Sling Model classes referenced in HTL templates
+- **Component Not Found**: Incorrect sling:resourceType or missing .content.xml
+- **Dialog Not Loading**: Missing _cq_dialog folder or incorrect dialog structure
+
+#### **Component File Structure Validation**
+- **MANDATORY: .content.xml** - Component definition with correct jcr:primaryType
+- **MANDATORY: component.html** - HTL template file
+- **MANDATORY: _cq_dialog/.content.xml** - Touch UI dialog configuration
+- **MANDATORY: _cq_editConfig.xml** - Edit configuration
+- **MANDATORY: Sling Model** - Java class for components with backend logic
+- **MANDATORY: clientlibs/css.txt** - CSS client library reference
+- **MANDATORY: SCSS file** - `ui.frontend/src/main/webpack/components/_[component-name].scss`
+
+#### **Complete File Generation Rules**
+- **Generate ALL files in one pass** - Never generate components partially
+- **Complete file checklist** - Ensure every component gets all required files
+- **No error-driven fixes** - Don't wait for compilation errors to create missing files
+- **Multi-component generation** - When generating multiple components from one image, create ALL files for ALL components
+- **File completeness validation** - Verify all files exist before marking component as complete
+
+#### **HTL Template Best Practices**
+- **Style attribute context** - Always use `@ context='styleString'` for HTL expressions in style attributes
+- **Security compliance** - HTL expressions in style attributes require explicit context for security
+- **Example**: `style="background-image: url('${model.backgroundImage @ context='styleString'}');"`
+- **Avoid data-sly-attribute with style** - Use inline style expressions instead of data-sly-attribute for style attributes
+
+### **🚨 MANDATORY: Rule File References - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: These rule files MUST be referenced and followed for complete component development:**
+
+#### **Design Analysis Rules**
+- **For design analysis**: Follow `.cursorrules-design-analysis` rules
+- **9-step analysis process**: Pattern → Complexity → Functional → Layout → Visual → Interactive → Content → Data → Architecture
+- **Component type detection**: Identify pattern and complexity before development
+- **Validation checklist**: Ensure all analysis steps are completed
+
+#### **Component Structure Rules**
+- **For component structure**: Follow `.cursorrules-aem-component-structure` rules
+- **File structure requirements**: .content.xml, HTL template, dialog, editConfig
+- **Dialog patterns**: Simple vs complex dialog structures
+- **Multifield implementation**: Proper multifield structure and Sling Model processing
+- **Build validation**: Test component build after creation
+
+#### **Dialog Configuration Rules**
+- **For dialog development**: Follow `.cursorrules-aem-dialogs` rules
+- **Field types and validation**: Proper field configuration and validation rules
+- **RTE configuration**: Rich text editor setup and security
+- **Multifield best practices**: Structured JSON and proper field types
+- **Dialog UX**: Layout, spacing, and user experience guidelines
+
+#### **HTL Best Practices**
+- **For HTL templates**: Follow `.cursorrules-htl-best-practices` rules
+- **Index logic patterns**: Avoid comparison operators, use Sling Model methods
+- **Layout distribution**: Proper two-column and multi-column layouts
+- **ClientLibs inclusion**: Mandatory ClientLibs inclusion in templates
+- **Semantic HTML**: Use proper semantic HTML structure
+
+#### **Complexity Management**
+- **For complexity analysis**: Follow `.cursorrules-aem-complexity` rules
+- **Simple components**: Purely presentational, minimal fields
+- **Medium complexity**: Multiple configurable fields, Sling Model with light logic
+- **High complexity**: Dynamic data, search/filtering, OSGi services, architect review
+- **Architecture requirements**: Based on complexity level
+
+#### **Listing Components**
+- **For listing/search components**: Follow `.cursorrules-aem-listing` rules
+- **Framework approach**: Use BaseListingModel and BaseListingServlet
+- **Configuration-driven**: ListingService for dynamic content
+- **AJAX functionality**: Proper search and filtering implementation
+
+---
+
+**These component rules ensure consistent, maintainable, and high-quality AEM components.**
