@@ -21,3 +21,6 @@
 import "./base/mysite-base-model";
 
 import "./components/test-component";
+
+import "./components/listing";
+
