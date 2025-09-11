@@ -31,8 +31,43 @@
 - **@ValueMapValue**: Use for component properties instead of manual property access
 - **@OSGiService**: Use for service injection with proper null checks
 - **@SlingObject**: Use for Resource, ResourceResolver, Request, etc.
+- **@ChildResource**: Use for composite multifield data (NOT @ValueMapValue for multifields)
 - **🚨 NEVER use Jackson annotations**: Do NOT use `@JsonProperty` or any `com.fasterxml.jackson.annotation.*` imports
 - **🚨 Follow project patterns**: Use simple getter methods without Jackson decorators, following existing model patterns
+- **🚨 MANDATORY: Use proper logging**: Use log4j `logger.debug()` instead of `System.out.println`
+
+#### **Multifield Data Handling**
+- **🚨 CRITICAL: Use @ChildResource for composite multifields** - NOT @ValueMapValue
+- **🚨 CRITICAL: Read child resources properly** - Use `articleItem.getValueMap().get("fieldName", "")`
+- **🚨 CRITICAL: Always test authored content** - Verify multifield data displays in HTL
+- **🚨 CRITICAL: Handle empty multifields gracefully** - Check for null and empty lists
+- **🚨 CRITICAL: Use proper logging for debugging** - Log multifield data for troubleshooting
+
+```java
+// CORRECT: Composite multifield handling
+@ChildResource
+private List<Resource> articleItems;
+
+public List<ArticleData> getArticleData() {
+    List<ArticleData> articleDataList = new ArrayList<>();
+    
+    if (articleItems != null) {
+        for (Resource articleItem : articleItems) {
+            if (articleItem != null) {
+                String title = articleItem.getValueMap().get("articleTitle", "");
+                String image = articleItem.getValueMap().get("articleImage", "");
+                // ... process other fields
+                
+                if (!title.isEmpty()) {
+                    articleDataList.add(new ArticleData(image, title, date, category, link));
+                }
+            }
+        }
+    }
+    
+    return articleDataList;
+}
+```
 
 #### **Model Structure**
 ```java

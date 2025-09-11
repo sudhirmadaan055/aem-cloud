@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-    jcr:primaryType="cq:dialog"
+    jcr:primaryType="nt:unstructured"
     jcr:title="Related Articles"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
@@ -42,6 +42,13 @@
                                 fieldLabel="Explore More Button Link"
                                 name="./exploreMoreButtonLink"
                                 rootPath="/content"/>
+                            <decorativeIllustration
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                fieldLabel="Decorative Illustration"
+                                name="./decorativeIllustration"
+                                rootPath="/content/dam"
+                                value="/content/dam/mysite/illustrations/finger-heart-gesture.svg"/>
                         </items>
                     </header>
                     <articles
@@ -57,42 +64,46 @@
                                 fieldLabel="Article Items">
                                 <field
                                     jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                    name="./articleItems">
                                     <items jcr:primaryType="nt:unstructured">
-                                        <articleTitle
+                                        <column
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Article Title"
-                                            name="./articleTitle"
-                                            value="Expanding Flavors and Opportunities in Global Markets"/>
-                                        <articleDate
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Publication Date"
-                                            name="./articleDate"
-                                            value="03 May 2025"/>
-                                        <articleCategory
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Category"
-                                            name="./articleCategory"
-                                            value="products"/>
-                                        <articleImage
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                            fieldLabel="Article Image"
-                                            fileNameParameter="./articleImageFileName"
-                                            fileReferenceParameter="./articleImageFileReference"
-                                            mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
-                                            multiple="{Boolean}false"
-                                            name="./articleImage"
-                                            title="Upload Article Image"/>
-                                        <articleLink
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                            fieldLabel="Article Link"
-                                            name="./articleLink"
-                                            rootPath="/content"/>
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <articleTitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Article Title"
+                                                    name="./articleTitle"
+                                                    required="{Boolean}true"/>
+                                                <articleDate
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Article Date"
+                                                    name="./articleDate"
+                                                    required="{Boolean}true"/>
+                                                <articleCategory
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Article Category"
+                                                    name="./articleCategory"
+                                                    required="{Boolean}true"/>
+                                                <articleImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Article Image"
+                                                    name="./articleImage"
+                                                    rootPath="/content/dam"
+                                                    emptyText="Select an image from DAM"/>
+                                                <articleLink
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    fieldLabel="Article Link"
+                                                    name="./articleLink"
+                                                    rootPath="/content"/>
+                                            </items>
+                                        </column>
                                     </items>
                                 </field>
                             </articleItems>
