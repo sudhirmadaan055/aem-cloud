@@ -1,0 +1,58 @@
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ ~ Demo Page Component Styles
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.demo-page {
+    max-width: 1920px;
+    margin: 0 auto;
+    
+    // Header styles
+    .header-section {
+        width: 100%;
+        
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+    
+    // Hero banner styles
+    .hero-banner {
+        width: 100%;
+        
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+    
+    // Footer styles
+    .footer-section {
+        width: 100%;
+        
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+    
+    // Main content area
+    main {
+        min-height: 50vh;
+    }
+    
+    // Responsive design
+    @media (max-width: 768px) {
+        .header-section,
+        .hero-banner,
+        .footer-section {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
