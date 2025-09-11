@@ -2,8 +2,6 @@ package com.mysite.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
@@ -17,6 +15,10 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Sling Model for Related Articles Component
+ * Handles data binding and business logic for the related articles carousel
+ */
 @Model(
     adaptables = {SlingHttpServletRequest.class, Resource.class},
     adapters = {RelatedArticlesModel.class, ComponentExporter.class},
@@ -57,30 +59,58 @@ public class RelatedArticlesModel implements ComponentExporter {
         // Initialize any required logic
     }
 
+    /**
+     * Get the section title
+     * @return section title
+     */
     public String getSectionTitle() {
         return sectionTitle;
     }
 
+    /**
+     * Get the section description
+     * @return section description
+     */
     public String getSectionDescription() {
         return sectionDescription;
     }
 
+    /**
+     * Get the explore more button text
+     * @return button text
+     */
     public String getExploreMoreButtonText() {
         return exploreMoreButtonText;
     }
 
+    /**
+     * Get the explore more button link
+     * @return button link
+     */
     public String getExploreMoreButtonLink() {
         return exploreMoreButtonLink;
     }
 
+    /**
+     * Get the list of articles
+     * @return list of article resources
+     */
     public List<Resource> getArticles() {
         return articles != null ? articles : new ArrayList<>();
     }
 
+    /**
+     * Check if the component is properly configured
+     * @return true if configured
+     */
     public boolean isConfigured() {
         return sectionTitle != null && !sectionTitle.isEmpty();
     }
 
+    /**
+     * Get the exported type for SPA support
+     * @return resource type
+     */
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;

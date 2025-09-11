@@ -105,4 +105,48 @@ class RelatedArticlesModelTest {
         assertEquals("Related Articles", nullTitleModel.getSectionTitle()); // Default value
         assertTrue(nullTitleModel.isConfigured()); // Has default title
     }
+
+    @Test
+    void testModelWithArticles() {
+        // Create test data with articles
+        context.create().resource("/content/test-with-articles/jcr:content", 
+            "sectionTitle", "Test Articles",
+            "articles", new String[]{"/content/article1", "/content/article2"});
+        
+        context.create().resource("/content/article1", 
+            "articleTitle", "Test Article 1",
+            "articleDate", "01 Jan 2025",
+            "articleCategory", "news");
+            
+        context.create().resource("/content/article2", 
+            "articleTitle", "Test Article 2",
+            "articleDate", "02 Jan 2025",
+            "articleCategory", "products");
+        
+        context.currentResource(context.resourceResolver().getResource("/content/test-with-articles/jcr:content"));
+        RelatedArticlesModel modelWithArticles = context.request().adaptTo(RelatedArticlesModel.class);
+        
+        assertNotNull(modelWithArticles);
+        assertEquals("Test Articles", modelWithArticles.getSectionTitle());
+        assertEquals(2, modelWithArticles.getArticles().size());
+    }
+
+    @Test
+    void testModelWithCustomValues() {
+        context.create().resource("/content/custom", 
+            "sectionTitle", "Custom Title",
+            "sectionDescription", "Custom description",
+            "exploreMoreButtonText", "Custom Button",
+            "exploreMoreButtonLink", "/content/custom-link");
+        
+        context.currentResource(context.resourceResolver().getResource("/content/custom"));
+        RelatedArticlesModel customModel = context.request().adaptTo(RelatedArticlesModel.class);
+        
+        assertNotNull(customModel);
+        assertEquals("Custom Title", customModel.getSectionTitle());
+        assertEquals("Custom description", customModel.getSectionDescription());
+        assertEquals("Custom Button", customModel.getExploreMoreButtonText());
+        assertEquals("/content/custom-link", customModel.getExploreMoreButtonLink());
+        assertTrue(customModel.isConfigured());
+    }
 }

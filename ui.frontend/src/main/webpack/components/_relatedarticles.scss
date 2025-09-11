@@ -279,9 +279,14 @@
     border: 1px solid #F85001;
     background-color: transparent;
     transition: all 0.3s ease;
+    cursor: pointer;
 
     &--active {
       background-color: #F85001;
+    }
+
+    &:hover {
+      background-color: rgba(248, 80, 1, 0.5);
     }
   }
 

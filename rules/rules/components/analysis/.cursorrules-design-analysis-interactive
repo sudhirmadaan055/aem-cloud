@@ -13,6 +13,27 @@
 8. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
 9. **🚨 MANDATORY: Document interaction behavior** - How the component responds to user actions
 
+### **🚨 MANDATORY: COMPONENT TYPE CLASSIFICATION RULES - CRITICAL FOR ACCURACY**
+**⚠️ CRITICAL: ALWAYS distinguish between carousel and listing components:**
+
+#### **🚨 MANDATORY: LISTING COMPONENT IDENTIFICATION**
+**Listing components have:**
+- **Search functionality** (search input fields, search buttons)
+- **Filter controls** (dropdown filters, checkbox filters, tag filters)
+- **Sorting options** (sort dropdowns, sort buttons)
+- **Pagination controls** (page numbers, "Load More" buttons)
+- **Dynamic content loading** (AJAX requests, infinite scroll)
+- **Database/repository queries** (Query Builder, JCR queries)
+
+#### **🚨 MANDATORY: CAROUSEL COMPONENT IDENTIFICATION**
+**Carousel components have:**
+- **Navigation arrows** (previous/next buttons, left/right arrows)
+- **Navigation indicators** (dots, thumbnails, slide indicators)
+- **Slide-based content** (multiple slides/panels with content)
+- **Auto-play functionality** (automatic slide transitions)
+- **Touch/swipe support** (mobile gesture support)
+- **Static content** (pre-configured slides, no dynamic queries)
+
 ### **🚨 MANDATORY: STEP 2B: INTERACTIVE COMPONENT CLASSIFICATION RULES - CRITICAL FOR ACCURACY**
 **⚠️ CRITICAL: ALWAYS classify components based on INTERACTION PATTERNS, not just visual appearance:**
 
@@ -26,6 +47,17 @@
 7. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
 8. **🚨 MANDATORY: Determine complexity based on interaction** - Interactive components require JavaScript and state management
 
+### **🚨 MANDATORY: COMPONENT TYPE MISCLASSIFICATION PREVENTION**
+**⚠️ CRITICAL: NEVER misclassify carousel components as listing components:**
+
+#### **🚨 MANDATORY: CAROUSEL vs LISTING DISTINCTION**
+- **Carousel**: Static slides with navigation controls (arrows, dots) → **Medium Complexity**
+- **Listing**: Dynamic content with search/filter/pagination → **High Complexity**
+- **Carousel**: Multifield dialog for slide content → **Standard Component Workflow**
+- **Listing**: Query Builder/JCR queries for content → **Listing Framework Workflow**
+- **Carousel**: JavaScript for slide transitions → **Client-side Interaction**
+- **Listing**: AJAX requests for content loading → **Server-side Data Fetching**
+
 ### **🚨 MANDATORY: STEP 7: Interactive Element Analysis - REQUIRED SIXTH**
 1. **🚨 MANDATORY: Identify all clickable elements** - Buttons, links, navigation controls
 2. **🚨 MANDATORY: Map interactive element positioning** - Where are they located in the layout
@@ -34,7 +66,7 @@
 5. **🚨 MANDATORY: Map navigation controls** - Pagination, arrows, carousel controls
 
 ### **🚨 MANDATORY: Component Type Classification Rules**
-- **Listing Component** - Dynamic content display with filtering, sorting, pagination (product grids, article lists, search results) - **PRIMARY CLASSIFICATION**
+- **Listing Component** - Dynamic content display with filtering, sorting, pagination (product search grids, article search results, content search) - **PRIMARY CLASSIFICATION**
 - **Carousel Component** - Multiple slides with navigation indicators, carousel controls - **PRIMARY CLASSIFICATION**
 - **Static Content Component** - No user interaction, purely presentational
 - **Interactive Content Component** - User interaction changes content (tabs, accordions, carousels, filters)
@@ -42,10 +74,44 @@
 - **Form Component** - User input and data submission
 - **E-commerce Component** - Product display, shopping cart, checkout functionality
 
+### **🚨 MANDATORY: COMPONENT TYPE CLASSIFICATION CRITERIA**
+**⚠️ CRITICAL: Use these specific criteria to classify components:**
+
+#### **🚨 MANDATORY: LISTING COMPONENT CRITERIA**
+- **Has search input field** → Listing Component
+- **Has filter dropdowns/checkboxes** → Listing Component
+- **Has pagination controls** → Listing Component
+- **Has sorting options** → Listing Component
+- **Loads content dynamically** → Listing Component
+- **Uses AJAX for content** → Listing Component
+
+#### **🚨 MANDATORY: CAROUSEL COMPONENT CRITERIA**
+- **Has navigation arrows** → Carousel Component
+- **Has slide indicators/dots** → Carousel Component
+- **Has multiple slides/panels** → Carousel Component
+- **Has auto-play functionality** → Carousel Component
+- **Has touch/swipe support** → Carousel Component
+- **Uses static content** → Carousel Component
+
 ### **🚨 MANDATORY: Complexity Classification Rules**
 - **Simple** - Static content, basic styling, no JavaScript required
 - **Medium** - Some interactivity, basic JavaScript, simple state management
 - **High** - Complex interactions, advanced JavaScript, state management, API calls
+
+### **🚨 MANDATORY: COMPONENT COMPLEXITY CLASSIFICATION**
+**⚠️ CRITICAL: Use these specific rules for complexity classification:**
+
+#### **🚨 MANDATORY: CAROUSEL COMPONENT COMPLEXITY**
+- **Carousel components are ALWAYS Medium Complexity** - **NO EXCEPTIONS**
+- **Carousel components use multifield dialogs** - **NO EXCEPTIONS**
+- **Carousel components use client-side JavaScript** - **NO EXCEPTIONS**
+- **Carousel components do NOT use server-side queries** - **NO EXCEPTIONS**
+
+#### **🚨 MANDATORY: LISTING COMPONENT COMPLEXITY**
+- **Listing components are ALWAYS High Complexity** - **NO EXCEPTIONS**
+- **Listing components use server-side queries** - **NO EXCEPTIONS**
+- **Listing components use AJAX for content loading** - **NO EXCEPTIONS**
+- **Listing components require listing framework** - **NO EXCEPTIONS**
 
 ### **🚨 MANDATORY: Listing Component Detection Rules - ZERO TOLERANCE FOR VIOLATIONS**
 1. **🚨 MANDATORY: LISTING DETECTION IS PRIMARY CLASSIFICATION** - Check for listing requirements FIRST, before any other classification
