@@ -4,270 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campaign Component - Local Development</title>
-    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <!-- <link rel="stylesheet" href="/clientlib-base/css/base.css">
     <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
-    <style>
-        /* Campaign Component Styles */
-        .campaign {
-          position: relative;
-          background-color: #FFFBE3;
-          border-bottom: 2px solid #30B700;
-          padding: 48px 263px;
-          min-height: 576px;
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-        }
+    <link rel="stylesheet" href="/clientlib-site/css/site.css"> -->
+    <link rel="stylesheet" href="/aem-cloud/ui.frontend/dist/clientlib-site/site.css">
 
-        .campaign__container {
-          width: 100%;
-          max-width: 1920px;
-          margin: 0 auto;
-          position: relative;
-          z-index: 2;
-        }
-
-        .campaign__content {
-          display: flex;
-          gap: 32px;
-          align-items: flex-start;
-        }
-
-        .campaign__header {
-          display: flex;
-          gap: 34px;
-          width: 824px;
-          flex-shrink: 0;
-        }
-
-        .campaign__logo {
-          width: 120px;
-          height: 120px;
-          flex-shrink: 0;
-        }
-
-        .campaign__logo-image {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        .campaign__text {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
-
-        .campaign__title {
-          font-family: 'Malik', serif;
-          font-weight: 800;
-          font-size: 80px;
-          line-height: 1em;
-          letter-spacing: -1%;
-          color: #004122;
-          margin: 0;
-          text-align: left;
-        }
-
-        .campaign__description {
-          font-family: 'Averta Std PE', sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 1.5em;
-          color: #003017;
-          margin: 0;
-          text-align: left;
-        }
-
-        .campaign__form {
-          flex: 1;
-          max-width: 681px;
-        }
-
-        .campaign__form-container {
-          display: flex;
-          flex-direction: column;
-          gap: 25px;
-        }
-
-        .campaign__form-group {
-          width: 100%;
-        }
-
-        .campaign__input,
-        .campaign__select,
-        .campaign__textarea {
-          width: 100%;
-          padding: 8px 12px;
-          border: 1px solid #A3A3A3;
-          border-radius: 4px;
-          background-color: #FFFFFF;
-          font-family: 'Averta Std PE', sans-serif;
-          font-weight: 400;
-          font-size: 16px;
-          line-height: 1.5em;
-          color: #171717;
-          box-sizing: border-box;
-        }
-
-        .campaign__input::placeholder,
-        .campaign__textarea::placeholder {
-          color: #A3A3A3;
-        }
-
-        .campaign__input:focus,
-        .campaign__select:focus,
-        .campaign__textarea:focus {
-          outline: none;
-          border-color: #30B700;
-          box-shadow: 0 0 0 2px rgba(48, 183, 0, 0.2);
-        }
-
-        .campaign__select {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          cursor: pointer;
-          appearance: none;
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7.41' viewBox='0 0 12 7.41'%3E%3Cpath fill='%23171717' d='M6 7.41L0 1.41L1.41 0L6 4.59L10.59 0L12 1.41L6 7.41Z'/%3E%3C/svg%3E");
-          background-repeat: no-repeat;
-          background-position: right 12px center;
-          background-size: 12px 7.41px;
-          padding-right: 40px;
-        }
-
-        .campaign__textarea {
-          min-height: 100px;
-          resize: vertical;
-        }
-
-        .campaign__submit {
-          background-color: #004122;
-          color: #FFFFFF;
-          border: 1.5px solid;
-          border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 100%) 1;
-          border-radius: 16px;
-          padding: 8px 32px;
-          height: 40px;
-          font-family: 'Averta Std PE', sans-serif;
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 1.25em;
-          letter-spacing: 4%;
-          text-transform: uppercase;
-          text-align: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: auto;
-          min-width: 120px;
-        }
-
-        .campaign__submit:hover {
-          background-color: #003017;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(0, 65, 34, 0.3);
-        }
-
-        .campaign__submit:active {
-          transform: translateY(0);
-        }
-
-        .campaign__submit:focus {
-          outline: none;
-          box-shadow: 0 0 0 3px rgba(0, 65, 34, 0.3);
-        }
-
-        .campaign__background {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: 1;
-          opacity: 0.9;
-        }
-
-        .campaign__background-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-          .campaign {
-            padding: 48px 120px;
-          }
-
-          .campaign__content {
-            flex-direction: column;
-            gap: 40px;
-          }
-
-          .campaign__header {
-            width: 100%;
-            max-width: 824px;
-          }
-
-          .campaign__form {
-            max-width: 100%;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .campaign {
-            padding: 32px 20px;
-          }
-
-          .campaign__header {
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-          }
-
-          .campaign__logo {
-            align-self: center;
-          }
-
-          .campaign__title {
-            font-size: 48px;
-          }
-
-          .campaign__form-container {
-            gap: 20px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .campaign {
-            padding: 24px 16px;
-          }
-
-          .campaign__title {
-            font-size: 36px;
-          }
-
-          .campaign__description {
-            font-size: 14px;
-          }
-
-          .campaign__input,
-          .campaign__select,
-          .campaign__textarea {
-            font-size: 14px;
-          }
-
-          .campaign__submit {
-            font-size: 14px;
-            padding: 8px 24px;
-          }
-        }
-    </style>
 </head>
 <body>
     <div class="campaign">
@@ -275,7 +16,7 @@
             <div class="campaign__content">
                 <div class="campaign__header">
                     <div class="campaign__logo">
-                        <img src="https://via.placeholder.com/120x120/8BBD3C/FFFFFF?text=LOGO" alt="Logo" class="campaign__logo-image" />
+                        <img src="/aem-cloud/ui.frontend/dist/clientlib-site/images/form-logo.png" alt="Logo" class="campaign__logo-image" />
                     </div>
                     <div class="campaign__text">
                         <h2 class="campaign__title">Lorem Ipsum</h2>
@@ -306,7 +47,7 @@
                                    required />
                         </div>
                         <div class="campaign__form-group">
-                            <select name="company" class="campaign__select" required>
+                            <select name="company" class="campaign__select" placeholder="Company / Field of work" required>
                                 <option value="">Company / Field of work</option>
                                 <option value="technology">Technology</option>
                                 <option value="healthcare">Healthcare</option>
@@ -337,7 +78,7 @@
         </div>
     </div>
 
-    <script src="/clientlib-dependencies/js/dependencies.js"></script>
-    <script src="/clientlib-base/js/base.js"></script>
+    <!-- <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/base.js"></script> -->
 </body>
 </html>

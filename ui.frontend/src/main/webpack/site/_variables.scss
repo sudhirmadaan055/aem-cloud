@@ -1,8 +1,21 @@
 
 //== Font
 
-$font-family:           "Helvetica Neue", Helvetica, Arial, sans-serif;
+// Font Families
+$font-family-primary:   "Averta Std PE", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-secondary: "Malik", serif;
+$font-family:           $font-family-primary;
+
+// Font Sizes
 $font-size:             16px;
+
+// Font Weights
+$font-weight-normal:    400;
+$font-weight-semibold:  600;
+$font-weight-bold:      700;
+$font-weight-extrabold: 800;
+
+// Line Heights
 $font-height:           1.5;
 
 //== Color
