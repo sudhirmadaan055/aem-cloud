@@ -1,0 +1,163 @@
+# HTL (HTML Template Language) Best Practices and Syntax Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating or modifying HTL templates:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all HTL syntax rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use proper HTL context options** - **NO SKIPPING**
+4. **🚨 MANDATORY: Apply AEM HTL best practices** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER use invalid HTL syntax** - Follow HTL specification strictly
+2. **NEVER skip context options** - Always specify proper context for expressions
+3. **NEVER use unsupported operators** - HTL has limited operator support
+4. **NEVER assume method calls work** - HTL doesn't support all Java method calls
+5. **NEVER ignore validation warnings** - Fix all HTL validation issues
+
+## **CRITICAL: HTL Syntax Rules**
+
+### **Valid HTL Syntax**
+
+#### **Conditional Expressions**
+- **Simple property check**: `${model.property}` - Checks if property exists and is not empty
+- **Multiple conditions**: Use separate `data-sly-test` attributes, not `&&` operators
+- **Array/List checks**: `${model.items}` - Checks if collection exists and has items
+
+#### **❌ INVALID HTL Syntax (NEVER USE)**
+```html
+<!-- WRONG: && operator not supported -->
+<div data-sly-test="${model.items && model.items.size() > 0}">
+
+<!-- WRONG: Method calls not supported -->
+<div data-sly-test="${model.items.size() > 1}">
+
+<!-- WRONG: Complex boolean expressions -->
+<div data-sly-test="${model.items && model.items.length > 0}">
+```
+
+#### **✅ CORRECT HTL Syntax**
+```html
+<!-- CORRECT: Simple property check -->
+<div data-sly-test="${model.items}">
+
+<!-- CORRECT: Separate conditions if needed -->
+<div data-sly-test="${model.items}">
+    <div data-sly-test="${model.showNavigation}">
+        <!-- Navigation content -->
+    </div>
+</div>
+```
+
+### **Context Options for HTL Expressions**
+
+#### **Style Attributes (CRITICAL)**
+- **ALWAYS use context for style attributes** - Prevents XSS attacks
+- **Use `@ context='unsafe'` for style values** - Allows HTML/CSS content
+
+#### **❌ WRONG Style Context**
+```html
+<!-- WRONG: Missing context option -->
+<div style="background-color: ${product.backgroundColor}">
+<div style="background-image: url('${article.image}')">
+```
+
+#### **✅ CORRECT Style Context**
+```html
+<!-- CORRECT: With proper context -->
+<div style="background-color: ${product.backgroundColor @ context='unsafe'}">
+<div style="background-image: url('${article.image @ context='unsafe'}')">
+```
+
+### **HTL Data Attributes**
+
+#### **Common HTL Attributes**
+- **`data-sly-test`** - Conditional rendering
+- **`data-sly-list`** - Iteration over collections
+- **`data-sly-use`** - Sling Model binding
+- **`data-sly-resource`** - Resource inclusion
+- **`data-sly-include`** - Template inclusion
+
+#### **Proper Usage Examples**
+```html
+<!-- Conditional rendering -->
+<div data-sly-test="${model.title}">
+    <h1>${model.title}</h1>
+</div>
+
+<!-- List iteration -->
+<div data-sly-list.item="${model.items}">
+    <div class="item">${item.name}</div>
+</div>
+
+<!-- Sling Model binding -->
+<div data-sly-use.model="com.example.core.models.MyModel">
+    <p>${model.description}</p>
+</div>
+```
+
+### **JCR Dialog Validation**
+
+#### **Dialog Node Types**
+- **Use `cq:dialog` for component dialogs** - Not `nt:unstructured`
+- **Proper dialog structure** - Follow AEM dialog patterns
+
+#### **❌ WRONG Dialog Structure**
+```xml
+<jcr:root jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+```
+
+#### **✅ CORRECT Dialog Structure**
+```xml
+<jcr:root jcr:primaryType="cq:dialog"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+```
+
+### **HTL Validation and Testing**
+
+#### **Pre-Build Validation**
+- **Check HTL syntax** - Ensure all expressions are valid
+- **Verify context options** - All style attributes must have context
+- **Test dialog validation** - Ensure JCR node types are correct
+- **Validate Sling Model binding** - Ensure model classes exist
+
+#### **Common Validation Errors**
+- **`mismatched input '(' expecting {'}', '@'}`** - Invalid syntax with parentheses
+- **`Expressions within style attributes need explicit context`** - Missing context option
+- **`Node type does not allow arbitrary child nodes`** - Wrong JCR node type
+
+### **Performance Best Practices**
+
+#### **HTL Optimization**
+- **Minimize complex expressions** - Keep HTL simple and readable
+- **Use appropriate context options** - Don't overuse `unsafe` context
+- **Cache expensive operations** - Use Sling Models for complex logic
+- **Avoid deep nesting** - Keep template structure flat when possible
+
+#### **Security Considerations**
+- **Use proper context options** - Prevent XSS attacks
+- **Validate user input** - Sanitize data in Sling Models
+- **Avoid `unsafe` context when possible** - Use safer alternatives
+- **Test with malicious input** - Ensure security measures work
+
+### **Troubleshooting HTL Issues**
+
+#### **Common Problems and Solutions**
+1. **Syntax errors** - Check for unsupported operators or method calls
+2. **Context warnings** - Add proper `@ context` options
+3. **Dialog validation errors** - Use correct JCR node types
+4. **Sling Model binding failures** - Ensure model classes are deployed
+5. **Rendering issues** - Check HTL expression logic
+
+#### **Debugging Steps**
+1. **Check AEM error logs** - Look for HTL compilation errors
+2. **Validate HTL syntax** - Use AEM developer tools
+3. **Test expressions individually** - Isolate problematic code
+4. **Verify Sling Model deployment** - Ensure models are available
+5. **Check dialog structure** - Validate JCR node types
+
+---
+
+**These HTL rules ensure secure, performant, and maintainable AEM component templates.**

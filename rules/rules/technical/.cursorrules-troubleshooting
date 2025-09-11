@@ -1,0 +1,228 @@
+# AEM Build and Deployment Troubleshooting Guide
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first when encountering build or deployment issues:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow troubleshooting steps exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use systematic approach** - **NO SKIPPING**
+4. **🚨 MANDATORY: Document solutions** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER skip systematic troubleshooting** - Follow the step-by-step process
+2. **NEVER ignore error messages** - Read and understand all error details
+3. **NEVER make random changes** - Fix issues based on root cause analysis
+4. **NEVER skip validation** - Verify fixes work before proceeding
+5. **NEVER ignore warnings** - Address all warnings to prevent future issues
+
+## **CRITICAL: Common AEM Build Issues and Solutions**
+
+### **Maven Build Issues**
+
+#### **Parent POM Resolution Errors**
+**Error**: `Non-resolvable parent POM`
+**Root Cause**: Missing or incorrect parent POM configuration
+**Solution**:
+```xml
+<parent>
+    <groupId>com.mysite</groupId>
+    <artifactId>mysite</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+</parent>
+```
+
+#### **Missing Version Errors**
+**Error**: `Missing version for artifact`
+**Root Cause**: Child POM missing version specification
+**Solution**:
+```xml
+<artifactId>mysite.core</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+<packaging>bundle</packaging>
+```
+
+#### **Plugin Configuration Issues**
+**Error**: `Plugin execution failed`
+**Root Cause**: Missing plugin versions or incorrect configuration
+**Solution**:
+```xml
+<properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <frontend-maven-plugin.version>1.14.0</frontend-maven-plugin.version>
+</properties>
+```
+
+### **HTL Template Issues**
+
+#### **Syntax Errors**
+**Error**: `mismatched input '(' expecting {'}', '@'}`
+**Root Cause**: Invalid HTL syntax with unsupported operators
+**Solution**:
+```html
+<!-- WRONG -->
+<div data-sly-test="${model.items && model.items.size() > 0}">
+
+<!-- CORRECT -->
+<div data-sly-test="${model.items}">
+```
+
+#### **Context Warnings**
+**Error**: `Expressions within style attributes need explicit context`
+**Root Cause**: Missing context option for style attributes
+**Solution**:
+```html
+<!-- WRONG -->
+<div style="background-color: ${product.backgroundColor}">
+
+<!-- CORRECT -->
+<div style="background-color: ${product.backgroundColor @ context='unsafe'}">
+```
+
+#### **JCR Validation Errors**
+**Error**: `Node type does not allow arbitrary child nodes`
+**Root Cause**: Wrong JCR node type for dialogs
+**Solution**:
+```xml
+<!-- WRONG -->
+<jcr:root jcr:primaryType="nt:unstructured"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+
+<!-- CORRECT -->
+<jcr:root jcr:primaryType="cq:dialog"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+```
+
+### **Sling Model Issues**
+
+#### **Injection Strategy Errors**
+**Error**: `incompatible types: DefaultInjectionStrategy cannot be converted to InjectionStrategy`
+**Root Cause**: Wrong import and annotation usage
+**Solution**:
+```java
+// WRONG
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+@ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+
+// CORRECT
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+```
+
+#### **Model Adaptation Failures**
+**Error**: `Model adaptation returns null`
+**Root Cause**: Incorrect resource setup or missing properties
+**Solution**:
+```java
+// Ensure proper resource setup
+context.create().resource("/content/test", "title", "Test Title");
+context.currentResource(context.resourceResolver().getResource("/content/test"));
+MyModel model = context.request().adaptTo(MyModel.class);
+```
+
+### **Testing Issues**
+
+#### **XML Parsing Errors**
+**Error**: `IllegalState Unable to enable secure processing`
+**Root Cause**: Java security manager blocking XML processing
+**Solution**: Configure Maven Surefire plugin:
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <argLine>-Djava.awt.headless=true -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl</argLine>
+    </configuration>
+</plugin>
+```
+
+#### **Test Data Issues**
+**Error**: `Multi-value array must not contain maps/objects`
+**Root Cause**: Complex test data structure not supported by AEM Mocks
+**Solution**: Use simple test data:
+```json
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/example",
+    "title": "Simple Title",
+    "description": "Simple Description"
+  }
+}
+```
+
+### **Frontend Build Issues**
+
+#### **Node.js Compatibility Issues**
+**Error**: `--openssl-legacy-provider is not allowed in NODE_OPTIONS`
+**Root Cause**: Node.js v20 security restrictions
+**Solution**: Use alternative approaches:
+```json
+{
+  "scripts": {
+    "build": "node --openssl-legacy-provider node_modules/.bin/react-scripts build"
+  }
+}
+```
+
+#### **Dependency Resolution Issues**
+**Error**: `Could not find artifact` or `npm ERR! notarget`
+**Root Cause**: Missing or incompatible package versions
+**Solution**: Pin specific versions and clean dependencies:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### **Systematic Troubleshooting Process**
+
+#### **Step 1: Identify the Issue**
+1. **Read error messages carefully** - Look for specific error codes and descriptions
+2. **Check build logs** - Review Maven or npm output for clues
+3. **Identify affected modules** - Determine which part of the build is failing
+4. **Categorize the issue** - Maven, HTL, Sling Model, Testing, or Frontend
+
+#### **Step 2: Analyze Root Cause**
+1. **Check configuration files** - POM, package.json, HTL templates
+2. **Verify dependencies** - Ensure all required libraries are available
+3. **Check syntax** - Validate HTL, Java, and XML syntax
+4. **Review recent changes** - Identify what might have caused the issue
+
+#### **Step 3: Apply Solution**
+1. **Use appropriate fix** - Apply solution based on root cause analysis
+2. **Test the fix** - Verify the solution works
+3. **Clean and rebuild** - Ensure clean build after fix
+4. **Document the solution** - Record the fix for future reference
+
+#### **Step 4: Validate and Prevent**
+1. **Run full build** - Ensure all modules build successfully
+2. **Run tests** - Verify functionality works as expected
+3. **Check for warnings** - Address any remaining warnings
+4. **Update rules** - Add prevention measures to rule files
+
+### **Prevention Strategies**
+
+#### **Code Quality Checks**
+- **Use proper HTL syntax** - Follow HTL specification strictly
+- **Configure context options** - Always specify context for style attributes
+- **Use correct JCR node types** - Follow AEM dialog patterns
+- **Test Sling Model injection** - Verify injection strategy works
+
+#### **Build Validation**
+- **Check POM structure** - Ensure proper parent and child POM configuration
+- **Validate dependencies** - Verify all dependencies resolve correctly
+- **Test individual modules** - Build modules separately to isolate issues
+- **Run tests regularly** - Catch issues early in development
+
+#### **Documentation and Maintenance**
+- **Document common issues** - Keep troubleshooting guide updated
+- **Share solutions** - Communicate fixes with team
+- **Update rule files** - Add prevention measures to rules
+- **Regular maintenance** - Clean up and optimize build configuration
+
+---
+
+**This troubleshooting guide ensures systematic resolution of AEM build and deployment issues.**

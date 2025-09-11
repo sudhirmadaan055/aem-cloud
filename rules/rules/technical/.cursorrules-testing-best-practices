@@ -1,0 +1,206 @@
+# AEM Testing Best Practices and Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before creating or modifying AEM tests:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow all testing rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Use proper testing frameworks** - **NO SKIPPING**
+4. **🚨 MANDATORY: Apply AEM testing best practices** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER use AssertJ in AEM Cloud projects** - Use default AEM Cloud testing dependencies
+2. **NEVER skip proper test setup** - Always configure AEM Mocks correctly
+3. **NEVER ignore Sling Model injection issues** - Fix injection strategy problems
+4. **NEVER use complex test data** - Keep test data simple and focused
+5. **NEVER skip XML parsing configuration** - Configure Maven Surefire properly
+
+## **CRITICAL: AEM Testing Framework Rules**
+
+### **Testing Dependencies**
+
+#### **✅ CORRECT Testing Dependencies**
+- **Use AEM Cloud default testing dependencies** - No external assertion libraries
+- **JUnit 5** - Standard testing framework
+- **AEM Mocks (io.wcm.testing.mock.aem.junit5)** - AEM-specific testing utilities
+- **Maven Surefire Plugin** - Test execution with proper configuration
+
+#### **❌ AVOID These Dependencies**
+- **AssertJ** - Not preferred in AEM Cloud projects
+- **Custom assertion libraries** - Use standard JUnit assertions
+- **Outdated testing frameworks** - Stick to AEM Cloud standards
+
+### **Sling Model Testing**
+
+#### **Injection Strategy Configuration**
+- **Use `InjectionStrategy.OPTIONAL`** - Not `DefaultInjectionStrategy.OPTIONAL`
+- **Import correct annotation** - `org.apache.sling.models.annotations.injectorspecific.InjectionStrategy`
+- **Configure injection properly** - Ensure models work in test environment
+
+#### **❌ WRONG Injection Strategy**
+```java
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+
+@ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+private String title;
+```
+
+#### **✅ CORRECT Injection Strategy**
+```java
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
+
+@ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+private String title;
+```
+
+### **AEM Mocks Configuration**
+
+#### **Test Setup Best Practices**
+- **Use `@ExtendWith(AemContextExtension.class)`** - Proper AEM context setup
+- **Configure resource loading** - Set up test data correctly
+- **Set current resource** - Use `context.currentResource()` for proper model adaptation
+- **Create simple test data** - Avoid complex nested objects
+
+#### **✅ CORRECT Test Setup**
+```java
+@ExtendWith(AemContextExtension.class)
+class MyModelTest {
+    
+    private AemContext context = new AemContext();
+    private MyModel model;
+    
+    @BeforeEach
+    void setUp() {
+        // Create simple test resource
+        context.create().resource("/content/test", 
+            "title", "Test Title",
+            "description", "Test Description"
+        );
+        
+        // Set current resource
+        context.currentResource(context.resourceResolver().getResource("/content/test"));
+        
+        // Adapt to model
+        model = context.request().adaptTo(MyModel.class);
+    }
+}
+```
+
+#### **❌ AVOID Complex Test Data**
+```java
+// WRONG: Complex nested objects cause issues
+context.create().resource("/content/test", Map.of(
+    "articles", List.of(
+        Map.of("title", "Article 1", "content", Map.of("body", "Content")),
+        Map.of("title", "Article 2", "content", Map.of("body", "Content"))
+    )
+));
+```
+
+### **Maven Surefire Configuration**
+
+#### **Required Plugin Configuration**
+- **Configure JVM arguments** - Set headless mode and XML parser
+- **Set system properties** - Ensure proper XML processing
+- **Handle security manager** - Configure for test environment
+
+#### **✅ CORRECT Surefire Configuration**
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+        <argLine>-Djava.awt.headless=true -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl -Djavax.xml.transform.TransformerFactory=com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl</argLine>
+        <systemPropertyVariables>
+            <java.awt.headless>true</java.awt.headless>
+            <javax.xml.parsers.SAXParserFactory>com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl</javax.xml.parsers.SAXParserFactory>
+            <javax.xml.transform.TransformerFactory>com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl</javax.xml.transform.TransformerFactory>
+        </systemPropertyVariables>
+    </configuration>
+</plugin>
+```
+
+### **Test Data Management**
+
+#### **Simple Test Data Patterns**
+- **Use basic properties** - String, boolean, number values
+- **Avoid complex collections** - Keep arrays and lists simple
+- **Focus on essential data** - Test core functionality only
+- **Use meaningful values** - Make test data readable
+
+#### **✅ GOOD Test Data**
+```json
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/example",
+    "title": "Test Title",
+    "description": "Test Description",
+    "showButton": true
+  }
+}
+```
+
+### **Assertion Best Practices**
+
+#### **JUnit Assertions**
+- **Use standard JUnit assertions** - `assertEquals`, `assertNotNull`, `assertTrue`
+- **Keep assertions simple** - One assertion per test method when possible
+- **Use descriptive messages** - Help with test failure debugging
+- **Test expected behavior** - Focus on what should happen
+
+#### **✅ CORRECT Assertions**
+```java
+@Test
+void testModelTitle() {
+    assertNotNull(model);
+    assertEquals("Test Title", model.getTitle());
+    assertTrue(model.isConfigured());
+}
+
+@Test
+void testModelWithEmptyData() {
+    context.create().resource("/content/empty");
+    context.currentResource(context.resourceResolver().getResource("/content/empty"));
+    MyModel emptyModel = context.request().adaptTo(MyModel.class);
+    
+    assertNull(emptyModel.getTitle());
+    assertFalse(emptyModel.isConfigured());
+}
+```
+
+### **Common Testing Issues and Solutions**
+
+#### **Test Failures**
+1. **Sling Model injection errors** - Check import statements and injection strategy
+2. **Resource loading issues** - Ensure proper `currentResource()` setup
+3. **XML parsing errors** - Configure Maven Surefire with proper JVM arguments
+4. **Assertion failures** - Verify test data matches expected behavior
+5. **AEM Mocks setup issues** - Check resource creation and context configuration
+
+#### **Debugging Test Issues**
+1. **Check test logs** - Look for specific error messages
+2. **Verify resource structure** - Ensure test data is properly created
+3. **Test model adaptation** - Verify Sling Model works in test environment
+4. **Check injection strategy** - Ensure proper annotation usage
+5. **Validate test data** - Ensure data matches model expectations
+
+### **Performance and Maintenance**
+
+#### **Test Performance**
+- **Keep tests fast** - Avoid complex setup and teardown
+- **Use simple test data** - Minimize resource creation overhead
+- **Focus on essential tests** - Test core functionality only
+- **Avoid external dependencies** - Keep tests self-contained
+
+#### **Test Maintenance**
+- **Keep tests readable** - Use clear naming and structure
+- **Update tests with code changes** - Maintain test accuracy
+- **Remove obsolete tests** - Clean up unused test code
+- **Document test purpose** - Use comments for complex test logic
+
+---
+
+**These testing rules ensure reliable, maintainable, and efficient AEM component tests.**

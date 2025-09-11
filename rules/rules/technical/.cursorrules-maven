@@ -50,6 +50,9 @@
 - **HTL compilation errors** - Often due to missing Sling Model classes
 - **OSGi resolution errors** - Check dependency versions and scope
 - **Build failures** - Verify all imports are available in classpath
+- **Parent POM resolution errors** - Ensure `<parent>` section has correct `relativePath`
+- **Missing version errors** - Always specify `<version>` in child POMs
+- **Plugin version conflicts** - Use properties to manage plugin versions consistently
 
 ### **Project Structure**
 
@@ -87,8 +90,11 @@
 - **Dependency resolution** - Verify all dependencies are available
 - **Bundle activation** - Check OSGi console for unresolved dependencies
 - **HTL compilation** - Ensure Sling Models are properly deployed
-- **HTL style attribute warnings** - Use `@ context='styleString'` for HTL expressions in style attributes
+- **HTL style attribute warnings** - Use `@ context='unsafe'` for HTL expressions in style attributes
 - **Build failure due to HTL warnings** - Fix HTL context issues before proceeding with deployment
+- **Non-resolvable parent POM** - Add `<parent>` section with correct `relativePath="../pom.xml"`
+- **Missing groupId errors** - Ensure `<groupId>` is specified in child POMs
+- **Plugin execution failures** - Configure plugins with explicit versions using properties
 
 #### **Debugging Steps**
 1. **Check Maven logs** - Look for specific error messages
