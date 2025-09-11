@@ -1,0 +1,31 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/campaign",
+    "title": "Lorem Ipsum",
+    "description": "Bibigo embodies the spirit of Korean cuisine, bringing families together through shared meals.",
+    "nameLabel": "Your Name",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "companyLabel": "Company / Field of work",
+    "messageLabel": "What are you looking for?",
+    "submitButtonText": "keep in touch",
+    "backgroundImage": "/content/dam/mysite/campaign-background.jpg",
+    "logoImage": "/content/dam/mysite/campaign-logo.png"
+  },
+  "empty": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/campaign",
+    "title": "",
+    "description": "",
+    "nameLabel": "",
+    "emailLabel": "",
+    "phoneLabel": "",
+    "companyLabel": "",
+    "messageLabel": "",
+    "submitButtonText": "",
+    "backgroundImage": "",
+    "logoImage": ""
+  }
+}

@@ -18,7 +18,7 @@ module.exports = env => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, SOURCE_ROOT + '/static/relatedarticles/index.html')
+                template: path.resolve(__dirname, SOURCE_ROOT + '/static/campaign/index.html')
             })
         ],
         devServer: {
