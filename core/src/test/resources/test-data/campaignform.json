@@ -1,0 +1,9 @@
+{
+  "jcr:primaryType": "nt:unstructured",
+  "sling:resourceType": "mysite/components/campaignform",
+  "title": "Test Campaign",
+  "description": "Test Description",
+  "decorativeImage": "/content/dam/test/image.svg",
+  "formAction": "/bin/test-submit",
+  "submitButtonText": "Submit Now"
+}

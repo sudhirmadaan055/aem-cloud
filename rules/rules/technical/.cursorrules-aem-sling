@@ -192,23 +192,70 @@ SearchResult result = query.getResult();
 - **Handle service dependencies** with @Reference
 - **Use configuration management** with @ObjectClassDefinition
 
-#### **Service Structure**
+#### **🚨 MANDATORY: OSGI Configuration Best Practices - NO EXCEPTIONS**
+- **🚨 CRITICAL: External API Configuration** - **NEVER hardcode API endpoints or credentials**
+- **🚨 CRITICAL: Use @ObjectClassDefinition** - Create configuration interfaces for all external services
+- **🚨 CRITICAL: Use @Designate** - Link servlets/services to their configuration
+- **🚨 CRITICAL: Password Fields** - Use `type = AttributeDefinition.Type.PASSWORD` for sensitive data
+- **🚨 CRITICAL: Configuration Files** - Create `.cfg.json` files in `ui.config` module
+- **🚨 CRITICAL: Fallback Handling** - Provide fallback behavior when external services are disabled
+
+#### **Service Structure with OSGI Configuration**
 ```java
 @Component(service = MyService.class, immediate = true)
+@Designate(ocd = MyServiceConfig.class)
 public class MyServiceImpl implements MyService {
     
     @Reference
     private SomeDependency dependency;
     
+    private String apiEndpoint;
+    private String apiKey;
+    private boolean enableIntegration;
+    
     @Activate
-    protected void activate(Config config) {
-        // Service activation
+    protected void activate(MyServiceConfig config) {
+        this.apiEndpoint = config.apiEndpoint();
+        this.apiKey = config.apiKey();
+        this.enableIntegration = config.enableIntegration();
+        
+        logger.info("MyService activated with endpoint: {}, Integration enabled: {}", 
+                   apiEndpoint, enableIntegration);
     }
     
     @Deactivate
     protected void deactivate() {
         // Service deactivation
     }
+}
+
+@ObjectClassDefinition(
+    name = "My Service Configuration",
+    description = "Configuration for My Service"
+)
+public @interface MyServiceConfig {
+    
+    @AttributeDefinition(
+        name = "API Endpoint",
+        description = "External API endpoint URL",
+        required = true
+    )
+    String apiEndpoint() default "https://api.example.com";
+    
+    @AttributeDefinition(
+        name = "API Key",
+        description = "API key for authentication",
+        required = true,
+        type = AttributeDefinition.Type.PASSWORD
+    )
+    String apiKey();
+    
+    @AttributeDefinition(
+        name = "Enable Integration",
+        description = "Enable/disable external API integration",
+        required = false
+    )
+    boolean enableIntegration() default true;
 }
 ```
 

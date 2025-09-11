@@ -1,0 +1,7 @@
+{
+  "ajoEndpoint": "https://your-ajo-instance.adobe.io/api/v1/events",
+  "ajoPasskey": "your-ajo-passkey-here",
+  "ajoTimeout": 30000,
+  "enableAJOIntegration": true,
+  "fallbackEmail": "admin@mysite.com"
+}

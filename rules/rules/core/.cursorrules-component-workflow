@@ -27,6 +27,8 @@
 - **CSS Generation**: **🚨 MANDATORY: ALWAYS read `rules/rules/components/generation/.cursorrules-css-generation` FIRST** - **NO EXCEPTIONS** (design-accurate CSS generation with 90%+ visual accuracy)
 - **HTL Best Practices**: Follow `rules/rules/components/generation/.cursorrules-htl-best-practices` (index logic, layout distribution)
 - **Dialog Configuration**: Use `rules/rules/components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs, multifield structure)
+- **OSGI Configuration**: **🚨 MANDATORY: Use OSGI configuration for external API endpoints and credentials** - **NEVER hardcode API settings**
+- **OSGI Configuration Best Practices**: Create @ObjectClassDefinition interfaces, use @Designate, create .cfg.json files, use password fields for sensitive data
 - **Complexity Management**: Apply `rules/rules/components/frameworks/.cursorrules-aem-complexity` (Simple, Medium, High levels)
 - **Listing Components**: Reference `rules/rules/components/workflows/.cursorrules-aem-listing` (framework approach)
 - **Carousel Components**: Follow carousel-specific development workflow (multifield approach)
