@@ -119,12 +119,12 @@
             <type>zip</type>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.mysite</groupId>
             <artifactId>mysite.ui.frontend.react</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.mysite</groupId>

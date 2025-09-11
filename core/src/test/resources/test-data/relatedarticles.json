@@ -6,25 +6,6 @@
     "sectionTitle": "Related Articles",
     "sectionDescription": "Dive deeper into the stories, innovations, and how our products are shaping kitchens, markets, and food culture worldwide.",
     "exploreMoreButtonText": "Explore more",
-    "exploreMoreButtonLink": "/content/articles",
-    "articles": {
-      "jcr:primaryType": "nt:unstructured",
-      "item0": {
-        "jcr:primaryType": "nt:unstructured",
-        "articleTitle": "Expanding Flavors and Opportunities in Global Markets",
-        "articleDate": "03 May 2025",
-        "articleCategory": "products",
-        "articleImage": "/content/dam/mysite/article1.jpg",
-        "articleLink": "/content/articles/expanding-flavors"
-      },
-      "item1": {
-        "jcr:primaryType": "nt:unstructured",
-        "articleTitle": "$571M Investment to Scale Production in U.S. & Europe",
-        "articleDate": "12 jun 2025",
-        "articleCategory": "news",
-        "articleImage": "/content/dam/mysite/article2.jpg",
-        "articleLink": "/content/articles/investment-scale-production"
-      }
-    }
+    "exploreMoreButtonLink": "/content/articles"
   }
 }

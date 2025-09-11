@@ -18,7 +18,7 @@
         <!-- Product Cards -->
         <div class="products__cards-container" data-sly-test="${model.products}">
             <div class="products__cards" data-sly-list.product="${model.products}">
-                <div class="products__card" style="background-color: ${product.backgroundColor}">
+                <div class="products__card" style="background-color: ${product.backgroundColor @ context='unsafe'}">
                     <!-- Product Box Background -->
                     <div class="products__card-box"></div>
                     
@@ -52,7 +52,7 @@
         </div>
 
         <!-- Carousel Navigation -->
-        <div class="products__carousel" data-sly-test="${model.products && model.products.size > 1}">
+        <div class="products__carousel" data-sly-test="${model.products}">
             <button class="products__carousel-button products__carousel-button--prev" aria-label="Previous product" disabled>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

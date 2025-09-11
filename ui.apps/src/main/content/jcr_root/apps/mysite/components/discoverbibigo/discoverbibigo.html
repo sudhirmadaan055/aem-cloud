@@ -22,7 +22,7 @@
         </div>
 
         <!-- Cards Section -->
-        <div class="discoverbibigo__cards" data-sly-test="${model.cardItems && model.cardItems.size() > 0}">
+        <div class="discoverbibigo__cards" data-sly-test="${model.cardItems}">
             <div class="discoverbibigo__cards-grid">
                 <div class="discoverbibigo__card" data-sly-list.card="${model.cardItems}">
                     <div class="discoverbibigo__card-content" style="background: ${card.backgroundColor @ context='unsafe'};">

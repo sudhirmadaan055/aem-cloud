@@ -37,7 +37,7 @@
                         <p class="tile-date" data-sly-test="${item.itemDate}">${item.itemDate}</p>
                         
                         <!-- Category Tags -->
-                        <div class="tile-tags" data-sly-test="${item.categoryTags && item.categoryTags.length > 0}">
+                        <div class="tile-tags" data-sly-test="${item.categoryTags}">
                             <span class="tag" data-sly-list.tag="${item.categoryTags}">${tag.tagText}</span>
                         </div>
                         

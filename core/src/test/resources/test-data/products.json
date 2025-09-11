@@ -7,58 +7,6 @@
     "title": "Our Products",
     "description": "From comforting dumplings to vibrant street food, Bibigo celebrates how consumers around the world make Korean food their own.",
     "exploreButtonText": "Explore Products",
-    "exploreButtonLink": "/content/explore",
-    "products": [
-      {
-        "jcr:primaryType": "nt:unstructured",
-        "productImage": "/content/dam/products/k-sauce.jpg",
-        "productTitle": "K-Sauce",
-        "productAttributes": [
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "K-Sauce"
-          },
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "Sweet"
-          },
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "Flavory"
-          }
-        ],
-        "productDescription": "Sauced yet crunchy, bibigo's K-style chicken stays crunchy even when coated in sauce. Enjoy extra crunchiness in every bite with Korean bold flavors.",
-        "whereToBuyText": "WHERE TO BUY",
-        "whereToBuyLink": "/content/where-to-buy",
-        "shopNowText": "shop now",
-        "shopNowLink": "/content/shop-now",
-        "backgroundColor": "#F85001"
-      },
-      {
-        "jcr:primaryType": "nt:unstructured",
-        "productImage": "/content/dam/products/seaweed.jpg",
-        "productTitle": "Seaweed",
-        "productAttributes": [
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "Seaweed"
-          },
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "Salty"
-          },
-          {
-            "jcr:primaryType": "nt:unstructured",
-            "attribute": "Crunchy"
-          }
-        ],
-        "productDescription": "Bibigo's Gim (Korean Seaweed) snacks offer a variety of flavors in different shapes, packed with full of natural nutrients and crispiness for everyone to savor",
-        "whereToBuyText": "WHERE TO BUY",
-        "whereToBuyLink": "/content/where-to-buy",
-        "shopNowText": "shop now",
-        "shopNowLink": "/content/shop-now",
-        "backgroundColor": "#CBEAF7"
-      }
-    ]
+    "exploreButtonLink": "/content/explore"
   }
 }

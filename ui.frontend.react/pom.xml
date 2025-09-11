@@ -18,21 +18,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- ====================================================================== -->
-    <!-- P A R E N T  P R O J E C T  D E S C R I P T I O N                      -->
-    <!-- ====================================================================== -->
-    <parent>
-        <groupId>com.mysite</groupId>
-        <artifactId>mysite</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-
-    <!-- ====================================================================== -->
     <!-- P R O J E C T  D E S C R I P T I O N                                   -->
     <!-- ====================================================================== -->
+    <groupId>com.mysite</groupId>
     <artifactId>mysite.ui.frontend.react</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>My site - UI Frontend (React)</name>
+    
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <frontend-maven-plugin.version>1.14.0</frontend-maven-plugin.version>
+        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
+        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+    </properties>
     
     <!-- ====================================================================== -->
     <!-- B U I L D   D E F I N I T I O N                                        -->
@@ -42,6 +43,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -60,10 +62,22 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
+                <version>${frontend-maven-plugin.version}</version>
+                <configuration>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>npm run prod</id>
-                        <phase>generate-resources</phase>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm run build</id>
                         <goals>
                             <goal>npm</goal>
                         </goals>
@@ -85,7 +99,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.6.0</version>
+                        <version>${exec-maven-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>npm install (dedupe)</id>

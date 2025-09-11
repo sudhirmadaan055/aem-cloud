@@ -1,0 +1,15 @@
+{
+  "jcr:primaryType": "cq:ClientLibraryFolder",
+  "categories": [
+    "mysite.react"
+  ],
+  "cssProcessor": [
+    "default:none",
+    "min:none"
+  ],
+  "jsProcessor": [
+    "default:none",
+    "min:none"
+  ],
+  "allowProxy": true
+}

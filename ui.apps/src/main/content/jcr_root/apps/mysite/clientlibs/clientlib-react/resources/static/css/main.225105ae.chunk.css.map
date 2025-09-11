@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/test-component/test-component.scss"],"names":[],"mappings":"AAAA,gBACE,cAAA","file":"main.225105ae.chunk.css","sourcesContent":[".test-component {\r\n  font-size: 45px;\r\n}\r\n"]}

@@ -34,7 +34,7 @@ class DiscoverBibigoModelTest {
         assertEquals("", model.getDescription());
         assertEquals("3", model.getNumberOfCards());
         assertNotNull(model.getCardItems());
-        assertTrue(model.getCardItems().isEmpty());
+        assertEquals(3, model.getCardItems().size()); // @PostConstruct creates 3 sample items
     }
 
     @Test

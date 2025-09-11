@@ -4,6 +4,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.Default;
 
 import javax.annotation.PostConstruct;
@@ -14,20 +15,20 @@ import java.util.List;
 public class DiscoverBibigoModel {
 
     // Header Section Fields
-    @ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "")
     private String title;
 
-    @ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "")
     private String mainHeading;
 
-    @ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "")
     private String description;
 
     // Cards Section Fields
-    @ValueMapValue(injectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
     @Default(values = "3")
     private String numberOfCards;
 

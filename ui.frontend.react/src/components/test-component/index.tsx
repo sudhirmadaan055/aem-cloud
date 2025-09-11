@@ -1,16 +1,11 @@
 import React from "react";
-import MysiteBaseModel from "../../base/mysite-base-model";
-// @ts-ignore
-import { createCustomElement, DOMModel, byAttrVal } from "@adobe/react-webcomponent";
 import "./test-component.scss";
 
-class TestComponentModel extends DOMModel implements MysiteBaseModel {
-  @byAttrVal nameprop?: string;
-  hidePlaceHolder = false;
+interface TestComponentProps {
+  nameprop?: string;
 }
 
-const TestComponent = (props: TestComponentModel) => {
-    const {nameprop}=props;
+const TestComponent: React.FC<TestComponentProps> = ({ nameprop = "World" }) => {
   return (
     <div className="test-component">
       {`hello ${nameprop}, welcome to my site test component`}
@@ -18,11 +13,4 @@ const TestComponent = (props: TestComponentModel) => {
   );
 };
 
-const TestComponentElement = createCustomElement(
-  TestComponent,
-  TestComponentModel,
-  "element"
-);
-
-// @ts-ignore
-window.customElements.define("test-component", TestComponentElement);
+export default TestComponent;
