@@ -48,6 +48,8 @@
 #### **Required Field Properties**
 - **Always provide**:
   - Proper field labels (clear and descriptive)
+  - **NO hardcoded values** in dialog fields (all fields must be authorable)
+  - **Required field validation** using `required="{Boolean}true"` for critical fields
   - Helpful descriptions for complex fields
   - Default values where applicable
   - Proper field names (camelCase)
@@ -179,6 +181,9 @@
 2. **🚨 MANDATORY: Verify field names match Sling Model** - Property names must be consistent
 3. **🚨 MANDATORY: Test authored content display** - Ensure HTL template reads from dialog data
 4. **🚨 MANDATORY: Use proper field types** - pathfield for images, textfield for text, etc.
+5. **🚨 MANDATORY: NO hardcoded values** - All dialog fields must be authorable, no hardcoded `value` attributes
+6. **🚨 MANDATORY: Dialog field visibility** - Ensure all fields are visible in dialog (use simple structure if complex fails)
+7. **🚨 MANDATORY: Form field mapping** - Verify HTL form field names match servlet parameter names exactly
 - **Implement proper add/remove** functionality
 - **Provide clear instructions** for multifield usage
 

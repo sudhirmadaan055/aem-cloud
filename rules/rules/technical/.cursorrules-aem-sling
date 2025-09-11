@@ -34,7 +34,30 @@
 - **@ChildResource**: Use for composite multifield data (NOT @ValueMapValue for multifields)
 - **🚨 NEVER use Jackson annotations**: Do NOT use `@JsonProperty` or any `com.fasterxml.jackson.annotation.*` imports
 - **🚨 Follow project patterns**: Use simple getter methods without Jackson decorators, following existing model patterns
-- **🚨 MANDATORY: Use proper logging**: Use log4j `logger.debug()` instead of `System.out.println`
+- **🚨 MANDATORY: Use proper logging**: Use log4j `logger.info()` for form submissions and `logger.debug()` for debugging
+
+#### **Servlet Configuration for Form Handling**
+- **🚨 CRITICAL: Use correct servlet paths** - Use `sling.servlet.paths=/bin/endpoint-name` for form submissions
+- **🚨 CRITICAL: Match form field names** - Servlet parameter names must exactly match HTL form field names
+- **🚨 CRITICAL: Validate all form fields** - Check all required fields before processing
+- **🚨 CRITICAL: Use proper error handling** - Return appropriate HTTP status codes and error messages
+- **🚨 CRITICAL: Log form submissions** - Use `logger.info()` to log form data for debugging
+- **🚨 CRITICAL: Test form field mapping** - Verify HTL form names match servlet parameter names exactly
+
+```java
+// CORRECT: Servlet configuration for form handling
+@Component(
+    service = Servlet.class,
+    property = {
+        "sling.servlet.paths=/bin/form-submit-endpoint",
+        "sling.servlet.methods=POST"
+    },
+    configurationPolicy = ConfigurationPolicy.REQUIRE
+)
+
+// CORRECT: Form field extraction
+String fieldName = request.getParameter("fieldName"); // Must match HTL form field name
+```
 
 #### **Multifield Data Handling**
 - **🚨 CRITICAL: Use @ChildResource for composite multifields** - NOT @ValueMapValue
@@ -42,6 +65,7 @@
 - **🚨 CRITICAL: Always test authored content** - Verify multifield data displays in HTL
 - **🚨 CRITICAL: Handle empty multifields gracefully** - Check for null and empty lists
 - **🚨 CRITICAL: Use proper logging for debugging** - Log multifield data for troubleshooting
+- **🚨 MANDATORY: Use logger.info() for form submissions** - Use `logger.info()` for form data logging, not `logger.debug()`
 
 ```java
 // CORRECT: Composite multifield handling

@@ -2,7 +2,15 @@
 
 ## 🚨 MANDATORY: Interactive Pattern Analysis
 
-### **🚨 MANDATORY: STEP 2A: Visual Element Detection - CRITICAL FOR ACCURACY**
+### **🚨 MANDATORY: STEP 2A: Layout Structure Analysis - CRITICAL FOR ACCURACY**
+1. **🚨 MANDATORY: COLUMN LAYOUT DETECTION** - Identify two-column, three-column, or multi-column layouts
+2. **🚨 MANDATORY: CONTENT PLACEMENT** - Determine which content goes in which column (image + text vs form fields)
+3. **🚨 MANDATORY: FORM STRUCTURE** - Identify form fields, input types, and field organization
+4. **🚨 MANDATORY: VISUAL ELEMENT PLACEMENT** - Determine where decorative images, icons, graphics are positioned
+5. **🚨 MANDATORY: CONTENT HIERARCHY** - Identify primary content vs secondary content placement
+6. **🚨 MANDATORY: RESPONSIVE CONSIDERATIONS** - Consider how layout changes on different screen sizes
+
+### **🚨 MANDATORY: STEP 2B: Visual Element Detection - CRITICAL FOR ACCURACY**
 1. **🚨 MANDATORY: DECORATIVE ILLUSTRATIONS** - Scan for decorative images, icons, graphics that should be configurable
 2. **🚨 MANDATORY: BACKGROUND IMAGES** - Identify background images, patterns, textures that need dialog fields
 3. **🚨 MANDATORY: ICON ELEMENTS** - Look for icons, symbols, graphics that should be configurable
