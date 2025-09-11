@@ -12,6 +12,7 @@
 1. **`rules/rules/compliance/.cursorrules-mandatory-compliance`** - Core compliance system
 2. **`rules/rules/system/.cursorrules-system-override`** - System-level enforcement
 3. **`rules/rules/compliance/.cursorrules-compliance-monitor`** - Real-time monitoring
+4. **`rules/rules/CodeQuality-rules-latest-CS-2024-12-0.xlsx`** - **CRITICAL: AEM Cloud Code Quality Rules**
 
 #### **Level 2: Process Prevention System (MUST BE LOADED SECOND)**
 4. **`rules/rules/compliance/.cursorrules-compliance-checklist`** - Pre-response validation
@@ -38,6 +39,22 @@
 6. **🚨 MANDATORY: ALWAYS read `rules/rules/system/.cursorrules-system-override` FOR SYSTEM ENFORCEMENT** - **NO EXCEPTIONS**
 ```
 
+### **🚨 CRITICAL: AEM CLOUD CODE QUALITY ENFORCEMENT - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: Code quality rules from Excel file MUST be followed for Cloud pipeline success:**
+
+#### **Code Quality Rules Reference:**
+- **`rules/rules/CodeQuality-rules-latest-CS-2024-12-0.xlsx`** - **AUTHORITATIVE SOURCE**
+- **Pipeline Failure Prevention** - Non-compliance causes Cloud pipeline failures
+- **Mandatory Compliance** - All generated code MUST follow these rules
+- **No Exceptions** - Code quality rules override all other considerations
+
+#### **Code Quality Enforcement:**
+1. **🚨 MANDATORY: Reference Excel file before ANY code generation** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Validate generated code against quality rules** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Fix any quality violations before proceeding** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: Ensure Cloud pipeline compatibility** - **NO EXCEPTIONS**
+
 ### **🚨 MANDATORY: RUNTIME PREVENTION ACTIVATION - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: Prevention measures are activated at runtime through:**
@@ -47,6 +64,7 @@
 2. **🚨 MANDATORY: Response generation triggers compliance checks** - Automatic
 3. **🚨 MANDATORY: Process execution triggers monitoring** - Automatic
 4. **🚨 MANDATORY: Violation detection triggers emergency protocol** - Automatic
+5. **🚨 MANDATORY: Code generation triggers quality validation** - Automatic
 
 #### **Runtime Enforcement:**
 1. **🚨 MANDATORY: No response without compliance check** - Enforced

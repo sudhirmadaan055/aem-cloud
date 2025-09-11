@@ -10,9 +10,10 @@
 
 1. **🚨 MANDATORY: Read ALL .cursorrules files in workspace** - **NO EXCEPTIONS**
 2. **🚨 MANDATORY: Read ALL referenced rule files** - **NO EXCEPTIONS**
-3. **🚨 MANDATORY: Create dependency map** - **NO EXCEPTIONS**
-4. **🚨 MANDATORY: Validate compliance** - **NO EXCEPTIONS**
-5. **🚨 MANDATORY: Execute only after full compliance** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Read CodeQuality Excel file** - **`rules/rules/CodeQuality-rules-latest-CS-2024-12-0.xlsx`**
+4. **🚨 MANDATORY: Create dependency map** - **NO EXCEPTIONS**
+5. **🚨 MANDATORY: Validate compliance** - **NO EXCEPTIONS**
+6. **🚨 MANDATORY: Execute only after full compliance** - **NO EXCEPTIONS**
 
 ### **🚨 MANDATORY: RULE FILE DISCOVERY PROCESS - NO EXCEPTIONS**
 

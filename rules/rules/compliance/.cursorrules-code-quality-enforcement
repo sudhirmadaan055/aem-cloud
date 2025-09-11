@@ -1,0 +1,149 @@
+# AEM Cloud Code Quality Enforcement Rules
+
+## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
+
+**⚠️ CRITICAL: ALWAYS read this rule file first before generating ANY code:**
+1. **🚨 MANDATORY: ALWAYS read the rule file first** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Follow code quality rules exactly** - **NO MODIFICATIONS**
+3. **🚨 MANDATORY: Reference Excel file for standards** - **NO SKIPPING**
+4. **🚨 MANDATORY: Ensure Cloud pipeline compliance** - **NO IGNORING**
+
+## 🚨 ANTI-MISBEHAVIOR RULES
+**⚠️ CRITICAL: NEVER do these things:**
+1. **NEVER generate code without checking quality rules** - Always reference Excel file first
+2. **NEVER ignore quality violations** - Fix all issues before proceeding
+3. **NEVER assume code quality** - Validate against standards every time
+4. **NEVER skip Cloud pipeline validation** - Ensure compatibility
+5. **NEVER compromise on quality for speed** - Quality is non-negotiable
+
+## **CRITICAL: AEM Cloud Code Quality Rules Reference**
+
+### **Authoritative Source**
+- **`rules/rules/CodeQuality-rules-latest-CS-2024-12-0.xlsx`** - **ONLY SOURCE OF TRUTH**
+- **AEM Cloud Pipeline Compliance** - Non-compliance causes pipeline failures
+- **Mandatory Standards** - All generated code MUST follow these rules
+- **No Exceptions** - Quality rules override all other considerations
+
+### **Code Quality Enforcement Process**
+
+#### **Pre-Generation Validation**
+1. **🚨 MANDATORY: Read Excel file before code generation** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Understand quality requirements** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Plan code structure per quality rules** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: Validate against Cloud pipeline requirements** - **NO EXCEPTIONS**
+
+#### **During Generation Validation**
+1. **🚨 MANDATORY: Follow quality patterns from Excel** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Implement proper error handling** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Use correct AEM patterns** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: Ensure security compliance** - **NO EXCEPTIONS**
+
+#### **Post-Generation Validation**
+1. **🚨 MANDATORY: Validate generated code against Excel rules** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Check for quality violations** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Fix any issues found** - **NO EXCEPTIONS**
+4. **🚨 MANDATORY: Ensure Cloud pipeline compatibility** - **NO EXCEPTIONS**
+
+### **Code Quality Categories**
+
+#### **Code Structure Quality**
+- **Proper class organization** - Follow AEM patterns
+- **Correct package structure** - Use proper namespace conventions
+- **Appropriate method length** - Keep methods focused and readable
+- **Proper variable naming** - Use descriptive, consistent names
+
+#### **AEM-Specific Quality**
+- **Sling Model compliance** - Follow AEM Sling Model patterns
+- **HTL template quality** - Use proper HTL syntax and context
+- **OSGi service patterns** - Implement services correctly
+- **Component structure** - Follow AEM component conventions
+
+#### **Security Quality**
+- **Input validation** - Sanitize all user inputs
+- **Output encoding** - Use proper context options
+- **Access control** - Implement appropriate permissions
+- **XSS prevention** - Use safe context options
+
+#### **Performance Quality**
+- **Efficient queries** - Optimize JCR queries
+- **Proper caching** - Use appropriate caching strategies
+- **Resource management** - Handle resources efficiently
+- **Memory optimization** - Avoid memory leaks
+
+### **Cloud Pipeline Compliance**
+
+#### **Build Requirements**
+- **Maven compliance** - Follow Maven best practices
+- **Dependency management** - Use correct dependency versions
+- **Plugin configuration** - Configure plugins properly
+- **Module structure** - Follow AEM project structure
+
+#### **Deployment Requirements**
+- **Package structure** - Use correct package organization
+- **Content structure** - Follow AEM content patterns
+- **Configuration management** - Use proper OSGi configurations
+- **Asset management** - Handle assets correctly
+
+#### **Testing Requirements**
+- **Unit test coverage** - Ensure adequate test coverage
+- **Integration testing** - Test AEM integration points
+- **Performance testing** - Validate performance requirements
+- **Security testing** - Verify security measures
+
+### **Quality Validation Checklist**
+
+#### **Before Code Generation**
+- [ ] **Read Excel quality rules file** - Understand requirements
+- [ ] **Identify quality patterns** - Note relevant standards
+- [ ] **Plan code structure** - Design per quality rules
+- [ ] **Check Cloud pipeline requirements** - Ensure compatibility
+
+#### **During Code Generation**
+- [ ] **Follow quality patterns** - Implement per Excel standards
+- [ ] **Use proper AEM patterns** - Follow established conventions
+- [ ] **Implement error handling** - Handle edge cases properly
+- [ ] **Ensure security compliance** - Use safe practices
+
+#### **After Code Generation**
+- [ ] **Validate against Excel rules** - Check compliance
+- [ ] **Review code structure** - Ensure proper organization
+- [ ] **Check security measures** - Verify safe practices
+- [ ] **Test Cloud pipeline compatibility** - Ensure deployment success
+
+### **Common Quality Violations**
+
+#### **Code Structure Violations**
+- **Long methods** - Break down into smaller, focused methods
+- **Poor naming** - Use descriptive, consistent variable names
+- **Missing documentation** - Add proper JavaDoc comments
+- **Inconsistent formatting** - Follow code style guidelines
+
+#### **AEM Pattern Violations**
+- **Incorrect Sling Model usage** - Follow proper injection patterns
+- **Invalid HTL syntax** - Use correct HTL expressions
+- **Poor component structure** - Follow AEM component patterns
+- **Incorrect OSGi service implementation** - Use proper service patterns
+
+#### **Security Violations**
+- **Missing input validation** - Sanitize all user inputs
+- **Unsafe context usage** - Use appropriate context options
+- **Missing access control** - Implement proper permissions
+- **XSS vulnerabilities** - Use safe output encoding
+
+### **Quality Enforcement Actions**
+
+#### **Immediate Actions**
+1. **Stop code generation** - If quality rules not followed
+2. **Reference Excel file** - Check specific requirements
+3. **Fix violations** - Address all quality issues
+4. **Re-validate** - Ensure compliance before proceeding
+
+#### **Prevention Measures**
+1. **Always reference Excel first** - Before any code generation
+2. **Follow established patterns** - Use proven AEM patterns
+3. **Validate continuously** - Check quality during generation
+4. **Test thoroughly** - Ensure Cloud pipeline compatibility
+
+---
+
+**These code quality enforcement rules ensure AEM Cloud pipeline success and maintainable code.**
