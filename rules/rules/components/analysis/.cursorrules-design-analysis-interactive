@@ -2,16 +2,35 @@
 
 ## 🚨 MANDATORY: Interactive Pattern Analysis
 
-### **🚨 MANDATORY: STEP 2A: Interactive UI Pattern Detection - CRITICAL FOR ACCURACY**
+### **🚨 MANDATORY: STEP 2A: Layout Structure Analysis - CRITICAL FOR ACCURACY**
+1. **🚨 MANDATORY: COLUMN LAYOUT DETECTION** - Identify two-column, three-column, or multi-column layouts
+2. **🚨 MANDATORY: CONTENT PLACEMENT** - Determine which content goes in which column (image + text vs form fields)
+3. **🚨 MANDATORY: FORM STRUCTURE** - Identify form fields, input types, and field organization
+4. **🚨 MANDATORY: VISUAL ELEMENT PLACEMENT** - Determine where decorative images, icons, graphics are positioned
+5. **🚨 MANDATORY: CONTENT HIERARCHY** - Identify primary content vs secondary content placement
+6. **🚨 MANDATORY: RESPONSIVE CONSIDERATIONS** - Consider how layout changes on different screen sizes
+
+### **🚨 MANDATORY: STEP 2B: Visual Element Detection - CRITICAL FOR ACCURACY**
+1. **🚨 MANDATORY: DECORATIVE ILLUSTRATIONS** - Scan for decorative images, icons, graphics that should be configurable
+2. **🚨 MANDATORY: BACKGROUND IMAGES** - Identify background images, patterns, textures that need dialog fields
+3. **🚨 MANDATORY: ICON ELEMENTS** - Look for icons, symbols, graphics that should be configurable
+4. **🚨 MANDATORY: VISUAL CONTENT** - Check for any visual elements that aren't text but should be editable
+5. **🚨 MANDATORY: ASSET REFERENCES** - Identify images, SVGs, graphics that need pathfield dialogs
+6. **🚨 MANDATORY: VISUAL HIERARCHY** - Check for decorative elements that enhance the design
+7. **🚨 MANDATORY: DOUBLE-CHECK VISUAL ELEMENTS** - Re-examine for missed decorative/illustrative content
+
+### **🚨 MANDATORY: STEP 2B: Interactive UI Pattern Detection - CRITICAL FOR ACCURACY**
 1. **🚨 MANDATORY: LISTING DETECTION FIRST** - Scan for search boxes, filters, pagination, sorting (PRIMARY SCAN)
 2. **🚨 MANDATORY: CAROUSEL DETECTION** - Scan for multiple slides, navigation indicators, carousel controls
-3. **🚨 MANDATORY: Scan for navigation elements** - Look for labels, buttons, links, arrows, controls
-4. **🚨 MANDATORY: Identify content switching mechanisms** - How content changes based on user interaction
-5. **🚨 MANDATORY: Detect interactive elements** - Buttons, links, form controls, navigation elements
-6. **🚨 MANDATORY: Map user interaction flow** - How users navigate between different content states
-7. **🚨 MANDATORY: Identify state management** - Active/inactive states, content switching, dynamic behavior
-8. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
-9. **🚨 MANDATORY: Document interaction behavior** - How the component responds to user actions
+3. **🚨 MANDATORY: THOROUGH FIGMA DATA ANALYSIS** - Examine ALL child nodes, frames, and groups for navigation elements
+4. **🚨 MANDATORY: Look for pagination indicators** - Scan for dots, rectangles, circles that could be slide indicators
+5. **🚨 MANDATORY: Identify content switching mechanisms** - How content changes based on user interaction
+6. **🚨 MANDATORY: Detect interactive elements** - Buttons, links, form controls, navigation elements
+7. **🚨 MANDATORY: Map user interaction flow** - How users navigate between different content states
+8. **🚨 MANDATORY: Identify state management** - Active/inactive states, content switching, dynamic behavior
+9. **🚨 MANDATORY: Classify interaction pattern** - Tab, accordion, carousel, modal, filter, listing, etc.
+10. **🚨 MANDATORY: Document interaction behavior** - How the component responds to user actions
+11. **🚨 MANDATORY: DOUBLE-CHECK ANALYSIS** - Re-examine Figma data structure for missed navigation elements
 
 ### **🚨 MANDATORY: COMPONENT TYPE CLASSIFICATION RULES - CRITICAL FOR ACCURACY**
 **⚠️ CRITICAL: ALWAYS distinguish between carousel and listing components:**
@@ -28,11 +47,13 @@
 #### **🚨 MANDATORY: CAROUSEL COMPONENT IDENTIFICATION**
 **Carousel components have:**
 - **Navigation arrows** (previous/next buttons, left/right arrows)
-- **Navigation indicators** (dots, thumbnails, slide indicators)
+- **Navigation indicators** (dots, thumbnails, slide indicators, rectangles, circles)
 - **Slide-based content** (multiple slides/panels with content)
 - **Auto-play functionality** (automatic slide transitions)
 - **Touch/swipe support** (mobile gesture support)
 - **Static content** (pre-configured slides, no dynamic queries)
+- **Pagination dots** (small rectangles, circles, or shapes arranged in rows/groups)
+- **Multiple content blocks** (similar content structures repeated with different data)
 
 ### **🚨 MANDATORY: STEP 2B: INTERACTIVE COMPONENT CLASSIFICATION RULES - CRITICAL FOR ACCURACY**
 **⚠️ CRITICAL: ALWAYS classify components based on INTERACTION PATTERNS, not just visual appearance:**
@@ -65,6 +86,13 @@
 4. **🚨 MANDATORY: Plan interaction behavior** - Hover effects, active states, transitions
 5. **🚨 MANDATORY: Map navigation controls** - Pagination, arrows, carousel controls
 
+### **🚨 MANDATORY: Visual Element Classification Rules**
+- **Decorative Illustrations** - Decorative images, icons, graphics that enhance design (hand gestures, abstract shapes, decorative elements)
+- **Background Images** - Background patterns, textures, images that set visual tone
+- **Icon Elements** - Functional icons, symbols, graphics that convey meaning
+- **Visual Content** - Any non-text visual elements that should be configurable
+- **Asset References** - Images, SVGs, graphics that need pathfield dialogs
+
 ### **🚨 MANDATORY: Component Type Classification Rules**
 - **Listing Component** - Dynamic content display with filtering, sorting, pagination (product search grids, article search results, content search) - **PRIMARY CLASSIFICATION**
 - **Carousel Component** - Multiple slides with navigation indicators, carousel controls - **PRIMARY CLASSIFICATION**
@@ -92,6 +120,17 @@
 - **Has auto-play functionality** → Carousel Component
 - **Has touch/swipe support** → Carousel Component
 - **Uses static content** → Carousel Component
+- **Has pagination dots/indicators** → Carousel Component
+- **Has multiple similar content blocks** → Carousel Component
+- **Has grouped navigation elements** → Carousel Component
+
+#### **🚨 MANDATORY: VISUAL ELEMENT DETECTION CRITERIA**
+- **Has decorative illustrations** → Add decorativeIllustration dialog field
+- **Has background images** → Add backgroundImage dialog field
+- **Has icon elements** → Add icon dialog field
+- **Has visual graphics** → Add graphics dialog field
+- **Has asset references** → Add pathfield dialog for asset selection
+- **Has visual enhancements** → Add corresponding dialog fields for all visual elements
 
 ### **🚨 MANDATORY: Complexity Classification Rules**
 - **Simple** - Static content, basic styling, no JavaScript required

@@ -1,28 +1,49 @@
-// Related Articles Component Styles
+// Related Articles Component Styles - Figma Design Tokens
 .related-articles {
   background-color: #FFFBE3;
-  padding: 32px 44px;
-  min-height: 892px;
+  padding: 48px 120px;
+  min-height: 625px;
 
   &__container {
-    max-width: 680px;
+    max-width: 1920px;
     margin: 0 auto;
   }
 
-  &__header {
-    margin-bottom: 16px;
+  &__layout {
+    display: flex;
+    gap: 85px;
+    align-items: flex-start;
+  }
 
-    &-content {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+  &__left-column {
+    width: 285px;
+    flex-shrink: 0;
+  }
+
+  &__right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+  }
+
+  &__section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__illustration {
-    width: 69px;
-    height: 121px;
-    margin-bottom: 16px;
+    width: 91px;
+    height: 160px;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     svg {
       width: 100%;
@@ -39,7 +60,7 @@
   &__title {
     font-family: 'Malik', serif;
     font-weight: 800;
-    font-size: 24px;
+    font-size: 32px;
     line-height: 1.25em;
     text-transform: capitalize;
     color: #013B1C;
@@ -93,34 +114,30 @@
   }
 
   &__carousel-container {
-    margin: 16px 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
   }
 
   &__carousel {
     display: flex;
-    gap: 24px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 16px 0;
-
-    // Hide scrollbar
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    gap: 32px;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
   &__card {
-    flex: 0 0 328px;
+    width: 396px;
+    height: 529px;
     background-color: #FFFEFC;
     border: 2px solid #F5EAD5;
-    border-radius: 20px;
-    padding: 16px;
+    border-radius: 24px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    gap: 24px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
@@ -131,7 +148,7 @@
 
   &__card-image {
     width: 100%;
-    height: 250.92px;
+    height: 295px;
     border-radius: 16px;
     overflow: hidden;
 
@@ -141,18 +158,34 @@
       object-fit: cover;
       border-radius: 16px;
     }
+
+    &-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: #F5F5F5;
+      border-radius: 16px;
+      color: #666;
+      font-size: 14px;
+    }
   }
 
   &__card-content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: flex-end;
+    align-self: stretch;
+    gap: 32px;
     flex-grow: 1;
   }
 
   &__tags {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    align-self: stretch;
     gap: 12px;
   }
 
@@ -162,30 +195,30 @@
     justify-content: center;
     gap: 8px;
     padding: 8px;
-    background-color: #D6F1CC;
+    background-color: #FCECF7;
     border-radius: 8px;
     font-family: 'Averta Std PE', sans-serif;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.25em;
     letter-spacing: 4%;
     text-transform: uppercase;
-    color: #0F3700;
+    color: #661427;
 
     &:nth-child(2) {
-      background-color: #CBEAF7;
-      color: #337CC4;
+      background-color: #D6F1CC;
+      color: #004122;
     }
   }
 
   &__card-title {
     font-family: 'Malik', serif;
     font-weight: 800;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.25em;
     color: #013B1C;
     margin: 0;
-    flex-grow: 1;
+    align-self: stretch;
   }
 
   &__card-cta {
@@ -223,7 +256,10 @@
     justify-content: center;
     align-items: center;
     gap: 12px;
-    margin-top: 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
   &__nav-button {
@@ -291,12 +327,28 @@
   }
 
   // Responsive Design
-  @media (max-width: 768px) {
-    padding: 16px 20px;
-
-    &__container {
-      max-width: 100%;
+  @media (max-width: 1024px) {
+    &__layout {
+      flex-direction: column;
+      gap: 40px;
     }
+
+    &__left-column {
+      width: 100%;
+    }
+
+    &__right-column {
+      position: static;
+    }
+
+    &__navigation {
+      position: static;
+      margin-top: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px 20px;
 
     &__carousel {
       gap: 16px;
@@ -307,7 +359,7 @@
     }
 
     &__title {
-      font-size: 20px;
+      font-size: 24px;
     }
 
     &__description {
@@ -316,7 +368,7 @@
   }
 
   @media (max-width: 480px) {
-    padding: 12px 16px;
+    padding: 16px;
 
     &__card {
       flex: 0 0 240px;
@@ -327,7 +379,7 @@
     }
 
     &__title {
-      font-size: 18px;
+      font-size: 20px;
     }
 
     &__button {

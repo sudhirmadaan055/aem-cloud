@@ -10,6 +10,9 @@ import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -32,6 +35,8 @@ import java.util.List;
 public class RelatedArticlesModel implements ComponentExporter {
 
     protected static final String RESOURCE_TYPE = "mysite/components/relatedarticles";
+    
+    private static final Logger logger = LoggerFactory.getLogger(RelatedArticlesModel.class);
 
     @Self
     private SlingHttpServletRequest request;
@@ -52,7 +57,14 @@ public class RelatedArticlesModel implements ComponentExporter {
     private String exploreMoreButtonLink;
 
     @ValueMapValue
-    private List<Resource> articles;
+    @Default(values = "/content/dam/mysite/illustrations/finger-heart-gesture.svg")
+    private String decorativeIllustration;
+
+    @ValueMapValue
+    private String[] articlePaths;
+
+    @ChildResource
+    private List<Resource> articleItems;
 
     @PostConstruct
     protected void init() {
@@ -92,11 +104,86 @@ public class RelatedArticlesModel implements ComponentExporter {
     }
 
     /**
+     * Get the decorative illustration
+     * @return illustration path
+     */
+    public String getDecorativeIllustration() {
+        return decorativeIllustration;
+    }
+
+    /**
      * Get the list of articles
      * @return list of article resources
      */
     public List<Resource> getArticles() {
-        return articles != null ? articles : new ArrayList<>();
+        List<Resource> articles = new ArrayList<>();
+        if (articlePaths != null && request != null) {
+            for (String path : articlePaths) {
+                Resource articleResource = request.getResourceResolver().getResource(path);
+                if (articleResource != null) {
+                    articles.add(articleResource);
+                }
+            }
+        }
+        return articles;
+    }
+
+    /**
+     * Get articles data from authored multifield content
+     * @return list of article data maps
+     */
+    public List<ArticleData> getArticleData() {
+        List<ArticleData> articleDataList = new ArrayList<>();
+        
+        logger.debug("Article Items: {}", articleItems);
+        
+        if (articleItems != null) {
+            for (Resource articleItem : articleItems) {
+                if (articleItem != null) {
+                    String title = articleItem.getValueMap().get("articleTitle", "");
+                    String date = articleItem.getValueMap().get("articleDate", "");
+                    String category = articleItem.getValueMap().get("articleCategory", "");
+                    String image = articleItem.getValueMap().get("articleImage", "");
+                    String link = articleItem.getValueMap().get("articleLink", "");
+                    
+                    if (!title.isEmpty()) {
+                        // Log the image path for debugging
+                        logger.debug("Article Image Path: {}", image);
+                        logger.debug("Article Title: {}", title);
+                        
+                        // Use the full image path as provided in the dialog
+                        articleDataList.add(new ArticleData(image, title, date, category, link));
+                    }
+                }
+            }
+        }
+        
+        return articleDataList;
+    }
+
+    /**
+     * Article data class for Figma design
+     */
+    public static class ArticleData {
+        private final String imageRef;
+        private final String title;
+        private final String date;
+        private final String category;
+        private final String link;
+
+        public ArticleData(String imageRef, String title, String date, String category, String link) {
+            this.imageRef = imageRef;
+            this.title = title;
+            this.date = date;
+            this.category = category;
+            this.link = link;
+        }
+
+        public String getImageRef() { return imageRef; }
+        public String getTitle() { return title; }
+        public String getDate() { return date; }
+        public String getCategory() { return category; }
+        public String getLink() { return link; }
     }
 
     /**

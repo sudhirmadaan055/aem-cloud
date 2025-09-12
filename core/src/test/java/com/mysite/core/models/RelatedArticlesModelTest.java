@@ -55,9 +55,21 @@ class RelatedArticlesModelTest {
     }
 
     @Test
+    void testGetDecorativeIllustration() {
+        assertEquals("/content/dam/mysite/illustrations/finger-heart-gesture.svg", model.getDecorativeIllustration());
+    }
+
+    @Test
     void testGetArticles() {
         assertNotNull(model.getArticles());
         assertEquals(0, model.getArticles().size()); // No articles in simplified test data
+    }
+
+    @Test
+    void testGetArticleData() {
+        assertNotNull(model.getArticleData());
+        // With no authored content, should return empty list
+        assertEquals(0, model.getArticleData().size());
     }
 
     @Test
@@ -111,7 +123,7 @@ class RelatedArticlesModelTest {
         // Create test data with articles
         context.create().resource("/content/test-with-articles/jcr:content", 
             "sectionTitle", "Test Articles",
-            "articles", new String[]{"/content/article1", "/content/article2"});
+            "articlePaths", new String[]{"/content/article1", "/content/article2"});
         
         context.create().resource("/content/article1", 
             "articleTitle", "Test Article 1",

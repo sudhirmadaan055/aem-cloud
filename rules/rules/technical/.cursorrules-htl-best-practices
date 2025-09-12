@@ -48,6 +48,55 @@
         <!-- Navigation content -->
     </div>
 </div>
+
+<!-- CORRECT: Multifield data iteration -->
+<div data-sly-list.article="${model.articleData}">
+    <img src="${article.imageRef}" alt="${article.title}">
+    <h3>${article.title}</h3>
+</div>
+```
+
+### **Multifield Data Handling in HTL**
+
+#### **🚨 CRITICAL: Multifield Data Display Rules**
+1. **🚨 MANDATORY: Use Sling Model methods** - Call `model.getArticleData()` not direct property access
+2. **🚨 MANDATORY: Check for empty data** - Use `data-sly-test="${model.articleData}"` to check if data exists
+3. **🚨 MANDATORY: Iterate properly** - Use `data-sly-list.article="${model.articleData}"` for iteration
+4. **🚨 MANDATORY: Use actual image paths** - Use `${article.imageRef}` not constructed paths
+5. **🚨 MANDATORY: Test authored content** - Verify multifield data displays correctly
+
+#### **✅ CORRECT Multifield HTL Pattern**
+```html
+<!-- CORRECT: Check for data existence -->
+<div data-sly-test="${model.articleData}">
+    <div data-sly-list.article="${model.articleData}">
+        <!-- Use actual image path from dialog -->
+        <img src="${article.imageRef}" alt="${article.title}">
+        <h3>${article.title}</h3>
+        <span>${article.date}</span>
+        <span>${article.category}</span>
+        <a href="${article.link}">Read More</a>
+    </div>
+</div>
+
+<!-- CORRECT: Fallback for no data -->
+<div data-sly-test="${!model.articleData}">
+    <p>No articles configured. Please add articles using the component dialog.</p>
+</div>
+```
+
+#### **❌ WRONG Multifield HTL Pattern**
+```html
+<!-- WRONG: Using hardcoded data -->
+<div data-sly-list.article="${model.hardcodedData}">
+
+<!-- WRONG: Constructing image paths -->
+<img src="/content/dam/mysite/articles/article-${article.imageRef}.jpg">
+
+<!-- WRONG: Not checking for data existence -->
+<div data-sly-list.article="${model.articleData}">
+    <!-- This will break if no data -->
+</div>
 ```
 
 ### **Context Options for HTL Expressions**
