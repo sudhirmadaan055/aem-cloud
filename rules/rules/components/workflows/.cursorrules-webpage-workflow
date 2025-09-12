@@ -98,6 +98,15 @@
 5. **🚨 MANDATORY: Plan component variations** - Different states and configurations
 6. **🚨 MANDATORY: Map content relationships** - How components work together
 
+### **🚨 MANDATORY: STEP 6.5 - CHECK FOR EXISTING COMPONENTS - NO EXCEPTIONS**
+
+**⚠️ CRITICAL: BEFORE PRESENTING ANALYSIS, CHECK FOR EXISTING COMPONENTS:**
+
+1. **🚨 MANDATORY: Search existing AEM components** - Use `codebase_search` to find similar components
+2. **🚨 MANDATORY: Check component names** - Look for exact matches or similar naming patterns
+3. **🚨 MANDATORY: Compare functionality** - Match component types and interactive elements
+4. **🚨 MANDATORY: Identify existing vs new** - Categorize components as existing, modified, or new
+
 ### **🚨 MANDATORY: STEP 7 - USER INTERFACE PRESENTATION - NO EXCEPTIONS**
 
 **⚠️ CRITICAL: PRESENT ANALYSIS RESULTS IN CLEAN FORMAT:**
@@ -110,15 +119,6 @@ Web Page Analysis: [URL]
 Page Type: [Homepage/Product Page/Article/etc.]
 Component Count: X distinct components identified
 
-Existing Components (0)
-Modified Components (0)
-New Components (X):
-	1. [Actual Component Name 1]
-	2. [Actual Component Name 2]
-	3. [Actual Component Name 3]
-	...
-	X. [Actual Component Name X]
-
 **Component Analysis:**
 
 | # | Component Name | Type | Complexity | Interactive Elements |
@@ -128,6 +128,17 @@ New Components (X):
 | 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
 | ... | ... | ... | ... | ... |
 | X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+
+**Component Count:** X distinct components identified in the web page
+
+**Existing Components (X):**
+- [Component Name] - [Reason for match]
+
+**Modified Components (X):**
+- [Component Name] - [What needs modification]
+
+**New Components (X):**
+- [Component Name]
 
 **Summary by Type:**
 - **[Type] Components (X):** [Component Names]

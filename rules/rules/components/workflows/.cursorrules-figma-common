@@ -26,42 +26,111 @@
 
 **🚨 CRITICAL: THIS STEP IS MANDATORY FOR ALL FIGMA URLS - NO EXCEPTIONS**
 
-## 🚨 CRITICAL: STEP 1 - MANDATORY : COMPONENT IDENTIFICATION AND ANALYSIS.
-	1. **🚨 MANDATORY: For page designs** - Identify all distinct components across breakpoints (Desktop, Mobile, Tablet)
-	2. **🚨 MANDATORY: For single components** - Focus on the specific component instance only
-	3. **🚨 MANDATORY: Analyze component variants** - Check for different states and sizes
-	4. **🚨 MANDATORY: Map visual elements** - Identify text, images, buttons, containers
-	5. **🚨 MANDATORY: Determine component complexity** - Simple, Medium, or Complex
-	6. **🚨 MANDATORY: Identify reusable elements** - Find patterns that can be separate components
-	7. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
-	8. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
-	9. **🚨 MANDATORY: Extract content for default values** - Get all text content for dialog fields
-	10. **🚨 MANDATORY: Map design tokens** - Extract colors, fonts, spacing for styling
-	11. **🚨 MANDATORY: Identify responsive requirements** - Check for different breakpoints
+## 🚨 CRITICAL: STEP 1 - MANDATORY : COMPONENT IDENTIFICATION AND ANALYSIS (AI Reference Only)
 
-**🚨 MANDATORY: DISPLAY COMPONENT STATUS SUMMARY - REQUIRED FORMAT:**
+**⚠️ CRITICAL: ALWAYS PERFORM COMPONENT TYPE DETECTION FIRST:**
+
+1. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-interactive` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: THOROUGHLY analyze Figma data structure** - Examine ALL child nodes, frames, groups, and elements
+3. **🚨 MANDATORY: Look for pagination indicators** - Scan for dots, rectangles, circles that could be slide indicators
+4. **🚨 MANDATORY: Detect carousel elements** - Multiple slides, navigation arrows, slide indicators, pagination dots
+5. **🚨 MANDATORY: Detect listing elements** - Search boxes, filters, pagination, sorting controls
+6. **🚨 MANDATORY: Detect visual elements** - Decorative illustrations, background images, icons, graphics
+7. **🚨 MANDATORY: Look for multiple similar content blocks** - Repeated content structures with different data
+8. **🚨 MANDATORY: Classify component type using interactive analysis rules** - Follow exact classification criteria
+9. **🚨 MANDATORY: Determine complexity based on component type** - Carousel=Medium, Listing=High, Static=Simple
+10. **🚨 MANDATORY: Identify interactive elements** - Buttons, navigation controls, form elements
+11. **🚨 MANDATORY: Identify visual elements** - Decorative images, icons, graphics that need dialog fields
+12. **🚨 MANDATORY: DOUBLE-CHECK analysis** - Re-examine Figma data for missed navigation elements
+
+**🚨 MANDATORY: COMPONENT TYPE DETECTION RULES - CRITICAL FOR ACCURACY (AI Reference Only)**
+
+#### **🚨 MANDATORY: LAYOUT STRUCTURE ANALYSIS (AI Reference Only)**
+**Always analyze layout structure for:**
+- **Two-column layouts** - Left column for content, right column for interactive elements
+- **Multi-column layouts** - Complex grid structures with multiple content areas
+- **Carousel positioning** - Navigation controls positioned at bottom or sides
+- **Content hierarchy** - Primary content vs secondary content areas
+- **Visual element placement** - Decorative illustrations, background images, icons
+
+#### **🚨 MANDATORY: MULTIFIELD REQUIREMENTS DETECTION (AI Reference Only)**
+**Look for repeatable content patterns:**
+- **Multiple similar cards** - Article cards, product cards, testimonial cards
+- **Repeated content blocks** - Same structure with different data
+- **List-like structures** - Multiple items with similar properties
+- **Form-like structures** - Multiple input fields or data entry points
+
+#### **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION (AI Reference Only)**
+**Carousel components have:**
+- **Navigation arrows** (previous/next buttons, left/right arrows)
+- **Navigation indicators** (dots, thumbnails, slide indicators)
+- **Slide-based content** (multiple slides/panels with content)
+- **Auto-play functionality** (automatic slide transitions)
+- **Touch/swipe support** (mobile gesture support)
+- **Static content** (pre-configured slides, no dynamic queries)
+
+#### **🚨 MANDATORY: LISTING COMPONENT DETECTION (AI Reference Only)**
+**Listing components have:**
+- **Search functionality** (search input fields, search buttons)
+- **Filter controls** (dropdown filters, checkbox filters, tag filters)
+- **Sorting options** (sort dropdowns, sort buttons)
+- **Pagination controls** (page numbers, "Load More" buttons)
+- **Dynamic content loading** (AJAX requests, infinite scroll)
+- **Database/repository queries** (Query Builder, JCR queries)
+
+**🚨 MANDATORY: COMPONENT IDENTIFICATION AND ANALYSIS CONTINUATION:**
+
+8. **🚨 MANDATORY: For page designs** - Identify all distinct components across breakpoints (Desktop, Mobile, Tablet)
+9. **🚨 MANDATORY: For single components** - Focus on the specific component instance only
+10. **🚨 MANDATORY: Analyze component variants** - Check for different states and sizes
+11. **🚨 MANDATORY: Map visual elements** - Identify text, images, buttons, containers
+12. **🚨 MANDATORY: Identify decorative elements** - Scan for illustrations, icons, graphics that need dialog fields
+13. **🚨 MANDATORY: Identify reusable elements** - Find patterns that can be separate components
+14. **🚨 MANDATORY: Use actual Figma component names** - Extract exact component names, titles, and headings from Figma data
+15. **🚨 MANDATORY: Never create generic names** - Always use the actual text content from Figma for component identification
+16. **🚨 MANDATORY: Extract content for default values** - Get all text content for dialog fields
+17. **🚨 MANDATORY: Extract visual content for dialog fields** - Get all images, icons, graphics for pathfield dialogs
+18. **🚨 MANDATORY: Map design tokens** - Extract colors, fonts, spacing for styling
+19. **🚨 MANDATORY: Identify responsive requirements** - Check for different breakpoints
+
+**🚨 MANDATORY: CHECK FOR EXISTING COMPONENTS (AI Reference Only)**
+
+1. **🚨 MANDATORY: Search existing AEM components** - Use `codebase_search` to find similar components
+2. **🚨 MANDATORY: Check component names** - Look for exact matches or similar naming patterns
+3. **🚨 MANDATORY: Compare functionality** - Match component types and interactive elements
+4. **🚨 MANDATORY: Identify existing vs new** - Categorize components as existing, modified, or new
+
+**🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
 
 ```
-Component Count: X distinct components identified in the Figma file
+**Component Analysis:**
 
-Existing Components (0)
-Modified Components (0)
-New Components (X):
-	1. [Actual Component Name 1]
-	2. [Actual Component Name 2]
-	3. [Actual Component Name 3]
-	...
-	X. [Actual Component Name X]
-```
+| # | Component Name | Type | Complexity | Interactive Elements | Visual Elements |
+|---|----------------|------|------------|---------------------|-----------------|
+| 1 | [Component Name] | [Type] | [Complexity] | [Interactive Elements] | [Visual Elements] |
+
+**Component Count:** 1 distinct component identified in the Figma file
+
+**Existing Components (X):**
+- [Component Name] - [Reason for match]
+
+**Modified Components (X):**
+- [Component Name] - [What needs modification]
+
+**New Components (X):**
+- [Component Name]
 
 **Summary by Type:**
-- **[Type] Components (X):** [Component Names]
-- **[Type] Components (X):** [Component Names]
+- **[Type] Components (1):** [Component Name]
 
 **Summary by Complexity:**
-- **Simple (X):** [Component Names]
-- **Medium (X):** [Component Names]
-- **High (X):** [Component Names]
+- **[Complexity] (1):** [Component Name]
+
+**Visual Elements Detected:**
+- **Decorative Illustrations:** [Count] - [Description]
+- **Background Images:** [Count] - [Description]
+- **Icon Elements:** [Count] - [Description]
+- **Asset References:** [Count] - [Description]
 ```
 
 **⚠️ CRITICAL: GENERATE AEM COMPONENTS FROM FIGMA DATA:**

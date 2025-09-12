@@ -1,18 +1,82 @@
 **🚨 MANDATORY: ALWAYS read `rules/rules/components/workflows/.cursorrules-figma-common` FIRST** - **NO EXCEPTIONS**
 
+## 🚨 CRITICAL: STEP 1 - MANDATORY COMPONENT TYPE DETECTION (AI Reference Only)
+
+**⚠️ CRITICAL: BEFORE DISPLAYING ANALYSIS TABLE, ALWAYS PERFORM COMPONENT TYPE DETECTION:**
+
+1. **🚨 MANDATORY: Read `rules/rules/components/analysis/.cursorrules-design-analysis-interactive` FIRST** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Analyze Figma data for navigation controls** - Look for arrows, dots, pagination, search boxes
+3. **🚨 MANDATORY: Detect carousel elements** - Multiple slides, navigation arrows, slide indicators
+4. **🚨 MANDATORY: Detect listing elements** - Search boxes, filters, pagination, sorting controls
+5. **🚨 MANDATORY: Detect visual elements** - Decorative illustrations, background images, icons, graphics
+6. **🚨 MANDATORY: Classify component type using interactive analysis rules** - Follow exact classification criteria
+7. **🚨 MANDATORY: Determine complexity based on component type** - Carousel=Medium, Listing=High, Static=Simple
+8. **🚨 MANDATORY: Identify interactive elements** - Buttons, navigation controls, form elements
+9. **🚨 MANDATORY: Identify visual elements** - Decorative images, icons, graphics that need dialog fields
+
+**🚨 MANDATORY: COMPONENT TYPE DETECTION RULES - CRITICAL FOR ACCURACY**
+
+#### **🚨 MANDATORY: CAROUSEL COMPONENT DETECTION**
+**Carousel components have:**
+- **Navigation arrows** (previous/next buttons, left/right arrows)
+- **Navigation indicators** (dots, thumbnails, slide indicators)
+- **Slide-based content** (multiple slides/panels with content)
+- **Auto-play functionality** (automatic slide transitions)
+- **Touch/swipe support** (mobile gesture support)
+- **Static content** (pre-configured slides, no dynamic queries)
+
+#### **🚨 MANDATORY: LISTING COMPONENT DETECTION**
+**Listing components have:**
+- **Search functionality** (search input fields, search buttons)
+- **Filter controls** (dropdown filters, checkbox filters, tag filters)
+- **Sorting options** (sort dropdowns, sort buttons)
+- **Pagination controls** (page numbers, "Load More" buttons)
+- **Dynamic content loading** (AJAX requests, infinite scroll)
+- **Database/repository queries** (Query Builder, JCR queries)
+
+**🚨 MANDATORY: CHECK FOR EXISTING COMPONENTS (AI Reference Only)**
+
+1. **🚨 MANDATORY: Search existing AEM components** - Use `codebase_search` to find similar components
+2. **🚨 MANDATORY: Check component names** - Look for exact matches or similar naming patterns
+3. **🚨 MANDATORY: Compare functionality** - Match component types and interactive elements
+4. **🚨 MANDATORY: Identify existing vs new** - Categorize components as existing, modified, or new
+
 **🚨 MANDATORY: DISPLAY COMPONENT ANALYSIS TABLE - REQUIRED FORMAT:**
 
 ```
 **Component Analysis:**
 
-| # | Component Name | Type | Complexity | Interactive Elements |
-|---|----------------|------|------------|---------------------|
-| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] |
-| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] |
-| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] |
-| ... | ... | ... | ... | ... |
-| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] |
+| # | Component Name | Type | Complexity | Interactive Elements | Visual Elements |
+|---|----------------|------|------------|---------------------|-----------------|
+| 1 | [Component Name 1] | [Type] | [Complexity] | [Interactive Elements] | [Visual Elements] |
+| 2 | [Component Name 2] | [Type] | [Complexity] | [Interactive Elements] | [Visual Elements] |
+| 3 | [Component Name 3] | [Type] | [Complexity] | [Interactive Elements] | [Visual Elements] |
+| ... | ... | ... | ... | ... | ... |
+| X | [Component Name X] | [Type] | [Complexity] | [Interactive Elements] | [Visual Elements] |
 
+**Component Count:** X distinct components identified in the Figma file
+
+**Existing Components (X):**
+- [Component Name] - [Reason for match]
+
+**Modified Components (X):**
+- [Component Name] - [What needs modification]
+
+**New Components (X):**
+- [Component Name]
+
+**Summary by Type:**
+- **[Type] Components (X):** [Component Name 1], [Component Name 2]
+
+**Summary by Complexity:**
+- **[Complexity] (X):** [Component Name 1], [Component Name 2]
+
+**Visual Elements Detected:**
+- **Decorative Illustrations:** [Count] - [Description]
+- **Background Images:** [Count] - [Description]
+- **Icon Elements:** [Count] - [Description]
+- **Asset References:** [Count] - [Description]
+```
 
 **🚨 MANDATORY: PAGE DESIGN DETECTION RULES:**
 - **🚨 MANDATORY: Look for multiple breakpoints** - Desktop, Mobile, Tablet frames in same file
@@ -22,7 +86,6 @@
 - **🚨 MANDATORY: Separate by functionality** - Navigation, Content, Interactive, Layout components
 
 **🚨 CRITICAL: This format MUST be used for ALL Figma analysis presentations - NO EXCEPTIONS**
-**🚨 CRITICAL: ALWAYS show Existing (0), Modified (0), New (X) for consistency - NO EXCEPTIONS**
 
 **🚨 MANDATORY: ALWAYS SHOW OPTIONS AFTER ANALYSIS - NO EXCEPTIONS**
 **⚠️ CRITICAL: After showing the analysis format, ALWAYS immediately show these options:**

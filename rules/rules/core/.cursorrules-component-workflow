@@ -26,7 +26,11 @@
 - **Component Structure**: Follow `rules/rules/components/generation/.cursorrules-aem-component-structure` (file structure, dialogs, multifields)
 - **CSS Generation**: **🚨 MANDATORY: ALWAYS read `rules/rules/components/generation/.cursorrules-css-generation` FIRST** - **NO EXCEPTIONS** (design-accurate CSS generation with 90%+ visual accuracy)
 - **HTL Best Practices**: Follow `rules/rules/components/generation/.cursorrules-htl-best-practices` (index logic, layout distribution)
-- **Dialog Configuration**: Use `rules/rules/components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs)
+- **Dialog Configuration**: Use `rules/rules/components/generation/.cursorrules-aem-dialogs` (field types, validation, RTE, tabbed dialogs, multifield structure)
+- **OSGI Configuration**: **🚨 MANDATORY: Use OSGI configuration for external API endpoints and credentials** - **NEVER hardcode API settings**
+- **OSGI Configuration Best Practices**: Create @ObjectClassDefinition interfaces, use @Designate, create .cfg.json files, use password fields for sensitive data
+- **Form Field Mapping**: **🚨 MANDATORY: Verify HTL form field names match servlet parameter names exactly** - **NO MISMATCHES ALLOWED**
+- **Dialog Field Validation**: **🚨 MANDATORY: All dialog fields must be authorable** - **NO hardcoded values in dialog fields**
 - **Complexity Management**: Apply `rules/rules/components/frameworks/.cursorrules-aem-complexity` (Simple, Medium, High levels)
 - **Listing Components**: Reference `rules/rules/components/workflows/.cursorrules-aem-listing` (framework approach)
 - **Carousel Components**: Follow carousel-specific development workflow (multifield approach)
@@ -350,6 +354,8 @@ New Components (X):
    - **MANDATORY: Set default values for all text fields based on image content**
    - **MANDATORY: Extract visible text, titles, descriptions, and labels from design**
    - **MANDATORY: Use extracted content as initial values in dialog fields**
+   - **🚨 MANDATORY: Validate multifield structure** - Follow exact multifield rules from dialog generation rules
+   - **🚨 MANDATORY: Use composite multifield** - For 3+ fields per item, use composite structure with column container
 4. Read `components.json` and context files
 5. Generate complete AEM component code following:
    - `rules/rules/components/frameworks/.cursorrules-aem-components` for structure
@@ -385,6 +391,11 @@ New Components (X):
    - Validate that component can recreate the exact design
    - **MANDATORY: Verify extracted content is set as default values in dialog fields**
    - **MANDATORY: Ensure all visible text from image appears as default values**
+   - **🚨 MANDATORY: Multifield Structure Validation** - Verify multifield container has NO name attribute, inner fieldset/container has name attribute, child nodes follow nesting pattern
+   - **🚨 MANDATORY: Composite Multifield Validation** - For 3+ fields, verify composite="{Boolean}true" and column container structure
+   - **🚨 MANDATORY: Visual Elements Validation** - Every image/illustration in design must have corresponding dialog field
+   - **🚨 MANDATORY: Authored Content Testing** - Verify multifield data displays correctly in HTL template
+   - **🚨 MANDATORY: Sling Model Validation** - Use @ChildResource for composite multifields, proper logging with log4j
 10. Include HTL, Sling Model, dialog, editConfig
 11. Add ClientLibs if needed
 12. **MANDATORY: Code Quality Validation**
@@ -849,3 +860,35 @@ Missing Components (if any):
 - ✅ **Consistency** - Maintain uniform quality across all components
 - ✅ **Scalability** - Handle large design systems with multiple components
 - ✅ **Time Savings** - Reduce repetitive analysis and development tasks
+
+## **🚨 COMMON ISSUES AND SOLUTIONS**
+
+### **Multifield Data Not Displaying**
+- **Issue**: Authored multifield content not showing in HTL
+- **Solution**: Use `@ChildResource` in Sling Model, not `@ValueMapValue`
+- **Solution**: Verify HTL template uses `model.getArticleData()` method
+- **Solution**: Test authored content display after generation
+
+### **Image Path Issues**
+- **Issue**: Malformed image paths in HTL output
+- **Solution**: Use actual image paths from dialog, not constructed paths
+- **Solution**: Verify pathfield stores full DAM paths correctly
+- **Solution**: Test image display with real authored content
+
+### **Missing Dialog Fields**
+- **Issue**: Visual elements in design missing from dialog
+- **Solution**: Analyze design thoroughly for all images/illustrations
+- **Solution**: Create dialog fields for every visual element
+- **Solution**: Use appropriate field types (pathfield for images)
+
+### **Logging Issues**
+- **Issue**: Using System.out.println instead of proper logging
+- **Solution**: Use log4j `logger.debug()` for debugging
+- **Solution**: Add proper logger field to Sling Model
+- **Solution**: Use structured logging for troubleshooting
+
+### **Layout Structure Issues**
+- **Issue**: Component layout doesn't match Figma design
+- **Solution**: Analyze Figma design for proper column structure
+- **Solution**: Update HTL template to match design layout
+- **Solution**: Update SCSS to support proper layout structure

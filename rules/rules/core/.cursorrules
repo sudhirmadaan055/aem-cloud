@@ -10,21 +10,21 @@
 ### 1. **Archetype Project Creation** - Create new AEM project
 *Interactive AEM project setup using Maven archetype*
 
-### 2. **AEM Components Creation Workflow** - Develop A Page. 
-*Component identification through figma or an image, development, and styling*
+### 2. **AEM Components Creation Workflow** - Extract Multiple Components. 
+*Extract multiple components from page-level designs (Figma pages, images, or web pages)*
 
-### 2.1 **AEM Components Creation Workflow** - Develop A Single Component. 
-*Component identification through figma or an image, development, and styling*
+### 3. **AEM Components Creation Workflow** - Create Single Component. 
+*Create individual components from specific component designs (Figma components, images, or web elements)*
 
-### 3. **AEM Templates Creation Workflow** - Create AEM templates
+### 4. **AEM Templates Creation Workflow** - Create AEM templates
 *Template creation with policies and responsive design*
 
-### 4. **AEM Page Creation Workflow** - Create AEM pages
+### 5. **AEM Page Creation Workflow** - Create AEM pages
 *Complete page creation from Figma designs with components and content*
 
 ---
 
-**Which option? (1, 2, 3, or 4)**
+**Which option? (1, 2, 3, 4, or 5)**
 
 ## 🚨 MANDATORY: Rule File Behavior - NO EXCEPTIONS (AI Reference Only)
 
@@ -57,7 +57,7 @@
 6. **🚨 MANDATORY: NO MODIFICATIONS TO RULE CONTENT** - **Present options exactly as written in rule files**
 
 ## 🚨 CRITICAL: RULE FILE ENFORCEMENT
-**⚠️ MANDATORY: When user selects an option (1, 2, or 3):**
+**⚠️ MANDATORY: When user selects an option (1, 2, 3, 4, or 5):**
 1. **🚨 IMMEDIATELY read the corresponding rule file** - **NO EXCEPTIONS**
 2. **🚨 FOLLOW the exact process in that rule file** - **NO DEVIATIONS**
 3. **🚨 NEVER ask for additional information not specified in rule file** - **NO ASSUMPTIONS**
@@ -86,9 +86,6 @@
   ### 2. **Figma URL** - Create components from Figma URLs
   *Direct Figma file analysis and AEM component generation*
 
-  ### 2.1 **Figma URL** - Create components from Figma URLs
-  *Direct Figma file analysis and AEM component generation*
-  
   ### 3. **Web Page URL** - Create components from live websites
   *Analyze existing web pages and extract reusable AEM components*
   
@@ -96,17 +93,21 @@
   ```
 - **If user selects 1:** **IMMEDIATELY read `rules/rules/core/.cursorrules-component-workflow`**
 - **If user selects 2:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-figma-page-workflow`**
-- **If user selects 2.1:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-figma-component-workflow`**
 - **If user selects 3:** **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-webpage-workflow`**
 - **FOLLOW the exact process of selected workflow**
 - **NEVER ask for component details directly**
 
 **When user selects option 3:**
+- **IMMEDIATELY read `rules/rules/components/workflows/.cursorrules-figma-component-workflow`**
+- **FOLLOW its exact process**
+- **NEVER ask for component details directly**
+
+**When user selects option 4:**
 - **IMMEDIATELY read `rules/rules/core/.cursorrules-template-workflow`**
 - **FOLLOW its exact process**
 - **NEVER ask for template details directly**
 
-**When user selects option 4:**
+**When user selects option 5:**
 - **IMMEDIATELY read `rules/rules/core/.cursorrules-page-creation-workflow`**
 - **FOLLOW its exact process**
 - **NEVER ask for page details directly**

@@ -31,8 +31,67 @@
 - **@ValueMapValue**: Use for component properties instead of manual property access
 - **@OSGiService**: Use for service injection with proper null checks
 - **@SlingObject**: Use for Resource, ResourceResolver, Request, etc.
+- **@ChildResource**: Use for composite multifield data (NOT @ValueMapValue for multifields)
 - **🚨 NEVER use Jackson annotations**: Do NOT use `@JsonProperty` or any `com.fasterxml.jackson.annotation.*` imports
 - **🚨 Follow project patterns**: Use simple getter methods without Jackson decorators, following existing model patterns
+- **🚨 MANDATORY: Use proper logging**: Use log4j `logger.info()` for form submissions and `logger.debug()` for debugging
+
+#### **Servlet Configuration for Form Handling**
+- **🚨 CRITICAL: Use correct servlet paths** - Use `sling.servlet.paths=/bin/endpoint-name` for form submissions
+- **🚨 CRITICAL: Match form field names** - Servlet parameter names must exactly match HTL form field names
+- **🚨 CRITICAL: Validate all form fields** - Check all required fields before processing
+- **🚨 CRITICAL: Use proper error handling** - Return appropriate HTTP status codes and error messages
+- **🚨 CRITICAL: Log form submissions** - Use `logger.info()` to log form data for debugging
+- **🚨 CRITICAL: Test form field mapping** - Verify HTL form names match servlet parameter names exactly
+
+```java
+// CORRECT: Servlet configuration for form handling
+@Component(
+    service = Servlet.class,
+    property = {
+        "sling.servlet.paths=/bin/form-submit-endpoint",
+        "sling.servlet.methods=POST"
+    },
+    configurationPolicy = ConfigurationPolicy.REQUIRE
+)
+
+// CORRECT: Form field extraction
+String fieldName = request.getParameter("fieldName"); // Must match HTL form field name
+```
+
+#### **Multifield Data Handling**
+- **🚨 CRITICAL: Use @ChildResource for composite multifields** - NOT @ValueMapValue
+- **🚨 CRITICAL: Read child resources properly** - Use `articleItem.getValueMap().get("fieldName", "")`
+- **🚨 CRITICAL: Always test authored content** - Verify multifield data displays in HTL
+- **🚨 CRITICAL: Handle empty multifields gracefully** - Check for null and empty lists
+- **🚨 CRITICAL: Use proper logging for debugging** - Log multifield data for troubleshooting
+- **🚨 MANDATORY: Use logger.info() for form submissions** - Use `logger.info()` for form data logging, not `logger.debug()`
+
+```java
+// CORRECT: Composite multifield handling
+@ChildResource
+private List<Resource> articleItems;
+
+public List<ArticleData> getArticleData() {
+    List<ArticleData> articleDataList = new ArrayList<>();
+    
+    if (articleItems != null) {
+        for (Resource articleItem : articleItems) {
+            if (articleItem != null) {
+                String title = articleItem.getValueMap().get("articleTitle", "");
+                String image = articleItem.getValueMap().get("articleImage", "");
+                // ... process other fields
+                
+                if (!title.isEmpty()) {
+                    articleDataList.add(new ArticleData(image, title, date, category, link));
+                }
+            }
+        }
+    }
+    
+    return articleDataList;
+}
+```
 
 #### **Model Structure**
 ```java
@@ -157,23 +216,70 @@ SearchResult result = query.getResult();
 - **Handle service dependencies** with @Reference
 - **Use configuration management** with @ObjectClassDefinition
 
-#### **Service Structure**
+#### **🚨 MANDATORY: OSGI Configuration Best Practices - NO EXCEPTIONS**
+- **🚨 CRITICAL: External API Configuration** - **NEVER hardcode API endpoints or credentials**
+- **🚨 CRITICAL: Use @ObjectClassDefinition** - Create configuration interfaces for all external services
+- **🚨 CRITICAL: Use @Designate** - Link servlets/services to their configuration
+- **🚨 CRITICAL: Password Fields** - Use `type = AttributeDefinition.Type.PASSWORD` for sensitive data
+- **🚨 CRITICAL: Configuration Files** - Create `.cfg.json` files in `ui.config` module
+- **🚨 CRITICAL: Fallback Handling** - Provide fallback behavior when external services are disabled
+
+#### **Service Structure with OSGI Configuration**
 ```java
 @Component(service = MyService.class, immediate = true)
+@Designate(ocd = MyServiceConfig.class)
 public class MyServiceImpl implements MyService {
     
     @Reference
     private SomeDependency dependency;
     
+    private String apiEndpoint;
+    private String apiKey;
+    private boolean enableIntegration;
+    
     @Activate
-    protected void activate(Config config) {
-        // Service activation
+    protected void activate(MyServiceConfig config) {
+        this.apiEndpoint = config.apiEndpoint();
+        this.apiKey = config.apiKey();
+        this.enableIntegration = config.enableIntegration();
+        
+        logger.info("MyService activated with endpoint: {}, Integration enabled: {}", 
+                   apiEndpoint, enableIntegration);
     }
     
     @Deactivate
     protected void deactivate() {
         // Service deactivation
     }
+}
+
+@ObjectClassDefinition(
+    name = "My Service Configuration",
+    description = "Configuration for My Service"
+)
+public @interface MyServiceConfig {
+    
+    @AttributeDefinition(
+        name = "API Endpoint",
+        description = "External API endpoint URL",
+        required = true
+    )
+    String apiEndpoint() default "https://api.example.com";
+    
+    @AttributeDefinition(
+        name = "API Key",
+        description = "API key for authentication",
+        required = true,
+        type = AttributeDefinition.Type.PASSWORD
+    )
+    String apiKey();
+    
+    @AttributeDefinition(
+        name = "Enable Integration",
+        description = "Enable/disable external API integration",
+        required = false
+    )
+    boolean enableIntegration() default true;
 }
 ```
 

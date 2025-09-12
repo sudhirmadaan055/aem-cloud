@@ -48,6 +48,8 @@
 #### **Required Field Properties**
 - **Always provide**:
   - Proper field labels (clear and descriptive)
+  - **NO hardcoded values** in dialog fields (all fields must be authorable)
+  - **Required field validation** using `required="{Boolean}true"` for critical fields
   - Helpful descriptions for complex fields
   - Default values where applicable
   - Proper field names (camelCase)
@@ -87,12 +89,101 @@
 - **Use proper content policies** for RTE configuration
 - **Validate RTE content** on the server side
 
-### **Multifield and Complex Fields**
+### **🚨 MANDATORY: Multifield Structure Rules - NO EXCEPTIONS**
 
-#### **Multifield Best Practices**
+#### **🚨 CRITICAL: Multifield Container Rules - ZERO TOLERANCE FOR VIOLATIONS**
+1. **🚨 MANDATORY: Multifield container MUST NOT have name attribute** - **NO EXCEPTIONS**
+2. **🚨 MANDATORY: Inner fieldset MUST have name attribute** - **NO EXCEPTIONS**
+3. **🚨 MANDATORY: Child nodes MUST follow same nesting pattern** - **NO EXCEPTIONS**
+
+#### **🚨 MANDATORY: Correct Multifield Structure Template - NO EXCEPTIONS**
+
+##### **🚨 MANDATORY: Simple Multifield Structure (Basic)**
+```xml
+<!-- CORRECT: Multifield container has NO name attribute -->
+<[fieldName]
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+    fieldLabel="[Field Label]">
+    <!-- CORRECT: Inner fieldset HAS name attribute -->
+    <field
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+        fieldLabel="[Item Label]"
+        name="./[itemName]">
+        <items jcr:primaryType="nt:unstructured">
+            <!-- Individual fields with proper nesting -->
+            <[fieldName]
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                fieldLabel="[Field Label]"
+                name="./[fieldName]"/>
+        </items>
+    </field>
+</[fieldName]>
+```
+
+##### **🚨 MANDATORY: Composite Multifield Structure (Advanced)**
+```xml
+<!-- CORRECT: Composite multifield with proper nesting -->
+<[fieldName]
+    jcr:primaryType="nt:unstructured"
+    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+    composite="{Boolean}true"
+    fieldLabel="[Field Label]">
+    <field
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container"
+        name="./[fieldName]">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <!-- Individual fields properly nested within column -->
+                    <[fieldName]
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="[Field Label]"
+                        name="./[fieldName]"/>
+                </items>
+            </column>
+        </items>
+    </field>
+</[fieldName]>
+```
+
+#### **🚨 MANDATORY: Multifield Structure Selection Rules - NO EXCEPTIONS**
+1. **🚨 MANDATORY: Use Simple Multifield** - For basic repeatable content (single field per item)
+2. **🚨 MANDATORY: Use Composite Multifield** - For complex repeatable content (multiple fields per item)
+3. **🚨 MANDATORY: Composite for 3+ fields** - When multifield item has 3 or more fields
+4. **🚨 MANDATORY: Composite for complex data** - When multifield item has different field types
+5. **🚨 MANDATORY: Composite for forms** - When multifield represents a form or data entry
+
+#### **🚨 MANDATORY: Multifield Validation Checklist - NO EXCEPTIONS**
+1. **🚨 MANDATORY: Check multifield container** - Must NOT have name attribute
+2. **🚨 MANDATORY: Check inner fieldset/container** - Must HAVE name attribute
+3. **🚨 MANDATORY: Check child nodes** - Must follow same nesting pattern
+4. **🚨 MANDATORY: Check composite attribute** - Must be `{Boolean}true` for composite multifields
+5. **🚨 MANDATORY: Check column structure** - Composite multifields must have column container
+6. **🚨 MANDATORY: Double-check structure** - Re-examine before finalizing
+
+#### **🚨 MANDATORY: Multifield Best Practices**
 - **Store values in structured JSON** format
 - **Validate for required inputs** in multifield items
 - **Use proper field types** within multifield items
+- **🚨 CRITICAL: Use @ChildResource for composite multifields** - NOT @ValueMapValue
+- **🚨 CRITICAL: Always test multifield data display** - Verify authored content shows in HTL
+- **🚨 CRITICAL: Use proper logging** - Use log4j logger.debug() instead of System.out.println
+
+#### **🚨 MANDATORY: Dialog Field Validation Checklist**
+1. **🚨 MANDATORY: Check all visual elements** - Every image/illustration in design must have dialog field
+2. **🚨 MANDATORY: Verify field names match Sling Model** - Property names must be consistent
+3. **🚨 MANDATORY: Test authored content display** - Ensure HTL template reads from dialog data
+4. **🚨 MANDATORY: Use proper field types** - pathfield for images, textfield for text, etc.
+5. **🚨 MANDATORY: NO hardcoded values** - All dialog fields must be authorable, no hardcoded `value` attributes
+6. **🚨 MANDATORY: Dialog field visibility** - Ensure all fields are visible in dialog (use simple structure if complex fails)
+7. **🚨 MANDATORY: Form field mapping** - Verify HTL form field names match servlet parameter names exactly
 - **Implement proper add/remove** functionality
 - **Provide clear instructions** for multifield usage
 
@@ -148,13 +239,17 @@
         <[component]Sections
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-            fieldLabel="[Component] Sections"
-            name="./[component]Sections">
+            composite="{Boolean}true"
+            fieldLabel="[Component] Sections">
             <field
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                jcr:title="[Component] Section">
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                name="./[component]Sections">
                 <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
                     <!-- Section ID -->
                     <sectionId
                         jcr:primaryType="nt:unstructured"
@@ -177,8 +272,7 @@
                     <contentItems
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                        fieldLabel="Content Items"
-                        name="./contentItems">
+                        fieldLabel="Content Items">
                         <field
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
@@ -204,6 +298,8 @@
                             </items>
                         </field>
                     </contentItems>
+                        </items>
+                    </column>
                 </items>
             </field>
         </[component]Sections>
@@ -244,13 +340,17 @@
         <contentBlocks
             jcr:primaryType="nt:unstructured"
             sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-            fieldLabel="Content Blocks"
-            name="./contentBlocks">
+            composite="{Boolean}true"
+            fieldLabel="Content Blocks">
             <field
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                jcr:title="Content Block">
+                sling:resourceType="granite/ui/components/coral/foundation/container"
+                name="./contentBlocks">
                 <items jcr:primaryType="nt:unstructured">
+                    <column
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
                     <blockType
                         jcr:primaryType="nt:unstructured"
                         sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -294,6 +394,8 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"
                         fieldLabel="Text Color"
                         name="./textColor"/>
+                        </items>
+                    </column>
                 </items>
             </field>
         </contentBlocks>
