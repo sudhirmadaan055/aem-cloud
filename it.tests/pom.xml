@@ -57,7 +57,7 @@
             <id>local</id>
             <properties>
                 <!-- Cloud author service (LB) -->
-                <it.author.url>http://localhost:4502</it.author.url>
+                <it.author.url>http://localhost:7502</it.author.url>
                 <it.author.user>admin</it.author.user>
                 <it.author.password>admin</it.author.password>
 

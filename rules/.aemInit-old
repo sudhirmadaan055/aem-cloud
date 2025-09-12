@@ -171,8 +171,8 @@ mvn -B org.apache.maven.plugins:maven-archetype-plugin:3.3.1:generate \
 1. **Navigate to project**: `cd [project-name]`
 2. **Build project**: `mvn clean install`
 3. **Deploy to AEM**: `mvn clean install -PautoInstallSinglePackage`
-4. **Access Package Manager**: http://localhost:4502/crx/packmgr/index.jsp
-5. **Access Sites Console**: http://localhost:4502/sites.html/content
+4. **Access Package Manager**: http://localhost:7502/crx/packmgr/index.jsp
+5. **Access Sites Console**: http://localhost:7502/sites.html/content
 
 ### **Common Build Commands:**
 - **Full build**: `mvn clean install`

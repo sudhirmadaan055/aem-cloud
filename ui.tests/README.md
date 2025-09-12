@@ -43,7 +43,7 @@ The following environment variables (AEM UI test convention) can be passed
 
 | envvar               | default               |
 |----------------------|-----------------------|
-| AEM_AUTHOR_URL       | http://localhost:4502 |
+| AEM_AUTHOR_URL       | http://localhost:7502 |
 | AEM_AUTHOR_USERNAME  | `admin`               |
 | AEM_AUTHOR_PASSWORD  | `admin`               |
 | AEM_PUBLISH_URL      | http://localhost:4503 |

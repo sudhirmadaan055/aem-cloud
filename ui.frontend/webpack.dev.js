@@ -18,13 +18,13 @@ module.exports = env => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, SOURCE_ROOT + '/static/campaign/index.html')
+                template: path.resolve(__dirname, SOURCE_ROOT + '/static/index.html')
             })
         ],
         devServer: {
             proxy: [{
                 context: ['/content', '/etc.clientlibs'],
-                target: 'http://localhost:4502',
+                target: 'http://localhost:7502',
             }],
             client: {
                 overlay: {

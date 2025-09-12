@@ -1,74 +1,56 @@
 <!--/* CJCJ Campaign Form Component */-->
 <p data-sly-test.edit="${wcmmode.edit}" data-emptytext="Configure CJCJ Campaign Form Component" class="cq-placeholder"></p>
 
-<div class="cjcj-campaign-form" data-sly-use.model="com.mysite.core.models.CjcjCampaignFormModel">
-    <div class="cjcj-campaign-form__layout">
-        <!-- Left Column - Image, Title, Description -->
-        <div class="cjcj-campaign-form__left-column">
-            <div class="cjcj-campaign-form__image-container">
-                <img src="${model.decorativeImage}" 
-                     alt="Campaign Illustration" 
-                     class="cjcj-campaign-form__image"
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div class="cjcj-campaign-form__image-fallback" style="display:none;">
-                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
-                        <rect width="120" height="120" fill="#F0F0F0"/>
-                        <text x="60" y="60" text-anchor="middle" dy=".3em" fill="#999">Image</text>
-                    </svg>
+<div class="campaign" data-sly-use.model="com.mysite.core.models.CjcjCampaignFormModel">
+    <div class="campaign__container">
+        <div class="campaign__content">
+            <div class="campaign__header">
+                <div class="campaign__logo">
+                    <img src="${model.decorativeImage || '/aem-cloud/ui.frontend/dist/clientlib-site/images/form-logo.png'}" 
+                         alt="Logo" 
+                         class="campaign__logo-image"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="campaign__logo-fallback" style="display:none;">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                            <rect width="120" height="120" fill="#F0F0F0"/>
+                            <text x="60" y="60" text-anchor="middle" dy=".3em" fill="#999">Logo</text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="campaign__text">
+                    <h2 class="campaign__title" data-sly-test="${model.title}">${model.title}</h2>
+                    <p class="campaign__description" data-sly-test="${model.description}">${model.description}</p>
                 </div>
             </div>
-            
-            <h2 class="cjcj-campaign-form__title" data-sly-test="${model.title}">${model.title}</h2>
-            <p class="cjcj-campaign-form__description" data-sly-test="${model.description}">${model.description}</p>
-        </div>
-
-        <!-- Right Column - Form Only -->
-        <div class="cjcj-campaign-form__right-column">
-            <div class="cjcj-campaign-form__form-container">
-                
-                <form class="cjcj-campaign-form__form" 
+            <div class="campaign__form">
+                <form class="campaign__form-container" 
                       action="${model.formAction || '/bin/cjcj-campaign-form-submit'}" 
                       method="POST" 
                       enctype="multipart/form-data">
-                    
-                    <!-- Single Column Form Fields -->
-                    <div class="cjcj-campaign-form__field">
-                        <label for="yourName" class="cjcj-campaign-form__label">Your Name *</label>
+                    <div class="campaign__form-group">
                         <input type="text" 
-                               id="yourName" 
                                name="yourName" 
-                               class="cjcj-campaign-form__input" 
-                               placeholder="Your Name"
-                               required>
+                               placeholder="Your Name" 
+                               class="campaign__input" 
+                               required />
                     </div>
-                    
-                    <div class="cjcj-campaign-form__field">
-                        <label for="email" class="cjcj-campaign-form__label">Email *</label>
+                    <div class="campaign__form-group">
                         <input type="email" 
-                               id="email" 
                                name="email" 
-                               class="cjcj-campaign-form__input" 
-                               placeholder="Email"
-                               required>
+                               placeholder="Email" 
+                               class="campaign__input" 
+                               required />
                     </div>
-                    
-                    <div class="cjcj-campaign-form__field">
-                        <label for="phone" class="cjcj-campaign-form__label">Phone *</label>
+                    <div class="campaign__form-group">
                         <input type="tel" 
-                               id="phone" 
                                name="phone" 
-                               class="cjcj-campaign-form__input" 
-                               placeholder="Phone"
-                               required>
+                               placeholder="Phone" 
+                               class="campaign__input" 
+                               required />
                     </div>
-                    
-                    <div class="cjcj-campaign-form__field">
-                        <label for="companyField" class="cjcj-campaign-form__label">Company / Field of work *</label>
-                        <select id="companyField" 
-                                name="companyField" 
-                                class="cjcj-campaign-form__select" 
-                                required>
-                            <option value="">Company / Field of work</option>
+                    <div class="campaign__form-group">
+                        <select name="companyField" class="campaign__select" required>
+                            <option value="" disabled selected hidden>Company / Field of work</option>
                             <option value="technology">Technology</option>
                             <option value="healthcare">Healthcare</option>
                             <option value="finance">Finance</option>
@@ -77,24 +59,25 @@
                             <option value="other">Other</option>
                         </select>
                     </div>
-                    
-                    <div class="cjcj-campaign-form__field">
-                        <label for="message" class="cjcj-campaign-form__label">What are you looking for? *</label>
-                        <textarea id="message" 
-                                  name="message" 
-                                  class="cjcj-campaign-form__textarea" 
-                                  placeholder="What are you looking for?"
-                                  rows="4"
+                    <div class="campaign__form-group">
+                        <textarea name="message" 
+                                  placeholder="What are you looking for?" 
+                                  class="campaign__textarea" 
+                                  rows="4" 
                                   required></textarea>
                     </div>
-                    
-                    <div class="cjcj-campaign-form__submit">
-                        <button type="submit" class="cjcj-campaign-form__button">
-                            ${model.submitButtonText}
+                    <div class="campaign__form-group">
+                        <button type="submit" class="campaign__submit">
+                            ${model.submitButtonText || 'keep in touch'}
                         </button>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="campaign__background" data-sly-test="${model.backgroundImage}">
+        <img src="${model.backgroundImage}" 
+             alt="Background" 
+             class="campaign__background-image" />
     </div>
 </div>
