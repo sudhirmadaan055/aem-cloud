@@ -76,7 +76,7 @@ module.exports = {
         },
         css: {
           cwd: 'clientlib-site',
-          files: ['**/*.css'],
+          files: ['**/*.css', '**/*.ttf', '**/*.otf', '**/*.woff', '**/*.woff2', '**/*.eot'],
           flatten: false
         },
 
