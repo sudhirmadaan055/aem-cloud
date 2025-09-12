@@ -1,0 +1,173 @@
+//== Container System
+// Responsive container with max-width of 1920px
+
+@import 'variables';
+
+// Main Container Class
+.container {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Container Variations
+.container-fluid {
+  max-width: 100%;
+  margin: 0;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-narrow {
+  max-width: 1200px;
+  margin: $container-margin;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-wide {
+  max-width: 100%;
+  margin: 0;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Container with different padding options
+.container-no-padding {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-small-padding {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container-large-padding {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// Responsive Container
+.container-responsive {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 768px) {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  
+  @media (min-width: 1024px) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media (min-width: 1200px) {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+// Container with centered content
+.container-centered {
+  max-width: $container-max-width;
+  margin: $container-margin;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+// Container for full-width sections with inner container
+.container-section {
+  width: 100%;
+  
+  .container-inner {
+    max-width: $container-max-width;
+    margin: $container-margin;
+    padding-left: $container-padding;
+    padding-right: $container-padding;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+// Utility classes for container alignment
+.container-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.container-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Container with different max-widths for different breakpoints
+.container-breakpoint {
+  max-width: 100%;
+  margin: $container-margin;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (min-width: 768px) {
+    max-width: 750px;
+  }
+  
+  @media (min-width: 992px) {
+    max-width: 970px;
+  }
+  
+  @media (min-width: 1200px) {
+    max-width: 1170px;
+  }
+  
+  @media (min-width: 1400px) {
+    max-width: 1400px;
+  }
+  
+  @media (min-width: 1600px) {
+    max-width: 1600px;
+  }
+  
+  @media (min-width: 1920px) {
+    max-width: $container-max-width;
+  }
+}

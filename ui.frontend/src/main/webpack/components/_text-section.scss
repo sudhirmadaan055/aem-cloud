@@ -1,0 +1,33 @@
+@import '../site/_variables';
+@import '../site/_typography';
+
+.text{
+    h1,h2,h3,h4,h5,h6{
+        color: $deep-green;
+        font-family: $font-family-secondary;
+    }
+    h2{
+        @include typography-base($font-family-secondary, $font-weight-extrabold, 24px, 24px);
+        @include responsive-typography(48px, 48px, 32px, 32px, 28px, 28px, 24px, 24px);
+    }
+    h3{
+        @include typography-base($font-family-secondary, $font-weight-extrabold, 20px, 20px);
+        @include responsive-typography(32px, 32px, 24px, 24px, 20px, 20px, 20px, 20px);
+    }
+    h4{
+        @include typography-base($font-family-secondary, $font-weight-extrabold, 18px, 18px);
+        @include responsive-typography(24px, 24px, 20px, 20px, 18px, 18px, 18px, 18px);
+    }
+    h5{
+        @include typography-base($font-family-secondary, $font-weight-extrabold, 16px, 16px);
+        @include responsive-typography(20px, 20px, 18px, 18px, 16px, 16px, 16px, 16px);
+    }
+    h6{
+        @include typography-base($font-family-secondary, $font-weight-extrabold, 14px, 14px);
+        @include responsive-typography(18px, 18px, 16px, 16px, 14px, 14px, 14px, 14px);
+    }
+    p{
+        @include typography-base($font-family-primary, $font-weight-normal, 14px, 14px);
+        @include responsive-typography(16px, 16px, 14px, 14px, 14px, 14px, 14px, 14px);
+    }
+}
