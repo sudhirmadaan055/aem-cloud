@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Brand Ambassadors"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Main title for the Brand Ambassadors section"
+                        fieldLabel="Title"
+                        name="./title"/>
+                    <subtitle
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Subtitle for the Brand Ambassadors section"
+                        fieldLabel="Subtitle"
+                        name="./subtitle"/>
+                    <description
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                        fieldDescription="Description text for the Brand Ambassadors section"
+                        fieldLabel="Description"
+                        name="./description"/>
+                    <pillTabs
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        fieldLabel="Pill Tabs">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                            fieldLabel="Pill Tab"
+                            name="./pillTabs">
+                            <items jcr:primaryType="nt:unstructured">
+                                <tabLabel
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldDescription="Label for the pill tab"
+                                    fieldLabel="Tab Label"
+                                    name="./tabLabel"/>
+                                <isActive
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                    fieldDescription="Check if this tab should be active by default"
+                                    fieldLabel="Active"
+                                    name="./isActive"/>
+                            </items>
+                        </field>
+                    </pillTabs>
+                    <athletes
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Athletes">
+                        <field
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./athletes">
+                            <items jcr:primaryType="nt:unstructured">
+                                <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <athleteName
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Athlete's name"
+                                            fieldLabel="Athlete Name"
+                                            name="./athleteName"/>
+                                        <athleteNameKorean
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Athlete's name in Korean"
+                                            fieldLabel="Athlete Name (Korean)"
+                                            name="./athleteNameKorean"/>
+                                        <sport
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldDescription="Sport the athlete plays"
+                                            fieldLabel="Sport"
+                                            name="./sport"/>
+                                        <athleteImage
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Athlete's profile image"
+                                            fieldLabel="Athlete Image"
+                                            name="./athleteImage"
+                                            rootPath="/content/dam"/>
+                                        <sportIcon
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            fieldDescription="Icon representing the sport"
+                                            fieldLabel="Sport Icon"
+                                            name="./sportIcon"
+                                            rootPath="/content/dam"/>
+                                    </items>
+                                </column>
+                            </items>
+                        </field>
+                    </athletes>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

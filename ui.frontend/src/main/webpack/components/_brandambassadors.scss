@@ -1,0 +1,283 @@
+// Brand Ambassadors Component Styles
+.c-brand-ambassadors {
+  padding: 40px 20px;
+  background-color: #FFFBE3;
+  min-height: auto;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 356px;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__subtitle {
+    font-family: 'Averta Std PE', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.25em;
+    color: #30B700;
+    margin: 0;
+  }
+
+  &__title {
+    font-family: 'Malik', serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 1em;
+    text-transform: uppercase;
+    color: #013B1C;
+    margin: 0;
+  }
+
+  &__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 24px;
+    border: 1px solid #D4D4D4;
+    background-color: transparent;
+    font-family: 'Averta Std PE', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25em;
+    color: #737373;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: #F85001;
+      color: #F85001;
+    }
+
+    &--active {
+      background-color: #F85001;
+      border-color: #F85001;
+      color: #FFFBE3;
+      font-weight: 600;
+    }
+  }
+
+  &__description {
+    font-family: 'Averta Std PE', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.5em;
+    color: #001C0A;
+    margin: 0;
+  }
+
+  &__athletes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(396px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  &__athlete-card {
+    position: relative;
+    background-color: #FFFEFC;
+    border: 1px solid #F5EAD5;
+    border-radius: 24px;
+    padding: 24px;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  &__athlete-image {
+    position: relative;
+    width: 100%;
+    max-width: 348px;
+    height: 348px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #D6F1CC;
+  }
+
+  &__athlete-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  &__sport-icon {
+    position: absolute;
+    top: 192px;
+    right: 24px;
+    width: 58px;
+    height: 58px;
+    background-color: #F97334;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  &__sport-icon-img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1);
+  }
+
+  &__athlete-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    max-width: 204px;
+  }
+
+  &__athlete-name {
+    font-family: 'Malik', serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.25em;
+    text-transform: uppercase;
+    color: #004122;
+    margin: 0;
+  }
+
+  &__athlete-name-korean {
+    font-family: 'Malik', serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.33em;
+    color: #004122;
+    margin: 0;
+  }
+
+  &__sport-badge {
+    background-color: #30B700;
+    color: #FFFBE3;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-family: 'Averta Std PE', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25em;
+    text-transform: uppercase;
+  }
+
+  // Responsive Design
+  @media (max-width: 768px) {
+    padding: 20px 16px;
+
+    &__container {
+      gap: 20px;
+    }
+
+    &__header {
+      max-width: 100%;
+    }
+
+    &__title {
+      font-size: 36px;
+    }
+
+    &__athletes {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    &__athlete-card {
+      min-height: auto;
+      padding: 20px;
+    }
+
+    &__athlete-image {
+      max-width: 280px;
+      height: 280px;
+    }
+
+    &__sport-icon {
+      top: 160px;
+      right: 20px;
+      width: 48px;
+      height: 48px;
+    }
+
+    &__sport-icon-img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__athlete-name {
+      font-size: 28px;
+    }
+
+    &__athlete-name-korean {
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 16px 12px;
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+
+    &__description {
+      font-size: 16px;
+    }
+
+    &__pill {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+
+    &__athlete-image {
+      max-width: 240px;
+      height: 240px;
+    }
+
+    &__athlete-name {
+      font-size: 24px;
+    }
+
+    &__athlete-name-korean {
+      font-size: 18px;
+    }
+
+    &__sport-badge {
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+  }
+}
