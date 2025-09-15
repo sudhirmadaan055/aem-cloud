@@ -2,9 +2,11 @@
 @import '../site/_typography';
 
 .text{
+    padding: 48px 0!important;
     h1,h2,h3,h4,h5,h6{
         color: $deep-green;
         font-family: $font-family-secondary;
+
     }
     h2{
         @include typography-base($font-family-secondary, $font-weight-extrabold, 24px, 24px);
@@ -27,7 +29,10 @@
         @include responsive-typography(18px, 18px, 16px, 16px, 14px, 14px, 14px, 14px);
     }
     p{
-        @include typography-base($font-family-primary, $font-weight-normal, 14px, 14px);
-        @include responsive-typography(16px, 16px, 14px, 14px, 14px, 14px, 14px, 14px);
+        font-family: $font-family-primary;
+        font-weight: $font-weight-normal;
+        font-size: 18px;
+        line-height: 140%;
+        color: #001C0A;
     }
 }
