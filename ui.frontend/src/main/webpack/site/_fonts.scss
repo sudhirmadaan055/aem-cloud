@@ -3,7 +3,7 @@
 // Averta Std PE Font Family
 @font-face {
   font-family: 'Averta Std PE';
-  src: url('./fonts/AvertaStdPE-Regular 1.otf') format('opentype');
+  src: url('../resources/fonts/AvertaStdPE-Regular 1.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'Averta Std PE';
-  src: url('./fonts/AvertaStdPE-Semibold 1.otf') format('opentype');
+  src: url('../resources/fonts/AvertaStdPE-Semibold 1.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'Averta Std PE';
-  src: url('./fonts/AvertaStdPE-Bold 1.otf') format('opentype');
+  src: url('../resources/fonts/AvertaStdPE-Bold 1.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -28,7 +28,7 @@
 // Malik Font Family
 @font-face {
   font-family: 'Malik';
-  src: url('./fonts/Malik-Extrabold.ttf') format('truetype');
+  src: url('../resources/fonts/Malik-Extrabold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
