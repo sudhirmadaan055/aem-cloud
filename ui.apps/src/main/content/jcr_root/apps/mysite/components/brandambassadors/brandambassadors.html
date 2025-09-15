@@ -1,0 +1,60 @@
+<!--/* Brand Ambassadors */-->
+<p data-sly-test.edit="${wcmmode.edit}" data-emptytext="Configure Brand Ambassadors Component" class="cq-placeholder"></p>
+
+<sly data-sly-use.model="com.mysite.core.models.BrandAmbassadorsModel"></sly>
+<div class="js--brand-ambassadors c-brand-ambassadors" data-component-config="${model.configValue}">
+    <div class="c-brand-ambassadors__container">
+        <!-- Header Section -->
+        <div class="c-brand-ambassadors__header">
+            <div class="c-brand-ambassadors__title-container">
+                <h3 class="c-brand-ambassadors__subtitle" data-sly-test="${model.subtitle}">${model.subtitle}</h3>
+                <h2 class="c-brand-ambassadors__title" data-sly-test="${model.title}">${model.title}</h2>
+            </div>
+            
+            <!-- Pill Tabs -->
+            <div class="c-brand-ambassadors__pills" data-sly-test="${model.pillTabs && model.pillTabs.size > 0}">
+                <div data-sly-repeat.tab="${model.pillTabs}">
+                    <div class="c-brand-ambassadors__pill ${tab.isActive ? 'c-brand-ambassadors__pill--active' : ''}" 
+                         data-tab-label="${tab.tabLabel}">
+                        ${tab.tabLabel}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description -->
+            <p class="c-brand-ambassadors__description" data-sly-test="${model.description}">${model.description}</p>
+        </div>
+        
+        <!-- Athletes Grid -->
+        <div class="c-brand-ambassadors__athletes" data-sly-test="${model.athletes && model.athletes.size > 0}">
+            <div data-sly-repeat.athlete="${model.athletes}">
+                <div class="c-brand-ambassadors__athlete-card">
+                    <!-- Athlete Image -->
+                    <div class="c-brand-ambassadors__athlete-image" data-sly-test="${athlete.athleteImage}">
+                        <img src="${athlete.athleteImage @ context='uri'}" 
+                             alt="${athlete.athleteName}" 
+                             class="c-brand-ambassadors__athlete-img"/>
+                    </div>
+                    
+                    <!-- Sport Icon -->
+                    <div class="c-brand-ambassadors__sport-icon" data-sly-test="${athlete.sportIcon}">
+                        <img src="${athlete.sportIcon @ context='uri'}" 
+                             alt="${athlete.sport} icon" 
+                             class="c-brand-ambassadors__sport-icon-img"/>
+                    </div>
+                    
+                    <!-- Athlete Info -->
+                    <div class="c-brand-ambassadors__athlete-info">
+                        <h4 class="c-brand-ambassadors__athlete-name" data-sly-test="${athlete.athleteName}">${athlete.athleteName}</h4>
+                        <h5 class="c-brand-ambassadors__athlete-name-korean" data-sly-test="${athlete.athleteNameKorean}">${athlete.athleteNameKorean}</h5>
+                    </div>
+                    
+                    <!-- Sport Badge -->
+                    <div class="c-brand-ambassadors__sport-badge" data-sly-test="${athlete.sport}">
+                        ${athlete.sport}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

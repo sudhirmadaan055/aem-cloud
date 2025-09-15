@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Ambassadors Component - Local Test</title>
+    
+    <!-- Required AEM ClientLibs -->
+    <link rel="stylesheet" href="/clientlib-base/css/base.css">
+    <link rel="stylesheet" href="/clientlib-dependencies/css/dependencies.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../components/_brandambassadors.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Averta Std PE', Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #30B700;
+        }
+        
+        .test-header h1 {
+            color: #013B1C;
+            margin: 0 0 10px 0;
+        }
+        
+        .test-header p {
+            color: #737373;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Brand Ambassadors Component Test</h1>
+            <p>Local testing environment for the Brand Ambassadors AEM component</p>
+        </div>
+        
+        <!-- Brand Ambassadors Component -->
+        <div class="js--brand-ambassadors c-brand-ambassadors" data-component-config="test-config">
+            <div class="c-brand-ambassadors__container">
+                <!-- Header Section -->
+                <div class="c-brand-ambassadors__header">
+                    <div class="c-brand-ambassadors__title-container">
+                        <h3 class="c-brand-ambassadors__subtitle">Our Athletes</h3>
+                        <h2 class="c-brand-ambassadors__title">Brand Ambassadors</h2>
+                    </div>
+                    
+                    <!-- Pill Tabs -->
+                    <div class="c-brand-ambassadors__pills">
+                        <div class="c-brand-ambassadors__pill c-brand-ambassadors__pill--active" data-tab-label="Global Gamechangers">
+                            Global Gamechangers
+                        </div>
+                        <div class="c-brand-ambassadors__pill" data-tab-label="Emerging Voices">
+                            Emerging Voices
+                        </div>
+                        <div class="c-brand-ambassadors__pill" data-tab-label="Cultural Influencers">
+                            Cultural Influencers
+                        </div>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="c-brand-ambassadors__description">
+                        Champions who redefine what's possible in their sport, setting new benchmarks with every performance. Their energy reflects Bibigo's drive to innovate and inspire.
+                    </p>
+                </div>
+                
+                <!-- Athletes Grid -->
+                <div class="c-brand-ambassadors__athletes">
+                    <!-- Athlete 1 -->
+                    <div class="c-brand-ambassadors__athlete-card">
+                        <!-- Athlete Image -->
+                        <div class="c-brand-ambassadors__athlete-image">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
+                                 alt="Kris Kim" 
+                                 class="c-brand-ambassadors__athlete-img"/>
+                        </div>
+                        
+                        <!-- Sport Icon -->
+                        <div class="c-brand-ambassadors__sport-icon">
+                            <svg class="c-brand-ambassadors__sport-icon-img" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Athlete Info -->
+                        <div class="c-brand-ambassadors__athlete-info">
+                            <h4 class="c-brand-ambassadors__athlete-name">Kris Kim</h4>
+                            <h5 class="c-brand-ambassadors__athlete-name-korean">크리스 킴</h5>
+                        </div>
+                        
+                        <!-- Sport Badge -->
+                        <div class="c-brand-ambassadors__sport-badge">
+                            Golf
+                        </div>
+                    </div>
+                    
+                    <!-- Athlete 2 -->
+                    <div class="c-brand-ambassadors__athlete-card">
+                        <!-- Athlete Image -->
+                        <div class="c-brand-ambassadors__athlete-image">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face" 
+                                 alt="Freshbella" 
+                                 class="c-brand-ambassadors__athlete-img"/>
+                        </div>
+                        
+                        <!-- Sport Icon -->
+                        <div class="c-brand-ambassadors__sport-icon">
+                            <svg class="c-brand-ambassadors__sport-icon-img" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Athlete Info -->
+                        <div class="c-brand-ambassadors__athlete-info">
+                            <h4 class="c-brand-ambassadors__athlete-name">Freshbella</h4>
+                            <h5 class="c-brand-ambassadors__athlete-name-korean">크리스 킴</h5>
+                        </div>
+                        
+                        <!-- Sport Badge -->
+                        <div class="c-brand-ambassadors__sport-badge">
+                            Breaking
+                        </div>
+                    </div>
+                    
+                    <!-- Athlete 3 -->
+                    <div class="c-brand-ambassadors__athlete-card">
+                        <!-- Athlete Image -->
+                        <div class="c-brand-ambassadors__athlete-image">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face" 
+                                 alt="Park Kum Kang" 
+                                 class="c-brand-ambassadors__athlete-img"/>
+                        </div>
+                        
+                        <!-- Sport Icon -->
+                        <div class="c-brand-ambassadors__sport-icon">
+                            <svg class="c-brand-ambassadors__sport-icon-img" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Athlete Info -->
+                        <div class="c-brand-ambassadors__athlete-info">
+                            <h4 class="c-brand-ambassadors__athlete-name">Park Kum Kang</h4>
+                            <h5 class="c-brand-ambassadors__athlete-name-korean">크리스 킴</h5>
+                        </div>
+                        
+                        <!-- Sport Badge -->
+                        <div class="c-brand-ambassadors__sport-badge">
+                            Shotput
+                        </div>
+                    </div>
+                    
+                    <!-- Athlete 4 -->
+                    <div class="c-brand-ambassadors__athlete-card">
+                        <!-- Athlete Image -->
+                        <div class="c-brand-ambassadors__athlete-image">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face" 
+                                 alt="Zooty Zoot" 
+                                 class="c-brand-ambassadors__athlete-img"/>
+                        </div>
+                        
+                        <!-- Sport Icon -->
+                        <div class="c-brand-ambassadors__sport-icon">
+                            <svg class="c-brand-ambassadors__sport-icon-img" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Athlete Info -->
+                        <div class="c-brand-ambassadors__athlete-info">
+                            <h4 class="c-brand-ambassadors__athlete-name">Zooty Zoot</h4>
+                            <h5 class="c-brand-ambassadors__athlete-name-korean">크리스 킴</h5>
+                        </div>
+                        
+                        <!-- Sport Badge -->
+                        <div class="c-brand-ambassadors__sport-badge">
+                            Snowboarding
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Required AEM ClientLibs -->
+    <script src="/clientlib-dependencies/js/dependencies.js"></script>
+    <script src="/clientlib-base/js/base.js"></script>
+    
+    <!-- Component JavaScript -->
+    <script src="../../components/_brandambassadors.js"></script>
+</body>
+</html>
