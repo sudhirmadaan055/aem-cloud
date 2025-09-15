@@ -7,8 +7,6 @@
 .container {
   max-width: $container-max-width;
   margin: $container-margin;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
   width: 100%;
   box-sizing: border-box;
 }
@@ -17,8 +15,6 @@
 .container-fluid {
   max-width: 100%;
   margin: 0;
-  padding-left: $container-padding;
-  padding-right: $container-padding;
   width: 100%;
   box-sizing: border-box;
 }
