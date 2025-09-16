@@ -1,7 +1,14 @@
 {
-  "ajoEndpoint": "https://your-ajo-instance.adobe.io/api/v1/events",
-  "ajoPasskey": "your-ajo-passkey-here",
-  "ajoTimeout": 30000,
-  "enableAJOIntegration": true,
+  "dataCollectionEndpoint": "https://dcs.adobedc.net/collection/759af8ffbdf2a85272d56f734e9b3aaf21ade6005ccd6254486f0fc98f85a072",
+  "imsTokenEndpoint": "https://ims-na1.adobelogin.com/ims/token/v2",
+  "clientId": "c1a33ec62bde4fa7b23ea0bc930be608",
+  "clientSecret": "p8e-RfGqrr4EkdHO3CuYpeCF_mJL_ZJ1q-3B",
+  "imsOrgId": "647D9BAC572C95F27F000101@AdobeOrg",
+  "datasetId": "68c80500f6853cffe7da76ab",
+  "schemaId": "https://ns.adobe.com/verticurlpartnersandbox/schemas/6151199493723c29a8c498dc47f8853cce430cf7da478383",
+  "sandboxName": "prod",
+  "flowId": "2b41f60f-6b5d-4653-a94b-b59abc054855",
+  "requestTimeout": 30000,
+  "enableDataCollectionIntegration": true,
   "fallbackEmail": "admin@mysite.com"
 }
