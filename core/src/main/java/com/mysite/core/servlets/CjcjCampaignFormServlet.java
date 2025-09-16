@@ -55,6 +55,10 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
     private boolean enableDataCollectionIntegration;
     private String fallbackEmail;
     
+    // Event Register configuration
+    private String eventDatasetId;
+    private String eventSchemaId;
+    
     @Activate
     protected void activate(CjcjCampaignFormConfig config) {
         this.dataCollectionEndpoint = config.dataCollectionEndpoint();
@@ -70,6 +74,10 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         this.enableDataCollectionIntegration = config.enableDataCollectionIntegration();
         this.fallbackEmail = config.fallbackEmail();
         
+        // Event Register configuration - using hardcoded values for now
+        this.eventDatasetId = "68c91bc8bec54715580eb267";
+        this.eventSchemaId = "https://ns.adobe.com/verticurlpartnersandbox/schemas/d0f31c3607835dba31ba1baa72e08f992197034b5ae164cb";
+        
         logger.info("CjcjCampaignFormServlet activated with Data Collection endpoint: {}, Integration enabled: {}", 
                    dataCollectionEndpoint, enableDataCollectionIntegration);
     }
@@ -84,19 +92,20 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
             String companyField = request.getParameter("companyField");
+            String city = request.getParameter("city");
             String message = request.getParameter("message");
             
-            logger.info("Form submission received - YourName: {}, Email: {}, Phone: {}, CompanyField: {}, Message: {}", 
-                        yourName, email, phone, companyField, message);
+            logger.info("Form submission received - YourName: {}, Email: {}, Phone: {}, CompanyField: {}, City: {}, Message: {}", 
+                        yourName, email, phone, companyField, city, message);
             
             // Validate required fields
-            if (isEmpty(yourName) || isEmpty(email) || isEmpty(phone) || isEmpty(companyField) || isEmpty(message)) {
+            if (isEmpty(yourName) || isEmpty(email) || isEmpty(phone) || isEmpty(companyField) || isEmpty(city) || isEmpty(message)) {
                 sendErrorResponse(response, "All fields are required");
                 return;
             }
             
             // Create XDM payload for Adobe Experience Platform
-            Map<String, Object> payload = createXDMPayload(yourName, email, phone, companyField, message);
+            Map<String, Object> payload = createXDMPayload(yourName, email, phone, companyField, city, message);
             String jsonPayload = objectMapper.writeValueAsString(payload);
             
             logger.info("XDM Payload created: {}", jsonPayload);
@@ -104,10 +113,34 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
             // Send to Adobe Experience Platform or fallback
             boolean success;
             if (enableDataCollectionIntegration) {
+                // Step 1: Profile Creation
+                logger.info("=== STEP 1: PROFILE CREATION API CALL ===");
+                logger.info("Profile Creation - Sending payload to: {}", dataCollectionEndpoint);
                 success = sendToDataCollection(jsonPayload);
                 if (success) {
-                    sendSuccessResponse(response, "Form submitted successfully");
+                    logger.info("✅ Profile Creation API Response: SUCCESS");
+                    logger.info("Profile creation successful, proceeding with event registration");
+                    
+                    // Step 2: Event Register (automatic after successful profile creation)
+                    Map<String, Object> eventPayload = createEventPayload(email);
+                    String eventJsonPayload = objectMapper.writeValueAsString(eventPayload);
+                    logger.info("Event payload created: {}", eventJsonPayload);
+                    
+                    logger.info("=== STEP 2: EVENT REGISTER API CALL ===");
+                    logger.info("Event Register - Sending payload to: {}", dataCollectionEndpoint);
+                    boolean eventSuccess = sendToDataCollection(eventJsonPayload);
+                    if (eventSuccess) {
+                        logger.info("✅ Event Register API Response: SUCCESS");
+                        logger.info("Event registration successful");
+                        sendSuccessResponse(response, "Form submitted and event registered successfully");
+                    } else {
+                        logger.warn("❌ Event Register API Response: FAILED");
+                        logger.warn("Profile created but event registration failed");
+                        sendSuccessResponse(response, "Form submitted successfully (event registration failed)");
+                    }
                 } else {
+                    logger.error("❌ Profile Creation API Response: FAILED");
+                    logger.error("Profile creation failed, skipping event registration");
                     sendErrorResponse(response, "Failed to submit form. Please try again.");
                 }
             } else {
@@ -124,7 +157,7 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         }
     }
     
-    private Map<String, Object> createXDMPayload(String yourName, String email, String phone, String companyField, String message) {
+    private Map<String, Object> createXDMPayload(String yourName, String email, String phone, String companyField, String city, String message) {
         Map<String, Object> payload = new HashMap<>();
         
         // Header section
@@ -147,12 +180,10 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         body.put("xdmMeta", xdmMeta);
         
         Map<String, Object> xdmEntity = new HashMap<>();
-        xdmEntity.put("_id", "/uri-reference");
         
         Map<String, Object> repo = new HashMap<>();
-        String currentTime = Instant.now().toString();
-        repo.put("createDate", currentTime);
-        repo.put("modifyDate", currentTime);
+        repo.put("createDate", "2004-10-23T12:00:00-06:00");
+        repo.put("modifyDate", "2004-10-23T12:00:00-06:00");
         xdmEntity.put("_repo", repo);
         
         Map<String, Object> verticurlpartnersandbox = new HashMap<>();
@@ -162,14 +193,11 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         cjcjProfileFieldgrp2.put("email", email);
         cjcjProfileFieldgrp2.put("name", yourName);
         cjcjProfileFieldgrp2.put("phone", phone);
+        cjcjProfileFieldgrp2.put("city", city);
         verticurlpartnersandbox.put("cjcj_profile_fieldgrp_2", cjcjProfileFieldgrp2);
         xdmEntity.put("_verticurlpartnersandbox", verticurlpartnersandbox);
         
-        xdmEntity.put("createdByBatchID", "/uri-reference");
-        xdmEntity.put("modifiedByBatchID", "/uri-reference");
-        xdmEntity.put("personID", "Sample value");
-        xdmEntity.put("repositoryCreatedBy", "Sample value");
-        xdmEntity.put("repositoryLastModifiedBy", "Sample value");
+        xdmEntity.put("repositoryCreatedBy", "AEM Forms");
         
         body.put("xdmEntity", xdmEntity);
         
@@ -177,6 +205,86 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         payload.put("body", body);
         
         return payload;
+    }
+    
+    private Map<String, Object> createEventPayload(String email) {
+        Map<String, Object> payload = new HashMap<>();
+        
+        // Header section
+        Map<String, Object> header = new HashMap<>();
+        Map<String, Object> schemaRef = new HashMap<>();
+        schemaRef.put("id", eventSchemaId);
+        schemaRef.put("contentType", "application/vnd.adobe.xed-full+json;version=1.0");
+        header.put("schemaRef", schemaRef);
+        header.put("imsOrgId", imsOrgId);
+        header.put("datasetId", eventDatasetId);
+        
+        Map<String, Object> source = new HashMap<>();
+        source.put("name", "Streaming Event XDM - CJCJ 2- 09/16/2025, 1:44 PM");
+        header.put("source", source);
+        
+        // Body section
+        Map<String, Object> body = new HashMap<>();
+        Map<String, Object> xdmMeta = new HashMap<>();
+        xdmMeta.put("schemaRef", schemaRef);
+        body.put("xdmMeta", xdmMeta);
+        
+        Map<String, Object> xdmEntity = new HashMap<>();
+        
+        // Generate _id as Email+timestamp Hashed SHA256
+        String timestamp = String.valueOf(System.currentTimeMillis());
+        String idInput = email + timestamp;
+        String hashedId = generateSHA256Hash(idInput);
+        xdmEntity.put("_id", hashedId);
+        
+        // Event data
+        Map<String, Object> verticurlpartnersandbox = new HashMap<>();
+        Map<String, Object> cjcjevent = new HashMap<>();
+        cjcjevent.put("email", email);
+        cjcjevent.put("form_source", "CJCJ Campaign Form");
+        verticurlpartnersandbox.put("cjcjevent", cjcjevent);
+        xdmEntity.put("_verticurlpartnersandbox", verticurlpartnersandbox);
+        
+        xdmEntity.put("eventType", "aemForm.submission");
+        
+        // Identity Map
+        Map<String, Object> identityMap = new HashMap<>();
+        Map<String, Object> emailIdentity = new HashMap<>();
+        emailIdentity.put("authenticatedState", "ambiguous");
+        emailIdentity.put("id", email);
+        emailIdentity.put("primary", true);
+        
+        identityMap.put("Email", java.util.Arrays.asList(emailIdentity));
+        xdmEntity.put("identityMap", identityMap);
+        
+        xdmEntity.put("producedBy", "AEM Forms");
+        xdmEntity.put("timestamp", "2018-11-12T20:20:39+00:00");
+        
+        body.put("xdmEntity", xdmEntity);
+        
+        payload.put("header", header);
+        payload.put("body", body);
+        
+        return payload;
+    }
+    
+    private String generateSHA256Hash(String input) {
+        try {
+            java.security.MessageDigest digest = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            logger.error("Error generating SHA256 hash", e);
+            return "fallback_" + System.currentTimeMillis();
+        }
     }
     
     private boolean sendToDataCollection(String jsonPayload) {
@@ -212,8 +320,24 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
             
             // Log response for debugging
             if (responseCode >= 200 && responseCode < 300) {
+                logger.info("✅ Data Collection API Response: SUCCESS (HTTP {})", responseCode);
                 logger.info("Data successfully sent to Adobe Experience Platform");
+                
+                // Log success response body if available
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder responseBody = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        responseBody.append(line);
+                    }
+                    if (responseBody.length() > 0) {
+                        logger.info("API Success Response Body: {}", responseBody.toString());
+                    }
+                } catch (Exception e) {
+                    logger.debug("No response body available for success response");
+                }
             } else {
+                logger.error("❌ Data Collection API Response: FAILED (HTTP {})", responseCode);
                 // Log error response
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()))) {
                     StringBuilder response = new StringBuilder();
@@ -221,7 +345,9 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
                     while ((line = reader.readLine()) != null) {
                         response.append(line);
                     }
-                    logger.error("Data Collection API error response: {}", response.toString());
+                    logger.error("API Error Response Body: {}", response.toString());
+                } catch (Exception e) {
+                    logger.error("Failed to read error response body: {}", e.getMessage());
                 }
             }
             

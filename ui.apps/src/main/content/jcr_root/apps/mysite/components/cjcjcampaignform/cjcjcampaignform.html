@@ -25,10 +25,18 @@ function handleFormSubmit(event) {
     
     // Collect form data
     const formData = new FormData(form);
-            const submitUrl = '/bin/cjcj-campaign-form-submit.json';
-    console.log('CJCJ Campaign Form: Form data collected, submitting to:', submitUrl);
+    const submitUrl = '/bin/cjcj-campaign-form-submit.json';
+    
+    console.log('=== CJCJ CAMPAIGN FORM SUBMISSION ===');
+    console.log('CJCJ Campaign Form: Form data collected');
+    console.log('CJCJ Campaign Form: Submitting to:', submitUrl);
+    console.log('CJCJ Campaign Form: Form data entries:');
+    for (let [key, value] of formData.entries()) {
+        console.log('  - ' + key + ':', value);
+    }
     
     // Send AJAX request
+    console.log('CJCJ Campaign Form: Sending AJAX request...');
     fetch(submitUrl, {
         method: 'POST',
         body: formData,
@@ -37,22 +45,30 @@ function handleFormSubmit(event) {
         }
     })
     .then(response => {
+        console.log('=== CJCJ CAMPAIGN FORM API CALL ===');
         console.log('CJCJ Campaign Form: Response received, status:', response.status);
+        console.log('CJCJ Campaign Form: API Endpoint:', submitUrl);
+        console.log('CJCJ Campaign Form: HTTP Status:', response.status, response.statusText);
+        
         if (!response.ok) {
+            console.error('❌ CJCJ Campaign Form: API Response FAILED (HTTP ' + response.status + ')');
             throw new Error('Network response was not ok');
         }
         return response.json();
     })
     .then(data => {
         console.log('CJCJ Campaign Form: Response data:', data);
+        console.log('CJCJ Campaign Form: Full API Response:', JSON.stringify(data, null, 2));
         setLoading(false);
         
         if (data.success) {
-            console.log('CJCJ Campaign Form: Success response received');
+            console.log('✅ CJCJ Campaign Form: API Response SUCCESS');
+            console.log('CJCJ Campaign Form: Success message:', data.message);
             showSuccess(data.message || 'Form submitted successfully!');
             form.reset(); // Clear the form
         } else {
-            console.log('CJCJ Campaign Form: Error response received');
+            console.log('❌ CJCJ Campaign Form: API Response FAILED');
+            console.log('CJCJ Campaign Form: Error message:', data.message);
             showError(data.message || 'Failed to submit form. Please try again.');
         }
     })
@@ -167,6 +183,13 @@ function handleFormSubmit(event) {
                             <option value="retail">Retail</option>
                             <option value="other">Other</option>
                         </select>
+                    </div>
+                    <div class="campaign__form-group">
+                        <input type="text" 
+                               name="city" 
+                               placeholder="City" 
+                               class="campaign__input" 
+                               required />
                     </div>
                     <div class="campaign__form-group">
                         <textarea name="message" 
