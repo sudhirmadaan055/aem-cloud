@@ -3,4 +3,9 @@
     jcr:primaryType="cq:Component"
     jcr:title="CJCJ Campaign Form"
     jcr:description="Two-column HTML form component with authorable decorative image and form fields for campaign registration"
-    componentGroup="My Site - Content"/>
+    componentGroup="My Site - Content"
+    cq:isContainer="{Boolean}false"
+    sling:resourceSuperType="mysite/components/container"
+    cq:htmlTag="{String}section"
+    cq:htmlTagAttributes="{String}[data-component=&quot;cjcj-campaign-form&quot;]"
+    cq:clientlibs="[mysite.cjcjcampaignform]"/>

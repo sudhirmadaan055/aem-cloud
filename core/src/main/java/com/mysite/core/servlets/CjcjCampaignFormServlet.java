@@ -30,7 +30,8 @@ import java.util.Map;
     service = Servlet.class,
     property = {
         "sling.servlet.paths=/bin/cjcj-campaign-form-submit",
-        "sling.servlet.methods=POST"
+        "sling.servlet.methods=POST",
+        "sling.servlet.extensions=json"
     },
     configurationPolicy = ConfigurationPolicy.REQUIRE
 )
