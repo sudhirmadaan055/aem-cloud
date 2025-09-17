@@ -1,0 +1,55 @@
+{
+  "jcr:primaryType": "cq:Page",
+  "jcr:content": {
+    "jcr:primaryType": "cq:PageContent",
+    "sling:resourceType": "mysite/components/brandambassadors",
+    "title": "Brand Ambassadors",
+    "subtitle": "Our Athletes",
+    "description": "Champions who redefine what's possible in their sport, setting new benchmarks with every performance. Their energy reflects Bibigo's drive to innovate and inspire.",
+    "configValue": "test-config",
+    "pillTabs": [
+      {
+        "tabLabel": "Global Gamechangers",
+        "isActive": true
+      },
+      {
+        "tabLabel": "Emerging Voices",
+        "isActive": false
+      },
+      {
+        "tabLabel": "Cultural Influencers",
+        "isActive": false
+      }
+    ],
+    "athletes": [
+      {
+        "athleteName": "Kris Kim",
+        "athleteNameKorean": "크리스 킴",
+        "sport": "Golf",
+        "athleteImage": "/content/dam/mysite/athletes/kris-kim.jpg",
+        "sportIcon": "/content/dam/mysite/icons/golf-icon.svg"
+      },
+      {
+        "athleteName": "Freshbella",
+        "athleteNameKorean": "크리스 킴",
+        "sport": "Breaking",
+        "athleteImage": "/content/dam/mysite/athletes/freshbella.jpg",
+        "sportIcon": "/content/dam/mysite/icons/breaking-icon.svg"
+      },
+      {
+        "athleteName": "Park Kum Kang",
+        "athleteNameKorean": "크리스 킴",
+        "sport": "Shotput",
+        "athleteImage": "/content/dam/mysite/athletes/park-kum-kang.jpg",
+        "sportIcon": "/content/dam/mysite/icons/shotput-icon.svg"
+      },
+      {
+        "athleteName": "Zooty Zoot",
+        "athleteNameKorean": "크리스 킴",
+        "sport": "Snowboarding",
+        "athleteImage": "/content/dam/mysite/athletes/zooty-zoot.jpg",
+        "sportIcon": "/content/dam/mysite/icons/snowboarding-icon.svg"
+      }
+    ]
+  }
+}

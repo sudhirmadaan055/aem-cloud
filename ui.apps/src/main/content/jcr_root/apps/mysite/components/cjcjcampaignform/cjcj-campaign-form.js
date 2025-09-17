@@ -101,6 +101,21 @@
                 
                 if (data.success) {
                     console.log('CJCJ Campaign Form: Success response received');
+                    
+                    // Push to Adobe Data Layer
+                    window.adobeDataLayer = window.adobeDataLayer || [];
+                    window.adobeDataLayer.push({
+                        "event": "formSubmit", 
+                        "formSubmit": {
+                            "Name": formData.get('yourName') || '',
+                            "email": formData.get('email') || '',
+                            "phone": formData.get('phone') || '',
+                            "Company": formData.get('companyField') || '',
+                            "City":formData.get('city') || '',
+                            "What are you looking for": formData.get('message') || ''
+                        }
+                    });
+                    
                     showSuccess(data.message || 'Form submitted successfully!');
                     form.reset(); // Clear the form
                 } else {
