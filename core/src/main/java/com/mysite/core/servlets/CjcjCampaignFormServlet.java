@@ -122,7 +122,7 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
                     logger.info("Profile creation successful, proceeding with event registration");
                     
                     // Step 2: Event Register (automatic after successful profile creation)
-                    Map<String, Object> eventPayload = createEventPayload(email);
+                    Map<String, Object> eventPayload = createEventPayload(email, city);
                     String eventJsonPayload = objectMapper.writeValueAsString(eventPayload);
                     logger.info("Event payload created: {}", eventJsonPayload);
                     
@@ -208,7 +208,7 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         return payload;
     }
     
-    private Map<String, Object> createEventPayload(String email) {
+    private Map<String, Object> createEventPayload(String email, String city) {
         Map<String, Object> payload = new HashMap<>();
         
         // Header section
@@ -242,6 +242,7 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         Map<String, Object> verticurlpartnersandbox = new HashMap<>();
         Map<String, Object> cjcjevent = new HashMap<>();
         cjcjevent.put("email", email);
+        cjcjevent.put("city", city);
         cjcjevent.put("form_source", "CJCJ Campaign Form");
         verticurlpartnersandbox.put("cjcjevent", cjcjevent);
         xdmEntity.put("_verticurlpartnersandbox", verticurlpartnersandbox);
