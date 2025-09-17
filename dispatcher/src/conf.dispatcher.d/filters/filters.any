@@ -13,4 +13,4 @@ $include "./default_filters.any"
 /0102 { /type "allow" /extension "webmanifest" /path "/content/*/manifest" }
 
 # Allow CJCJ Campaign Form servlet
-/0103 { /type "allow" /method "POST" /url "/bin/cjcj-campaign-form-submit" }
+/0103 { /type "allow" /method "POST" /url "/bin/cjcj-campaign-form-submit.json" }
