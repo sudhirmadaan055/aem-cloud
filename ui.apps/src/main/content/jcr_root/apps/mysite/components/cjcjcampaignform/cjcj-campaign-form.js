@@ -115,7 +115,7 @@
                             "What are you looking for": formData.get('message') || ''
                         }
                     });
-                    
+                    console.log('CJCJ Campaign Form: Pushing to Adobe Data Layer');                    
                     showSuccess(data.message || 'Form submitted successfully!');
                     form.reset(); // Clear the form
                 } else {
