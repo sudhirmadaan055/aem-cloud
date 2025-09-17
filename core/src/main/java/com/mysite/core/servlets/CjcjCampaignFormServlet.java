@@ -182,8 +182,9 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         Map<String, Object> xdmEntity = new HashMap<>();
         
         Map<String, Object> repo = new HashMap<>();
-        repo.put("createDate", "2004-10-23T12:00:00-06:00");
-        repo.put("modifyDate", "2004-10-23T12:00:00-06:00");
+        String currentTime = Instant.now().toString();
+        repo.put("createDate", currentTime);
+        repo.put("modifyDate", currentTime);
         xdmEntity.put("_repo", repo);
         
         Map<String, Object> verticurlpartnersandbox = new HashMap<>();
@@ -258,7 +259,7 @@ public class CjcjCampaignFormServlet extends SlingAllMethodsServlet {
         xdmEntity.put("identityMap", identityMap);
         
         xdmEntity.put("producedBy", "AEM Forms");
-        xdmEntity.put("timestamp", "2018-11-12T20:20:39+00:00");
+        xdmEntity.put("timestamp", Instant.now().toString());
         
         body.put("xdmEntity", xdmEntity);
         
