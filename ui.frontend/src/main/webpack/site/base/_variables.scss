@@ -1,0 +1,337 @@
+
+//== Font
+
+// Font Families
+$font-family-primary:   "Averta Std PE", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-secondary: "Malik", serif;
+$font-family:           $font-family-primary;
+
+// Base maps
+$font-families: (
+  primary:   $font-family-primary,
+  secondary: $font-family-secondary
+);
+
+$font-weights: (
+  thin: 100,
+  extra-light: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  black: 900
+);
+
+$line-heights: (
+  tight: 1.1,
+  snug: 1.25,
+  normal: 1.5,
+  relaxed: 1.75,
+  loose: 2
+);
+
+$letter-spacings: (
+  tighter: -0.02em,
+  tight: -0.01em,
+  normal: 0,
+  wide: 0.02em,
+  wider: 0.05em
+);
+
+
+//== Responsive font sizes (from Figma Size table)
+$base-font-size : 16px;
+$font-sizes: (
+  display: (
+    large: 144px,
+    desktop: 104px,
+    tablet: 80px,
+    mobile: 48px
+  ),
+  product-card: (
+    large: 156px,
+    desktop: 96px,
+    tablet: 64px,
+    mobile: 56px
+  ),
+  h1: (
+    large: 80px,
+    desktop: 56px,
+    tablet: 48px,
+    mobile: 36px
+  ),
+  h2: (
+    large: 48px,
+    desktop: 32px,
+    tablet: 28px,
+    mobile: 24px
+  ),
+  h3: (
+    large: 32px,
+    desktop: 24px,
+    tablet: 24px,
+    mobile: 20px
+  ),
+  h4: (
+    large: 24px,
+    desktop: 20px,
+    tablet: 20px,
+    mobile: 18px
+  ),
+  h5: (
+    large: 20px,
+    desktop: 20px,
+    tablet: 18px,
+    mobile: 16px
+  ),
+  h6: (
+    large: 18px,
+    desktop: 18px,
+    tablet: 16px,
+    mobile: 16px
+  ),
+  body-display: (
+    large: 18px,
+    desktop: 18px,
+    tablet: 16px,
+    mobile: 16px
+  ),
+  body: (
+    large: 16px,
+    desktop: 16px,
+    tablet: 14px,
+    mobile: 14px
+  ),
+  body-strong: (
+    large: 16px,
+    desktop: 16px,
+    tablet: 14px,
+    mobile: 14px
+  ),
+  subtitle: (
+    large: 14px,
+    desktop: 14px,
+    tablet: 14px,
+    mobile: 13px
+  ),
+  caption-labels: (
+    large: 14px,
+    desktop: 14px,
+    tablet: 13px,
+    mobile: 13px
+  ),
+  small: (
+    large: 14px,
+    desktop: 14px,
+    tablet: 12px,
+    mobile: 12px
+  )
+);
+
+// screen breakpoints (mobile/tablet/desktop/large)
+$breakpoints: (
+  mobile: 390px,
+  tablet: 768px,
+  desktop: 1280px,
+  large: 1920px
+);
+
+// Container paddings + grid gaps per breakpoint
+$grid-settings: (
+  mobile: (padding: 20px, gap: 10px),
+  tablet: (padding: 40px, gap: 16px),
+  desktop: (padding: 80px, gap: 24px),
+  large: (padding: 120px, gap: 32px)
+);
+
+
+// Semantic typography tokens
+// lh = line height, ls = letter spacing
+$type-tokens: (
+  display: (family: secondary, weight: extrabold, size: display, lh: tight, ls: normal),
+  product-card: (family: secondary, weight: extrabold, size: product-card, lh: tight, ls: normal),
+  h1: (family: secondary, weight: extrabold, size: h1, lh: tight, ls: normal),
+  h2: (family: secondary, weight: extrabold, size: h2, lh: tight, ls: normal),
+  h3: (family: secondary, weight: extrabold, size: h3, lh: snug, ls: normal),
+  h4: (family: secondary, weight: extrabold, size: h4, lh: snug, ls: normal),
+  h5: (family: secondary, weight: extrabold, size: h5, lh: snug, ls: normal),
+  h6: (family: secondary, weight: extrabold, size: h6, lh: snug, ls: normal),
+  body-display: (family: primary, weight: normal, size: body-display, lh: normal, ls: normal),
+  body: (family: primary, weight: normal, size: body, lh: normal, ls: normal),
+  body-strong: (family: primary, weight: bold, size: body-strong, lh: normal, ls: normal),
+  subtitle: (family: primary, weight: normal, size: subtitle, lh: normal, ls: normal),
+  caption-labels: (family: primary, weight: normal, size: caption-labels, lh: snug, ls: normal)
+);
+
+
+
+// gutter spacing
+$gutter: 8px;
+$gutter-mobile: 16px;
+$gutter-tablet: 24px;
+$gutter-desktop: 32px;
+$gutter-large: 40px;
+$gutter-2large: 48px;
+$gutter-3large: 56px;
+$gutter-4large: 64px;
+$gutter-5large: 72px;
+$gutter-6large: 80px;
+$gutter-7large: 88px;
+$gutter-8large: 96px;
+$gutter-9large: 104px;
+$gutter-10large: 112px;
+$gutter-11large: 120px;
+
+
+
+//== Color
+$color-bibigo-green:        #30b700;
+$color-bibigo-orange:       #F85001;
+$color-bibigo-deep-green:  #004122;
+$color-bibigo-ivory:        #FFF8EB;
+$color-bibigo-page-bg:      #F7F7F9;
+$color-black:               #000000;
+
+//== Color Maps (from Figma palettes)
+$color-neutral: (
+  100: #ffffff,
+  200: #f5f5f5,
+  300: #e5e5e5,
+  400: #d4d4d4,
+  600: #737373,
+  700: #404040,
+  800: #262626,
+  900: #171717
+);
+
+$color-blue: (
+  100: #eaf8fb,
+  200: #cbeaf7,
+  300: #73b8e6,
+  400: #3f93dc,
+  600: #235fa3,
+  700: #164685,
+  800: #0d2e63,
+  900: #051a40,
+  bg:  #add9ef,
+  content: #337cc4
+);
+
+$color-green: (
+  100: #D6F1CC,
+  200: #C1E9B2,
+  300: #98DB80,
+  400: #70CD4D,
+  500: #30B700,
+  600: #289200,
+  700: #1E6E00,
+  800: #195C00,
+  900: #144900,
+  1000: #0F3700,
+  brand: #004122,
+  brand-accent: #0f3700
+);
+
+$color-deep-green: (
+  100: #D6EDE7,
+  200: #9BCFBF,
+  300: #6BB39B,
+  400: #257A58,
+  500: #004122,
+  600: #013B1C,
+  700: #003017,
+  800: #002610,
+  900: #001C0A,
+  1000: #001206
+);
+
+$color-orange: (
+  100: #fedccc,
+  200: #fcb999,
+  300: #fb9667,
+  400: #f97334,
+  500: #f85001,
+  600: #df4801,
+  700: #ae3801,
+  800: #953001,
+  900: #632000,
+  1000: #4a1800
+);
+
+$color-yellow: (
+  100: #fefced,
+  200: #fcf5d2,
+  300: #f8dc83,
+  400: #f2c34e,
+  500: #dcab42,
+  600: #b4832d,
+  700: #915f1d,
+  800: #6e410f,
+  900: #472507,
+  bg:  #f5e539,
+  cream: #fbebb6
+);
+
+$color-red: (
+  100: #fcf3eb,
+  200: #fae0cf,
+  300: #f5c8b3,
+  400: #f09280,
+  500: #e9514e,
+  600: #d1413f,
+  700: #ad2f2b,
+  800: #8c1e1c,
+  900: #691210,
+  1000: #420807
+);
+
+$color-purple: (
+  100: #f5e5f7,
+  200: #e8c2ed,
+  300: #d8a2e0,
+  400: #b965c9,
+  500: #9934b3,
+  600: #852ba1,
+  700: #661d85,
+  800: #4b126b,
+  900: #330a4f,
+  1000: #1c0433
+);
+
+$color-pink: (
+  100: #fcecf7,
+  200: #fad7eb,
+  300: #f5bcdb,
+  400: #ed8cb6,
+  500: #e5608c,
+  600: #cf4e77,
+  700: #ab3556,
+  800: #8a223e,
+  900: #661427,
+  1000: #420815
+);
+
+// Helper to read color maps
+@function color($palette, $grade) {
+  @return map-get($palette, $grade);
+}
+
+// Semantic aliases
+$color-brand:            map-get($color-green, brand);
+$color-background-page:  #f7f7f9;
+$color-text-primary:     #000000;
+$color-text-secondary:   #a3a3a3;
+
+// Normal mode
+$color-foreground:      #202020;
+$color-background:      #ECECEC;
+$color-link:            #2020E0;
+$deep-green:            #004122;
+
+// Dark mode
+$color-foreground-dark: invert($color-foreground);
+$color-background-dark: invert($color-background);
+$color-link-dark:       invert($color-link);
+

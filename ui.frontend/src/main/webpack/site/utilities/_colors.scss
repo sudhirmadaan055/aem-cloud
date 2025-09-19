@@ -1,0 +1,31 @@
+@import '../base/variables';
+
+
+// background
+.background-default { background-color: $color-background-page; }
+.background-brand { background-color: $color-brand; }
+.background-disabled { background-color: map-get($color-neutral, 200); }
+.background-warning { background-color: map-get($color-yellow, 100); }
+.background-negative { background-color: map-get($color-red, 100); }
+.background-default-hover { background-color: map-get($color-neutral, 200); }
+
+// content (text colors)
+.content-default { color: $color-text-primary; }
+.content-secondary { color: $color-text-secondary; }
+.content-tertiary { color: map-get($color-neutral, 400); }
+.content-brand { color: $color-brand; }
+.content-warning { color: map-get($color-yellow, 400); }
+.content-negative { color: map-get($color-red, 500); }
+.content-disabled { color: map-get($color-neutral, 400); }
+
+// border
+.border-default { border-color: map-get($color-neutral, 400); }
+.border-subtle { border-color: map-get($color-neutral, 300); }
+.border-brand { border-color: $color-brand; }
+.border-disabled { border-color: map-get($color-neutral, 300); }
+.border-negative { border-color: map-get($color-red, 500); }
+
+// generic aliases
+.default-secondary { color: $color-text-secondary; }
+.default-hover { background-color: map-get($color-neutral, 200); }
+

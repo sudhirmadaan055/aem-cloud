@@ -1,0 +1,92 @@
+@import '../site/_variables';
+
+// Utility Classes for Font Weights
+.font-normal {
+    font-weight: $font-weight-normal;
+  }
+  
+  .font-semibold {
+    font-weight: $font-weight-semibold;
+  }
+  
+  .font-bold {
+    font-weight: $font-weight-bold;
+  }
+  
+  .font-extrabold {
+    font-weight: $font-weight-extrabold;
+  }
+  
+  // Utility Classes for Text Transform
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+  
+  .text-capitalize {
+    text-transform: capitalize;
+  }
+  
+  .text-lowercase {
+    text-transform: lowercase;
+  }
+  
+  .text-none {
+    text-transform: none;
+  }
+  
+  // Utility Classes for Text Alignment
+  .text-left {
+    text-align: left;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-right {
+    text-align: right;
+  }
+  
+  .text-justify {
+    text-align: justify;
+  }
+  
+  // Responsive Text Sizes
+  .text-responsive {
+    @include responsive-typography(16px, 24px, 16px, 24px, 14px, 20px, 12px, 18px);
+  }
+  
+  // Color Variations (if needed)
+  .text-primary {
+    color: $color-foreground;
+  }
+  
+  .text-secondary {
+    color: #737373;
+  }
+  
+  .text-muted {
+    color: #404040;
+  }
+  
+  .deep-green {
+    color: $deep-green;
+  }
+  
+  // Line Height Utilities
+  .leading-tight {
+    line-height: 1.25;
+  }
+  
+  .leading-normal {
+    line-height: 1.5;
+  }
+  
+  .leading-relaxed {
+    line-height: 1.75;
+  }
+  
+  .leading-loose {
+    line-height: 2;
+  }
+  

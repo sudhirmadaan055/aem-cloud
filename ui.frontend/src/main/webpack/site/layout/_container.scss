@@ -3,6 +3,8 @@
 
 @import 'variables';
 
+
+
 // Main Container Class
 .container {
   max-width: $container-max-width;
@@ -74,17 +76,17 @@
   width: 100%;
   box-sizing: border-box;
   
-  @media (min-width: 768px) {
+  @include respond-to(tablet){
     padding-left: 30px;
     padding-right: 30px;
   }
   
-  @media (min-width: 1024px) {
+  @include respond-to(desktop){
     padding-left: 40px;
     padding-right: 40px;
   }
   
-  @media (min-width: 1200px) {
+  @include respond-to(large) {
     padding-left: 60px;
     padding-right: 60px;
   }
@@ -163,7 +165,7 @@
     max-width: 1600px;
   }
   
-  @media (min-width: 1920px) {
+  @media (min-width: map-get($breakpoints, xl)) {
     max-width: $container-max-width;
   }
 }

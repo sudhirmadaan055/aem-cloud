@@ -1,0 +1,44 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+// Container
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  padding-left: map-get(map-get($grid-settings, mobile), padding);
+  padding-right: map-get(map-get($grid-settings, mobile), padding);
+
+  @each $device, $values in $grid-settings {
+    @include respond-to($device) {
+      padding-left: map-get($values, padding);
+      padding-right: map-get($values, padding);
+    }
+  }
+}
+
+// Grid Wrapper
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  @each $device, $values in $grid-settings {
+    @include respond-to($device) {
+      gap: map-get($values, gap);
+    }
+  }
+}
+
+// ========== Column Classes ==========
+@each $device, $bp in $breakpoints {
+    @include respond-to($device) {
+      @for $i from 1 through 12 {
+        .#{$device}-col-#{$i} {
+          grid-column: span $i;
+        }
+      }
+    }
+}
+
+

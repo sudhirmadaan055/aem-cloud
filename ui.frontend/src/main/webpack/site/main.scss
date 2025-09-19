@@ -3,6 +3,8 @@
 @import 'variables';
 @import 'typography';
 @import 'container';
+@import 'layout/grid';
 @import 'base';
+@import 'utilities/colors';
 @import '../components/**/*.scss';
 @import './styles/*.scss';

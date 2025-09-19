@@ -1,0 +1,44 @@
+@import 'variables';
+
+
+// Single typography mixin using semantic tokens
+@mixin type-token($token, $override: ()) {
+  $def: map-get($type-tokens, $token);
+  $family-key: if(map-has-key($override, family), map-get($override, family), map-get($def, family));
+  $weight-key: if(map-has-key($override, weight), map-get($override, weight), map-get($def, weight));
+  $size-key:   if(map-has-key($override, size),   map-get($override, size),   map-get($def, size));
+  $lh-key:     if(map-has-key($override, lh),     map-get($override, lh),     map-get($def, lh));
+  $ls-key:     if(map-has-key($override, ls),     map-get($override, ls),     map-get($def, ls));
+
+  $family: map-get($font-families, $family-key);
+  $weight: map-get($font-weights-map, $weight-key);
+  $sizes:  map-get($font-sizes, $size-key);
+  $lh:     map-get($font-line-heights, $lh-key);
+  $ls:     map-get($letter-spacings, $ls-key);
+
+  font-family: $family;
+  font-weight: $weight;
+  letter-spacing: $ls;
+  margin: 0;
+
+  $sm: map-get($sizes, mobile);
+  $md: map-get($sizes, tablet);
+  $lg: map-get($sizes, desktop);
+  $xl: map-get($sizes, large);
+
+  font-size: $sm;  line-height: calc(#{$sm} * #{$lh});
+  @media (min-width: map-get($breakpoints, tablet))  { font-size: $md; line-height: calc(#{$md} * #{$lh}); }
+  @media (min-width: map-get($breakpoints, desktop)) { font-size: $lg; line-height: calc(#{$lg} * #{$lh}); }
+  @media (min-width: map-get($breakpoints, large))   { font-size: $xl; line-height: calc(#{$xl} * #{$lh}); }
+}
+  
+
+//   breakpoints
+@mixin respond-to($device) {
+    @media (min-width: map-get($breakpoints, $device)) {
+      @content;
+    }
+  }
+  
+
+  

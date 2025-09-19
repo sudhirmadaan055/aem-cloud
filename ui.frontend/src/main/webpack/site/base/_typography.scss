@@ -1,0 +1,57 @@
+//== Typography System
+// Based on Figma Design System for Bibigo
+
+// Import variables and mixins
+@import 'variables';
+@import 'mixins';
+
+
+// Typography Classes
+
+// Display Text
+.display { @include type-token(display); text-transform: uppercase; }
+
+// Product Card Text
+.product-card { @include type-token(product-card); text-transform: uppercase; }
+
+// Headings
+h1, .h1{ @include type-token(h1); text-transform: capitalize; }
+
+h2, .h2{ @include type-token(h2); text-transform: capitalize; }
+
+h3, .h3{ @include type-token(h3); text-transform: capitalize; }
+
+h4, .h4{ @include type-token(h4); text-transform: capitalize; }
+
+h5, .h5 { @include type-token(h5); text-transform: capitalize; }
+
+h6, .h6 { @include type-token(h6); text-transform: capitalize; }
+
+// Body Text
+p, .p1{ @include type-token(body); }
+
+.paragraph-display { @include type-token(body-display); }
+
+.p1-bold{ @include type-token(body-strong); }
+
+.p2, .p2-body, .subtitle { @include type-token(body); }
+
+.p2-bold { @include type-token(body-strong); }
+
+.small { @include type-token(body-mobileall); }
+
+// Links
+a, .link, .hyperlink {
+  @include type-token(body);
+  text-decoration: underline;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Caption Text
+.caption, .p3 { @include type-token(caption-labels); }
+
+
