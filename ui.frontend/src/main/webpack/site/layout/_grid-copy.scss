@@ -1,0 +1,223 @@
+@import '../base/variables';
+@import '../base/mixins';
+
+// Container
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  padding-left: map-get(map-get($grid-settings, mobile), padding);
+  padding-right: map-get(map-get($grid-settings, mobile), padding);
+
+  @each $device, $values in $grid-settings {
+    @include respond-to($device) {
+      padding-left: map-get($values, padding);
+      padding-right: map-get($values, padding);
+    }
+  }
+}
+
+// Grid Wrapper
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+
+  @each $device, $values in $grid-settings {
+    @include respond-to($device) {
+      gap: map-get($values, gap);
+    }
+  }
+}
+
+// ========== Global (non-prefixed) Column Aliases ==========
+// These apply to all breakpoints by default
+@for $i from 1 through 12 {
+  .col-#{$i} { grid-column: span $i; }
+}
+.col,
+.col-auto { grid-column: auto; }
+.col-full { grid-column: 1 / -1; }
+
+// ========== Column Classes ==========
+@each $device, $bp in $breakpoints {
+    @include respond-to($device) {
+      @for $i from 1 through 12 {
+        .#{$device}-col-#{$i} {
+          grid-column: span $i;
+        }
+      }
+    }
+}
+
+// Column auto width (let item size to content or track auto placement)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-col,
+    .#{$device}-col-auto {
+      grid-column: auto;
+    }
+  }
+}
+
+// Control number of columns per row (like row-cols-*)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    @for $n from 1 through 12 {
+      .#{$device}-cols-#{$n} {
+        grid-template-columns: repeat($n, 1fr);
+      }
+    }
+  }
+}
+
+// Grid column start/end helpers (like col-start-* / col-end-*)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    @for $i from 1 through 13 { // grid lines go from 1..13 for 12 columns
+      .#{$device}-col-start-#{$i} { grid-column-start: $i; }
+      .#{$device}-col-end-#{$i} { grid-column-end: $i; }
+    }
+  }
+}
+
+// Gap utilities (g-*, gx-*, gy-*) using a sensible scale
+$gap-scale: (
+  0: 0,
+  1: 8px,
+  2: 16px,
+  3: 24px,
+  4: 32px,
+  5: 40px,
+  6: 48px
+);
+
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    @each $k, $space in $gap-scale {
+      .#{$device}-gap-#{$k} { gap: $space; }
+      .#{$device}-gx-#{$k} { column-gap: $space; }
+      .#{$device}-gy-#{$k} { row-gap: $space; }
+    }
+  }
+}
+
+// Utility to make a grid item span all columns (like .col-12 at any breakpoint)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-col-full { grid-column: 1 / -1; }
+  }
+}
+
+// Optional offset utility for non-grid contexts (flex-based rows)
+// Note: Works best with flex rows; for CSS Grid prefer using col-start-*
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    @for $i from 0 through 11 {
+      .#{$device}-offset-#{$i} { margin-left: calc((100% / 12) * #{$i}); }
+    }
+  }
+}
+
+// ========== Flex Helper Classes (Bootstrap-like) ==========
+
+// Display helpers
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-d-none { display: none !important; }
+    .#{$device}-d-block { display: block !important; }
+    .#{$device}-d-inline { display: inline !important; }
+    .#{$device}-d-inline-block { display: inline-block !important; }
+    .#{$device}-d-flex { display: flex !important; }
+    .#{$device}-d-inline-flex { display: inline-flex !important; }
+  }
+}
+
+// Flex direction
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-flex-row { flex-direction: row !important; }
+    .#{$device}-flex-row-reverse { flex-direction: row-reverse !important; }
+    .#{$device}-flex-column { flex-direction: column !important; }
+    .#{$device}-flex-column-reverse { flex-direction: column-reverse !important; }
+  }
+}
+
+// Flex wrap
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-flex-wrap { flex-wrap: wrap !important; }
+    .#{$device}-flex-nowrap { flex-wrap: nowrap !important; }
+    .#{$device}-flex-wrap-reverse { flex-wrap: wrap-reverse !important; }
+  }
+}
+
+// Justify content
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-justify-content-start { justify-content: flex-start !important; }
+    .#{$device}-justify-content-end { justify-content: flex-end !important; }
+    .#{$device}-justify-content-center { justify-content: center !important; }
+    .#{$device}-justify-content-between { justify-content: space-between !important; }
+    .#{$device}-justify-content-around { justify-content: space-around !important; }
+    .#{$device}-justify-content-evenly { justify-content: space-evenly !important; }
+  }
+}
+
+// Align items (cross-axis for single line)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-align-items-start { align-items: flex-start !important; }
+    .#{$device}-align-items-end { align-items: flex-end !important; }
+    .#{$device}-align-items-center { align-items: center !important; }
+    .#{$device}-align-items-baseline { align-items: baseline !important; }
+    .#{$device}-align-items-stretch { align-items: stretch !important; }
+  }
+}
+
+// Align content (multi-line cross-axis)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-align-content-start { align-content: flex-start !important; }
+    .#{$device}-align-content-end { align-content: flex-end !important; }
+    .#{$device}-align-content-center { align-content: center !important; }
+    .#{$device}-align-content-between { align-content: space-between !important; }
+    .#{$device}-align-content-around { align-content: space-around !important; }
+    .#{$device}-align-content-stretch { align-content: stretch !important; }
+  }
+}
+
+// Align self (per-item override)
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-align-self-auto { align-self: auto !important; }
+    .#{$device}-align-self-start { align-self: flex-start !important; }
+    .#{$device}-align-self-end { align-self: flex-end !important; }
+    .#{$device}-align-self-center { align-self: center !important; }
+    .#{$device}-align-self-baseline { align-self: baseline !important; }
+    .#{$device}-align-self-stretch { align-self: stretch !important; }
+  }
+}
+
+// Order utilities
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-order-first { order: -1000 !important; }
+    .#{$device}-order-last { order: 1000 !important; }
+    @for $i from 0 through 12 {
+      .#{$device}-order-#{$i} { order: $i !important; }
+    }
+  }
+}
+
+// Flex grow/shrink
+@each $device, $bp in $breakpoints {
+  @include respond-to($device) {
+    .#{$device}-flex-grow-0 { flex-grow: 0 !important; }
+    .#{$device}-flex-grow-1 { flex-grow: 1 !important; }
+    .#{$device}-flex-shrink-0 { flex-shrink: 0 !important; }
+    .#{$device}-flex-shrink-1 { flex-shrink: 1 !important; }
+  }
+}
+
+

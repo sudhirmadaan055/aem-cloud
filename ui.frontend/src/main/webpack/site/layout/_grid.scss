@@ -1,44 +1,271 @@
 @import '../base/variables';
 @import '../base/mixins';
 
-// Container
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+/* ========================================
+   RESPONSIVE GRID SYSTEM
+   ======================================== */
 
+/* Grid Container */
+.grid-container {
+  display: grid;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Mobile (sm) — 4 columns, 20px gap, 16px side padding */
+.grid-container {
+  grid-template-columns: repeat(4, 1fr);
+  gap: map-get(map-get($grid-settings, mobile), gap);
   padding-left: map-get(map-get($grid-settings, mobile), padding);
   padding-right: map-get(map-get($grid-settings, mobile), padding);
+}
 
-  @each $device, $values in $grid-settings {
-    @include respond-to($device) {
-      padding-left: map-get($values, padding);
-      padding-right: map-get($values, padding);
-    }
+/* Tablet (md) — 6 columns, 24px gap, 24px side padding */
+@include respond-to(tablet) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr);
+    gap: map-get(map-get($grid-settings, tablet), gap);
+    padding-left: map-get(map-get($grid-settings, tablet), padding);
+    padding-right: map-get(map-get($grid-settings, tablet), padding);
   }
 }
 
-// Grid Wrapper
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-
-  @each $device, $values in $grid-settings {
-    @include respond-to($device) {
-      gap: map-get($values, gap);
-    }
+/* Laptop/Desktop (lg) — 12 columns, 32px gap, 32px side padding */
+@include respond-to(desktop) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    gap: map-get(map-get($grid-settings, desktop), gap);
+    padding-left: map-get(map-get($grid-settings, desktop), padding);
+    padding-right: map-get(map-get($grid-settings, desktop), padding);
   }
 }
 
-// ========== Column Classes ==========
-@each $device, $bp in $breakpoints {
-    @include respond-to($device) {
-      @for $i from 1 through 12 {
-        .#{$device}-col-#{$i} {
-          grid-column: span $i;
-        }
-      }
-    }
+/* Large Desktop (xl) — keep 12 columns, increase max width if desired */
+@include respond-to(large) {
+  .grid-container {
+    grid-template-columns: repeat(12, 1fr);
+    gap: map-get(map-get($grid-settings, large), gap);
+    padding-left: map-get(map-get($grid-settings, large), padding);
+    padding-right: map-get(map-get($grid-settings, large), padding);
+  }
 }
 
+/* ----------------------------------------
+   Grid Item Classes adapting per breakpoint
+   ---------------------------------------- */
 
+/* Mobile baseline (sm) — 4 columns */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+
+/* Tablet (md) — 6 columns */
+@include respond-to(tablet) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+}
+
+/* Laptop/Desktop (lg) — 12 columns */
+@include respond-to(desktop) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* Large Desktop (xl) — mirror lg, allows xl-specific overrides if needed */
+@include respond-to(large) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* ----------------------------------------
+   Offset Classes (grid-column-start) 
+   ---------------------------------------- */
+
+/* Mobile baseline (sm) — 4 columns */
+.offset-1 { grid-column-start: 2; }
+.offset-2 { grid-column-start: 3; }
+.offset-3 { grid-column-start: 4; }
+
+/* Tablet (md) — 6 columns */
+@include respond-to(tablet) {
+  .offset-1 { grid-column-start: 2; }
+  .offset-2 { grid-column-start: 3; }
+  .offset-3 { grid-column-start: 4; }
+  .offset-4 { grid-column-start: 5; }
+  .offset-5 { grid-column-start: 6; }
+}
+
+/* Laptop/Desktop (lg) — 12 columns */
+@include respond-to(desktop) {
+  .offset-1 { grid-column-start: 2; }
+  .offset-2 { grid-column-start: 3; }
+  .offset-3 { grid-column-start: 4; }
+  .offset-4 { grid-column-start: 5; }
+  .offset-5 { grid-column-start: 6; }
+  .offset-6 { grid-column-start: 7; }
+  .offset-7 { grid-column-start: 8; }
+  .offset-8 { grid-column-start: 9; }
+  .offset-9 { grid-column-start: 10; }
+  .offset-10 { grid-column-start: 11; }
+  .offset-11 { grid-column-start: 12; }
+}
+
+/* Large Desktop (xl) — mirror lg for offsets */
+@include respond-to(large) {
+  .offset-1 { grid-column-start: 2; }
+  .offset-2 { grid-column-start: 3; }
+  .offset-3 { grid-column-start: 4; }
+  .offset-4 { grid-column-start: 5; }
+  .offset-5 { grid-column-start: 6; }
+  .offset-6 { grid-column-start: 7; }
+  .offset-7 { grid-column-start: 8; }
+  .offset-8 { grid-column-start: 9; }
+  .offset-9 { grid-column-start: 10; }
+  .offset-10 { grid-column-start: 11; }
+  .offset-11 { grid-column-start: 12; }
+}
+
+/* ----------------------------------------
+   Responsive Column Classes with sm/md/lg/xl tags
+   ---------------------------------------- */
+
+/* sm (mobile) */
+.col-sm-1 { grid-column: span 1; }
+.col-sm-2 { grid-column: span 2; }
+.col-sm-3 { grid-column: span 3; }
+.col-sm-4 { grid-column: span 4; }
+
+/* md (tablet) */
+@include respond-to(tablet) {
+  .col-md-1 { grid-column: span 1; }
+  .col-md-2 { grid-column: span 2; }
+  .col-md-3 { grid-column: span 3; }
+  .col-md-4 { grid-column: span 4; }
+  .col-md-5 { grid-column: span 5; }
+  .col-md-6 { grid-column: span 6; }
+}
+
+/* lg (laptop/desktop) */
+@include respond-to(desktop) {
+  .col-lg-1 { grid-column: span 1; }
+  .col-lg-2 { grid-column: span 2; }
+  .col-lg-3 { grid-column: span 3; }
+  .col-lg-4 { grid-column: span 4; }
+  .col-lg-5 { grid-column: span 5; }
+  .col-lg-6 { grid-column: span 6; }
+  .col-lg-7 { grid-column: span 7; }
+  .col-lg-8 { grid-column: span 8; }
+  .col-lg-9 { grid-column: span 9; }
+  .col-lg-10 { grid-column: span 10; }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-12 { grid-column: span 12; }
+}
+
+/* xl (large) */
+@include respond-to(large) {
+  .col-xl-1 { grid-column: span 1; }
+  .col-xl-2 { grid-column: span 2; }
+  .col-xl-3 { grid-column: span 3; }
+  .col-xl-4 { grid-column: span 4; }
+  .col-xl-5 { grid-column: span 5; }
+  .col-xl-6 { grid-column: span 6; }
+  .col-xl-7 { grid-column: span 7; }
+  .col-xl-8 { grid-column: span 8; }
+  .col-xl-9 { grid-column: span 9; }
+  .col-xl-10 { grid-column: span 10; }
+  .col-xl-11 { grid-column: span 11; }
+  .col-xl-12 { grid-column: span 12; }
+}
+
+/* ----------------------------------------
+   Utility Classes
+   ---------------------------------------- */
+.grid-item {
+  min-height: 0; // Prevent grid items from expanding unnecessarily
+}
+
+.grid-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.grid-end {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+/* Row — allows grouping without affecting grid layout */
+.row {
+  display: contents;
+}
+
+/* Full width item */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Auto-fit/fill helpers */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+/* ----------------------------------------
+   Minimal Flex Utilities (non-prefixed)
+   ---------------------------------------- */
+.d-flex { display: flex; }
+.d-inline-flex { display: inline-flex; }
+
+.flex-row { flex-direction: row; }
+.flex-column { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.justify-end { justify-content: flex-end; }
+
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
