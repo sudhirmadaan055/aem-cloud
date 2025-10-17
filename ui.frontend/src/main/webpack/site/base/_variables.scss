@@ -40,6 +40,16 @@ $letter-spacings: (
   wider: 0.05em
 );
 
+// Compatibility aliases for other base files
+$font-weights-map: map-merge(
+  $font-weights,
+  (
+    extrabold: 800,
+    normal: 400
+  )
+);
+$font-line-heights: $line-heights;
+$base-line-height: map-get($line-heights, normal);
 
 //== Responsive font sizes (from Figma Size table)
 $base-font-size : 16px;
@@ -128,6 +138,10 @@ $grid-settings: (
   large: (padding: 120px, gap: 32px)
 );
 
+// Container defaults (used by layout/_container.scss)
+$container-max-width: 1920px !default;
+$container-margin: 0 auto !default;
+$container-padding: 20px !default;
 
 // Semantic typography tokens
 // lh = line height, ls = letter spacing
@@ -142,10 +156,14 @@ $type-tokens: (
   paragraph-display: (family: primary, weight: normal, size: paragraph-display, lh: normal, ls: normal),
   p1-body: (family: primary, weight: normal, size: p1-body, lh: normal, ls: normal),
   p2-body: (family: primary, weight: normal, size: p2-body, lh: normal, ls: normal),
-  caption-labels: (family: primary, weight: normal, size: caption-labels, lh: snug, ls: normal)
+  caption-labels: (family: primary, weight: normal, size: caption-labels, lh: snug, ls: normal),
+  // Aliases expected by _typography.scss
+  body: (family: primary, weight: normal, size: p1-body, lh: normal, ls: normal),
+  body-strong: (family: primary, weight: bold, size: p1-body, lh: normal, ls: normal),
+  body-display: (family: primary, weight: normal, size: paragraph-display, lh: normal, ls: normal),
+  product-card: (family: primary, weight: semi-bold, size: p2-body, lh: normal, ls: normal),
+  body-mobileall: (family: primary, weight: normal, size: p1-body, lh: normal, ls: normal)
 );
-
-
 
 // gutter spacing
 $gutter: 8px;

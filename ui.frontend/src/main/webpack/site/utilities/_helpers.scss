@@ -1,66 +1,99 @@
-@import '../site/_variables';
+@import '../base/variables';
+@import '../base/mixins';
 
 // Utility Classes for Font Weights
 .font-normal {
-    font-weight: $font-weight-normal;
-  }
-  
-  .font-semibold {
-    font-weight: $font-weight-semibold;
-  }
-  
-  .font-bold {
-    font-weight: $font-weight-bold;
-  }
-  
-  .font-extrabold {
-    font-weight: $font-weight-extrabold;
-  }
-  
-  // Utility Classes for Text Transform
-  .text-uppercase {
-    text-transform: uppercase;
-  }
-  
-  .text-capitalize {
-    text-transform: capitalize;
-  }
-  
-  .text-lowercase {
-    text-transform: lowercase;
-  }
-  
-  .text-none {
-    text-transform: none;
-  }
-  
-  // Utility Classes for Text Alignment
-  .text-left {
-    text-align: left;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .text-right {
-    text-align: right;
-  }
-  
-  .text-justify {
-    text-align: justify;
-  }
-  
-  // Responsive Text Sizes
-  .text-responsive {
-    @include responsive-typography(16px, 24px, 16px, 24px, 14px, 20px, 12px, 18px);
-  }
-  
-  // Color Variations (if needed)
-  .text-primary {
-    color: $color-foreground;
-  }
-  
+  font-weight: map-get($font-weights-map, regular);
+}
+
+.font-semibold {
+  font-weight: map-get($font-weights-map, semi-bold);
+}
+
+.font-bold {
+  font-weight: map-get($font-weights-map, bold);
+}
+
+.font-extrabold {
+  font-weight: map-get($font-weights-map, extrabold);
+}
+
+// Utility Classes for Text Transform
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-none {
+  text-transform: none;
+}
+
+// Utility Classes for Text Alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Responsive Text Sizes
+.text-responsive {
+  font-size: 14px;
+  line-height: 20px;
+  @include respond-to(tablet) { font-size: 16px; line-height: 24px; }
+  @include respond-to(desktop) { font-size: 16px; line-height: 24px; }
+  @include respond-to(large) { font-size: 18px; line-height: 24px; }
+}
+
+// Color Variations (if needed)
+.text-primary {
+  color: $color-foreground;
+}
+
+.text-secondary {
+  color: #737373;
+}
+
+.text-muted {
+  color: #404040;
+}
+
+.deep-green {
+  color: $deep-green;
+}
+
+// Line Height Utilities
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-relaxed {
+  line-height: 1.75;
+}
+
+.leading-loose {
+  line-height: 2;
+}
   .text-secondary {
     color: #737373;
   }
