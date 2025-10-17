@@ -47,20 +47,14 @@ $font-sizes: (
   display: (
     large: 144px,
     desktop: 104px,
-    tablet: 80px,
+    tablet: 72px,
     mobile: 48px
   ),
-  product-card: (
-    large: 156px,
-    desktop: 96px,
-    tablet: 64px,
-    mobile: 56px
-  ),
   h1: (
-    large: 80px,
-    desktop: 56px,
-    tablet: 48px,
-    mobile: 36px
+    large: 72px,
+    desktop: 48px,
+    tablet: 40px,
+    mobile: 32px
   ),
   h2: (
     large: 48px,
@@ -87,30 +81,24 @@ $font-sizes: (
     mobile: 16px
   ),
   h6: (
+    large: 16px,
+    desktop: 16px,
+    tablet: 16px,
+    mobile: 16px
+  ),
+  paragraph-display: (
     large: 18px,
     desktop: 18px,
     tablet: 16px,
     mobile: 16px
   ),
-  body-display: (
-    large: 18px,
-    desktop: 18px,
+  p1-body: (
+    large: 16px,
+    desktop: 16px,
     tablet: 16px,
-    mobile: 16px
-  ),
-  body: (
-    large: 16px,
-    desktop: 16px,
-    tablet: 14px,
     mobile: 14px
   ),
-  body-strong: (
-    large: 16px,
-    desktop: 16px,
-    tablet: 14px,
-    mobile: 14px
-  ),
-  subtitle: (
+  p2-body: (
     large: 14px,
     desktop: 14px,
     tablet: 14px,
@@ -121,12 +109,6 @@ $font-sizes: (
     desktop: 14px,
     tablet: 13px,
     mobile: 13px
-  ),
-  small: (
-    large: 14px,
-    desktop: 14px,
-    tablet: 12px,
-    mobile: 12px
   )
 );
 
@@ -151,17 +133,15 @@ $grid-settings: (
 // lh = line height, ls = letter spacing
 $type-tokens: (
   display: (family: secondary, weight: extrabold, size: display, lh: tight, ls: normal),
-  product-card: (family: secondary, weight: extrabold, size: product-card, lh: tight, ls: normal),
   h1: (family: secondary, weight: extrabold, size: h1, lh: tight, ls: normal),
   h2: (family: secondary, weight: extrabold, size: h2, lh: tight, ls: normal),
   h3: (family: secondary, weight: extrabold, size: h3, lh: snug, ls: normal),
   h4: (family: secondary, weight: extrabold, size: h4, lh: snug, ls: normal),
   h5: (family: secondary, weight: extrabold, size: h5, lh: snug, ls: normal),
   h6: (family: secondary, weight: extrabold, size: h6, lh: snug, ls: normal),
-  body-display: (family: primary, weight: normal, size: body-display, lh: normal, ls: normal),
-  body: (family: primary, weight: normal, size: body, lh: normal, ls: normal),
-  body-strong: (family: primary, weight: bold, size: body-strong, lh: normal, ls: normal),
-  subtitle: (family: primary, weight: normal, size: subtitle, lh: normal, ls: normal),
+  paragraph-display: (family: primary, weight: normal, size: paragraph-display, lh: normal, ls: normal),
+  p1-body: (family: primary, weight: normal, size: p1-body, lh: normal, ls: normal),
+  p2-body: (family: primary, weight: normal, size: p2-body, lh: normal, ls: normal),
   caption-labels: (family: primary, weight: normal, size: caption-labels, lh: snug, ls: normal)
 );
 
