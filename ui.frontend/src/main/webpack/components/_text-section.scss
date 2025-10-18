@@ -4,7 +4,7 @@
 .text{
     padding: 48px 0!important;
     h1,h2,h3,h4,h5,h6{
-        color: $deep-green;
+        color: map-get($bibigo-deep-green, 500);
         font-family: $font-family-secondary;
         line-height: 125%;
     }

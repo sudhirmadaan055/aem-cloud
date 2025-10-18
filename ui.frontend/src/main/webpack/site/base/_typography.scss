@@ -11,9 +11,6 @@
 // Display Text
 .display { @include type-token(display); text-transform: uppercase; }
 
-// Product Card Text
-.product-card { @include type-token(product-card); text-transform: uppercase; }
-
 // Headings
 h1, .h1{ @include type-token(h1); text-transform: capitalize; }
 
@@ -28,21 +25,22 @@ h5, .h5 { @include type-token(h5); text-transform: capitalize; }
 h6, .h6 { @include type-token(h6); text-transform: capitalize; }
 
 // Body Text
-p, .p1{ @include type-token(body); }
+.paragraph-display { @include type-token(paragraph-display); }
 
-.paragraph-display { @include type-token(body-display); }
+.p1-body{ @include type-token(p1-body); }
 
-.p1-bold{ @include type-token(body-strong); }
+.p1-body-bold{ @include type-token(p1-body, (weight: bold)); }
 
-.p2, .p2-body, .subtitle { @include type-token(body); }
+.p2-body{ @include type-token(p2-body); }
 
-.p2-bold { @include type-token(body-strong); }
+.p2-body-bold { @include type-token(p2-body, (weight: bold)); }
 
-.small { @include type-token(body-mobileall); }
+.caption-labels { @include type-token(caption-labels); }
+
 
 // Links
 a, .link, .hyperlink {
-  @include type-token(body);
+  @include type-token(hyperlink);
   text-decoration: underline;
   color: inherit;
   
@@ -51,7 +49,5 @@ a, .link, .hyperlink {
   }
 }
 
-// Caption Text
-.caption, .p3 { @include type-token(caption-labels); }
 
 

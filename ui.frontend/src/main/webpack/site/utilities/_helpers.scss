@@ -75,7 +75,7 @@
 }
 
 .deep-green {
-  color: $deep-green;
+  color: map-get($bibigo-deep-green, 500);
 }
 
 // Line Height Utilities
@@ -103,7 +103,7 @@
   }
   
   .deep-green {
-    color: $deep-green;
+    color: map-get($bibigo-deep-green, 500);
   }
   
   // Line Height Utilities
