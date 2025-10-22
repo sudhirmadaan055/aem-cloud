@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Text With Image or Video</title>
+    <link rel="stylesheet" href="../../../../../dist/clientlib-site/site.css" >
+    <script type="text/javascript" src="../../../../../dist/clientlib-site/site.js"></script>
+</head>
+<body>
+
+  <!-- Video variant -->
+  <section class="c-text-with-image container">
+    <div class="c-twi__inner">
+      <div class="c-twi__tag">About Bibigo</div>
+      <h2 class="c-twi__title">Discover The Essence Of Bibigo</h2>
+      <p class="c-twi__desc">Same layout with video. Play button is centered; other controls are hidden until play.</p>
+
+      <div class="js--twi c-twi__media" data-type="local" data-src="../../../../../dist/clientlib-site/videos/bibigo-video.mp4" data-poster="../../../../../dist/clientlib-site/images/video-thumbnail.jpg">
+          <img class="poster" src="../../../../../dist/clientlib-site/images/video-thumbnail.jpg" alt="poster">
+          <button class="play-btn" aria-label="Play video"></button>
+      </div>
+
+  <div style="height:48px"></div>
+
+
+    <!-- YouTube example -->
+    <div class="js--twi c-twi__media" data-type="embed" data-src="https://www.youtube.com/embed/soaoHF6x0Rg?si=9gDpWRrJhX8ks39-" data-poster="../../../../../dist/clientlib-site/images/video-thumbnail.jpg">
+        <img class="poster" src="../../../../../dist/clientlib-site/images/video-thumbnail.jpg" alt="poster">
+        <button class="play-btn" aria-label="Play YouTube video"></button>
+    </div>
+    </div>
+  </section>
+
+  <script>
+    class InlineVideoCard {
+    constructor(el){
+    this.el = el;
+    this.type = el.dataset.type;
+    this.src = el.dataset.src;
+    this.poster = el.dataset.poster;
+    this.playBtn = el.querySelector('.play-btn');
+    this.posterImg = el.querySelector('.poster');
+    this.bindEvents();
+    }
+
+
+    bindEvents(){
+    this.playBtn.addEventListener('click', ()=>this.play());
+    }
+
+
+    play(){
+    if(this.type === 'local'){
+    this.playLocal();
+    } else if(this.type === 'embed'){
+    this.playEmbed();
+    }
+    }
+
+
+    playLocal(){
+    const video = document.createElement('video');
+    video.src = this.src;
+    if(video.src){
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.poster = this.poster;
+    this.el.innerHTML = '';
+    this.el.appendChild(video);
+    }
+    else{
+      showError('Video unavailable');
+    }
+    }
+
+
+    playEmbed(){
+    const iframe = document.createElement('iframe');
+    iframe.src = `${this.src}`;
+    if(iframe.src){
+    iframe.allowFullscreen = true;
+    this.el.innerHTML = '';
+    this.el.appendChild(iframe);
+    }
+    else{
+      showError('Video unavailable');
+    }
+    }
+    }
+    document.querySelectorAll('.js--twi').forEach(el=> new InlineVideoCard(el));
+  </script>
+
+  <!-- <script>
+      function initTwi(root){
+    if(!root) return;
+    var mediaWrap = root.querySelector('.c-twi__media');
+    if(!mediaWrap) return;
+
+    var type = root.getAttribute('data-type') || 'image';
+    var src = root.getAttribute('data-src') || '';
+    var poster = root.getAttribute('data-poster') || '';
+
+    function showError(msg){
+      var err = root.querySelector('.c-twi__error');
+      if(err){ err.textContent = msg || 'Video unavailable'; err.style.display = 'block'; }
+      mediaWrap.innerHTML = '<div class="c-twi__placeholder" aria-live="polite" style="display:flex;align-items:center;justify-content:center;color:#fff;background:#111;">'+(msg||'Video unavailable')+'</div>';
+    }
+
+    if(type === 'video'){
+      var video = document.createElement('video');
+      video.className = 'c-twi__video';
+      video.playsInline = true;
+      video.preload = 'metadata';
+      if(poster) video.poster = poster;
+      // do not show controls until play
+      video.controls = false;
+
+      var source = document.createElement('source');
+      source.src = src;
+      source.type = (src.endsWith('.mp4') ? 'video/mp4' : '');
+      video.appendChild(source);
+
+      video.addEventListener('error', function(){ showError('Video unavailable'); });
+
+      mediaWrap.innerHTML = '';
+      mediaWrap.appendChild(video);
+
+      var play = document.createElement('button');
+      play.className = 'c-twi__play';
+      play.setAttribute('aria-label','Play video');
+      play.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>';
+      mediaWrap.appendChild(play);
+
+      play.addEventListener('click', function(){
+        try{
+          play.style.display = 'none';
+          video.controls = true;
+          var p = video.play();
+          if(p && typeof p.catch === 'function'){
+            p.catch(function(){ showError('Video unavailable'); });
+          }
+        }catch(e){ showError('Video unavailable'); }
+      });
+    } else {
+      var img = document.createElement('img');
+      img.className = 'c-twi__img';
+      img.src = src;
+      img.alt = root.getAttribute('data-alt') || '';
+      // img.addEventListener('error', function(){
+      //   showError('Image unavailable');
+      // });
+      // mediaWrap.innerHTML = '';
+      mediaWrap.appendChild(img);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.js--twi').forEach(initTwi);
+  });
+  </script> -->
+</body>
+</html>

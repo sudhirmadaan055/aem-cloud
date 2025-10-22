@@ -12,17 +12,17 @@
 .display { @include type-token(display); text-transform: uppercase; }
 
 // Headings
-h1, .h1{ @include type-token(h1); text-transform: capitalize; }
+h1, .heading-1{ @include type-token(h1); text-transform: capitalize; }
 
-h2, .h2{ @include type-token(h2); text-transform: capitalize; }
+h2, .heading-2{ @include type-token(h2); text-transform: capitalize; }
 
-h3, .h3{ @include type-token(h3); text-transform: capitalize; }
+h3, .heading-3{ @include type-token(h3); text-transform: capitalize; }
 
-h4, .h4{ @include type-token(h4); text-transform: capitalize; }
+h4, .heading-4{ @include type-token(h4); text-transform: capitalize; }
 
-h5, .h5 { @include type-token(h5); text-transform: capitalize; }
+h5, .heading-5 { @include type-token(h5); text-transform: capitalize; }
 
-h6, .h6 { @include type-token(h6); text-transform: capitalize; }
+h6, .heading-6 { @include type-token(h6); text-transform: capitalize; }
 
 // Body Text
 .paragraph-display { @include type-token(paragraph-display); }
